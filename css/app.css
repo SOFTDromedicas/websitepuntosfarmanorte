@@ -28,6 +28,7 @@
 	width: 390px;
 	padding: 0.5rem 0 0 3rem;
 	position: absolute;
+	z-index: 2;
 }
 
 #menuppal{
@@ -68,7 +69,7 @@
 
 .solapa{
 	background-image: url('../images/solapa.svg');
-	width: 153px;
+	width: 163px;
 	background-repeat: no-repeat;
 	top: 0;
 	text-align: center;
@@ -78,6 +79,16 @@
 }
 
 
+
+
+
+
+
+
+#quesonpuntos{
+	padding: 80px;
+	background: #000a7b;
+}
 
 
 /*MEDIA QUERIES*/
