@@ -82,12 +82,8 @@ body{
 }
 
 #orbit-container{
-	z-index: 2;
-}
-
-#orbit-container:before{	
-
-	box-shadow: 0 30px 25px #6F6F6F!important;
+	margin: 0;
+	padding: 0;
 }
 
 
@@ -105,9 +101,9 @@ body{
   width: 50%;
   top: 80%;
   max-width:300px;
-  background: #6F6F6F;
-  box-shadow: 0 30px 25px #6F6F6F;
-  transform: rotate(-3deg);
+  background: rgba(3, 3, 3, 0.45);
+  box-shadow: 0 30px 25px rgba(3, 3, 3, 0.45);
+  transform: rotate(-6deg);
 }
 
 .sombraderecha
@@ -125,13 +121,15 @@ body{
   width: 50%;
   top: 80%;
   max-width:300px;
-  background: #6F6F6F;
-  box-shadow: 0 30px 25px #6F6F6F;
-  transform: rotate(3deg);
+  background: rgba(3, 3, 3, 0.45);
+  box-shadow: 0 30px 25px rgba(3, 3, 3, 0.45);
+  transform: rotate(4deg);
 }
 
 .orbit{
-	box-shadow: 0 15px 25px #818181;
+	box-shadow: 0 11px 25px rgba(3, 3, 3, 0.65);
+	margin: 0!important;
+	padding: 0!important;
 }
 
 
