@@ -7,7 +7,7 @@
 }*/
 
 body{
-	background: #ADB67D
+	background: #CFE109
 }
 
 .spaceblue{
@@ -101,8 +101,8 @@ body{
   width: 50%;
   top: 80%;
   max-width:300px;
-  background: rgba(3, 3, 3, 0.45);
-  box-shadow: 0 30px 25px rgba(3, 3, 3, 0.45);
+  background: rgba(3, 3, 3, 0.35);
+  box-shadow: 0 30px 25px rgba(3, 3, 3, 0.35);
   transform: rotate(-6deg);
 }
 
@@ -121,8 +121,8 @@ body{
   width: 50%;
   top: 80%;
   max-width:300px;
-  background: rgba(3, 3, 3, 0.45);
-  box-shadow: 0 30px 25px rgba(3, 3, 3, 0.45);
+  background: rgba(3, 3, 3, 0.35);
+  box-shadow: 0 30px 25px rgba(3, 3, 3, 0.35);
   transform: rotate(4deg);
 }
 
