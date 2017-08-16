@@ -1,11 +1,11 @@
-/*
-.row{
+
+/*.row{
 	border: 2px solid yellow;
 }
 .columns{
 	border: 1px solid #ED3E3E;
-}*/
-
+}
+*/
 body{
 	background: #CFE109
 }
@@ -128,18 +128,38 @@ body{
 
 .orbit{
 	box-shadow: 0 11px 25px rgba(3, 3, 3, 0.65);
-	margin: 0!important;
-	padding: 0!important;
 }
-
-
-
-
 
 #quesonpuntos{
-	padding: 80px;
-	background: #FFFFFF;
+	background-image: url('../images/banner-desktop-queson.jpg');
+	height: 30rem;
+  background-size: cover;
+  background-position: top center;
 }
+
+.left-column-queson{
+	padding-top: 9rem!important;
+}
+
+.righ-column-queson{
+	padding-top: 5rem!important;
+}
+
+.enum-queson{
+	background-image: url('../images/cinta-uno.png');
+	background-size: cover;
+  background-position: top center;
+  height: 22rem;
+
+  padding: 3.5rem;
+  font-size: 1rem;
+  color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif;
+  text-shadow: 1px 1px 6px #0C0B0B;
+}
+
+
+
 
 
 /*MEDIA QUERIES*/
