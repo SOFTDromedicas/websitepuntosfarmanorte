@@ -1,11 +1,12 @@
-
 /*.row{
 	border: 2px solid yellow;
 }
 .columns{
 	border: 1px solid #ED3E3E;
-}
-*/
+}*/
+
+
+
 body{
 	background: #CFE109
 }
@@ -138,7 +139,7 @@ body{
 }
 
 .left-column-queson{
-	padding-top: 9rem!important;
+	padding-top: 9.5rem!important;
 }
 
 .righ-column-queson{
@@ -151,12 +152,56 @@ body{
   background-position: top center;
   height: 22rem;
 
-  padding: 3.5rem;
+  padding: 2.5rem;
   font-size: 1rem;
   color: #FFFFFF;
   font-family: 'Open Sans', sans-serif;
   text-shadow: 1px 1px 6px #0C0B0B;
 }
+
+#registro-section{
+	background-image: url('../images/background-registro.jpg');
+	height: 30rem;
+  background-size: cover;
+  background-position: top center;
+}
+
+.right-column-ins{
+
+}
+
+.left-column-ins{
+	padding-top:2rem!important;
+}
+
+
+.enum-inscripcion{
+	background-image: url('../images/cinta-dos.png');
+	background-size: cover;
+  background-position: top center;
+  height: 25rem;
+
+
+  padding: 8rem 1rem 1rem 4rem;
+  font-size: 1rem;
+  color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif;
+  text-shadow: 1px 1px 6px #0C0B0B;
+}
+
+#botonins{
+	width: 7rem;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
