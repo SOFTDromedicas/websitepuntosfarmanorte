@@ -30,8 +30,8 @@ body{
 }
 
 #logotipo{
-	width: 390px;
-	padding: 0.5rem 0 0 3rem;
+	margin: .2rem 0 0 8rem;
+	width: 290px;
 	position: absolute;
 	z-index: 2;
 }
@@ -73,13 +73,20 @@ body{
 
 .solapa{
 	background-image: url('../images/solapa.svg');
-	width: 163px;
+	width: 158px;
 	background-repeat: no-repeat;
 	top: 0;
 	text-align: center;
 	font-family: 'Open Sans', sans-serif;
 	color: #ffffff;	
 	font-style: italic;	
+}
+
+.solapa a{
+	text-decoration: none;
+	cursor: pointer;
+	color: #FFFFFF;
+	display: block;
 }
 
 #orbit-container{
@@ -241,7 +248,7 @@ body{
 
 #terminos{
 	padding: 1rem 0;
-	background: #214484;
+	background: #0D2580;
 }
 
 #tituloterminos{
@@ -306,17 +313,72 @@ body{
 
 }
 
+
+@media screen and (min-width: 40em) and (max-width: 59.125em) {
+	.spaceblue{	
+		background: green; 	
+	}
+	
+	#menu-container{		
+		background-position: left;
+	}	
+
+	#logotipo{
+		margin: .2rem 0 0 1.6rem;
+		width: 220px;		
+	}
+
+	#contenedor-menu .align-center{
+		justify-content: flex-start;
+	}
+
+	#menuppal ul li a{
+		padding: 10px 5px;
+	}
+
+	.solapa{
+		background-image: url('../images/solapados.svg');
+		width: 80px;
+		background-repeat: no-repeat;
+		font-size: .90rem;
+		text-align: center;
+	}
+
+	.solapa a{
+		margin-left: 5px;
+	}
+
+}
+
+
+
+
 /* Medium only */
-@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+@media screen and (min-width: 59.126em) and (max-width: 63.9375em) {
+	.spaceblue{	
+		background: red; 	
+	}
+
+	#logotipo{
+		margin: .2rem 0 0 4rem;
+		width: 260px;
+		position: absolute;
+		z-index: 2;
+	}
 
 }
 
 /* Large and up */
 @media screen and (min-width: 64em) {
 
+
 }
 
 /* Large only */
 @media screen and (min-width: 64em) and (max-width: 74.9375em) {
 
+	#logotipo{
+		margin: .2rem 0 0 3.5rem;
+		width: 250px;		
+	}
 }
