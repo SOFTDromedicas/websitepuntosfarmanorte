@@ -1,14 +1,14 @@
 /*.row{
-	border: 2px solid yellow;
+	border: 1px solid #E2EA03;
 }
+
 .columns{
-	border: 1px solid #ED3E3E;
+	border: 1px solid #FA0000;
 }*/
 
 
-
 body{
-	background: #CFE109
+	/*background: #CFE109*/
 }
 
 .spaceblue{
@@ -191,23 +191,70 @@ body{
 
 #botonins{
 	width: 7rem;
+	#83A316
 }
-
 
 #comoreg{
 	width: 24rem;
 }
 
 
+#beneficion-section{
+	background-image: url('../images/background-core-beneficios.png');
+	height: 30rem;
+  background-size: cover;
+  background-position: top center;
+}
 
 
+.left-beneficios{
+	padding-top: 12rem;
+
+}
+
+.right-beneficios{
+	padding-top: 2rem;
+}
+
+#beneficiosimg{
+	width: 16rem;
+}
 
 
+.enum-beneficios{
+	background-image: url('../images/cinta-tres.svg');
+	background-size: cover;
+  background-position: top center;
+  height: 26rem;
 
 
+  padding: 6rem 1rem 1rem 4rem;
+  font-size: 1rem;
+  color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif;
+  text-shadow: 1px 1px 6px #0C0B0B;
+}
 
+#terminoslogo{
+	width: 2rem;
+}
 
+#terminos{
+	padding: 1rem 0;
+	background: #214484;
+}
 
+#tituloterminos{
+	margin: 0 15px;
+}
+
+.terminos-content{
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+	color: #ffffff;	
+	font-size: 1.5rem;
+
+}
 
 
 
