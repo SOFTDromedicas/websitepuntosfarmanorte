@@ -253,8 +253,15 @@ body{
 	font-family: 'Open Sans', sans-serif;
 	color: #ffffff;	
 	font-size: 1.5rem;
-
 }
+	.terminos-content a{
+		text-decoration: none;
+		cursor: pointer;
+		color: #ffffff;			
+	}
+	.terminos-content a:hover{
+		text-shadow: 1px 3px 2px #3D3D3D;
+	}
 
 
 
