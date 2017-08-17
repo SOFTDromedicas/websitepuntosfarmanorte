@@ -1,10 +1,10 @@
-/*.row{
+.row{
 	border: 1px solid #E2EA03;
 }
 
 .columns{
 	border: 1px solid #FA0000;
-}*/
+}
 
 
 body{
@@ -35,6 +35,12 @@ body{
 	position: absolute;
 	z-index: 2;
 }
+
+#burger-menu i{
+	color: #000A7B;
+	font-size: 1.8rem;
+}
+
 
 #menuppal{
 	font-family: 'Open Sans', sans-serif;
@@ -277,10 +283,13 @@ body{
 /*Default Media Queries Foundation*/
 /* Small only */
 @media screen and (max-width: 39.9375em) {
+	.spaceblue{	
+		background: #FFFC00; 	
+	}
+
 	#logotipo{
-		width: 220px!important;
-		padding: 0 0 0 0;
-		position: relative!important;
+		margin: .2rem 0 0 1.6rem;
+		width: 220px;		
 	}
 
 	#menu-container{	
@@ -296,18 +305,47 @@ body{
 	#menu-container{		
 		background-position: left;
 	}
+}
+
+/*Custom media Query*/
+@media screen and (min-width: 40em) and (max-width: 47.375em) {
+	.spaceblue{	
+		background: #00F500; 	
+	}
+
+	#menu-container{		
+		background-position: left;
+	}	
+
+	#logotipo{
+		margin: .2rem 0 0 1.6rem;
+		width: 220px;		
+	}
+	
+	#menuppal, .solapa{
+		display: none;
+	}
+
+	#burger-menu{
+		display: block!important;
+	}
+	
+	.medium-5{
+		flex: 0 0 83.33333%!important;
+    max-width: 83.33333%!important;
+	}
+
+	.medium-7{
+		flex: 0 0 16.66667%!important;
+    max-width: 16.66667%!important;
+	}
+
+
 
 }
 
 /*Custom media Query*/
-@media screen and (min-width: 40em) and (max-width: 47.188em) {
-	.spaceblue{	
-		background: #00F500; 	
-	}
-}
-
-
-@media screen and (min-width: 47.189em) and (max-width: 59.125em) {
+@media screen and (min-width: 47.376em) and (max-width: 59.125em) {
 	.spaceblue{	
 		background: green; 	
 	}
