@@ -293,7 +293,6 @@ body{
 	}
 
 	#menu-container{	
-		/*min-height: 6rem!important;				*/
 		background-position: left;	
 	}
 
@@ -302,16 +301,13 @@ body{
 		padding: 4rem 0.75rem 0 0;
 	}
 
-}
-
-/* Medium and up */
-@media screen and (min-width: 40em) {
-
-	#menu-container{		
-		/*background-position: left;*/
+	#quesonpuntos{	
+		background-image: url('../images/fondoquesondos.png');
+		background-position: right!important;
+		/*background-size: 70rem;*/
 	}
-}
 
+}
 
 /*Custom media Query*/
 @media screen and (min-width: 40em) and (max-width: 47.375em) {
@@ -346,6 +342,11 @@ body{
 	.medium-7{
 		flex: 0 0 16.66667%!important;
     max-width: 16.66667%!important;
+	}
+
+	#quesonpuntos{	
+		background-image: url('../images/fondoquesondos.png');
+		background-position: center!important;
 	}
 
 }
@@ -386,8 +387,27 @@ body{
 		margin-left: 5px;
 	}
 
+	#quesonpuntos{	
+		background-image: url('../images/fondoquesondos.png');
+		background-position: center!important;
+	}
+
+
 }
 
+
+/* Medium and up */
+@media screen and (min-width: 40em) {
+
+	#menu-container{		
+		/*background-position: left;*/
+	}
+	
+	#quesonpuntos{		
+	  background-position: left;
+	}
+
+}
 
 
 
@@ -418,5 +438,9 @@ body{
 	#logotipo{
 		margin: .2rem 0 0 3.5rem;
 		width: 250px;		
+	}
+
+	#quesonpuntos{		
+	  background-position: left
 	}
 }
