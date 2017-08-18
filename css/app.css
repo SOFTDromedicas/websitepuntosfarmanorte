@@ -312,7 +312,7 @@ body{
 /*Custom media Query*/
 @media screen and (min-width: 40em) and (max-width: 47.375em) {
 	.spaceblue{	
-		background: #00F500; 	
+		background: #E100F5; 	
 	}
 
 	#menu-container{		
@@ -347,6 +347,37 @@ body{
 	#quesonpuntos{	
 		background-image: url('../images/fondoquesondos.png');
 		background-position: center!important;
+	}
+
+	.left-column-queson{
+			padding-top: 1.5rem!important;							
+	}
+
+	#queson{
+		margin: 0;
+		/*margin-bottom: 1rem;*/
+		width: 15rem;
+		text-align: center;
+		display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+	}
+
+	#quesonpuntos .medium-6{
+		flex: 0 0 100%;
+    max-width: 100%;
+	}
+
+	.righ-column-queson{
+		padding-top: 2rem!important;
+	}
+
+	.enum-queson {
+		background-image: none;
+		background:  rgba(40, 132, 218, 0.7);
+    padding: 2.5rem;
+    height: 15rem;
 	}
 
 }
@@ -390,6 +421,10 @@ body{
 	#quesonpuntos{	
 		background-image: url('../images/fondoquesondos.png');
 		background-position: center!important;
+	}
+
+	#queson{
+
 	}
 
 
