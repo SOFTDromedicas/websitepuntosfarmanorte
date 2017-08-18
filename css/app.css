@@ -1,10 +1,10 @@
-.row{
+/*.row{
 	border: 1px solid #E2EA03;
 }
 
 .columns{
 	border: 1px solid #FA0000;
-}
+}*/
 
 
 body{
@@ -279,7 +279,7 @@ body{
 
 
 /*MEDIA QUERIES*/
-/
+
 /*Default Media Queries Foundation*/
 /* Small only */
 @media screen and (max-width: 39.9375em) {
@@ -289,12 +289,17 @@ body{
 
 	#logotipo{
 		margin: .2rem 0 0 1.6rem;
-		width: 220px;		
+		width: 220px;			
 	}
 
 	#menu-container{	
-		min-height: 6rem!important;				
+		/*min-height: 6rem!important;				*/
 		background-position: left;	
+	}
+
+
+	#burger-menu{
+		padding: 4rem 0.75rem 0 0;
 	}
 
 }
@@ -303,9 +308,10 @@ body{
 @media screen and (min-width: 40em) {
 
 	#menu-container{		
-		background-position: left;
+		/*background-position: left;*/
 	}
 }
+
 
 /*Custom media Query*/
 @media screen and (min-width: 40em) and (max-width: 47.375em) {
@@ -322,12 +328,14 @@ body{
 		width: 220px;		
 	}
 	
-	#menuppal, .solapa{
+	#menuppal, .solapa , #rowmenu{
 		display: none;
 	}
 
 	#burger-menu{
-		display: block!important;
+		display: flex!important;
+		justify-content: flex-end!important;
+		padding: 4rem 0.75rem 0 0;
 	}
 	
 	.medium-5{
@@ -340,9 +348,8 @@ body{
     max-width: 16.66667%!important;
 	}
 
-
-
 }
+
 
 /*Custom media Query*/
 @media screen and (min-width: 47.376em) and (max-width: 59.125em) {
