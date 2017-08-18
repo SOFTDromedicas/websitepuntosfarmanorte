@@ -189,13 +189,13 @@ body{
 
 
 .enum-inscripcion{
-	background-image: url('../images/cinta-dos.png');
+	background-image: url('../images/cinta-dos.svg');
 	background-size: cover;
   background-position: top center;
   height: 25rem;
+  padding: 7rem 1rem 1rem 4rem;
 
 
-  padding: 8rem 1rem 1rem 4rem;
   font-size: 1rem;
   color: #FFFFFF;
   font-family: 'Open Sans', sans-serif;
@@ -453,9 +453,11 @@ body{
 		background-position: center!important;
 	}
 
-	#queson{
-
+	.enum-inscripcion{
+		padding: 3.5rem 0.5rem 0.5rem 2rem;
 	}
+
+
 
 
 }
