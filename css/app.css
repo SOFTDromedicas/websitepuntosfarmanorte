@@ -336,8 +336,38 @@ body{
     padding: 1rem;
     height: 20rem;
 	}
+	
+	#registro-section .medium-5,
+	#registro-section .medium-7{
+		flex: 0 0 100%;
+		max-width: 100%;
+	}	
+	
+	.right-column-ins	{
+		padding-top: 1.5rem!important;
+		order: 1!important;
+	}
+
+	#comoreg{
+		width: 17rem;
+	}
+
+	.left-column-ins {
+		order: 2!important;
+		padding-top: 1rem!important;
+	}
+
+	.enum-inscripcion{
+		background-image: none;
+		background:  rgba(40, 132, 218, 0.7);
+		background:  rgba(17, 31, 140, 0.7);
+    padding: .9rem;
+    height: 24rem;
+	}
 
 }
+
+
 
 /*Custom media Query*/
 @media screen and (min-width: 40em) and (max-width: 47.375em) {
@@ -364,12 +394,9 @@ body{
 		padding: 4rem 0.75rem 0 0;
 	}
 	
-	.medium-5{
-		flex: 0 0 83.33333%!important;
-    max-width: 83.33333%!important;
-	}
 
-	.medium-7{
+	#head-container .medium-5,
+	#head-container .medium-7{
 		flex: 0 0 16.66667%!important;
     max-width: 16.66667%!important;
 	}
@@ -408,6 +435,34 @@ body{
 		background:  rgba(40, 132, 218, 0.7);
     padding: 2.5rem;
     height: 15rem;
+	}
+
+	#registro-section .medium-5,
+	#registro-section .medium-7{
+		flex: 0 0 100%;
+		max-width: 100%;
+	}	
+	
+	.right-column-ins	{
+		padding-top: 1.5rem!important;
+		order: 1!important;
+	}
+
+	#comoreg{
+		width: 17rem;
+	}
+
+	.left-column-ins {
+		order: 2!important;
+		padding-top: 1rem!important;
+	}
+
+	.enum-inscripcion{
+		background-image: none;
+		background:  rgba(40, 132, 218, 0.7);
+		background:  rgba(17, 31, 140, 0.7);
+    padding: 2.1rem;
+    height: 23rem;
 	}
 
 }
