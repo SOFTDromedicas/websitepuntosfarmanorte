@@ -21,7 +21,7 @@ var currentElement = null;
 var lastId,
     topMenu = $("#menppal"),
 
-    topMenuHeight = topMenu.outerHeight()+15;
+    topMenuHeight = topMenu.outerHeight()+30;
     // All list items
     menuItems = topMenu.find("a");    
 
