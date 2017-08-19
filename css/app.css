@@ -22,6 +22,17 @@ body{
   z-index: 99!important;
 }
 
+#ancla_quesonpuntos,
+#ancla_registro-section{
+	display: block;
+  position: relative;
+  top: -136px;
+  visibility: hidden;
+}
+
+
+
+
 .menuc-row{
 	height: auto;
 }
