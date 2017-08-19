@@ -296,6 +296,9 @@ body{
 
 /*MEDIA QUERIES*/
 
+
+
+
 /*Default Media Queries Foundation*/
 /* Small only */
 @media screen and (max-width: 39.9375em) {
@@ -399,10 +402,10 @@ body{
 	
 	.enum-beneficios{
 		background-image: none;
-		height: 23rem;
+		height: 22rem;
 		background: rgba(18, 47, 143, .7);
 	  padding: 0.4rem 1rem 0rem 0.5rem;	 
-	  font-size: .81rem; 
+	  font-size: .82rem; 
 	}
 
 }
@@ -519,7 +522,7 @@ body{
 	
 	.enum-beneficios{
 		background-image: none;
-		height: 29rem;
+		height: 18rem;
 		background: rgba(18, 47, 143, .7);
 	  padding: 1rem 1rem 1rem 1rem;	  
 	}
