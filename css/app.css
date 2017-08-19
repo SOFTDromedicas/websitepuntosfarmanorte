@@ -17,6 +17,11 @@ body{
 	/*background: #000a7b; */
 }
 
+.sticky {
+  position: absolute;
+  z-index: 99!important;
+}
+
 .menuc-row{
 	height: auto;
 }
