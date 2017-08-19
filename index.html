@@ -15,19 +15,42 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600i" rel="stylesheet">   
   </head>
   <body>
+  <!-- Menu off-canvas -->
+  <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+
+    <!-- Close button -->
+    <button class="close-button" aria-label="Close menu" type="button" data-close>
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+    <!-- Menu -->
+    <ul class="vertical menu">
+      <li><a href="#">Foundation</a></li>
+      <li><a href="#">Dot</a></li>
+      <li><a href="#">ZURB</a></li>
+      <li><a href="#">Com</a></li>
+      <li><a href="#">Slash</a></li>
+      <li><a href="#">Sites</a></li>
+    </ul>
+
+  </div>
+  
+  <!-- Contenido de la pagina normal -->
+  <div class="off-canvas-content" data-off-canvas-content>
+    <!-- Your page content lives here -->
     <!--Head Section-->
     <section id="head-container">
       <!-- barra azul -->
       <div class="row columns small-12 spaceblue">        
       </div>
-      <!-- menu -->      
+      <!-- Menu Normal-->      
       <div id="menu-container" data-sticky-container data-sticky data-options="marginTop:0;" data-sticky-on="small" >
         <div class="row expanded menuc-row" > 
           <!-- columna logo -->
           <div class="columns small-10 medium-5 large-5">
             <figure id="logotipo"><img src="images/logoPuntosFarmanorte.svg" alt="Logo Puntos Farmanorte" ></figure>
           </div>
-          <!-- columna menu -->
+          <!-- columna Menu -->
           <div class="columns small-2 medium-7 large-7" id="contenedor-menu">
             <!-- burger menu -->
             <div class="show-for-small-only align-right" id="burger-menu">
@@ -53,24 +76,24 @@
 
     <!-- seccion slide -->
     <section id="orbit-containers">    
-    <div class="sombraderecha">
-    <div class="sombraizquierda">
-      <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-        <ul class="orbit-container">
-          <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
-          <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-          <li class="is-active orbit-slide">
-            <img class="orbit-image" src="images/bannerpuntosf.jpg" alt="Space">
-            <!-- <figcaption class="orbit-caption">Space, the final frontier.</figcaption> -->
-          </li>
-          <li class="orbit-slide">
-            <img class="orbit-image" src="images/bannersucursal.jpg" alt="Space">
-            <!-- <figcaption class="orbit-caption">Lets Rocket!</figcaption> -->
-          </li>          
-        </ul>        
-      </div>  <!-- end contendor de orbit -->      
-    </div>
-    </div>
+      <div class="sombraderecha">
+      <div class="sombraizquierda">
+        <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+          <ul class="orbit-container">
+            <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+            <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+            <li class="is-active orbit-slide">
+              <img class="orbit-image" src="images/bannerpuntosf.jpg" alt="Space">
+              <!-- <figcaption class="orbit-caption">Space, the final frontier.</figcaption> -->
+            </li>
+            <li class="orbit-slide">
+              <img class="orbit-image" src="images/bannersucursal.jpg" alt="Space">
+              <!-- <figcaption class="orbit-caption">Lets Rocket!</figcaption> -->
+            </li>          
+          </ul>        
+        </div>  <!-- end contendor de orbit -->      
+      </div>
+      </div>
     </section> <!-- end section orbit -->
     
     <!-- que es puntos farmanorte seccion -->
@@ -145,6 +168,7 @@
       </div>      
     </div>      
     </footer>
+  </div>
     
 
     <script src="js/vendor/jquery.js"></script>
