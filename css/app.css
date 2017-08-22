@@ -36,6 +36,11 @@ body{
 }
 
 
+#linkmap{
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
 .menuc-row{
 	height: auto;
 }
@@ -411,7 +416,7 @@ textarea {
 
 #inscripcion-content{
 	background: #EFF3F8;
-	padding-bottom: 5rem;
+	padding-bottom: 7.2rem;
 }
 
 #inscripcion-title{
@@ -431,12 +436,12 @@ textarea {
 	margin-right: 1rem;
 }
 
-#footer-form{
+/*#footer-form{
 	position: fixed;
 	bottom: 0px;
 	width: 100%;
 }
-
+*/
 
 
 /*MEDIA QUERIES*/

@@ -1,5 +1,14 @@
 $(document).foundation()
 
+console.log("%cMade for %cDromedicas del Oriente  %c(specially this project)",       
+        "background-color: #FFFFFF; color: #00612E",
+        "background-color: #FFFFFF; color: #000a7b",
+        "background-color: #FFFFFF; color: #AE000C");
+
+    console.log("%cVisit us! %chttp:www.dromedicas.com.co",
+        "background-color: #FFFFFF; color: #000",
+        "background-color: #FFFFFF; color: #008ce2");
+
 var currentElement = null;
 
 //activa menu
