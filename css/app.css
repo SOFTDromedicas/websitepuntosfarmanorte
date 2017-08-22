@@ -443,6 +443,25 @@ textarea {
 }
 */
 
+/*Pagina Terminos y condiciones*/
+
+#condiciones{
+	font-family: 'Oxygen', sans-serif;
+	font-weight: bold;
+	padding-top: 3rem;
+	padding-bottom: 2rem;
+}
+
+#condiciones-content h3{
+	font-family: 'Oxygen', sans-serif;
+	font-weight: bold;	
+}
+
+#titulocondi{
+	padding-top: .5rem!important;
+}
+
+
 
 /*MEDIA QUERIES*/
 
