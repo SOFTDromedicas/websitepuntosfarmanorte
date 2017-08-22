@@ -37,9 +37,7 @@ var lastId,
 
     topMenuHeight = topMenu.outerHeight()+30;
     // All list items
-    menuItems = topMenu.find("a");    
-
-			console.log(topMenu);
+    menuItems = topMenu.find("a");  
 
     // Anchors corresponding to menu items
     scrollItems = menuItems.map(function(){
