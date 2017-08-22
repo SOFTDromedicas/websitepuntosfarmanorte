@@ -359,7 +359,7 @@ textarea {
   height: 2.688rem;
   margin: 0 0 1.3rem;
   padding: 0.7rem;
-  border: 2px solid #cacaca;
+  border: 2px solid #BFBFBF;
   border-radius: 1px;
   background-color: #fefefe;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
@@ -372,14 +372,32 @@ textarea {
      -moz-appearance: none;
           appearance: none; }
   [type='text']:focus, [type='password']:focus, [type='date']:focus, [type='datetime']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='week']:focus, [type='email']:focus, [type='number']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='url']:focus, [type='color']:focus,
-  textarea:focus {
+  textarea:focus, select:focus {
     outline: none;
-    border: 1px solid #8a8a8a;
+    border: 2px solid #8a8a8a;
     background-color: #fefefe;
-    box-shadow: 0 0 5px #cacaca;
+    box-shadow: 0 0 5px #CACACA;
     transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
 
-
+ select {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 2.688rem;
+  margin: 0 0 1.3rem;
+  padding: 0.4rem;
+  border: 2px solid #BFBFBF;
+  border-radius: 1px;
+  background-color: #fefefe;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: normal;
+  color: #0a0a0a;
+  transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; }
 
 #form-content{
 	margin-top: 1.5em;
@@ -393,14 +411,15 @@ textarea {
 
 
 #inscripcion-content{
-	background: #F5F7FA;
+	background: #EFF3F8;
 	padding-bottom: 3rem;
 }
 
 #inscripcion-title{
-	color: #092245;
+	color: #0A3D84;
 	font-family: 'Open Sans', sans-serif;
 	margin-top: 3.5rem;
+	font-weight: bold;
 }
 
 .button{
