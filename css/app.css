@@ -303,6 +303,48 @@ body{
 		text-shadow: 1px 3px 2px #3D3D3D;
 	}
 
+.off-canvas{
+	background: #2E588B;
+}
+
+.close-button a{
+	padding-bottom: 4rem!important;
+}
+
+.close-button:hover, .close-button:focus {
+    color: #FFFFFF;
+  }
+
+#offCanvas ul{
+	margin-top: 3rem;
+}
+
+#offCanvas ul li {
+	padding: .2rem 0;
+	border-bottom: 1px solid #D5D6DF;
+}
+
+#offCanvas ul li:first-child {
+	/*border-bottom: 0;*/
+}
+
+#offCanvas ul li a{
+	color: #FFFFFF!important;
+}
+
+.close-button{
+	color: #FFFFFF;
+}
+
+
+.activaOffCanvas{
+	background: #56CCF2;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+}
+
 
 
 /*MEDIA QUERIES*/
@@ -650,3 +692,6 @@ body{
 	  background-position: left
 	}
 }
+
+
+

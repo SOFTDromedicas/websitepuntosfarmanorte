@@ -11,6 +11,15 @@ var currentElement = null;
 });
 
 
+ //activa menu
+ $('#menuoffcanvas li a').click(function(){
+    $('li').removeClass("activaOffCanvas");
+    // $(this).addClass("activation");
+    currentElement = $(this);
+    currentElement.parent().addClass("activaOffCanvas");
+});
+
+
 
 //activa menu off-canvas
  $('.vertical .menu li a').click(function(){
