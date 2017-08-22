@@ -11,6 +11,11 @@ var currentElement = null;
 });
 
 
+//close off-canvas
+$('.off-canvas a').on('click', function() {
+  $('.off-canvas').foundation('close');
+});
+
  //activa menu
  $('#menuoffcanvas li a').click(function(){
     $('li').removeClass("activaOffCanvas");
