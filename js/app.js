@@ -39,7 +39,7 @@ $('.off-canvas a').on('click', function() {
  $('.vertical .menu li a').click(function(){
     $('li a').removeClass("activa");
     $(this).addClass("activa");                                            
-});		
+});   
 //Activa opcion del menu cuando la navegacion es por scroll
 var lastId,
     topMenu = $("#menppal"),
@@ -53,14 +53,14 @@ var lastId,
       var item = $($(this).attr("href"));
       if (item.length) { return item; }
     });
-	// Bind click handler to menu items
-	// so we can get a fancy scroll animation
-	menuItems.click(function(e){
-	  var href = $(this).attr("href"),
-	      offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
-	  $('html, body').stop().animate({ scrollTop: offsetTop }, 300);
-	  e.preventDefault();
-	});
+  // Bind click handler to menu items
+  // so we can get a fancy scroll animation
+  menuItems.click(function(e){
+    var href = $(this).attr("href"),
+        offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
+    $('html, body').stop().animate({ scrollTop: offsetTop }, 300);
+    e.preventDefault();
+  });
 
 // Bind to scroll
 $(window).scroll(function(){
@@ -72,7 +72,7 @@ $(window).scroll(function(){
 
        return this;
    });
-   // Get the id of the current element     	
+   // Get the id of the current element       
    // Get id of current scroll item
    cur = cur[cur.length-1];
    var id = cur && cur.length ? cur[0].id : "";
@@ -80,10 +80,15 @@ $(window).scroll(function(){
    if (lastId !== id) {
        lastId = id;       
        if(currentElement != null){       
-       	 if(currentElement.attr("href").replace("#","") !== id);       		
-       	 	currentElement.removeClass("activa");
+         if(currentElement.attr("href").replace("#","") !== id);          
+          currentElement.removeClass("activa");
        }
        // Set/remove active class
        menuItems.parent().removeClass("activa").end().filter("[href='#"+id+"']").parent().addClass("activa");
    }                   
 });
+
+
+//Procesamiento del formulario de inscripcion basico
+
+

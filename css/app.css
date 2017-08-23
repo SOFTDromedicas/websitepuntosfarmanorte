@@ -312,6 +312,10 @@ body{
 
 .off-canvas{
 	background: #2E588B;
+	background: #0575E6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #162573, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #162573, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 .close-button a{
@@ -345,8 +349,14 @@ body{
 	background: #56CCF2;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #8BB3E8;   
 }
 
+#offCanvas ul li.activaOffCanvas > a{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	color: #000000!important;
+}
 
 
 /*Pagina Inscripcion*/
@@ -416,7 +426,7 @@ textarea {
 
 #inscripcion-content{
 	background: #EFF3F8;
-	padding-bottom: 7.2rem;
+	padding-bottom: 6rem;
 }
 
 #inscripcion-title{
@@ -434,6 +444,33 @@ textarea {
 }
 #cancelar-button{
 	margin-right: 1rem;
+}
+
+#checkboxterminos{
+	zoom:1.5;
+	margin: 0; 
+}
+
+#leyendaterminos{
+	font-size: 1.15rem;
+	font-weight: normal;
+	color: #000000;
+	cursor: pointer;
+}
+
+#leyendaterminos a{
+	text-decoration: none;
+	color: #101010;
+}
+
+label.checkbox-label input[type=checkbox]{
+    position: relative;
+    vertical-align: middle;
+    bottom: 1px;
+}
+
+.buttonsrow{
+	margin-top: 1rem;
 }
 
 /*#footer-form{
