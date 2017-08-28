@@ -360,6 +360,14 @@ body{
 
 
 /*Pagina Inscripcion*/
+legend{
+	background: #EFF3F8!important;
+}
+
+.patologias label{
+	color: #1D1D1D!important;
+	font-weight: normal!important;
+}
 
 [type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'],
 textarea {
