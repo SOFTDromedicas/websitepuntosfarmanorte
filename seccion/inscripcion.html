@@ -93,23 +93,23 @@
       <div class="row">
         <h3 id="inscripcion-title" class="float-center">Formulario de inscripci&oacute;n  Puntos Farmanorte</h3>
       </div>
-      <form id="form-content">
+      <form id="form-content" data-abide novalidate>
         <div class="row ">
           <div class="small-12 medium-6 columns">
             <label>Nombres
-              <input type="text" name="nombres" placeholder="Ingrese sus nombres">
+              <input type="text" name="nombres" id="nombres" required placeholder="Ingrese sus nombres">
             </label>
           </div>
           <div class="small-12 medium-6 columns">
             <label>Apellidos
-              <input type="text" name="apellidos" placeholder="Ingrese sus apellidos">
+              <input type="text" name="apellidos" id="apellidos" placeholder="Ingrese sus apellidos">
             </label>
           </div>
         </div>
         <div class="row ">
           <div class="small-12 medium-3 columns">
             <label>Tipo de Documento
-            <select name="tipodocumento">
+            <select name="tipodocumento" id="tipodocumento">
               <option value="01">Cedula de Ciudadan&iacute;a</option>
               <option value="02">Cedula de Extranjer&iacute;a</option>
               <option value="03">Pasaporte</option>
@@ -119,12 +119,12 @@
           </div>
           <div class="small-12 medium-3 columns">
             <label>Documento
-              <input type="text" name="documento" placeholder="N&uacute;mero de documento">
+              <input type="text" name="documento" id="documento" placeholder="N&uacute;mero de documento">
             </label>
           </div>
           <div class="small-12 medium-3 columns">
             <label>G&eacute;nero - Sexo
-              <select name="sexo">
+              <select name="sexo" id="sexo">
                 <option value="01">Femenino</option>
                 <option value="02">Masculino</option>
                 <option value="03">Otro</option>
@@ -157,29 +157,29 @@
         <div class="row ">
           <div class="small-12 medium-4 columns">
             <label>Tel&eacute;fono
-              <input type="text" name="telefonofijo" placeholder="Ingrese su n&uacute;mero de tel&eacute;fono">
+              <input type="text" name="telefonofijo" id="telefonofijo" placeholder="Ingrese su n&uacute;mero de tel&eacute;fono">
             </label>
           </div>
           <div class="small-12 medium-4 columns">
             <label>Celular
-              <input type="text" name="celular" placeholder="Ingrese su n&uacute;mero celular">
+              <input type="text" name="celular" id="celular" placeholder="Ingrese su n&uacute;mero celular">
             </label>
           </div>
           <div class="small-12 medium-4 columns">
             <label>Email
-              <input type="text" name="email" placeholder="Ingrese su correo electronico">
+              <input type="text" name="email" id="email" placeholder="Ingrese su correo electronico">
             </label>
           </div>
         </div>
         <div class="row">
           <div class="small-12 columns align-middle">
-            <label for="checkboxterminos" class="checkbox-label"><input id="checkboxterminos" name="terminos" type="checkbox"> <span id="leyendaterminos">Acepto los Terminos y Condiciones</span></label>            
+            <label for="checkboxterminos" class="checkbox-label"><input id="terminos" name="terminos" type="checkbox"> <span id="leyendaterminos">Acepto los Terminos y Condiciones</span></label>            
           </div>
         </div>
         <div class="row buttonsrow">
           <div class="small-12 columns ">          
-            <button type="button" id="guardar-button" class="button float-right">Registrarse</button>
-            <button type="button" id="cancelar-button" class="alert button float-right">Cancelar</button>
+            <button type="submit" id="guardar-button" class="button float-right">Registrarse</button>
+            <button type="reset" id="cancelar-button" class="alert button float-right">Cancelar</button>
           </div>            
         </div>
       </form>      

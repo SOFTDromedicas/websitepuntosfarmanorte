@@ -1,5 +1,71 @@
-$(document).foundation()
 
+//Procesamiento del formulario de inscripcion basico
+
+//Campos del formulario
+var ciudad, documento, nombres, apellidos, tipodocumento, sexo, direccion,
+                  fechanacimiento, telefonofijo, celular, email, terminos, btnGuardar;
+var urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/";
+
+function iniciar(){
+  console.log("funcion iniciar->");
+  btnGuardar = document.getElementById("guardar-button");
+  btnGuardar.addEventListener('click', registrar, false);  
+}
+
+function registrar(){
+  console.log("Procesando formulario.... ");
+  establecerValores();
+  if( validarFormulario()){
+    //aca procesamiento Ajax
+  }
+}
+
+function validarFormulario(){
+
+  //Valida nombres y apellidos
+  
+  
+  //Valida documento
+  
+  
+  //Valida nro de Documento
+  
+
+  //Valida Direccion Barrio y ciudad
+  
+  
+  //Valida Telefo celular & email
+  
+
+  //Valido terminos y condiciones
+}
+
+
+function establecerValores(){
+  documento = document.getElementById("documento").value.trim() ;
+  nombres = document.getElementById("nombres").value.toUpperCase().trim();
+  apellidos = document.getElementById("apellidos").value.toUpperCase().trim();
+  tipodocumento = document.getElementById("tipodocumento").value;
+  sexo = document.getElementById("sexo").value;
+  direccion = document.getElementById("direccion").value.toUpperCase().trim();
+  fechanacimiento = document.getElementById("fechanacimiento").value;
+  telefonofijo = document.getElementById("telefonofijo").value.trim();
+  celular = document.getElementById("celular").value.trim();
+  ciudad = document.getElementById("ciudad").value.toUpperCase().trim();
+  email = document.getElementById("email").value.trim();
+  terminos = document.getElementById("terminos").value;
+  btnGuardar = document.getElementById("guardar-button");
+}
+
+//registro de manejo de eventos para la carga de la pagina
+window.addEventListener("load", iniciar, false);
+
+
+
+
+
+
+$(document).foundation()
 console.log("%cMade for %cDromedicas del Oriente  %c(specially this project)",       
         "background-color: #FFFFFF; color: #00612E",
         "background-color: #FFFFFF; color: #000a7b",
@@ -88,7 +154,5 @@ $(window).scroll(function(){
    }                   
 });
 
-
-//Procesamiento del formulario de inscripcion basico
 
 
