@@ -40,7 +40,7 @@
     <!-- Menu -->
     <nav id="nav-contente" data-magellan>
       <ul class="vertical menu" id="menuoffcanvas">
-        <li><a href="../index.html#ancla_quesonpuntos">¿Qu&eacute; son Puntos Faramanorte?</a></li>
+        <li><a href="index.html#ancla_quesonpuntos">¿Qu&eacute; son Puntos Faramanorte?</a></li>
         <li><a href="../index.html#ancla_registro-section">¿C&oacute;mo registrarse?</a></li>
         <li><a href="../index.html#ancla_beneficion-section">¿Cuales son los beneficios?</a></li>
       </ul>
@@ -102,7 +102,7 @@
           </div>
           <div class="small-12 medium-6 columns">
             <label>Apellidos
-              <input type="text" name="apellidos" id="apellidos" placeholder="Ingrese sus apellidos">
+              <input type="text" name="apellidos" id="apellidos" required placeholder="Ingrese sus apellidos">
             </label>
           </div>
         </div>
@@ -119,7 +119,7 @@
           </div>
           <div class="small-12 medium-3 columns">
             <label>Documento
-              <input type="text" name="documento" id="documento" placeholder="N&uacute;mero de documento">
+              <input type="number" name="documento" id="documento" required placeholder="N&uacute;mero de documento">
             </label>
           </div>
           <div class="small-12 medium-3 columns">
@@ -133,47 +133,47 @@
           </div>
           <div class="small-12 medium-3 columns">
             <label>Fecha Nacimiento
-              <input type="text" name="fechanacimiento" id="fechanacimiento" data-date-format="mm/dd/yy">
+              <input type="text" name="fechanacimiento" required id="fechanacimiento" data-date-format="mm/dd/yy">
             </label>
           </div>
         </div>
         <div class="row ">
           <div class="small-12 medium-6 columns">
             <label>Direcci&oacute;n
-              <input type="text" name="direccion" id="direccion" placeholder="Ingrese su direcci&oacute;n">
+              <input type="text" name="direccion" id="direccion" required placeholder="Ingrese su direcci&oacute;n">
             </label>
           </div>
           <div class="small-12 medium-3 columns">
             <label>Barrio
-              <input type="text" name="barrio" id="barrio" placeholder="Ingrese su barrio">
+              <input type="text" name="barrio" required="" id="barrio" placeholder="Ingrese su barrio">
             </label>
           </div>
           <div class="small-12 medium-3 columns">
             <label>Ciudad
-              <input type="text" name="ciudad" id="ciudad" placeholder="Ciudad">
+              <input type="text" name="ciudad" required="" id="ciudad" placeholder="Ciudad">
             </label>
           </div>          
         </div>
         <div class="row ">
           <div class="small-12 medium-4 columns">
             <label>Tel&eacute;fono
-              <input type="text" name="telefonofijo" id="telefonofijo" placeholder="Ingrese su n&uacute;mero de tel&eacute;fono">
+              <input type="number" name="telefonofijo" id="telefonofijo" required placeholder="Ingrese su n&uacute;mero de tel&eacute;fono">
             </label>
           </div>
           <div class="small-12 medium-4 columns">
             <label>Celular
-              <input type="text" name="celular" id="celular" placeholder="Ingrese su n&uacute;mero celular">
+              <input type="number" name="celular" id="celular" required placeholder="Ingrese su n&uacute;mero celular">
             </label>
           </div>
           <div class="small-12 medium-4 columns">
             <label>Email
-              <input type="text" name="email" id="email" placeholder="Ingrese su correo electronico">
+              <input type="email" pattern="email" name="email" required id="email" placeholder="Ingrese su correo electronico">
             </label>
           </div>
         </div>
         <div class="row">
           <div class="small-12 columns align-middle">
-            <label for="checkboxterminos" class="checkbox-label"><input id="terminos" name="terminos" type="checkbox"> <span id="leyendaterminos">Acepto los Terminos y Condiciones</span></label>            
+            <label for="checkboxterminos" class="checkbox-label"><input id="checkboxterminos" name="terminos" required type="checkbox" > <span id="leyendaterminos">Acepto los Terminos y Condiciones</span></label>            
           </div>
         </div>
         <div class="row buttonsrow">
@@ -213,7 +213,9 @@
     $(function(){
       $('#fechanacimiento').fdatepicker({
         closeButton: true,
-        language: 'es'
+        language: 'es',
+        yearRange: "-100:+0",
+        constrainInput: true ,
       });
 
     });
