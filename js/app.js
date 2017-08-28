@@ -5,7 +5,7 @@ $(document).foundation()
 var ciudad, documento, nombres, apellidos, tipodocumento, sexo, direccion,
                   fechanacimiento, telefonofijo, celular, email, terminos;
 var btnGuardar;
-var urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/";
+var urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
 
 function iniciar(){
   console.log("funcion iniciar->");

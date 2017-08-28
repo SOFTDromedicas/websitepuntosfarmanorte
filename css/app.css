@@ -461,15 +461,10 @@ textarea {
 
 #leyendaterminos{
 	font-size: 1.15rem;
-	font-weight: normal;
-	color: #000000;
+	font-weight: normal;	
 	cursor: pointer;
 }
 
-#leyendaterminos a{
-	text-decoration: none;
-	color: #101010;
-}
 
 label.checkbox-label input[type=checkbox]{
     position: relative;
@@ -481,12 +476,9 @@ label.checkbox-label input[type=checkbox]{
 	margin-top: 1rem;
 }
 
-/*#footer-form{
-	position: fixed;
-	bottom: 0px;
-	width: 100%;
-}
-*/
+.is-invalid-label {
+  color: #c60f13!important; }
+
 
 /*Pagina Terminos y condiciones*/
 
