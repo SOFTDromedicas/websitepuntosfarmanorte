@@ -508,7 +508,7 @@ label.checkbox-label input[type=checkbox]{
 #spinner{
 	z-index: 3;
 	position: absolute;
-	background: rgba(63, 107, 163, 0.75);
+	/*background: rgba(63, 107, 163, 0.75);*/
 	/*background: linear-gradient(to bottom, rgba(0, 136, 205, 0.75), rgba(39, 75, 141, 0.75));*/
 	width: 77%;
 	height: 70%;
@@ -527,10 +527,11 @@ label.checkbox-label input[type=checkbox]{
   font-size: 10px;
   position: relative;
   text-indent: -9999em;
-  border-top: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-right: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+  border-top: 1.1em solid rgba(255, 255, 255, 0.6);
+  border-right: 1.1em solid rgba(255, 255, 255, 0.6);
+  border-bottom: 1.1em solid rgba(255, 255, 255, 0.6);
   border-left: 1.1em solid #ffffff;
+  border-left: 1.1em solid #116BAA;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
