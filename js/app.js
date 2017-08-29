@@ -53,6 +53,7 @@ function stateChange() {
     console.log(response);
     if(response === "true"){  
       document.getElementById("spinner").style.display = 'none';
+       document.getElementById("blur").classList.remove("blur-me");
       // reestablece el formulario    
       reestrablecerFormulario();
       document.getElementById("calloutForm").style.display = 'block';
@@ -62,6 +63,22 @@ function stateChange() {
       document.getElementById("calloutFormWarning").style.display = 'block';
     }      
   } 
+}
+
+function reestrablecerFormulario(){
+  document.getElementById("documento").value =""; 
+  document.getElementById("nombres").value =""; 
+  document.getElementById("apellidos").value =""; 
+  document.getElementById("tipodocumento").value =""; 
+  document.getElementById("sexo").value =""; 
+  document.getElementById("direccion").value =""; 
+  document.getElementById("barrio").value =""; 
+  document.getElementById("fechanacimiento").value =""; 
+  document.getElementById("telefonofijo").value =""; 
+  document.getElementById("celular").value =""; 
+  document.getElementById("ciudad").value =""; 
+  document.getElementById("email").value =""; 
+  document.getElementById("checkboxterminos").checked = false; 
 }
 
 function validarFormulario(){
@@ -174,6 +191,19 @@ function validarFormulario(){
     document.getElementById("email").setAttribute("class","is-invalid-input");
     document.getElementById("email").closest("label").setAttribute("class","is-invalid-label");
   }
+  //validacion de email
+  document.getElementById("checkboxterminos").addEventListener("invalid.zf.abide",function(ev,el) {
+      valido = false;
+    document.getElementById("checkboxterminos").setAttribute("class","is-invalid-input");
+    document.getElementById("checkboxterminos").closest("label").setAttribute("class","is-invalid-label");
+  });
+
+  if( document.getElementById("checkboxterminos").checked == false){
+    valido = false;
+    document.getElementById("checkboxterminos").setAttribute("class","is-invalid-input");
+    document.getElementById("checkboxterminos").closest("label").setAttribute("class","is-invalid-label");
+  }
+
   return valido
 }
 
@@ -192,10 +222,7 @@ function establecerValores() {
     ciudad = document.getElementById("ciudad").value.toUpperCase().trim();
     email = document.getElementById("email").value.trim();
     terminos = document.getElementById("checkboxterminos").value;    
-
-    console.log(documento+"-"+nombres+"-"+apellidos+"-"+
-      tipodocumento+"-"+sexo+"-"+direccion+"-"+fechanacimiento+"-"+telefonofijo+"-"+
-      celular+"-"+ciudad+"-"+email+"-"+terminos)
+    
 }
 
 function validateEmail(email){        
