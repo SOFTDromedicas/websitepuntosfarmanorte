@@ -29,11 +29,13 @@ function registrar() {
     
     establecerValores();
 
+    urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
+
     if(validarFormulario()){
       urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +
              "&tipodocumento=" + tipodocumento  + "&sexo=" + sexo  + "&direccion=" + direccion  + 
              "&fechanacimiento=" + fechanacimiento  + "&telefonofijo=" + telefonofijo  + 
-             "&celular=" + celular  , "&ciudad=" + ciudad  + "&email=" + email;
+             "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email;
 
       console.log( "URL Servicio: " + urlWs);
 
@@ -56,11 +58,18 @@ function stateChange() {
       asyncRequest.readyState == 3 ){
     document.getElementById("spinner").style.display = 'block';
     document.getElementById("blur").classList.add("blur-me");
+    document.getElementById("calloutFormAlert").style.display = 'none';
   }
+  console.log( asyncRequest.readyState + " - " + asyncRequest.status);
+
   if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {   
-    var response = asyncRequest.responseText;
-    console.log(response);
-    if(response === "true"){  
+    
+    console.log("Respuesta antes json: " + asyncRequest.responseText);
+    
+    var response = JSON.parse(asyncRequest.responseText);
+
+    console.log("Respuesta: " + response);
+    if(response.status === "sucess"){  
       document.getElementById("spinner").style.display = 'none';
        document.getElementById("blur").classList.remove("blur-me");
       // reestablece el formulario    
@@ -68,9 +77,17 @@ function stateChange() {
       document.getElementById("calloutForm").style.display = 'block';
       document.getElementById("calloutFormAlert").style.display = 'none';
     }else{
-      document.getElementById("spinner").style.display = 'none';
-      document.getElementById("calloutFormWarning").style.display = 'block';
-      document.getElementById("blur").classList.remove("blur-me");
+      if(response.data == '99'){
+        document.getElementById("spinner").style.display = 'none';
+        document.getElementById("mensaje").appendChild(document.createTextNode(response.message));
+        document.getElementById("calloutFormWarning").style.display = 'block';
+        document.getElementById("blur").classList.remove("blur-me");  
+      }else{
+         document.getElementById("spinner").style.display = 'none';
+        document.getElementById("mensaje").appendChild(document.createTextNode(response.message));
+        document.getElementById("calloutFormWarning").style.display = 'block';
+        document.getElementById("blur").classList.remove("blur-me");        
+      }
     }      
   } 
 }

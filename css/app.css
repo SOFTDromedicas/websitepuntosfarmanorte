@@ -512,7 +512,7 @@ label.checkbox-label input[type=checkbox]{
 }
 
 .callout.alert {
-    background-color: #F6B1B1!important;
+    background-color: #F7C1C1!important;
     color: #0a0a0a;
 }
 
@@ -524,11 +524,12 @@ label.checkbox-label input[type=checkbox]{
 /****Spinner****/
 
 #spinner{
-	z-index: 3;
+	z-index: 4;
 	position: absolute;
-	/*background: rgba(63, 107, 163, 0.75);*/
-	background: rgba(255, 255, 255, 0.2);	
+	background: rgba(63, 107, 163, 0.75);
 	/*background: linear-gradient(to bottom, rgba(0, 136, 205, 0.75), rgba(39, 75, 141, 0.75));*/
+	background: rgba(255, 255, 255, 0.2);	
+	/*border:1px solid red;*/
 	width: 60%;
 	height: 60%;
 	padding-top: 6rem;
