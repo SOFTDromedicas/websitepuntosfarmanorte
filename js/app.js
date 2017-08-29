@@ -241,7 +241,8 @@ function establecerValores() {
     apellidos = document.getElementById("apellidos").value.toUpperCase().trim();
     tipodocumento = document.getElementById("tipodocumento").value;
     sexo = document.getElementById("sexo").value;
-    direccion = document.getElementById("direccion").value.toUpperCase().trim();
+    var direcciontemp = document.getElementById("direccion").value.toUpperCase().trim();
+    direccion = direcciontemp.replace('#', '%23');
     barrio = document.getElementById("barrio").value.toUpperCase().trim();
     telefonofijo = document.getElementById("telefonofijo").value.trim();
     celular = document.getElementById("celular").value.trim();
