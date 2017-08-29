@@ -13,6 +13,15 @@ function iniciar(){
   console.log("funcion iniciar->");
   btnGuardar = document.getElementById('guardar-button'); 
   btnGuardar.addEventListener('click', registrar, false);  
+
+    $('#fechanacimiento').fdatepicker().on('changeDate', function(ev){
+    if (ev.date.valueOf()){
+      var newDate = new Date(ev.date)
+       newDate.setDate(newDate.getDate() + 1);
+       fechanacimiento =  formatDateAnioMesDia( newDate );
+    } });
+
+    
 }
 
 function registrar() {
@@ -35,7 +44,7 @@ function registrar() {
         asyncRequest.send(null);
       } catch (excepcion) {}
     }else{
-
+        document.getElementById("calloutFormAlert").style.display = 'block';
     }
 
        
@@ -61,6 +70,7 @@ function stateChange() {
     }else{
       document.getElementById("spinner").style.display = 'none';
       document.getElementById("calloutFormWarning").style.display = 'block';
+      document.getElementById("blur").classList.remove("blur-me");
     }      
   } 
 }
@@ -84,11 +94,7 @@ function reestrablecerFormulario(){
 function validarFormulario(){
   var valido = true;
   //validacion de nombres
-  document.getElementById("nombres").addEventListener("invalid.zf.abide",function(ev,el) {
-      valido = false;
-    document.getElementById("nombres").setAttribute("class","is-invalid-input");
-    document.getElementById("nombres").closest("label").setAttribute("class","is-invalid-label");
-  });
+  
 
   if(nombres == "" || nombres.length < 3 ){
     valido = false;
@@ -120,13 +126,14 @@ function validarFormulario(){
     document.getElementById("documento").closest("label").setAttribute("class","is-invalid-label");
   }
   //validacion de fecha nacimiento
+  
   document.getElementById("fechanacimiento").addEventListener("invalid.zf.abide",function(ev,el) {
       valido = false;
     document.getElementById("fechanacimiento").setAttribute("class","is-invalid-input");
     document.getElementById("fechanacimiento").closest("label").setAttribute("class","is-invalid-label");
   });
 
-  if(fechanacimiento == "" ){
+  if(fechanacimiento == "" || fechanacimiento == null){
     valido = false;
     document.getElementById("fechanacimiento").setAttribute("class","is-invalid-input");
     document.getElementById("fechanacimiento").closest("label").setAttribute("class","is-invalid-label");
@@ -194,13 +201,11 @@ function validarFormulario(){
   //validacion de email
   document.getElementById("checkboxterminos").addEventListener("invalid.zf.abide",function(ev,el) {
       valido = false;
-    document.getElementById("checkboxterminos").setAttribute("class","is-invalid-input");
     document.getElementById("checkboxterminos").closest("label").setAttribute("class","is-invalid-label");
   });
 
   if( document.getElementById("checkboxterminos").checked == false){
     valido = false;
-    document.getElementById("checkboxterminos").setAttribute("class","is-invalid-input");
     document.getElementById("checkboxterminos").closest("label").setAttribute("class","is-invalid-label");
   }
 
@@ -209,6 +214,11 @@ function validarFormulario(){
 
 
 function establecerValores() {
+
+  
+    console.log("--" + fechanacimiento);
+    
+
     documento = document.getElementById("documento").value.trim();
     nombres = document.getElementById("nombres").value.toUpperCase().trim();
     apellidos = document.getElementById("apellidos").value.toUpperCase().trim();
@@ -216,7 +226,6 @@ function establecerValores() {
     sexo = document.getElementById("sexo").value;
     direccion = document.getElementById("direccion").value.toUpperCase().trim();
     barrio = document.getElementById("barrio").value.toUpperCase().trim();
-    fechanacimiento = document.getElementById("fechanacimiento").value;
     telefonofijo = document.getElementById("telefonofijo").value.trim();
     celular = document.getElementById("celular").value.trim();
     ciudad = document.getElementById("ciudad").value.toUpperCase().trim();
@@ -229,6 +238,18 @@ function validateEmail(email){
    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
    return emailPattern.test(email);   
  } 
+
+ function formatDateAnioMesDia(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
 
 //registro de manejo de eventos para la carga de la pagina
 window.addEventListener("load", iniciar, false);
