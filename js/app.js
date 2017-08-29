@@ -3,13 +3,14 @@ $(document).foundation()
 
 //Campos del formulario
 var ciudad, documento, nombres, apellidos, tipodocumento, sexo, direccion,
-                  fechanacimiento, telefonofijo, celular, email, terminos;
+            barrio, fechanacimiento, telefonofijo, celular, email, terminos;
 var btnGuardar;
 var urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
+var asyncRequest;
+
 
 function iniciar(){
   console.log("funcion iniciar->");
-  console.log(document.getElementById('guardar-button'));
   btnGuardar = document.getElementById('guardar-button'); 
   btnGuardar.addEventListener('click', registrar, false);  
 }
@@ -19,13 +20,161 @@ function registrar() {
     
     establecerValores();
 
-    urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +
-           "&tipodocumento=" + tipodocumento  + "&sexo=" + sexo  + "&direccion=" + direccion  + 
-           "&fechanacimiento=" + fechanacimiento  + "&telefonofijo=" + telefonofijo  + 
-           "&celular=" + celular  , "&ciudad=" + ciudad  + "&email=" + email;
+    if(validarFormulario()){
+      urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +
+             "&tipodocumento=" + tipodocumento  + "&sexo=" + sexo  + "&direccion=" + direccion  + 
+             "&fechanacimiento=" + fechanacimiento  + "&telefonofijo=" + telefonofijo  + 
+             "&celular=" + celular  , "&ciudad=" + ciudad  + "&email=" + email;
 
-    console.log( urlWs);
+      console.log( "URL Servicio: " + urlWs);
+
+      try {
+        asyncRequest = new XMLHttpRequest();
+        asyncRequest.addEventListener("readystatechange", stateChange, false);
+        asyncRequest.open("GET", urlWs, true);
+        asyncRequest.send(null);
+      } catch (excepcion) {}
+    }else{
+
+    }
+
        
+}
+
+
+function stateChange() {
+  if(asyncRequest.readyState == 1 || asyncRequest.readyState == 2 ||
+      asyncRequest.readyState == 3 ){
+    document.getElementById("spinner").style.display = 'block';
+    document.getElementById("blur").classList.add("blur-me");
+  }
+  if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {   
+    var response = asyncRequest.responseText;
+    console.log(response);
+    if(response === "true"){  
+      document.getElementById("spinner").style.display = 'none';
+      // reestablece el formulario    
+      reestrablecerFormulario();
+      document.getElementById("calloutForm").style.display = 'block';
+      document.getElementById("calloutFormAlert").style.display = 'none';
+    }else{
+      document.getElementById("spinner").style.display = 'none';
+      document.getElementById("calloutFormWarning").style.display = 'block';
+    }      
+  } 
+}
+
+function validarFormulario(){
+  var valido = true;
+  //validacion de nombres
+  document.getElementById("nombres").addEventListener("invalid.zf.abide",function(ev,el) {
+      valido = false;
+    document.getElementById("nombres").setAttribute("class","is-invalid-input");
+    document.getElementById("nombres").closest("label").setAttribute("class","is-invalid-label");
+  });
+
+  if(nombres == "" || nombres.length < 3 ){
+    valido = false;
+    document.getElementById("nombres").setAttribute("class","is-invalid-input");
+    document.getElementById("nombres").closest("label").setAttribute("class","is-invalid-label");
+  }
+  //validacion de apellidos
+  document.getElementById("apellidos").addEventListener("invalid.zf.abide",function(ev,el) {
+      valido = false;
+    document.getElementById("apellidos").setAttribute("class","is-invalid-input");
+    document.getElementById("apellidos").closest("label").setAttribute("class","is-invalid-label");
+  });
+
+  if(apellidos == "" || apellidos.length < 3 ){
+    valido = false;
+    document.getElementById("apellidos").setAttribute("class","is-invalid-input");
+    document.getElementById("apellidos").closest("label").setAttribute("class","is-invalid-label");
+  }
+  //validacion de documento
+  document.getElementById("documento").addEventListener("invalid.zf.abide",function(ev,el) {
+      valido = false;
+    document.getElementById("documento").setAttribute("class","is-invalid-input");
+    document.getElementById("documento").closest("label").setAttribute("class","is-invalid-label");
+  });
+
+  if(documento == "" ){
+    valido = false;
+    document.getElementById("documento").setAttribute("class","is-invalid-input");
+    document.getElementById("documento").closest("label").setAttribute("class","is-invalid-label");
+  }
+  //validacion de fecha nacimiento
+  document.getElementById("fechanacimiento").addEventListener("invalid.zf.abide",function(ev,el) {
+      valido = false;
+    document.getElementById("fechanacimiento").setAttribute("class","is-invalid-input");
+    document.getElementById("fechanacimiento").closest("label").setAttribute("class","is-invalid-label");
+  });
+
+  if(fechanacimiento == "" ){
+    valido = false;
+    document.getElementById("fechanacimiento").setAttribute("class","is-invalid-input");
+    document.getElementById("fechanacimiento").closest("label").setAttribute("class","is-invalid-label");
+  }
+  //validacion de barrio
+  document.getElementById("direccion").addEventListener("invalid.zf.abide",function(ev,el) {
+      valido = false;
+    document.getElementById("direccion").setAttribute("class","is-invalid-input");
+    document.getElementById("direccion").closest("label").setAttribute("class","is-invalid-label");
+  });
+
+  if(direccion == "" ){
+    valido = false;
+    document.getElementById("direccion").setAttribute("class","is-invalid-input");
+    document.getElementById("direccion").closest("label").setAttribute("class","is-invalid-label");
+  }
+  //validacion de barrio
+  document.getElementById("barrio").addEventListener("invalid.zf.abide",function(ev,el) {
+      valido = false;
+    document.getElementById("barrio").setAttribute("class","is-invalid-input");
+    document.getElementById("barrio").closest("label").setAttribute("class","is-invalid-label");
+  });
+
+  if(barrio == "" ){
+    valido = false;
+    document.getElementById("barrio").setAttribute("class","is-invalid-input");
+    document.getElementById("barrio").closest("label").setAttribute("class","is-invalid-label");
+  }
+  //validacion de telefono
+  document.getElementById("telefonofijo").addEventListener("invalid.zf.abide",function(ev,el) {
+      valido = false;
+    document.getElementById("telefonofijo").setAttribute("class","is-invalid-input");
+    document.getElementById("telefonofijo").closest("label").setAttribute("class","is-invalid-label");
+  });
+
+  if(telefonofijo == "" ){
+    valido = false;
+    document.getElementById("telefonofijo").setAttribute("class","is-invalid-input");
+    document.getElementById("telefonofijo").closest("label").setAttribute("class","is-invalid-label");
+  }
+  //validacion de celular
+  document.getElementById("celular").addEventListener("invalid.zf.abide",function(ev,el) {
+      valido = false;
+    document.getElementById("celular").setAttribute("class","is-invalid-input");
+    document.getElementById("celular").closest("label").setAttribute("class","is-invalid-label");
+  });
+
+  if(celular == "" ){
+    valido = false;
+    document.getElementById("celular").setAttribute("class","is-invalid-input");
+    document.getElementById("celular").closest("label").setAttribute("class","is-invalid-label");
+  }
+  //validacion de email
+  document.getElementById("email").addEventListener("invalid.zf.abide",function(ev,el) {
+      valido = false;
+    document.getElementById("email").setAttribute("class","is-invalid-input");
+    document.getElementById("email").closest("label").setAttribute("class","is-invalid-label");
+  });
+
+  if( !validateEmail(email)){
+    valido = false;
+    document.getElementById("email").setAttribute("class","is-invalid-input");
+    document.getElementById("email").closest("label").setAttribute("class","is-invalid-label");
+  }
+  return valido
 }
 
 
@@ -36,6 +185,7 @@ function establecerValores() {
     tipodocumento = document.getElementById("tipodocumento").value;
     sexo = document.getElementById("sexo").value;
     direccion = document.getElementById("direccion").value.toUpperCase().trim();
+    barrio = document.getElementById("barrio").value.toUpperCase().trim();
     fechanacimiento = document.getElementById("fechanacimiento").value;
     telefonofijo = document.getElementById("telefonofijo").value.trim();
     celular = document.getElementById("celular").value.trim();
@@ -47,6 +197,11 @@ function establecerValores() {
       tipodocumento+"-"+sexo+"-"+direccion+"-"+fechanacimiento+"-"+telefonofijo+"-"+
       celular+"-"+ciudad+"-"+email+"-"+terminos)
 }
+
+function validateEmail(email){        
+   var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
+   return emailPattern.test(email);   
+ } 
 
 //registro de manejo de eventos para la carga de la pagina
 window.addEventListener("load", iniciar, false);

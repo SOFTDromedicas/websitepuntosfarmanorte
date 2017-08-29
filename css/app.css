@@ -502,6 +502,24 @@ label.checkbox-label input[type=checkbox]{
 	padding-top: .5rem!important;
 }
 
+.close-button{
+	color: #152103;
+}
+
+.callout.warning {
+    background-color: #FCDE64;
+    color: #0a0a0a;
+}
+
+.callout.alert {
+    background-color: #F6B1B1!important;
+    color: #0a0a0a;
+}
+
+.callout.success {
+    background-color: #D2F5B7;
+    color: #0a0a0a;
+}
 
 /****Spinner****/
 
@@ -509,9 +527,10 @@ label.checkbox-label input[type=checkbox]{
 	z-index: 3;
 	position: absolute;
 	/*background: rgba(63, 107, 163, 0.75);*/
+	background: rgba(255, 255, 255, 0.2);	
 	/*background: linear-gradient(to bottom, rgba(0, 136, 205, 0.75), rgba(39, 75, 141, 0.75));*/
-	width: 77%;
-	height: 70%;
+	width: 60%;
+	height: 60%;
 	padding-top: 6rem;
 	border-radius: 5px;
 }
