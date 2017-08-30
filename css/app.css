@@ -369,6 +369,20 @@ legend{
 	font-weight: normal!important;
 }
 
+#patologia-div [type='checkbox']{
+	zoom: 1.3;	
+	font-family: 'Open Sans', sans-serif;
+	
+}
+
+#info{
+	font-size: 1.1rem;
+	font-family: 'Open Sans', sans-serif;
+}
+
+
+
+
 [type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'],
 textarea {
   display: block;
@@ -454,7 +468,7 @@ textarea {
 	margin-right: 1rem;
 }
 
-#checkboxterminos{
+#checkboxterminos, #hijos {
 	zoom:1.5;
 	margin: 0; 
 }
@@ -532,6 +546,18 @@ label.checkbox-label input[type=checkbox]{
 	/*border:1px solid red;*/
 	width: 100%;
 	height: 60%;
+	padding-top: 6rem;
+	border-radius: 5px;
+}
+#spinner2{
+	z-index: 4;
+	position: absolute;
+	background: rgba(63, 107, 163, 0.75);
+	/*background: linear-gradient(to bottom, rgba(0, 136, 205, 0.75), rgba(39, 75, 141, 0.75));*/
+	background: rgba(255, 255, 255, 0.3);	
+	border:1px solid red;
+	width: 100%;
+	height: 100%;
 	padding-top: 6rem;
 	border-radius: 5px;
 }
@@ -701,7 +727,7 @@ label.checkbox-label input[type=checkbox]{
 
 	#tituloterminos{
 		margin: 0 15px;
-		font-size: 1.3rem!important;
+		font-size: 1.1rem!important;
 
 	}	
 
