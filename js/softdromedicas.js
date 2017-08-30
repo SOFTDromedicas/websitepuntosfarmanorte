@@ -7,7 +7,9 @@ var ciudad, documento, nombres, apellidos, tipodocumento, sexo, direccion,
 var btnGuardar;
 var urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
 var asyncRequest;
+var asyncRequestProcess;
 var patologia = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8"];
+var documentoAfiliado;
 
 function iniciar() {
     console.log("funcion iniciar...");
@@ -24,15 +26,87 @@ function iniciar() {
 
 
     //validacion de correo electronico del cliente
-    var documento = getParameterURLByName('documento'); 
+    documentoAfiliado = getParameterURLByName('documento'); 
+
+    var updateURL = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpvalidarcuentaemail/?documento=";
+    updateURL += documentoAfiliado;
+    
+    $.ajax({
+            url: updateURL,
+        })
+        .done(function(res) {
+            console.log(res);
+
+        })
+        .fail(function(xhr, status, error) {
+            console.log(error);
+        });
 
     //obtener todos los datos del cliente
-   
+    obtenerDatosAfiliado();
+
+    
 
     console.log("device: " + mobilecheck());
     console.log("device: " + mobileAndTabletcheck());
 
 }
+
+function obtenerDatosAfiliado() {
+    var datosURL = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpdatosafiliado/?documento=";
+    // datosURL += documentoAfiliado;
+    datosURL += "88239811";
+
+    try {
+        asyncRequest = new XMLHttpRequest();
+        asyncRequest.addEventListener("readystatechange", stateChangeDatos, false);
+        asyncRequest.open("GET", datosURL, true);
+        asyncRequest.send(null);
+    } catch (excepcion) {}
+}
+
+function stateChangeDatos() {
+    if (asyncRequest.readyState == 1 || asyncRequest.readyState == 2 ||
+        asyncRequest.readyState == 3) {
+    }
+
+    console.log(asyncRequest.readyState + " - " + asyncRequest.status);
+
+    if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {
+        var response = JSON.parse(asyncRequest.responseText);
+        console.log("Respuesta: " + response.status);
+        if (response.status === "sucess") {
+            var afiliado = response.data[0];
+            
+            document.getElementById("nombres").value = afiliado.nombres; 
+            document.getElementById("apellidos").value = afiliado.apellidos;
+            document.getElementById("tipodocumento").value = afiliado.tipodocumento;
+            document.getElementById("documento").value = afiliado.documento;
+            document.getElementById("sexo").value = afiliado.sexo;
+            $('#fechanacimiento').fdatepicker().val(afiliado.fechanacimiento);
+
+            document.getElementById("direccion").value = afiliado.street;
+            document.getElementById("barrio").value = afiliado.barrio;
+            document.getElementById("ciudad").value = afiliado.ciudad;
+            document.getElementById("telefonofijo").value = afiliado.telefonofijo
+            document.getElementById("celular").value = afiliado.celular;
+            document.getElementById("email").value = afiliado.email;
+            
+            
+
+            // terminos = document.getElementById("checkboxterminos").value;
+
+
+        } else {
+
+        }
+    }
+}
+
+
+
+
+
 
 function registrar() {
     console.log("Procesando formulario.... ");
@@ -63,10 +137,10 @@ function registrar() {
         console.log("URL Servicio: " + urlWs);
 
         try {
-            asyncRequest = new XMLHttpRequest();
-            asyncRequest.addEventListener("readystatechange", stateChange, false);
-            asyncRequest.open("GET", urlWs, true);
-            asyncRequest.send(null);
+            asyncRequestProcess = new XMLHttpRequest();
+            asyncRequestProcess.addEventListener("readystatechange", stateChange, false);
+            asyncRequestProcess.open("GET", urlWs, true);
+            asyncRequestProcess.send(null);
         } catch (excepcion) {}
     } else {
         document.getElementById("calloutFormAlert").style.display = 'block';
@@ -76,20 +150,20 @@ function registrar() {
 
 
 function stateChange() {
-  if(asyncRequest.readyState == 1 || asyncRequest.readyState == 2 ||
-      asyncRequest.readyState == 3 ){
+  if(asyncRequestProcess.readyState == 1 || asyncRequestProcess.readyState == 2 ||
+      asyncRequestProcess.readyState == 3 ){
     document.getElementById("spinner").style.display = 'block';
     document.getElementById("blur").classList.add("blur-me");
     document.getElementById("calloutFormAlert").style.display = 'none';
     document.getElementById("calloutFormWarning").style.display = 'none';
   }
-  console.log( asyncRequest.readyState + " - " + asyncRequest.status);
+  console.log( asyncRequestProcess.readyState + " - " + asyncRequestProcess.status);
 
-  if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {   
+  if (asyncRequestProcess.readyState == 4 && asyncRequestProcess.status == 200) {   
     
-    //`console.log("Respuesta antes json: " + asyncRequest.responseText);
+    //`console.log("Respuesta antes json: " + asyncRequestProcess.responseText);
     
-    var response = JSON.parse(asyncRequest.responseText);
+    var response = JSON.parse(asyncRequestProcess.responseText);
 
     console.log("Respuesta: " + response);
     if(response.status === "sucess"){  
@@ -259,7 +333,7 @@ function validarFormulario(){
 function establecerValores() {
 
   
-    console.log("--" + fechanacimiento);
+    console.log("x--" + $('#fechanacimiento').fdatepicker().val());
     
 
     documento = document.getElementById("documento").value.trim();
@@ -274,7 +348,8 @@ function establecerValores() {
     celular = document.getElementById("celular").value.trim();
     ciudad = document.getElementById("ciudad").value.toUpperCase().trim();
     email = document.getElementById("email").value.trim();
-    terminos = document.getElementById("checkboxterminos").value;    
+    terminos = document.getElementById("checkboxterminos").value;   
+    fechanacimiento = $('#fechanacimiento').fdatepicker().val(); 
     
 }
 

@@ -1370,6 +1370,30 @@ body.outlook p {
       .header {
         background: #f3f3f3;
       }
+      .title-content{
+        background: linear-gradient(to right, #2BB1CF, #1a3370)
+      }
+      .title-content h4{        
+        color: #FFFFFF;
+      }
+      .title-puntos{
+        color: #1a3370;
+        font-weight: bold;
+      }
+      table.button table td {
+        text-align: left;
+        color: #fefefe;
+        background: #1a3370;
+        border: 2px solid #1a3370;
+      }
+      table.button:hover table td,
+      table.button:visited table td,
+      table.button:active table td {
+        background: #2E4A8F;
+        color: #fefefe; }
+     .nombres{
+      font-weight: bold;
+     }
     </style>
   </head>
 
@@ -1391,7 +1415,7 @@ body.outlook p {
                 <tr>
                   <td>
                     <table class="row header">
-                      <tbody>
+                      <tbody class="title-content">
                         <tr>
                           <th class="small-12 large-12 columns first last">
                             <table>
@@ -1404,7 +1428,7 @@ body.outlook p {
                                       </tr>
                                     </tbody>
                                   </table>
-                                  <h4 class="text-center">Dromedicas del Oriente | DROPOS</h4> </th>
+                                  <h4 class="text-center">Puntos Farmanorte</h4> </th>
                                 <th class="expander"></th>
                               </tr>
                             </table>
@@ -1426,7 +1450,7 @@ body.outlook p {
                                       </tr>
                                     </tbody>
                                   </table>
-                                  <center data-parsed=""> <img class="imgemail" src="http://www.dromedicas.com.co/recursosgraficosdromedicas/mockupemail.jpg" align="center" class="float-center"> </center>
+                                  <center data-parsed=""> <img class="imgemail" src="https://www.farmanorte.com.co/images/LogoPuntosFarmanorteConSombra.svg" align="center" class="float-center"> </center>
                                   <table class="spacer">
                                     <tbody>
                                       <tr>
@@ -1434,7 +1458,7 @@ body.outlook p {
                                       </tr>
                                     </tbody>
                                   </table>
-                                  <h1 class="text-center">Registro de nuevo dispositivo</h1>
+                                  <h1 class="text-center">Bienvenido a <span class="title-puntos">Puntos Farmanote</span></h1>
                                   <table class="spacer">
                                     <tbody>
                                       <tr>
@@ -1442,14 +1466,14 @@ body.outlook p {
                                       </tr>
                                     </tbody>
                                   </table>
-                                  <p class="text-center">Haga clic en el enlace de abajo para registrar este dispositivo.</p>
+                                  <p class="text-center">A través del presente mensaje nos permitimos comunicarle Sr. (a) <span class="nombres">#{NOMBRES} #{APELLIDOS}</span> que ha completado el primer paso en su afiliación a nuestro programa de fidelizacion.<br/> Para comenzar a disfrutar de los beneficios y acumular puntos por sus compras, usted debe hacer click en el siguiente boton para confirmar la autenticidad de su cuenta</p>
                                   <table class="button large expand">
                                     <tr>
                                       <td>
                                         <table>
                                           <tr>
                                             <td>
-                                              <center data-parsed=""><a href="http://dromedicas.ddns.net:9999/dropos/index.php" align="center" class="float-center">Registrar este dispositivo.</a></center>
+                                              <center data-parsed=""><a href="http://dromedicas.ddns.net:9999/dropos/index.php?id=#{DOCUMENTO}" align="center" class="float-center">Validar Correo.</a></center>
                                             </td>
                                           </tr>
                                         </table>
@@ -1458,7 +1482,7 @@ body.outlook p {
                                     </tr>
                                   </table>
                                   <hr>
-                                  <p><small>Usted est&aacute; reciviendo este correo porque solicito el registro de un dispositivo para acceder al sistema DROPOS de Dromedicas del Oriente. En caso de no reconocer este mensaje, por favor reportelo a <a href="mailto:sistemas@dromedicas.com.co" >sistemas@dromedicas.com.co</a>.</small></p>
+                                  <p><small>Copyright &copy; 2017 Puntos Farmanorte y Drogueria Farmanorte son marcas registradas de la empresa Dromedicas del Oriente | </p>
                                 </th>
                                 <th class="expander"></th>
                               </tr>
