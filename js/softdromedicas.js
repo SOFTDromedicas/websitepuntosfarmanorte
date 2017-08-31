@@ -491,7 +491,7 @@ function getParameterURLByName(name, url) {
 }
 
 
-//Validacion dispositivos mobiles
+//Validacion dispositivos mobiles by http://detectmobilebrowsers.com/
 function mobilecheck() {
     var check = false;
     (function(a) {

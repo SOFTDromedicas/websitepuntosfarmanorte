@@ -327,11 +327,12 @@ $('.off-canvas a').on('click', function() {
     $('li a').removeClass("activa");
     $(this).addClass("activa");                                            
 });   
+
 //Activa opcion del menu cuando la navegacion es por scroll
 var lastId,
     topMenu = $("#menppal"),
 
-    topMenuHeight = topMenu.outerHeight()+30;
+    topMenuHeight = topMenu.outerHeight()+30 ;
     // All list items
     menuItems = topMenu.find("a");  
 
@@ -348,6 +349,7 @@ var lastId,
     $('html, body').stop().animate({ scrollTop: offsetTop }, 300);
     e.preventDefault();
   });
+
 
 // Bind to scroll
 $(window).scroll(function(){

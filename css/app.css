@@ -622,16 +622,28 @@ label.checkbox-label input[type=checkbox]{
 	
 	#logotipo{
 		margin: .2rem 0 0 1.6rem;
-		width: 220px;			
+		width: 180px;			
 	}
 
 	#menu-container{	
-		background-position: left;	
+		background-position: left;
+		min-height: 8rem!important;	
 	}
 
-
+	.sticky-container{
+		height: 8rem!important;
+	}
+	
+	#ancla_quesonpuntos,
+	#ancla_registro-section,
+	#ancla_beneficion-section{
+		display: block;
+		position: relative;
+		top: -100px;
+		visibility: hidden;
+	}
 	#burger-menu{
-		padding: 4rem 0.45rem 0 0;
+		padding: 3.4rem 0.45rem 0 0;
 	}
 
 	#quesonpuntos{	
@@ -738,9 +750,14 @@ label.checkbox-label input[type=checkbox]{
 /*Custom media Query*/
 @media screen and (min-width: 40em) and (max-width: 47.375em) {
 	
-	#menu-container{		
+	.sticky-container{
+		max-height: 9rem!important;	
+	}
+
+	#menu-container{	
 		background-position: left;
-	}	
+		max-height: 8rem!important;	
+	}
 
 	#logotipo{
 		margin: .2rem 0 0 1.6rem;
@@ -754,7 +771,7 @@ label.checkbox-label input[type=checkbox]{
 	#burger-menu{
 		display: flex!important;
 		justify-content: flex-end!important;
-		padding: 4rem 0.75rem 0 0;
+		padding: 3.4rem 0.75rem 0 0;
 	}
 	
 
