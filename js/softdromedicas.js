@@ -8,7 +8,8 @@ var btnGuardar;
 var urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
 var asyncRequest;
 var asyncRequestProcess;
-var patologia = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8"];
+var patologia = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10", 
+        "p11", "p12", "p13", "p14", "p15", "p16", "p17", "p18", "p19" ];
 var documentoAfiliado;
 
 function iniciar() {
@@ -16,21 +17,37 @@ function iniciar() {
     btnGuardar = document.getElementById('guardar-button');
     btnGuardar.addEventListener('click', registrar, false);
 
-    $('#fechanacimiento').fdatepicker().on('changeDate', function(ev) {
-        if (ev.date.valueOf()) {
-            var newDate = new Date(ev.date)
-            newDate.setDate(newDate.getDate() + 1);
-            fechanacimiento = formatDateAnioMesDia(newDate);
-        }
-    });
+    //verifica el dispositivo para el componente date
+    console.log("dispositivo mobil:" + (mobilecheck() && mobileAndTabletcheck() ));
+    if( mobilecheck() && mobileAndTabletcheck() ){
+
+      document.getElementById('fechanacimiento').setAttribute('type', 'date');
+
+    }else{
+      $('#fechanacimiento').fdatepicker({
+        closeButton: true,
+        language: 'es',
+        yearRange: "-100:+0",
+        constrainInput: true ,
+        format: 'dd/mm/yyyy',
+      });
+
+      $('#fechanacimiento').fdatepicker().on('changeDate', function(ev) {
+          if (ev.date.valueOf()) {
+              var newDate = new Date(ev.date)
+              newDate.setDate(newDate.getDate() + 1);
+              fechanacimiento = formatDateAnioMesDia(newDate);
+          }
+      });
+    }
 
 
     //validacion de correo electronico del cliente
     documentoAfiliado = getParameterURLByName('documento'); 
 
     var updateURL = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpvalidarcuentaemail/?documento=";
-    updateURL += documentoAfiliado;
-    // updateURL += "88239811";
+    // updateURL += documentoAfiliado;
+    updateURL += "88239811";
     
     $.ajax({
             url: updateURL,
@@ -53,8 +70,8 @@ function iniciar() {
 
 function obtenerDatosAfiliado() {
     var datosURL = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpdatosafiliado/?documento=";
-    datosURL += documentoAfiliado;
-    // datosURL += "88239811";
+    // datosURL += documentoAfiliado;
+    datosURL += "88239811";
 
     try {
         asyncRequest = new XMLHttpRequest();
@@ -82,7 +99,12 @@ function stateChangeDatos() {
             document.getElementById("tipodocumento").value = afiliado.tipodocumento;
             document.getElementById("documento").value = afiliado.documento;
             document.getElementById("sexo").value = afiliado.sexo;
-            $('#fechanacimiento').fdatepicker().val(afiliado.fechanacimiento);
+
+            if (mobilecheck() && mobileAndTabletcheck()) {
+               document.getElementById('fechanacimiento').value = afiliado.fechanacimiento;
+            } else {
+              $('#fechanacimiento').fdatepicker().val(afiliado.fechanacimiento);
+            }
 
             document.getElementById("direccion").value = afiliado.street;
             document.getElementById("barrio").value = afiliado.barrio;
@@ -324,10 +346,6 @@ function validarFormulario(){
 
 function establecerValores() {
 
-  
-    console.log("x--" + $('#fechanacimiento').fdatepicker().val());
-    
-
     documento = document.getElementById("documento").value.trim();
     nombres = document.getElementById("nombres").value.toUpperCase().trim();
     apellidos = document.getElementById("apellidos").value.toUpperCase().trim();
@@ -340,8 +358,15 @@ function establecerValores() {
     celular = document.getElementById("celular").value.trim();
     ciudad = document.getElementById("ciudad").value.toUpperCase().trim();
     email = document.getElementById("email").value.trim();
-    terminos = document.getElementById("checkboxterminos").value;   
-    fechanacimiento = $('#fechanacimiento').fdatepicker().val(); 
+    terminos = document.getElementById("checkboxterminos").value;  
+
+    if( mobilecheck() && mobileAndTabletcheck()){
+      fechanacimiento = document.getElementById('fechanacimiento').value;
+    }else{
+      fechanacimiento = $('#fechanacimiento').fdatepicker().val(); 
+    } 
+    
+    console.log(">--" + fechanacimiento);
     
 }
 
