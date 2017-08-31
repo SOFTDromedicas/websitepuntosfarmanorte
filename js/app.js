@@ -6,6 +6,7 @@ var ciudad, documento, nombres, apellidos, tipodocumento, sexo, direccion,
             barrio, fechanacimiento, telefonofijo, celular, email, terminos;
 var btnGuardar;
 var urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
+var ciudadesService = "http://dromedicas.sytes.net:9999/dropos/wsjson/ciudades/";
 var asyncRequest;
 
 
@@ -13,6 +14,9 @@ function iniciar() {
     console.log("funcion iniciar->");
     btnGuardar = document.getElementById('guardar-button');
     btnGuardar.addEventListener('click', registrar, false);
+
+    //prepara combo de ciudades
+    establecerCiudades();
 
     //verifica el dispositivo para el componente date
     if( mobilecheck() && mobileAndTabletcheck()){
@@ -39,6 +43,49 @@ function iniciar() {
      console.log("device: " + mobilecheck());
      console.log("device: " + mobileAndTabletcheck());
 
+}
+
+function establecerCiudades(){
+  try{
+    var xhrCiudad = new XMLHttpRequest()
+    xhrCiudad.addEventListener("readystatechange", function(){creandoComboCiudad(xhrCiudad);}, false);
+    xhrCiudad.open( "GET", ciudadesService, true );
+    xhrCiudad.setRequestHeader("Accept",
+          "application/json; charset=utf-8" );
+    xhrCiudad.send();     
+  }catch(ex){
+    mostrarFallaDelSistema(ex.message);
+  }
+}
+
+//Crea el combobox de operadores, metodo auxiliar del metodo getOperadores
+function creandoComboCiudad(xhr) {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        var data = JSON.parse(xhr.responseText);
+        var ciudadSelect = document.getElementById("ciudad");
+        var ciudadList = data.data;
+        for (var i = 0; i < ciudadList.length; i++) {
+            var option = document.createElement("option");
+            option.setAttribute("value", ciudadList[i].nombre);
+            option.appendChild(document.createTextNode(
+                capitalize(ciudadList[i].nombre) +" ("+ capitalize(ciudadList[i].departamento)+")" ));
+            if( ciudadList[i].nombre == 'CUCUTA'){
+              option.setAttribute("selected", 'true');
+            }
+            ciudadSelect.appendChild(option);
+        }
+        //oculta el mensaje de inicio de la carga
+        $("#mensaje-inicio").fadeOut(4000);
+    } else {
+        if (xhr.status == 404) {
+      mostrarFallaDelSistema("Error 404 para Operador");            
+        } 
+    }
+}
+
+
+function capitalize(s){
+    return s.toLowerCase().replace( /\b./g, function(a){ return a.toUpperCase(); } );
 }
 
 function registrar() {
@@ -87,7 +134,7 @@ function stateChange() {
     
     var response = JSON.parse(asyncRequest.responseText);
 
-    console.log("Respuesta: " + response);
+    console.log("Respuesta: " + asyncRequest.responseText);
     if(response.status === "sucess"){  
       document.getElementById("spinner").style.display = 'none';
       document.getElementById("calloutFormWarning").style.display = 'none';
@@ -250,8 +297,10 @@ function establecerValores() {
     
 
     documento = document.getElementById("documento").value.trim();
-    nombres = document.getElementById("nombres").value.toUpperCase().trim();
-    apellidos = document.getElementById("apellidos").value.toUpperCase().trim();
+    var nombresTemp = document.getElementById("nombres").value.toUpperCase().trim();
+    nombres = nombresTemp.replace('Ñ', '%D1');
+    var apellidosTemp = document.getElementById("apellidos").value.toUpperCase().trim();
+    apellidos = apellidosTemp.replace('Ñ', '%D1');
     tipodocumento = document.getElementById("tipodocumento").value;
     sexo = document.getElementById("sexo").value;
     var direcciontemp = document.getElementById("direccion").value.toUpperCase().trim();
@@ -396,3 +445,5 @@ $(window).scroll(function(){
         })(navigator.userAgent || navigator.vendor || window.opera);
         return check;
     };
+
+

@@ -6,6 +6,7 @@ var ciudad, documento, nombres, apellidos, tipodocumento, sexo, direccion,
             barrio, fechanacimiento, telefonofijo, celular, email, terminos;
 var btnGuardar;
 var urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
+var ciudadesService = "http://dromedicas.sytes.net:9999/dropos/wsjson/ciudades/";
 var asyncRequest;
 var asyncRequestProcess;
 var patologia = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10", 
@@ -16,6 +17,9 @@ function iniciar() {
     console.log("funcion iniciar...");
     btnGuardar = document.getElementById('guardar-button');
     btnGuardar.addEventListener('click', registrar, false);
+
+    //prepara combo de ciudades
+    establecerCiudades();
 
     //verifica el dispositivo para el componente date
     console.log("dispositivo mobil:" + (mobilecheck() && mobileAndTabletcheck() ));
@@ -46,8 +50,8 @@ function iniciar() {
     documentoAfiliado = getParameterURLByName('documento'); 
 
     var updateURL = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpvalidarcuentaemail/?documento=";
-    // updateURL += documentoAfiliado;
-    updateURL += "88239811";
+    updateURL += documentoAfiliado;
+    // updateURL += "88239811";
     
     $.ajax({
             url: updateURL,
@@ -66,6 +70,44 @@ function iniciar() {
     console.log("device: " + mobilecheck());
     console.log("device: " + mobileAndTabletcheck());
 
+}
+
+function establecerCiudades(){
+  try{
+    var xhrCiudad = new XMLHttpRequest()
+    xhrCiudad.addEventListener("readystatechange", function(){creandoComboCiudad(xhrCiudad);}, false);
+    xhrCiudad.open( "GET", ciudadesService, true );
+    xhrCiudad.setRequestHeader("Accept",
+          "application/json; charset=utf-8" );
+    xhrCiudad.send();     
+  }catch(ex){
+    mostrarFallaDelSistema(ex.message);
+  }
+}
+
+//Crea el combobox de operadores, metodo auxiliar del metodo getOperadores
+function creandoComboCiudad(xhr) {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        var data = JSON.parse(xhr.responseText);
+        var ciudadSelect = document.getElementById("ciudad");
+        var ciudadList = data.data;
+        for (var i = 0; i < ciudadList.length; i++) {
+            var option = document.createElement("option");
+            option.setAttribute("value", ciudadList[i].nombre);
+            option.appendChild(document.createTextNode(
+                capitalize(ciudadList[i].nombre) +" ("+ capitalize(ciudadList[i].departamento)+")" ));
+            if( ciudadList[i].nombre == 'CUCUTA'){
+              option.setAttribute("selected", 'true');
+            }
+            ciudadSelect.appendChild(option);
+        }
+        //oculta el mensaje de inicio de la carga
+        $("#mensaje-inicio").fadeOut(4000);
+    } else {
+        if (xhr.status == 404) {
+      mostrarFallaDelSistema("Error 404 para Operador");            
+        } 
+    }
 }
 
 function obtenerDatosAfiliado() {
