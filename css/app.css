@@ -391,7 +391,7 @@ textarea {
   height: 2.688rem;
   margin: 0 0 1.3rem;
   padding: 0.7rem;
-  border: 2px solid #BFBFBF;
+  border: 3px solid #BFBFBF;
   border-radius: 2px;
   background-color: #fefefe;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
@@ -406,7 +406,7 @@ textarea {
   [type='text']:focus, [type='password']:focus, [type='date']:focus, [type='datetime']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='week']:focus, [type='email']:focus, [type='number']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='url']:focus, [type='color']:focus,
   textarea:focus, select:focus {
     outline: none;
-    border: 2px solid #8a8a8a;
+    border: 3px solid #8a8a8a;
     background-color: #fefefe;
     box-shadow: 0 0 5px #CACACA;
     transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
@@ -418,7 +418,7 @@ textarea {
   height: 2.688rem;
   margin: 0 0 1.3rem;
   /*padding: 0.4rem;*/
-  border: 2px solid #BFBFBF;
+  border: 3px solid #BFBFBF;
   border-radius: 2px;
   background-color: #fefefe;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
