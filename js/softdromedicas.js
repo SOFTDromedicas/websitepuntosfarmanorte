@@ -112,8 +112,8 @@ function creandoComboCiudad(xhr) {
 
 function obtenerDatosAfiliado() {
     var datosURL = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpdatosafiliado/?documento=";
-    // datosURL += documentoAfiliado;
-    datosURL += "88239811";
+    datosURL += documentoAfiliado;
+    // datosURL += "373950743";
 
     try {
         asyncRequest = new XMLHttpRequest();
@@ -197,9 +197,7 @@ function registrar() {
         if( document.getElementById("hijos").checked )
             urlWs += "&hijos=true";
 
-        console.log("URL Servicio: " + urlWs);
-
-        document.location.href = "localhost:8003";
+        console.log("URL Servicio: " + urlWs);        
 
         try {
             asyncRequestProcess = new XMLHttpRequest();
@@ -385,6 +383,9 @@ function validarFormulario(){
   return valido
 }
 
+function capitalize(s){
+    return s.toLowerCase().replace( /\b./g, function(a){ return a.toUpperCase(); } );
+}
 
 function establecerValores() {
 
