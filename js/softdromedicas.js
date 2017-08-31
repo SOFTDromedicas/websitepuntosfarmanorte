@@ -30,6 +30,7 @@ function iniciar() {
 
     var updateURL = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpvalidarcuentaemail/?documento=";
     updateURL += documentoAfiliado;
+    // updateURL += "88239811";
     
     $.ajax({
             url: updateURL,
@@ -45,8 +46,6 @@ function iniciar() {
     //obtener todos los datos del cliente
     obtenerDatosAfiliado();
 
-    
-
     console.log("device: " + mobilecheck());
     console.log("device: " + mobileAndTabletcheck());
 
@@ -54,8 +53,8 @@ function iniciar() {
 
 function obtenerDatosAfiliado() {
     var datosURL = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpdatosafiliado/?documento=";
-    // datosURL += documentoAfiliado;
-    datosURL += "88239811";
+    datosURL += documentoAfiliado;
+    // datosURL += "88239811";
 
     try {
         asyncRequest = new XMLHttpRequest();
@@ -136,6 +135,8 @@ function registrar() {
 
         console.log("URL Servicio: " + urlWs);
 
+        document.location.href = "localhost:8003";
+
         try {
             asyncRequestProcess = new XMLHttpRequest();
             asyncRequestProcess.addEventListener("readystatechange", stateChange, false);
@@ -158,6 +159,8 @@ function stateChange() {
     document.getElementById("calloutFormWarning").style.display = 'none';
   }
   console.log( asyncRequestProcess.readyState + " - " + asyncRequestProcess.status);
+
+
 
   if (asyncRequestProcess.readyState == 4 && asyncRequestProcess.status == 200) {   
     
