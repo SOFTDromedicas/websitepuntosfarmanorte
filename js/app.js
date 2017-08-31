@@ -14,19 +14,35 @@ function iniciar() {
     btnGuardar = document.getElementById('guardar-button');
     btnGuardar.addEventListener('click', registrar, false);
 
-    $('#fechanacimiento').fdatepicker().on('changeDate', function(ev) {
-        if (ev.date.valueOf()) {
-            var newDate = new Date(ev.date)
-            newDate.setDate(newDate.getDate() + 1);
-            fechanacimiento = formatDateAnioMesDia(newDate);
-        }
-    });
+    //verifica el dispositivo para el componente date
+    if( mobilecheck() && mobileAndTabletcheck()){
+      document.getElementById('fechanacimiento').setAttribute('type', 'date');
+
+    }else{
+      $('#fechanacimiento').fdatepicker({
+        closeButton: true,
+        language: 'es',
+        yearRange: "-100:+0",
+        constrainInput: true ,
+        format: 'dd/mm/yyyy',
+      });
+
+      $('#fechanacimiento').fdatepicker().on('changeDate', function(ev) {
+          if (ev.date.valueOf()) {
+              var newDate = new Date(ev.date)
+              newDate.setDate(newDate.getDate() + 1);
+              fechanacimiento = formatDateAnioMesDia(newDate);
+          }
+      });
+    }
+    
      console.log("device: " + mobilecheck());
      console.log("device: " + mobileAndTabletcheck());
 
 }
 
 function registrar() {
+
     console.log("Procesando formulario.... ");
     
     establecerValores();
@@ -184,19 +200,7 @@ function validarFormulario(){
     valido = false;
     document.getElementById("barrio").setAttribute("class","is-invalid-input");
     document.getElementById("barrio").closest("label").setAttribute("class","is-invalid-label");
-  }
-  //validacion de telefono
-  document.getElementById("telefonofijo").addEventListener("invalid.zf.abide",function(ev,el) {
-      valido = false;
-    document.getElementById("telefonofijo").setAttribute("class","is-invalid-input");
-    document.getElementById("telefonofijo").closest("label").setAttribute("class","is-invalid-label");
-  });
-
-  if(telefonofijo == "" ){
-    valido = false;
-    document.getElementById("telefonofijo").setAttribute("class","is-invalid-input");
-    document.getElementById("telefonofijo").closest("label").setAttribute("class","is-invalid-label");
-  }
+  }  
   //validacion de celular
   document.getElementById("celular").addEventListener("invalid.zf.abide",function(ev,el) {
       valido = false;
@@ -238,8 +242,11 @@ function validarFormulario(){
 
 function establecerValores() {
 
+    if( mobilecheck() && mobileAndTabletcheck()){
+      fechanacimiento = document.getElementById('fechanacimiento').value;
+    }
   
-    console.log("--" + fechanacimiento);
+    console.log("-->" + fechanacimiento);
     
 
     documento = document.getElementById("documento").value.trim();

@@ -166,7 +166,7 @@
           </div>
           <div class="small-12 medium-3 columns">
             <label>Fecha Nacimiento
-              <input type="text" name="fechanacimiento" required id="fechanacimiento" data-date-format="mm/dd/yy">
+              <input type="text" name="fechanacimiento" id="fechanacimiento" data-date-format="mm/dd/yy">
             </label>
           </div>
         </div>
@@ -190,7 +190,7 @@
         <div class="row ">
           <div class="small-12 medium-4 columns">
             <label>Tel&eacute;fono
-              <input type="number" name="telefonofijo" id="telefonofijo" required placeholder="Ingrese su n&uacute;mero de tel&eacute;fono">
+              <input type="number" name="telefonofijo" id="telefonofijo" placeholder="Ingrese su n&uacute;mero de tel&eacute;fono">
             </label>
           </div>
           <div class="small-12 medium-4 columns">
@@ -243,18 +243,7 @@
     <script src="../js/foundation-datepicker.js"></script>
     <script src="../js/locales/foundation-datepicker.es.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-    <script>
-    $(function(){
-      $('#fechanacimiento').fdatepicker({
-        closeButton: true,
-        language: 'es',
-        yearRange: "-100:+0",
-        constrainInput: true ,
-        format: 'dd/mm/yyyy',
-      });
-
-    });
+    
 
     </script>
   </body>

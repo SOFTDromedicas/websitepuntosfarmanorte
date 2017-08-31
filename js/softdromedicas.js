@@ -282,18 +282,7 @@ function validarFormulario(){
     document.getElementById("barrio").setAttribute("class","is-invalid-input");
     document.getElementById("barrio").closest("label").setAttribute("class","is-invalid-label");
   }
-  //validacion de telefono
-  document.getElementById("telefonofijo").addEventListener("invalid.zf.abide",function(ev,el) {
-      valido = false;
-    document.getElementById("telefonofijo").setAttribute("class","is-invalid-input");
-    document.getElementById("telefonofijo").closest("label").setAttribute("class","is-invalid-label");
-  });
-
-  if(telefonofijo == "" ){
-    valido = false;
-    document.getElementById("telefonofijo").setAttribute("class","is-invalid-input");
-    document.getElementById("telefonofijo").closest("label").setAttribute("class","is-invalid-label");
-  }
+  
   //validacion de celular
   document.getElementById("celular").addEventListener("invalid.zf.abide",function(ev,el) {
       valido = false;
