@@ -382,7 +382,7 @@ legend{
 	color: #FFFFFF;
 	/*color: #125FBF;*/
 	border-radius: 3px;
-	padding: .4rem .2rem .4rem 1.5rem;
+	padding: .6rem .2rem .6rem 1.5rem;
 	margin-bottom: 1rem;
 }
 
@@ -400,6 +400,7 @@ legend{
 
 #ocupacion label,
 #estudios label,
+#nucleo-familia label,
 #patologia-div label
 {
 	color: #212121!important;
@@ -416,7 +417,7 @@ legend{
 	vertical-align:middle; 
 }
 
-#estudios{
+#estudios, #nucleo-familia{
 	margin-top: 1.3rem;	
 }
 
@@ -429,6 +430,7 @@ legend{
 }
 #agregar-miembro{
 	color:#ffffff;
+	padding: 0.5rem;
 }
 
 .labelRange{

@@ -12,11 +12,15 @@ var asyncRequestProcess;
 var patologia = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10", 
         "p11", "p12", "p13", "p14", "p15", "p16", "p17", "p18", "p19" ];
 var documentoAfiliado;
+var contadorG = 0;
 
 function iniciar() {
     console.log("funcion iniciar...");
     btnGuardar = document.getElementById('guardar-button');
     btnGuardar.addEventListener('click', registrar, false);
+
+    var miembroButton = document.getElementById("agregar-miembro");
+    miembroButton.addEventListener('click', agregarmiembro, false);
 
     //prepara combo de ciudades
     establecerCiudades();
@@ -70,7 +74,8 @@ function iniciar() {
     console.log("device: " + mobilecheck());
     console.log("device: " + mobileAndTabletcheck());
 
-}
+}//fin del metodo iniciar
+
 
 function establecerCiudades(){
   try{
@@ -167,7 +172,76 @@ function stateChangeDatos() {
     }
 }
 
+function agregarmiembro(){
+  console.log("agregando miembro");
+  ++contadorG;
 
+  var options = [ 'Abuelos(s)',  'Padre(s)', 'Sobrino(s)', 'Tio(s)'];
+
+  var contendorFamilia = document.getElementById('contenedor-familia');
+
+  var rowppal = document.createElement('div');
+  rowppal.setAttribute('class', 'row align-bottom miembro-class');
+
+  //Columna Derecha
+  var colLeft = document.createElement('div');
+  colLeft.setAttribute('class', 'small-12 medium-6 columns');
+
+  var selctElement = document.createElement('select');
+  selctElement.setAttribute('id', ('tipomiembro' + contadorG ))
+
+  for( var i = 0; i < options.length; i++){
+    var option = document.createElement('option');
+    option.setAttribute('value' , (i+1));
+    option.appendChild(document.createTextNode(options[i]));
+    selctElement.appendChild(option);
+  }
+
+  colLeft.appendChild(selctElement);
+
+  //Columna Inzquierda
+  var colRight = document.createElement('div');
+  colRight.setAttribute('class', 'small-12 medium-6 columns');
+
+  var parrafo = document.createElement('p');
+  var labelEdad = document.createElement('label');
+  labelEdad.appendChild(document.createTextNode('Rango de Edad:'));
+  parrafo.appendChild(labelEdad);
+  var span = document.createElement('span');
+  span.setAttribute('class', 'labelRange');
+  parrafo.appendChild(span);
+
+  colRight.appendChild(parrafo);
+
+  var slider = document.createElement('div');
+  slider.setAttribute('id', ('slider-range' + contadorG) );
+
+  var clone = $(slider).clone();
+  addSlider(clone.get(0));
+
+  colRight.appendChild(slider);
+
+
+  //agregar las dos columnas al rowppal
+  rowppal.appendChild(colLeft);
+  rowppal.appendChild(colRight);
+  contendorFamilia.appendChild(rowppal);
+}
+
+
+function addSlider(element, count) {
+   var slider = $( element ).slider({
+      range: true,
+      min: 0,
+      max: 80,
+      values: [ 20, 80 ],
+      slide: function( event, ui ) {
+        $( ".labelRange", element ).html(  ui.values[ 0 ] + " - " + ui.values[ 1 ]) ;
+      }
+    });
+    $( ".labelRange",element  ).html( $( element ).slider( "values", 0 ) +
+      " - " + $( element ).slider( "values", 1 ) );
+}
 
 
 function registrar() {

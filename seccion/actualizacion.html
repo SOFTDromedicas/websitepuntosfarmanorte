@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="../css/font-awesome.css">   
     <link rel="stylesheet" href="../css/foundation-datepicker.css">   
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600i" rel="stylesheet">   
 
     <meta property="og:title" content="Puntos Farmanorte" />
@@ -221,23 +220,25 @@
           <div class="small-12 columns">
             <p class="info">Ocupaci&oacute;n:</p>            
           </div>
-          <div class="row columns small-up-1 medium-up-2 large-up-4" id="ocupacion">
-            <div class="columns">
-              <input value="1" name="ocupa[]" type="checkbox"><label>Ama de casa</label>                          
-            </div>
-            <div class="columns">
-              <input value="2" name="ocupa[]" type="checkbox"><label>Empleado</label>                          
-            </div>
-            <div class="columns">
-              <input value="3" name="ocupa[]" type="checkbox"><label>Estudiante</label>                          
-            </div>
-            <div class="columns">
-              <input value="4" name="ocupa[]" type="checkbox"><label>Independiente</label>                          
-            </div>
-            <div class="columns">
-              <input value="5" name="ocupa[]" type="checkbox"><label>Pensionado(a)</label>                     
-            </div>
-          </div>    <!-- end row -->      
+          <div class="columns small-12">
+            <div class="row small-up-1 medium-up-2 large-up-4" id="ocupacion">
+              <div class="columns">
+                <input value="1" name="ocupa[]" type="checkbox"><label>Ama de casa</label>                          
+              </div>
+              <div class="columns">
+                <input value="2" name="ocupa[]" type="checkbox"><label>Empleado</label>                          
+              </div>
+              <div class="columns">
+                <input value="3" name="ocupa[]" type="checkbox"><label>Estudiante</label>                          
+              </div>
+              <div class="columns">
+                <input value="4" name="ocupa[]" type="checkbox"><label>Independiente</label>                          
+              </div>
+              <div class="columns">
+                <input value="5" name="ocupa[]" type="checkbox"><label>Pensionado(a)</label>                     
+              </div>
+            </div>    <!-- end row -->   
+          </div>
         </div>
 
 
@@ -245,20 +246,22 @@
           <div class="small-12 columns">
             <p class="info">Nivel de estudios:</p>
           </div>
-          <div class="row columns small-up-1 medium-up-2 large-up-4">
-            <div class="columns">
-              <input value="1" name="estudio[]" type="checkbox"><label>Primaria</label>                          
+          <div class="columns small-12">
+            <div class="row small-up-1 medium-up-2 large-up-4">
+              <div class="columns">
+                <input value="1" name="estudio[]" type="checkbox"><label>Primaria</label>                          
+              </div>
+              <div class="columns">
+                <input value="2" name="estudio[]" type="checkbox"><label>Bachiller</label>                          
+              </div>
+              <div class="columns">
+                <input value="3" name="estudio[]" type="checkbox"><label>Universitario</label>                         
+              </div>
+              <div class="columns">
+                <input value="4" name="estudio[]" type="checkbox"><label>Post-grado</label>                         
+              </div>
             </div>
-            <div class="columns">
-              <input value="2" name="estudio[]" type="checkbox"><label>Bachiller</label>                          
-            </div>
-            <div class="columns">
-              <input value="3" name="estudio[]" type="checkbox"><label>Universitario</label>                         
-            </div>
-            <div class="columns">
-              <input value="4" name="estudio[]" type="checkbox"><label>Post-grado</label>                         
-            </div>
-          </div>          
+          </div>
         </div>
 
         <div class="row">
@@ -292,7 +295,7 @@
         </div>
         
 
-        <div class="row" id="estudios">
+        <div class="row" id="nucleo-familia">
           <div class="small-12 columns">
             <p class="info">Que personas componen tu nucleo de familia:</p>
             <div class="row">
@@ -300,29 +303,28 @@
                 <button type="button" id="agregar-miembro" class="button success">Agregar Miembro</button>
               </div>            
             </div>
+            <div id="contenedor-familia" class="columns small-12">
+              <div class="row align-bottom miembro-class">
 
-            <div class="row align-bottom miembro-class">
-              <div class="small-6 columns">
-                <select name="" id="">
-                  <option value="Abuelo">Abuelo</option>
-                  <option value="Abuelo">Abuela</option>
-                  <option value="Abuelo">Padre</option>
-                  <option value="Abuelo">Madre</option>
-                  <option value="Abuelo">Sobrino(s)</option>
-                </select>
-              </div>
-              <div class="small-6 columns">
+                <div class="small-12 medium-6 columns">
+                  <select name="" id="">
+                    <option value="1">Abuelo(s)</option>
+                    <option value="2">Padre(s)</option>
+                    <option value="3">Sobrino(s)</option>
+                    <option value="4">Tio(s)</option>
+                  </select>
+                </div>
 
-                <p>
-                  <label for="label-1">Rango de Edad:</label>
-                  <span id="label-1" class="labelRange"></span>
-                </p>
+                <div class="small-12 medium-6 columns">
+                  <p>
+                    <label for="label-1">Rango de Edad:</label>
+                    <span  class="labelRange"></span>
+                  </p>
+                  <div id="slider-range"></div>
+                </div>
 
-                <div id="slider-range"></div>
-
-              </div>
-            </div>
-
+              </div>              
+            </div> <!-- end contenedor-familia -->
           </div>          
         </div>
 
@@ -371,21 +373,20 @@
     <script src="../js/foundation-datepicker.js"></script>
     <script src="../js/locales/foundation-datepicker.es.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+ 
     <script>
   $( function() {
     $( "#slider-range" ).slider({
       range: true,
       min: 0,
       max: 100,
-      values: [ 0, 100 ],
+      values: [ 20, 100 ],
       slide: function( event, ui ) {
-        $( "#label-1" ).html(  ui.values[ 0 ] + " - " + ui.values[ 1 ]) ;
+        $( ".labelRange" ).html(  ui.values[ 0 ] + " - " + ui.values[ 1 ]) ;
       }
     });
-    $( "#label-1" ).html( $( "#slider-range" ).slider( "values", 0 ) +
+    $( ".labelRange" ).html( $( "#slider-range" ).slider( "values", 0 ) +
       " - " + $( "#slider-range" ).slider( "values", 1 ) );
   } );
   </script>
