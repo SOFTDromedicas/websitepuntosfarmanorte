@@ -375,9 +375,53 @@ legend{
 	
 }
 
-#info{
+
+.title-section{
+	background:  #125FBF;
+	/*border: 2px solid #125FBF;*/
+	color: #FFFFFF;
+	/*color: #125FBF;*/
+	border-radius: 3px;
+	padding: .4rem .2rem .4rem 1.5rem;
+	margin-bottom: 1rem;
+}
+
+.title-section h6{
+	margin: 0;
+}
+
+.info{
 	font-size: 1.1rem;
 	font-family: 'Open Sans', sans-serif;
+	color: #125FBF;
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+#ocupacion label,
+#estudios label,
+#patologia-div label
+{
+	color: #212121!important;
+	font-weight: normal!important;
+	display:inline-block!important;      
+	margin-right: 2rem;
+}
+#ocupacion [type='checkbox'],
+#estudios [type='checkbox'],
+#patologia-div [type='checkbox']{
+	zoom:1.5;
+	margin: 0;
+	padding:0;
+	vertical-align:middle; 
+}
+
+#estudios{
+	margin-top: 1.3rem;	
+}
+
+#patologias-content{
+	margin-top: 1.3rem;
 }
 
 

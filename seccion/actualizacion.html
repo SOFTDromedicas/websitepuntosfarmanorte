@@ -101,7 +101,7 @@
         </div>
 
       <form id="form-content" data-abide novalidate>
-
+        
         <div id="callout-content" class="row">
           <div class="success callout columns small-12" style="display: none" id="calloutForm"  data-closable>
             <h5>Proceso de Inscripcion Exitoso.</h5>
@@ -126,7 +126,11 @@
           </div>
         </div>
         <div id="blur">
-          
+        <div class="row align-middle">
+          <div class="small-12 title-section">
+            <h6>Datos Personales</h6>
+          </div>
+        </div>
         <div class="row ">
           <div class="small-12 medium-6 columns">
             <label>Nombres
@@ -203,40 +207,65 @@
               <input type="email" pattern="email" name="email" required id="email" placeholder="Ingrese su correo electronico">
             </label>
           </div>
-        </div>        
-        <fieldset class="fieldset row" >
-          <legend>Informaci&oacute;n Adicional</legend>
-          <div class="row">
-            <div class="small-12 columns">
-              <p id="info">Deseo recibir informaci&oacute;n de ofertas sobre productos relacionados con las siguientes patolog&iacute;as:</p>
-            </div>
+        </div>   
+
+        <div class="row align-middle">
+          <div class="small-12 title-section">
+            <h6>Informaci&oacute;n Adicional</h6>
           </div>
-          <div class="row patologias" id="patologia-div">
-            <div class="small-12 medium-6 columns">
-              <input value="1" name="pat[]" type="checkbox"><label>Hipertensión</label><br/>
-              <input value="2" name="pat[]" type="checkbox"><label>Diabetes</label><br/>
-              <input value="3" name="pat[]" type="checkbox"><label>Obesidad</label><br/>
-              <input value="4" name="pat[]" type="checkbox"><label>Epilepsia</label><br/>
-              <input value="5" name="pat[]" type="checkbox"><label>Anemia</label><br/>
-              <input value="6" name="pat[]" type="checkbox"><label>Parkinson</label><br/>
-              <input value="7" name="pat[]" type="checkbox"><label>Artritis</label><br/>
-              <input value="8" name="pat[]" type="checkbox"><label>Ulcera</label><br/>
-              <input value="9" name="pat[]" type="checkbox"><label>Cuidado de Ni&ntilde;os</label><br/>
-              <input value="10" name="pat[]" type="checkbox"><label>Cuidado de Bebe</label><br/>
-            </div>
-            <div class="small-12 medium-6 columns">
-              <input value="11" name="pat[]" type="checkbox"><label>Depresion</label><br/>
-              <input value="12" name="pat[]" type="checkbox"><label>Gestacion y Maternidad</label><br/>
-              <input value="13" name="pat[]" type="checkbox"><label>Cuidado de la Piel</label><br/>
-              <input value="14" name="pat[]" type="checkbox"><label>Incontinencia</label><br/>
-              <input value="15" name="pat[]" type="checkbox"><label>Menopausia</label><br/>
-              <input value="16" name="pat[]" type="checkbox"><label>Colesterol</label><br/>
-              <input value="17" name="pat[]" type="checkbox"><label>Osteoporosis</label><br/>
-              <input value="18" name="pat[]" type="checkbox"><label>Hipertension</label><br/>
-              <input value="19" name="pat[]" type="checkbox"><label>Alzh&eacute;imer</label><br/>
-            </div>
+        </div>
+
+        <div class="row">
+          <div class="small-12 columns" id="ocupacion">
+            <p class="info">Ocupaci&oacute;n:</p>
+            <input value="1" name="ocupa[]" type="checkbox"><label>Independiente</label>            
+            <input value="2" name="ocupa[]" type="checkbox"><label>Empleado</label>            
+            <input value="3" name="ocupa[]" type="checkbox"><label>Ama de casa</label>            
+            <input value="4" name="ocupa[]" type="checkbox"><label>Pensionado(a)</label>            
+            <input value="5" name="ocupa[]" type="checkbox"><label>Estudiante</label>            
           </div>
-        </fieldset>
+        </div>
+        <div class="row">
+          <div class="small-12 columns" id="estudios">
+            <p class="info">Nivel de estudios:</p>
+            <input value="1" name="estudio[]" type="checkbox"><label>Primaria</label>            
+            <input value="2" name="estudio[]" type="checkbox"><label>Bachiller</label>            
+            <input value="3" name="estudio[]" type="checkbox"><label>Universitario</label>            
+            <input value="4" name="estudio[]" type="checkbox"><label>Post-grado</label>           
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="small-12 columns" id="patologias-content">
+              <p class="info">Deseo recibir informaci&oacute;n de ofertas sobre productos relacionados con las siguientes patolog&iacute;as:</p>
+              <div class="row patologias" id="patologia-div">
+                <div class="small-12 medium-6 columns">
+                  <input value="19" name="pat[]" type="checkbox"><label>Alzh&eacute;imer</label><br/>
+                  <input value="5" name="pat[]" type="checkbox"><label>Anemia</label><br/>
+                  <input value="7" name="pat[]" type="checkbox"><label>Artritis</label><br/>
+                  <input value="16" name="pat[]" type="checkbox"><label>Colesterol</label><br/>
+                  <input value="10" name="pat[]" type="checkbox"><label>Cuidado de Bebe</label><br/>
+                  <input value="13" name="pat[]" type="checkbox"><label>Cuidado de la Piel</label><br/>
+                  <input value="9" name="pat[]" type="checkbox"><label>Cuidado de Ni&ntilde;os</label><br/>
+                  <input value="11" name="pat[]" type="checkbox"><label>Depresion</label><br/>
+                  <input value="2" name="pat[]" type="checkbox"><label>Diabetes</label><br/>
+                </div>
+                <div class="small-12 medium-6 columns">
+                  <input value="4" name="pat[]" type="checkbox"><label>Epilepsia</label><br/>
+                  <input value="12" name="pat[]" type="checkbox"><label>Gestacion y Maternidad</label><br/>
+                  <input value="1" name="pat[]" type="checkbox"><label>Hipertensión</label><br/>
+                  <input value="14" name="pat[]" type="checkbox"><label>Incontinencia</label><br/>
+                  <input value="15" name="pat[]" type="checkbox"><label>Menopausia</label><br/>
+                  <input value="3" name="pat[]" type="checkbox"><label>Obesidad</label><br/>
+                  <input value="17" name="pat[]" type="checkbox"><label>Osteoporosis</label><br/>
+                  <input value="6" name="pat[]" type="checkbox"><label>Parkinson</label><br/>
+                  <input value="8" name="pat[]" type="checkbox"><label>Ulcera</label><br/>
+                </div>
+              </div>
+          </div>
+        </div>
+
+      
         <div class="row">
           <div class="small-12 columns align-middle">
             <label for="hijos" class="checkbox-label labelterminos"><input id="hijos" name="terminos" required type="checkbox" > <span id="leyendaterminos">Tengo hijos menores de 5 años.</span></label>            
