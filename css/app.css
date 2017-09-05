@@ -421,7 +421,7 @@ legend{
 }
 
 #patologias-content{
-	margin-top: 1.3rem;
+	margin-top: 1.2rem;
 }
 
 #form-content p{
@@ -429,6 +429,9 @@ legend{
 }
 
 
+#agregar-miembro{
+	color:#ffffff;
+}
 
 [type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'],
 textarea {
@@ -505,7 +508,7 @@ textarea {
 	font-weight: bold;
 }
 
-.button{
+#guardar-button.button{
 	background: #10528F!important;
 }
 .alert{
