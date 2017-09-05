@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/font-awesome.css">   
     <link rel="stylesheet" href="../css/foundation-datepicker.css">   
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600i" rel="stylesheet">   
 
     <meta property="og:title" content="Puntos Farmanorte" />
@@ -292,13 +294,36 @@
 
         <div class="row" id="estudios">
           <div class="small-12 columns">
-            <p class="info">Quienes componen tu nucleo familiar:</p>
-          </div>
-          <div class="row columns">
-            <div class="small-12 columns">
-              <button type="button" id="agregar-miembro" class="button success">Agregar Miembro</button>
-            </div>            
-          </div>
+            <p class="info">Que personas componen tu nucleo de familia:</p>
+            <div class="row">
+              <div class="small-12 columns">
+                <button type="button" id="agregar-miembro" class="button success">Agregar Miembro</button>
+              </div>            
+            </div>
+
+            <div class="row align-bottom miembro-class">
+              <div class="small-6 columns">
+                <select name="" id="">
+                  <option value="Abuelo">Abuelo</option>
+                  <option value="Abuelo">Abuela</option>
+                  <option value="Abuelo">Padre</option>
+                  <option value="Abuelo">Madre</option>
+                  <option value="Abuelo">Sobrino(s)</option>
+                </select>
+              </div>
+              <div class="small-6 columns">
+
+                <p>
+                  <label for="label-1">Rango de Edad:</label>
+                  <span id="label-1" class="labelRange"></span>
+                </p>
+
+                <div id="slider-range"></div>
+
+              </div>
+            </div>
+
+          </div>          
         </div>
 
 
@@ -346,6 +371,24 @@
     <script src="../js/foundation-datepicker.js"></script>
     <script src="../js/locales/foundation-datepicker.es.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+
+
+    <script>
+  $( function() {
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 0,
+      max: 100,
+      values: [ 0, 100 ],
+      slide: function( event, ui ) {
+        $( "#label-1" ).html(  ui.values[ 0 ] + " - " + ui.values[ 1 ]) ;
+      }
+    });
+    $( "#label-1" ).html( $( "#slider-range" ).slider( "values", 0 ) +
+      " - " + $( "#slider-range" ).slider( "values", 1 ) );
+  } );
+  </script>
     
   </body>
 </html>

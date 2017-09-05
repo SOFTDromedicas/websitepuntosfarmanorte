@@ -427,11 +427,28 @@ legend{
 #form-content p{
 	margin-bottom: 0.9rem;
 }
-
-
 #agregar-miembro{
 	color:#ffffff;
 }
+
+.labelRange{
+	border:0; 
+	color:#0434A2; 
+	font-weight:bold;
+	display: inline-block;
+}
+
+.miembro-class{
+	margin-bottom: 1.5rem;
+}
+#form-content .miembro-class label{
+	margin-right: 0.9rem!important;
+}
+
+.miembro-class select{
+	margin-bottom: 0!important;
+}
+
 
 [type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'],
 textarea {

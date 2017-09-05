@@ -170,8 +170,6 @@ function stateChangeDatos() {
 
 
 
-
-
 function registrar() {
     console.log("Procesando formulario.... ");
     
@@ -530,6 +528,7 @@ $(window).scroll(function(){
    }                   
 });
 
+
 function getParameterURLByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
@@ -658,3 +657,7 @@ function removeDiacritics (str) {
   return str;
 
 }
+
+
+
+
