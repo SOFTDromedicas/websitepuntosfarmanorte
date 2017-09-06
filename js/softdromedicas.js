@@ -255,9 +255,11 @@ function registrarMiembro() {
     var inicio = document.createElement('input');
     inicio.setAttribute('id', ('inihidden' + contadorG));
     inicio.setAttribute('type', 'hidden');
+    inicio.setAttribute('value', val1);
     var fin = document.createElement('input');
     fin.setAttribute('id', ('finhidden' + contadorG));
     fin.setAttribute('type', 'hidden');
+    fin.setAttribute('value', val2);
     
     tdRngo.appendChild(labelRange);
     tdRngo.appendChild(inicio);
@@ -544,6 +546,7 @@ function establecerValores() {
     console.log(">--" + fechanacimiento);
     
 }
+
 
 function validateEmail(email){        
    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  

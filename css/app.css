@@ -401,6 +401,7 @@ legend{
 #ocupacion label,
 #estudios label,
 #nucleo-familia label,
+#hijos-cont label,
 #patologia-div label
 {
 	color: #212121!important;
@@ -410,6 +411,7 @@ legend{
 }
 #ocupacion [type='checkbox'],
 #estudios [type='checkbox'],
+#hijos-cont [type='checkbox'],
 #patologia-div [type='checkbox']{
 	zoom:1.5;
 	margin: 0;
@@ -417,7 +419,10 @@ legend{
 	vertical-align:middle; 
 }
 
-#estudios, #nucleo-familia{
+#estudios, 
+#nucleo-familia,
+#recomienda, 
+#hijos-cont{
 	margin-top: 1.3rem;	
 }
 
@@ -554,6 +559,7 @@ textarea {
 	font-family: 'Open Sans', sans-serif;
 	margin-top: 3.5rem;
 	font-weight: bold;
+	text-align: center;
 }
 
 #guardar-button.button{
