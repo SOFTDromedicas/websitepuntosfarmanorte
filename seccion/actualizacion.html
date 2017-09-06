@@ -61,9 +61,9 @@
         <div class="row expanded menuc-row" > 
           <!-- columna logo -->
           <div class="columns small-10 medium-5 large-5">
-            <a href="../index.html">
+            
               <figure id="logotipo"><img src="../images/logoPuntosFarmanorte.svg" alt="Logo Puntos Farmanorte" ></figure>              
-            </a>
+           
           </div>
           <!-- columna Menu -->
           <div class="columns small-2 medium-7 large-7" id="contenedor-menu">
@@ -304,30 +304,12 @@
               </div>            
             </div>
             <div id="contenedor-familia" class="columns small-12">
-              <div class="row align-bottom miembro-class">
-
-                <div class="small-12 medium-6 columns">
-                  <select name="" id="">
-                    <option value="1">Abuelo(s)</option>
-                    <option value="2">Padre(s)</option>
-                    <option value="3">Sobrino(s)</option>
-                    <option value="4">Tio(s)</option>
-                  </select>
-                </div>
-
-                <div class="small-12 medium-6 columns">
-                  <p>
-                    <label for="label-1">Rango de Edad:</label>
-                    <span  class="labelRange"></span>
-                  </p>
-                  <div id="slider-range"></div>
-                </div>
-
-              </div>              
+                            
             </div> <!-- end contenedor-familia -->
           </div>          
         </div>
-
+        
+        
 
       
         <div class="row">
@@ -366,6 +348,27 @@
   </div> <!-- end data-off-canvas-conten -->
     
 
+    <div id="dialog" title="Agregar Miembro">
+      <div class="row align-bottom miembro-class">
+        <div class="small-12 medium-6 columns">
+          <select name="" id="">
+            <option value="1">Abuelo(s)</option>
+            <option value="2">Padre(s)</option>
+            <option value="3">Sobrino(s)</option>
+            <option value="4">Tio(s)</option>
+          </select>
+        </div>
+        <div class="small-12 medium-6 columns">
+          <p>
+            <label for="label-1">Rango de Edad:</label>
+            <span  class="labelRange"></span>
+          </p>
+          <div id="slider-range"></div>
+        </div>
+        <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+      </div>
+    </div>
+
     <script src="../js/vendor/jquery.js"></script>
     <script src="../js/vendor/what-input.js"></script>
     <script src="../js/vendor/foundation.js"></script>
@@ -375,21 +378,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
  
-    <script>
-  $( function() {
-    $( "#slider-range" ).slider({
-      range: true,
-      min: 0,
-      max: 100,
-      values: [ 20, 100 ],
-      slide: function( event, ui ) {
-        $( ".labelRange" ).html(  ui.values[ 0 ] + " - " + ui.values[ 1 ]) ;
-      }
-    });
-    $( ".labelRange" ).html( $( "#slider-range" ).slider( "values", 0 ) +
-      " - " + $( "#slider-range" ).slider( "values", 1 ) );
-  } );
-  </script>
     
+
   </body>
 </html>

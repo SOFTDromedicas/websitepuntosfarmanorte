@@ -172,75 +172,47 @@ function stateChangeDatos() {
     }
 }
 
-function agregarmiembro(){
-  console.log("agregando miembro");
-  ++contadorG;
+function agregarmiembro() {
+    if (window.matchMedia('(max-width: 768px)').matches) {
+        $(function() {
+            $("#dialog").dialog({
+                width: 300,
+                buttons: [{
+                    text: "Agregar Miembro",
+                    click: registrarMiembro
+                }]
+            });
+        });
+    } else {
+        $(function() {
+            $("#dialog").dialog({
+                width: 420,
+                buttons: [{
+                    text: "Agregar Miembro",
+                    click: registrarMiembro
+                }]
+            });
+        });
+    }
 
-  var options = [ 'Abuelos(s)',  'Padre(s)', 'Sobrino(s)', 'Tio(s)'];
+    $(function() {
+        $("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: 100,
+            values: [20, 100],
+            slide: function(event, ui) {
+                $("#labelRange").html(ui.values[0] + " - " + ui.values[1]);
+            }
+        });
+        $("#labelRange").html($("#slider-range").slider("values", 0) +
+            " - " + $("#slider-range").slider("values", 1));
+    });
 
-  var contendorFamilia = document.getElementById('contenedor-familia');
-
-  var rowppal = document.createElement('div');
-  rowppal.setAttribute('class', 'row align-bottom miembro-class');
-
-  //Columna Derecha
-  var colLeft = document.createElement('div');
-  colLeft.setAttribute('class', 'small-12 medium-6 columns');
-
-  var selctElement = document.createElement('select');
-  selctElement.setAttribute('id', ('tipomiembro' + contadorG ))
-
-  for( var i = 0; i < options.length; i++){
-    var option = document.createElement('option');
-    option.setAttribute('value' , (i+1));
-    option.appendChild(document.createTextNode(options[i]));
-    selctElement.appendChild(option);
-  }
-
-  colLeft.appendChild(selctElement);
-
-  //Columna Inzquierda
-  var colRight = document.createElement('div');
-  colRight.setAttribute('class', 'small-12 medium-6 columns');
-
-  var parrafo = document.createElement('p');
-  var labelEdad = document.createElement('label');
-  labelEdad.appendChild(document.createTextNode('Rango de Edad:'));
-  parrafo.appendChild(labelEdad);
-  var span = document.createElement('span');
-  span.setAttribute('class', 'labelRange');
-  parrafo.appendChild(span);
-
-  colRight.appendChild(parrafo);
-
-  var slider = document.createElement('div');
-  slider.setAttribute('id', ('slider-range' + contadorG) );
-
-  var clone = $(slider).clone();
-  addSlider(clone.get(0));
-
-  colRight.appendChild(slider);
-
-
-  //agregar las dos columnas al rowppal
-  rowppal.appendChild(colLeft);
-  rowppal.appendChild(colRight);
-  contendorFamilia.appendChild(rowppal);
 }
 
+function registrarMiembro(){
 
-function addSlider(element, count) {
-   var slider = $( element ).slider({
-      range: true,
-      min: 0,
-      max: 80,
-      values: [ 20, 80 ],
-      slide: function( event, ui ) {
-        $( ".labelRange", element ).html(  ui.values[ 0 ] + " - " + ui.values[ 1 ]) ;
-      }
-    });
-    $( ".labelRange",element  ).html( $( element ).slider( "values", 0 ) +
-      " - " + $( element ).slider( "values", 1 ) );
 }
 
 

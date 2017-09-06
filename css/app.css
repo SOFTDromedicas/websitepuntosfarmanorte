@@ -451,6 +451,13 @@ legend{
 	margin-bottom: 0!important;
 }
 
+.ui-dialog .ui-dialog-buttonpane { 
+    text-align: center!important;
+}
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { 
+    float: none!important;
+}
+
 
 [type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'],
 textarea {
