@@ -229,13 +229,39 @@ function registrarMiembro() {
     var tipoMiembro = document.createElement('input');
     tipoMiembro.setAttribute('id', ('miembro' + contadorG));
     tipoMiembro.setAttribute('type', 'text');
+    var miembroHidden = document.createElement('input');
+    miembroHidden.setAttribute('id', ('mhidden' + contadorG));
+    miembroHidden.setAttribute('type', 'hidden');
+    
 
-    var nombreMiembro = obtenerMiembro(document.getElementById('tipoMiembro').value);
+    var valMiembro = document.getElementById('tipoMiembro').value;
 
-    tipoMiembro.setAttribute('value', nombreMiembro);
+    tipoMiembro.setAttribute('value', obtenerMiembro(valMiembro));
+    miembroHidden.setAttribute('value', valMiembro);
 
     tdTipo.appendChild(tipoMiembro);
+    tdTipo.appendChild(miembroHidden);
 
+      //columna derecha
+    var labelRange = document.createElement('input');
+    labelRange.setAttribute('type', 'text');
+    labelRange.setAttribute('id', ('labelRange' + contadorG));
+    var val1 = $("#slider-range").slider("values")[0];
+    var val2 = $("#slider-range").slider("values")[1];
+    
+    labelRange.setAttribute('id', val1 );
+    labelRange.setAttribute('value', ( "Entre " + val1 + " y " + val2 + ""));
+
+    var inicio = document.createElement('input');
+    inicio.setAttribute('id', ('inihidden' + contadorG));
+    inicio.setAttribute('type', 'hidden');
+    var fin = document.createElement('input');
+    fin.setAttribute('id', ('finhidden' + contadorG));
+    fin.setAttribute('type', 'hidden');
+    
+    tdRngo.appendChild(labelRange);
+    tdRngo.appendChild(inicio);
+    tdRngo.appendChild(fin);
     //adicion de columnas a la fila
     tr.appendChild(tdTipo);
     tr.appendChild(tdRngo);
@@ -264,7 +290,7 @@ function obtenerMiembro( miembro ){
     case "5":
       return 'Sobrino(s)';
       break;
-    case "3":
+    case "6":
       return 'Otros';
       break;
   }
