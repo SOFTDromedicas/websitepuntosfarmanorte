@@ -304,7 +304,16 @@
               </div>            
             </div>
             <div id="contenedor-familia" class="columns small-12">
-                            
+              <table id="tablamiembros">
+                <thead>
+                  <tr>
+                    <th>Miembro Familia</th>
+                    <th>Rango de Edad</th>
+                  </tr>
+                </thead>
+
+              </table>
+                              
             </div> <!-- end contenedor-familia -->
           </div>          
         </div>
@@ -348,26 +357,28 @@
   </div> <!-- end data-off-canvas-conten -->
     
 
-    <div id="dialog" title="Agregar Miembro">
-      <div class="row align-bottom miembro-class">
-        <div class="small-12 medium-6 columns">
-          <select name="" id="">
-            <option value="1">Abuelo(s)</option>
-            <option value="2">Padre(s)</option>
-            <option value="3">Sobrino(s)</option>
-            <option value="4">Tio(s)</option>
-          </select>
-        </div>
-        <div class="small-12 medium-6 columns">
-          <p>
-            <label for="label-1">Rango de Edad:</label>
-            <span  class="labelRange"></span>
-          </p>
-          <div id="slider-range"></div>
-        </div>
-        <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+  <div id="dialog" title="Agregar Miembro">
+    <div class="row align-bottom miembro-class">
+      <div class="small-12 medium-6 columns">
+        <select id="tipoMiembro">
+          <option value="1">Abuelo(s)</option>
+          <option value="2">Padres</option>
+          <option value="3">Esposo(a)</option>
+          <option value="4">Tio(s)</option>
+          <option value="5">Sobrino(s)</option>
+          <option value="6">Otros</option>
+        </select>
       </div>
+      <div class="small-12 medium-6 columns">
+        <p>
+          <label for="label-1">Rango de Edad:</label>
+          <span id="label-1" class="labelRange"></span>
+        </p>
+        <div id="slider-range"></div>
+      </div>
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
     </div>
+  </div>
 
     <script src="../js/vendor/jquery.js"></script>
     <script src="../js/vendor/what-input.js"></script>

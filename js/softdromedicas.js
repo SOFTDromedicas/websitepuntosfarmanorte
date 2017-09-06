@@ -13,6 +13,8 @@ var patologia = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10",
         "p11", "p12", "p13", "p14", "p15", "p16", "p17", "p18", "p19" ];
 var documentoAfiliado;
 var contadorG = 0;
+var tabla;
+var tbody;
 
 function iniciar() {
     console.log("funcion iniciar...");
@@ -49,6 +51,12 @@ function iniciar() {
       });
     }
 
+    //tabla del  miembros de familia
+    tabla = document.getElementById('tablamiembros');
+
+    tbody = document.createElement('tbody');
+    tbody.setAttribute('id', "cuerpotabla");  
+    tabla.appendChild(tbody);
 
     //validacion de correo electronico del cliente
     documentoAfiliado = getParameterURLByName('documento'); 
@@ -200,19 +208,66 @@ function agregarmiembro() {
             range: true,
             min: 0,
             max: 100,
-            values: [20, 100],
+            values: [10, 80],
             slide: function(event, ui) {
-                $("#labelRange").html(ui.values[0] + " - " + ui.values[1]);
+                $("#label-1").html(ui.values[0] + " - " + ui.values[1]);
             }
         });
-        $("#labelRange").html($("#slider-range").slider("values", 0) +
+        $("#label-1").html($("#slider-range").slider("values", 0) +
             " - " + $("#slider-range").slider("values", 1));
     });
 
 }
 
-function registrarMiembro(){
+function registrarMiembro() {
+    ++contadorG;
 
+    var tr = document.createElement('tr');
+    var tdTipo = document.createElement('td');
+    var tdRngo = document.createElement('td');
+    // contenido a cada columna
+    var tipoMiembro = document.createElement('input');
+    tipoMiembro.setAttribute('id', ('miembro' + contadorG));
+    tipoMiembro.setAttribute('type', 'text');
+
+    var nombreMiembro = obtenerMiembro(document.getElementById('tipoMiembro').value);
+
+    tipoMiembro.setAttribute('value', nombreMiembro);
+
+    tdTipo.appendChild(tipoMiembro);
+
+    //adicion de columnas a la fila
+    tr.appendChild(tdTipo);
+    tr.appendChild(tdRngo);
+
+    //adicion de la fila al body
+    tbody.appendChild(tr);
+
+    $("#dialog").dialog("close");
+
+}
+
+function obtenerMiembro( miembro ){
+  switch(miembro){
+    case "1":
+      return 'Abuelo(s)';
+      break;
+    case "2":
+      return 'Padres';
+      break;
+    case "3":
+      return 'Esposo(a)';
+      break;
+    case "4":
+      return 'Tio(s)';
+      break;
+    case "5":
+      return 'Sobrino(s)';
+      break;
+    case "3":
+      return 'Otros';
+      break;
+  }
 }
 
 

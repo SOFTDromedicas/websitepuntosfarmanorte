@@ -430,6 +430,7 @@ legend{
 }
 #agregar-miembro{
 	color:#ffffff;
+	background: #3F7FD5;
 	padding: 0.5rem;
 }
 
@@ -457,6 +458,26 @@ legend{
 .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { 
     float: none!important;
 }
+
+#contenedor-familia thead{
+	background: #98C4FF;
+	color: #3E3E3E;
+
+}
+
+.ui-dialog-titlebar{
+	background: #98C4FF!important;
+}
+
+#cuerpotabla [type='text']{
+	border: none!important;
+	padding: 0;
+	margin: 0;
+	background: none;
+	box-shadow: none;
+	max-width: 9rem;
+}
+
 
 
 [type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'],
