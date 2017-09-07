@@ -317,8 +317,12 @@ function establecerValores() {
 }
 
 function validateEmail(email){        
+  if( email == "" ){// permite que el campo sea vacio 
+    return true;
+  }else{
    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
-   return emailPattern.test(email);   
+   return emailPattern.test(email);  
+  }
  } 
 
  function formatDateAnioMesDia(date) {

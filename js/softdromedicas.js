@@ -16,6 +16,7 @@ var contadorG = 0;
 var referidoG = 0;
 var tabla;
 var tbody;
+var valido = true;
 
 function iniciar() {
     console.log("funcion iniciar...");
@@ -82,9 +83,6 @@ function iniciar() {
 
     //obtener todos los datos del cliente
     obtenerDatosAfiliado();
-
-    console.log("device: " + mobilecheck());
-    console.log("device: " + mobileAndTabletcheck());
 
 }//fin del metodo iniciar
 
@@ -155,7 +153,6 @@ function stateChangeDatos() {
 
             document.getElementById("nombres").value = removeDiacritics(afiliado.nombres); 
             document.getElementById("apellidos").value = removeDiacritics(afiliado.apellidos);
-            console.log()
             document.getElementById("tipodocumento").value = afiliado.tipodocumento;
             document.getElementById("documento").value = afiliado.documento;
             document.getElementById("sexo").value = afiliado.sexo;
@@ -172,12 +169,7 @@ function stateChangeDatos() {
             document.getElementById("telefonofijo").value = afiliado.telefonofijo
             document.getElementById("celular").value = afiliado.celular;
             document.getElementById("email").value = afiliado.email;
-            
-            
-
             // terminos = document.getElementById("checkboxterminos").value;
-
-
         } else {
 
         }
@@ -321,23 +313,26 @@ function agregarReferido(){
 
 
 function registrar() {
+    
     console.log("Procesando formulario.... ");
 
-    var oForm = document.getElementById('form-content');
-    var aParams = new Array();
+    //***--->
+    // var oForm = document.getElementById('form-content');
+    // var aParams = new Array();
+    // for (var i = 0; i < oForm.elements.length; i++) {
+    //     var sParam = encodeURIComponent(oForm.elements[i].name);
+    //     sParam += "=";
+    //     sParam += encodeURIComponent(oForm.elements[i].value);
+    //     aParams.push(sParam);
+    // }
+    // console.log(aParams.join("&"));
+    //<----***
 
-    for (var i = 0; i < oForm.elements.length; i++) {
-        var sParam = encodeURIComponent(oForm.elements[i].name);
-        sParam += "=";
-        sParam += encodeURIComponent(oForm.elements[i].value);
-        aParams.push(sParam);
-    }
-
-    console.log(aParams.join("&"));
-    
     establecerValores();
 
     urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpformulario2/index.phps?";
+
+    console.log( contadorG + " -- " + referidoG);
 
     if (validarFormulario()) {
         urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +
@@ -437,10 +432,9 @@ function reestrablecerFormulario(){
 }
 
 function validarFormulario(){
-  var valido = true;
-  //validacion de nombres
   
 
+  //validacion de nombres
   if(nombres == "" || nombres.length < 3 ){
     valido = false;
     document.getElementById("nombres").setAttribute("class","is-invalid-input");
@@ -543,6 +537,12 @@ function validarFormulario(){
     document.getElementById("checkboxterminos").closest("label").setAttribute("class","is-invalid-label");
   }
 
+  if(document.getElementById("password").value == "" ){
+    valido = false;
+    document.getElementById("password").setAttribute("class","is-invalid-input");
+   document.getElementById("password").closest("label").setAttribute("class","is-invalid-label");
+  }
+
   return valido
 }
 
@@ -582,8 +582,12 @@ function establecerValores() {
 
 
 function validateEmail(email){        
+  if( email == "" ){// permite que el campo sea vacio 
+    return true;
+  }else{
    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
-   return emailPattern.test(email);   
+   return emailPattern.test(email);  
+  }
  } 
 
  function formatDateAnioMesDia(date) {

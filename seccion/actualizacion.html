@@ -92,7 +92,7 @@
     <!-- formulario de inscripcion -->
     <section id="inscripcion-content">
       <div class="row">
-        <h3 id="inscripcion-title" class="float-center">Completa tu inscripci&oacute;n a Puntos Farmanorte</h3>
+        <h3 id="inscripcion-title" class="float-center ">Completa tu inscripci&oacute;n a Puntos Farmanorte</h3>
       </div>
       
         <div class="row expanded">
@@ -208,7 +208,28 @@
               <input type="email" pattern="email" name="email" required id="email" placeholder="Ingrese su correo electronico">
             </label>
           </div>
-        </div>   
+        </div> 
+        
+        <div class="row">
+          <div class="small-12 medium-6 columns">
+            <label>Contrase&ntilde;a
+              <input type="password" id="password" placeholder="Ingrese su contrase&ntilde;a" aria-describedby="exampleHelpText" required >
+              <span class="form-error">
+                Es requerido!
+              </span>
+            </label>            
+          </div>
+          <div class="small-12 medium-6 columns">
+            <label>Confirme Contrase&ntilde;a
+              <input type="password" placeholder="Confirme su contrase&ntilde;a" aria-describedby="exampleHelpText2" required pattern="alpha_numeric" data-equalto="password">
+              <span class="form-error">
+                La confirmacion de la contrase&ntilde;a no coincide!
+              </span>
+            </label>            
+          </div>          
+        </div>
+
+        
 
         <div class="row align-middle">
           <div class="small-12 title-section">
@@ -266,29 +287,36 @@
 
         <div class="row">
           <div class="small-12 columns" id="patologias-content">
-              <p class="info">Deseo recibir informaci&oacute;n de ofertas sobre productos relacionados con las siguientes patolog&iacute;as:</p>
+              <p class="info">Deseo recibir informaci&oacute;n de ofertas sobre productos relacionados con las siguientes patolog&iacute;as y/o categor&iacute;as:</p>
               <div class="row patologias" id="patologia-div">
                 <div class="small-12 medium-6 columns">
-                  <input value="19" name="pat[]" type="checkbox"><label>Alzh&eacute;imer</label><br/>
-                  <input value="5" name="pat[]" type="checkbox"><label>Anemia</label><br/>
-                  <input value="7" name="pat[]" type="checkbox"><label>Artritis</label><br/>
-                  <input value="16" name="pat[]" type="checkbox"><label>Colesterol</label><br/>
-                  <input value="10" name="pat[]" type="checkbox"><label>Cuidado de Bebe</label><br/>
-                  <input value="13" name="pat[]" type="checkbox"><label>Cuidado de la Piel</label><br/>
-                  <input value="9" name="pat[]" type="checkbox"><label>Cuidado de Ni&ntilde;os</label><br/>
+                  <input value="1" name="pat[]" type="checkbox"><label>Alzh&eacute;imer</label><br/>
+                  <input value="2" name="pat[]" type="checkbox"><label>Anemia</label><br/>
+                  <input value="3" name="pat[]" type="checkbox"><label>Artritis</label><br/>
+                  <input value="4" name="pat[]" type="checkbox"><label>Asma</label><br/>
+                  <input value="5" name="pat[]" type="checkbox"><label>Cancer</label><br/>
+                  <input value="6" name="pat[]" type="checkbox"><label>Cardiovasculares</label><br/>
+                  <input value="7" name="pat[]" type="checkbox"><label>Colesterol</label><br/>
+                  <input value="8" name="pat[]" type="checkbox"><label>Cuidado de Bebe</label><br/>
+                  <input value="9" name="pat[]" type="checkbox"><label>Cuidado de la Piel</label><br/>
+                  <input value="10" name="pat[]" type="checkbox"><label>Cuidado de Ni&ntilde;os</label><br/>
                   <input value="11" name="pat[]" type="checkbox"><label>Depresion</label><br/>
-                  <input value="2" name="pat[]" type="checkbox"><label>Diabetes</label><br/>
+                  <input value="12" name="pat[]" type="checkbox"><label>Diabetes</label><br/>
+                  <input value="13" name="pat[]" type="checkbox"><label>Epilepsia</label><br/>
                 </div>
                 <div class="small-12 medium-6 columns">
-                  <input value="4" name="pat[]" type="checkbox"><label>Epilepsia</label><br/>
-                  <input value="12" name="pat[]" type="checkbox"><label>Gestacion y Maternidad</label><br/>
-                  <input value="1" name="pat[]" type="checkbox"><label>Hipertensión</label><br/>
-                  <input value="14" name="pat[]" type="checkbox"><label>Incontinencia</label><br/>
-                  <input value="15" name="pat[]" type="checkbox"><label>Menopausia</label><br/>
-                  <input value="3" name="pat[]" type="checkbox"><label>Obesidad</label><br/>
-                  <input value="17" name="pat[]" type="checkbox"><label>Osteoporosis</label><br/>
-                  <input value="6" name="pat[]" type="checkbox"><label>Parkinson</label><br/>
-                  <input value="8" name="pat[]" type="checkbox"><label>Ulcera</label><br/>
+                  <input value="14" name="pat[]" type="checkbox"><label>Gestacion y Maternidad</label><br/>
+                  <input value="15" name="pat[]" type="checkbox"><label>Gripe</label><br/>
+                  <input value="16" name="pat[]" type="checkbox"><label>Hipertensión</label><br/>
+                  <input value="17" name="pat[]" type="checkbox"><label>Hipertiroidismo</label><br/>
+                  <input value="18" name="pat[]" type="checkbox"><label>Incontinencia</label><br/>
+                  <input value="19" name="pat[]" type="checkbox"><label>Menopausia</label><br/>
+                  <input value="20" name="pat[]" type="checkbox"><label>Migra&ntilde;a</label><br/>
+                  <input value="21" name="pat[]" type="checkbox"><label>Obesidad</label><br/>
+                  <input value="22" name="pat[]" type="checkbox"><label>Osteoporosis</label><br/>
+                  <input value="23" name="pat[]" type="checkbox"><label>Parkinson</label><br/>
+                  <input value="24" name="pat[]" type="checkbox"><label>Resfriado</label><br/>
+                  <input value="25" name="pat[]" type="checkbox"><label>Ulcera</label><br/>
                 </div>
               </div>
           </div>
@@ -297,7 +325,7 @@
 
         <div class="row" id="nucleo-familia">
           <div class="small-12 columns">
-            <p class="info">Que personas componen tu nucleo de familia:</p>
+            <p class="info">Que personas componen t&uacute; n&uacute;cleo de familia:</p>
             <div class="row">
               <div class="small-12 columns">
                 <button type="button" id="agregar-miembro" class="button success">Agregar Miembro</button>
@@ -340,29 +368,36 @@
 
         <div class="row">
           <div class="small-12 columns" id="patologias-content">
-              <p class="info">En su nucleo familiar algun miembro padece de alguna de estas patolog&iacute;as:</p>
+              <p class="info">En su nucleo familiar algun miembro padece de alguna de estas patolog&iacute;as y/o categor&iacute;as:</p>
               <div class="row patologias" id="patologia-div">
                 <div class="small-12 medium-6 columns">
-                  <input value="19" name="fampat[]" type="checkbox"><label>Alzh&eacute;imer</label><br/>
-                  <input value="5" name="fampat[]" type="checkbox"><label>Anemia</label><br/>
-                  <input value="7" name="fampat[]" type="checkbox"><label>Artritis</label><br/>
-                  <input value="16" name="fampat[]" type="checkbox"><label>Colesterol</label><br/>
-                  <input value="10" name="fampat[]" type="checkbox"><label>Cuidado de Bebe</label><br/>
-                  <input value="13" name="fampat[]" type="checkbox"><label>Cuidado de la Piel</label><br/>
-                  <input value="9" name="fampat[]" type="checkbox"><label>Cuidado de Ni&ntilde;os</label><br/>
-                  <input value="11" name="fampat[]" type="checkbox"><label>Depresion</label><br/>
-                  <input value="2" name="fampat[]" type="checkbox"><label>Diabetes</label><br/>
+                  <input value="1" name="pat[]" type="checkbox"><label>Alzh&eacute;imer</label><br/>
+                  <input value="2" name="pat[]" type="checkbox"><label>Anemia</label><br/>
+                  <input value="3" name="pat[]" type="checkbox"><label>Artritis</label><br/>
+                  <input value="4" name="pat[]" type="checkbox"><label>Asma</label><br/>
+                  <input value="5" name="pat[]" type="checkbox"><label>Cancer</label><br/>
+                  <input value="6" name="pat[]" type="checkbox"><label>Cardiovasculares</label><br/>
+                  <input value="7" name="pat[]" type="checkbox"><label>Colesterol</label><br/>
+                  <input value="8" name="pat[]" type="checkbox"><label>Cuidado de Bebe</label><br/>
+                  <input value="9" name="pat[]" type="checkbox"><label>Cuidado de la Piel</label><br/>
+                  <input value="10" name="pat[]" type="checkbox"><label>Cuidado de Ni&ntilde;os</label><br/>
+                  <input value="11" name="pat[]" type="checkbox"><label>Depresion</label><br/>
+                  <input value="12" name="pat[]" type="checkbox"><label>Diabetes</label><br/>
+                  <input value="13" name="pat[]" type="checkbox"><label>Epilepsia</label><br/>
                 </div>
                 <div class="small-12 medium-6 columns">
-                  <input value="4" name="fampat[]" type="checkbox"><label>Epilepsia</label><br/>
-                  <input value="12" name="fampat[]" type="checkbox"><label>Gestacion y Maternidad</label><br/>
-                  <input value="1" name="fampat[]" type="checkbox"><label>Hipertensión</label><br/>
-                  <input value="14" name="fampat[]" type="checkbox"><label>Incontinencia</label><br/>
-                  <input value="15" name="fampat[]" type="checkbox"><label>Menopausia</label><br/>
-                  <input value="3" name="fampat[]" type="checkbox"><label>Obesidad</label><br/>
-                  <input value="17" name="fampat[]" type="checkbox"><label>Osteoporosis</label><br/>
-                  <input value="6" name="fampat[]" type="checkbox"><label>Parkinson</label><br/>
-                  <input value="8" name="fampat[]" type="checkbox"><label>Ulcera</label><br/>
+                  <input value="14" name="pat[]" type="checkbox"><label>Gestacion y Maternidad</label><br/>
+                  <input value="15" name="pat[]" type="checkbox"><label>Gripe</label><br/>
+                  <input value="16" name="pat[]" type="checkbox"><label>Hipertensión</label><br/>
+                  <input value="17" name="pat[]" type="checkbox"><label>Hipertiroidismo</label><br/>
+                  <input value="18" name="pat[]" type="checkbox"><label>Incontinencia</label><br/>
+                  <input value="19" name="pat[]" type="checkbox"><label>Menopausia</label><br/>
+                  <input value="20" name="pat[]" type="checkbox"><label>Migra&ntilde;a</label><br/>
+                  <input value="21" name="pat[]" type="checkbox"><label>Obesidad</label><br/>
+                  <input value="22" name="pat[]" type="checkbox"><label>Osteoporosis</label><br/>
+                  <input value="23" name="pat[]" type="checkbox"><label>Parkinson</label><br/>
+                  <input value="24" name="pat[]" type="checkbox"><label>Resfriado</label><br/>
+                  <input value="25" name="pat[]" type="checkbox"><label>Ulcera</label><br/>
                 </div>
               </div>
           </div>
@@ -370,7 +405,7 @@
 
         <div class="row" id="recomienda">
           <div class="small-12 columns">
-            <p class="info">Recomienda puntos farmanorte a tus amigos y gana 100 puntos por cada referido que se vincule al programa:</p>
+            <p class="info">Recomienda puntos farmanorte a tus amigos y gana 50 puntos por cada referido que se vincule al programa:</p>
             <div class="row">
               <div class="small-12 columns">
                 <button type="button" id="agregar-referido" class="button success">Agregar Referido</button>
@@ -434,6 +469,8 @@
         <div id="slider-range"></div>
       </div>
       <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+
+
     </div>
   </div>
 
