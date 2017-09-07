@@ -301,10 +301,22 @@ function obtenerMiembro( miembro ){
 
 function registrar() {
     console.log("Procesando formulario.... ");
+
+    var oForm = document.getElementById('form-content');
+    var aParams = new Array();
+
+    for (var i = 0; i < oForm.elements.length; i++) {
+        var sParam = encodeURIComponent(oForm.elements[i].name);
+        sParam += "=";
+        sParam += encodeURIComponent(oForm.elements[i].value);
+        aParams.push(sParam);
+    }
+
+    console.log(aParams.join("&"));
     
     establecerValores();
 
-    urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpformulario2/index.php?";
+    urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpformulario2/index.phps?";
 
     if (validarFormulario()) {
         urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +
