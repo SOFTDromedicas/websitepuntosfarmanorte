@@ -312,13 +312,11 @@ function agregarReferido(){
   var input = document.createElement('input');
   input.setAttribute('name',('referido'+referidoG));
   input.setAttribute('id',('referido'+referidoG));
-  input.setAttribute('type','text');
-  input.setAttribute('placeholder','Ingresa email del referido');
+  input.setAttribute('type','email');
+  input.setAttribute('placeholder',('Ingresa email del referido No.'+referidoG));
 
   columna.appendChild(input);
   contenedor.appendChild(columna);
-
-
 }
 
 
