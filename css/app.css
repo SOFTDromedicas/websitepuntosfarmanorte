@@ -433,7 +433,8 @@ legend{
 #form-content p{
 	margin-bottom: 0.9rem;
 }
-#agregar-miembro{
+#agregar-miembro,
+#agregar-referido{
 	color:#ffffff;
 	background: #3F7FD5;
 	padding: 0.5rem;

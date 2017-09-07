@@ -13,6 +13,7 @@ var patologia = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10",
         "p11", "p12", "p13", "p14", "p15", "p16", "p17", "p18", "p19" ];
 var documentoAfiliado;
 var contadorG = 0;
+var referidoG = 0;
 var tabla;
 var tbody;
 
@@ -23,6 +24,9 @@ function iniciar() {
 
     var miembroButton = document.getElementById("agregar-miembro");
     miembroButton.addEventListener('click', agregarmiembro, false);
+
+    var referidoButton = document.getElementById("agregar-referido");
+    referidoButton.addEventListener('click', agregarReferido, false);
 
     //prepara combo de ciudades
     establecerCiudades();
@@ -296,6 +300,25 @@ function obtenerMiembro( miembro ){
       return 'Otros';
       break;
   }
+}
+
+function agregarReferido(){
+  ++referidoG;
+
+  var contenedor = document.querySelector('#referido-content');
+  var columna = document.createElement('div');
+  columna.setAttribute('class','columns');
+
+  var input = document.createElement('input');
+  input.setAttribute('name',('referido'+referidoG));
+  input.setAttribute('id',('referido'+referidoG));
+  input.setAttribute('type','text');
+  input.setAttribute('placeholder','Ingresa email del referido');
+
+  columna.appendChild(input);
+  contenedor.appendChild(columna);
+
+
 }
 
 
