@@ -225,7 +225,7 @@ function registrarMiembro() {
     tipoMiembro.setAttribute('id', ('miembro' + contadorG));
     tipoMiembro.setAttribute('type', 'text');
     var miembroHidden = document.createElement('input');
-    miembroHidden.setAttribute('id', ('mhidden' + contadorG));
+    miembroHidden.setAttribute('id', ('tipomiembroval' + contadorG));
     miembroHidden.setAttribute('type', 'hidden');
     
 
@@ -248,11 +248,11 @@ function registrarMiembro() {
     labelRange.setAttribute('value', ( "Entre " + val1 + " y " + val2 + ""));
 
     var inicio = document.createElement('input');
-    inicio.setAttribute('id', ('inihidden' + contadorG));
+    inicio.setAttribute('id', ('valini' + contadorG));
     inicio.setAttribute('type', 'hidden');
     inicio.setAttribute('value', val1);
     var fin = document.createElement('input');
-    fin.setAttribute('id', ('finhidden' + contadorG));
+    fin.setAttribute('id', ('valfin' + contadorG));
     fin.setAttribute('type', 'hidden');
     fin.setAttribute('value', val2);
     
@@ -335,21 +335,30 @@ function registrar() {
     console.log( validarFormulario());
 
     if (validarFormulario()) {
+        //Campos del formulario hasta datos basico -nivel de estudios
         urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +
              "&tipodocumento=" + tipodocumento  + "&sexo=" + sexo  + "&direccion=" + direccion  + 
              "&fechanacimiento=" + fechanacimiento  + "&telefonofijo=" + telefonofijo  + 
              "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email + "&barrio=" + barrio +
              "&claveweb=" + contrasenia + "&ocupacion=" + ocupacion + "&estudios=" + estudios;
 
-        console.log("URL Servicio: " + urlWs);        
-        //obtengo valores de patologias para  concatenar
+        //obtengo valores de patologias afiliado
         var pato = document.getElementsByName("pat[]");
         for (var i = 0; i < pato.length; i++) {
             if (pato[i].checked) {
-                urlWs += ("&p" + [i+1] + "=" + pato[i].value);
-                console.log("&p" + [i+1] + "=" + pato[i].value);                
+                urlWs += ("&p" + [i+1] + "=" + pato[i].value);                
             }
         }
+
+        //nucleo de familia
+        urlWs +=  "&cantidadmiembro=" + contadorG;
+        for( var i = 0; i < contadorG; i++){
+          urlWs += ("&tipomiembroval" + [i+1] + "=" + document.getElementById("tipomiembroval"+[i+1]).value);
+          urlWs += ("&valini" + [i+1] + "=" + document.getElementById("valini"+[i+1]).value);
+          urlWs += ("&valfin" + [i+1] + "=" + document.getElementById("valfin"+[i+1]).value);
+        }
+
+        console.log("URL Servicio: " + urlWs);        
 
         if( document.getElementById("hijos").checked )
             urlWs += "&hijos=true";
