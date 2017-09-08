@@ -369,7 +369,7 @@ legend{
 	font-weight: normal!important;
 }
 
-#patologia-div [type='checkbox']{
+#patologia-div [type='checkbox'], [type='radio']{
 	zoom: 1.3;	
 	font-family: 'Open Sans', sans-serif;
 	
@@ -409,8 +409,8 @@ legend{
 	display:inline-block!important;      
 	margin-right: 2rem;
 }
-#ocupacion [type='checkbox'],
-#estudios [type='checkbox'],
+#ocupacion [type='radio'],
+#estudios [type='radio'],
 #hijos-cont [type='checkbox'],
 #patologia-div [type='checkbox']{
 	zoom:1.5;

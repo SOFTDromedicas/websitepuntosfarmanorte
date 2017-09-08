@@ -3,20 +3,19 @@ $(document).foundation()
 
 //Campos del formulario
 var ciudad, documento, nombres, apellidos, tipodocumento, sexo, direccion,
-            barrio, fechanacimiento, telefonofijo, celular, email, terminos;
+            barrio, fechanacimiento, telefonofijo, celular, email, claveweb, 
+            ocupacion, estudios, terminos;
 var btnGuardar;
 var urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
 var ciudadesService = "http://dromedicas.sytes.net:9999/dropos/wsjson/ciudades/";
 var asyncRequest;
 var asyncRequestProcess;
-var patologia = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10", 
-        "p11", "p12", "p13", "p14", "p15", "p16", "p17", "p18", "p19" ];
 var documentoAfiliado;
 var contadorG = 0;
 var referidoG = 0;
 var tabla;
 var tbody;
-var valido = true;
+
 
 function iniciar() {
     console.log("funcion iniciar...");
@@ -333,26 +332,28 @@ function registrar() {
     urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpformulario2/index.phps?";
 
     console.log( contadorG + " -- " + referidoG);
+    console.log( validarFormulario());
 
     if (validarFormulario()) {
         urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +
              "&tipodocumento=" + tipodocumento  + "&sexo=" + sexo  + "&direccion=" + direccion  + 
              "&fechanacimiento=" + fechanacimiento  + "&telefonofijo=" + telefonofijo  + 
-             "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email + "&barrio=" + barrio;
+             "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email + "&barrio=" + barrio +
+             "&claveweb=" + contrasenia + "&ocupacion=" + ocupacion + "&estudios=" + estudios;
 
+        console.log("URL Servicio: " + urlWs);        
         //obtengo valores de patologias para  concatenar
         var pato = document.getElementsByName("pat[]");
         for (var i = 0; i < pato.length; i++) {
             if (pato[i].checked) {
-                urlWs += ("&" + patologia[i] + "=" + pato[i].value);
-                console.log("&" + patologia[i] + "=" + pato[i].value);                
+                urlWs += ("&p" + [i+1] + "=" + pato[i].value);
+                console.log("&p" + [i+1] + "=" + pato[i].value);                
             }
         }
 
         if( document.getElementById("hijos").checked )
             urlWs += "&hijos=true";
 
-        console.log("URL Servicio: " + urlWs);        
 
         try {
             asyncRequestProcess = new XMLHttpRequest();
@@ -433,7 +434,7 @@ function reestrablecerFormulario(){
 
 function validarFormulario(){
   
-
+  var valido = true;
   //validacion de nombres
   if(nombres == "" || nombres.length < 3 ){
     valido = false;
@@ -568,7 +569,12 @@ function establecerValores() {
     celular = document.getElementById("celular").value.trim();
     ciudad = document.getElementById("ciudad").value.toUpperCase().trim();
     email = document.getElementById("email").value.trim();
-    terminos = document.getElementById("checkboxterminos").value;  
+    terminos = document.getElementById("checkboxterminos").value; 
+    contrasenia =  document.getElementById("password").value;
+    console.log(contrasenia)
+    ocupacion = document.getElementById("ocupa[]").value;
+    estudios = document.getElementById("estudio[]").value;
+
 
     if( mobilecheck() && mobileAndTabletcheck()){
       fechanacimiento = document.getElementById('fechanacimiento').value;
