@@ -12,7 +12,7 @@ var asyncRequest;
 var asyncRequestProcess;
 var documentoAfiliado;
 var contadorG = 0;
-var referidoG = 0;
+var referidoG = 1;
 var tabla;
 var tbody;
 
@@ -315,21 +315,9 @@ function registrar() {
     
     console.log("Procesando formulario.... ");
 
-    //***--->
-    // var oForm = document.getElementById('form-content');
-    // var aParams = new Array();
-    // for (var i = 0; i < oForm.elements.length; i++) {
-    //     var sParam = encodeURIComponent(oForm.elements[i].name);
-    //     sParam += "=";
-    //     sParam += encodeURIComponent(oForm.elements[i].value);
-    //     aParams.push(sParam);
-    // }
-    // console.log(aParams.join("&"));
-    //<----***
-
     establecerValores();
 
-    urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpformulario2/index.phps?";
+    urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpformulario2/index.php?";
 
     console.log( contadorG + " -- " + referidoG);
     console.log( validarFormulario());
@@ -363,7 +351,7 @@ function registrar() {
           urlWs += "&hijosmenoresde4=true" ;
         }
         if(document.getElementById("hijosentre4y12").checked){
-          urlWs += "&=true";
+          urlWs += "&hijosentre4y12=true";
         }
         if(document.getElementById("hijosentre13y18").checked){
           urlWs += "&hijosentre4y12=true";
@@ -373,14 +361,24 @@ function registrar() {
         }
 
         //patologia nucleo familia
-        
+        var pato = document.getElementsByName("patmiembro[]");
+        for (var i = 0; i < pato.length; i++) {
+            if (pato[i].checked) {
+                urlWs += ("&pm" + [i+1] + "=" + pato[i].value);                
+            }
+        }
+
+        //referidos
+        if (document.getElementsByName("referido1").value !== "" && referidoG > 1) {
+            urlWs += "&cantreferido=" + referidoG;
+            for (var i = 0; i < referidoG; i++) {
+                urlWs += ("&referido" + [i + 1] + "=" + document.getElementById("referido" + [i + 1]).value);
+            }
+        }
+
 
 
         console.log("URL Servicio: " + urlWs);        
-
-        if( document.getElementById("hijos").checked )
-            urlWs += "&hijos=true";
-
 
         try {
             asyncRequestProcess = new XMLHttpRequest();
@@ -598,9 +596,17 @@ function establecerValores() {
     email = document.getElementById("email").value.trim();
     terminos = document.getElementById("checkboxterminos").value; 
     contrasenia =  document.getElementById("password").value;
-    console.log(contrasenia)
-    ocupacion = document.getElementById("ocupa[]").value;
-    estudios = document.getElementById("estudio[]").value;
+    
+    var oucupatemp = document.getElementsByName("ocupa[]");    
+    for( var i= 0; i<oucupatemp.length; i++){
+      if( oucupatemp[i].checked)
+        ocupacion = oucupatemp[i].value;
+    }
+    var estudiotemp = document.getElementsByName("estudio[]");    
+    for( var i= 0; i<estudiotemp.length; i++){
+      if( estudiotemp[i].checked)
+        estudios = estudiotemp[i].value;
+    }
 
 
     if( mobilecheck() && mobileAndTabletcheck()){

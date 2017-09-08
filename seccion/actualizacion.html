@@ -46,7 +46,7 @@
         <li><a href="../index.html#ancla_beneficion-section">¿Cuales son los beneficios?</a></li>
       </ul>
     </nav>
-  </div>
+  </div> <!-- end  Menu off-canvas -->
   
   <!-- Contenido de la pagina normal -->
   <div class="off-canvas-content" data-off-canvas-content>
@@ -95,11 +95,12 @@
         <h3 id="inscripcion-title" class="float-center ">Completa tu inscripci&oacute;n a Puntos Farmanorte</h3>
       </div>
       
-        <div class="row expanded">
-          <div class="small-12  columns" style="display: none;" id="spinner2">
-            <div class="loader"></div>
-          </div>          
-        </div>
+        
+      <div class="row expanded">
+        <div class="small-12 columns" style="display: none;" id="spinner2">
+          <div class="loader"></div>
+        </div>          
+      </div>
 
       <form id="form-content" data-abide novalidate>
         
@@ -125,328 +126,333 @@
             <span aria-hidden="true">&times;</span>
             </button>
           </div>
-        </div>
+        </div> <!-- end callout-content -->
+        <!-- contenido del formulario -->
         <div id="blur">
-        <div class="row align-middle">
-          <div class="small-12 title-section">
-            <h6>Datos Personales</h6>
+
+          <div class="row align-middle">
+            <div class="small-12 title-section">
+              <h6>Datos Personales</h6>
+            </div>
           </div>
-        </div>
-        <div class="row ">
-          <div class="small-12 medium-6 columns">
-            <label>Nombres
-              <input type="text" name="nombres" id="nombres" required placeholder="Ingrese sus nombres">
-            </label>
+          <div class="row ">
+            <div class="small-12 medium-6 columns">
+              <label>Nombres
+                <input type="text" name="nombres" id="nombres" required placeholder="Ingrese sus nombres">
+              </label>
+            </div>
+            <div class="small-12 medium-6 columns">
+              <label>Apellidos
+                <input type="text" name="apellidos" id="apellidos" required placeholder="Ingrese sus apellidos">
+              </label>
+            </div>
           </div>
-          <div class="small-12 medium-6 columns">
-            <label>Apellidos
-              <input type="text" name="apellidos" id="apellidos" required placeholder="Ingrese sus apellidos">
-            </label>
-          </div>
-        </div>
-        <div class="row ">
-          <div class="small-12 medium-3 columns">
-            <label>Tipo de Documento
-            <select name="tipodocumento" id="tipodocumento">
-              <option value="1">Cedula de Ciudadan&iacute;a</option>
-              <option value="2">Cedula de Extranjer&iacute;a</option>
-              <option value="3">Pasaporte</option>
-              <option value="4">Otro</option>
-            </select>
-            </label>
-          </div>
-          <div class="small-12 medium-3 columns">
-            <label>Documento
-              <input type="number" name="documento" id="documento" required placeholder="N&uacute;mero de documento">
-            </label>
-          </div>
-          <div class="small-12 medium-3 columns">
-            <label>G&eacute;nero - Sexo
-              <select name="sexo" id="sexo">
-                <option value="F">Femenino</option>
-                <option value="M">Masculino</option>
-                <option value="O">Otro</option>
+          <div class="row ">
+            <div class="small-12 medium-3 columns">
+              <label>Tipo de Documento
+              <select name="tipodocumento" id="tipodocumento">
+                <option value="1">Cedula de Ciudadan&iacute;a</option>
+                <option value="2">Cedula de Extranjer&iacute;a</option>
+                <option value="3">Pasaporte</option>
+                <option value="4">Otro</option>
               </select>
-            </label>
+              </label>
+            </div>
+            <div class="small-12 medium-3 columns">
+              <label>Documento
+                <input type="number" name="documento" id="documento" required placeholder="N&uacute;mero de documento">
+              </label>
+            </div>
+            <div class="small-12 medium-3 columns">
+              <label>G&eacute;nero - Sexo
+                <select name="sexo" id="sexo">
+                  <option value="F">Femenino</option>
+                  <option value="M">Masculino</option>
+                  <option value="O">Otro</option>
+                </select>
+              </label>
+            </div>
+            <div class="small-12 medium-3 columns">
+              <label>Fecha Nacimiento
+                <input type="text" name="fechanacimiento" required id="fechanacimiento" data-date-format="mm/dd/yy">
+              </label>
+            </div>
           </div>
-          <div class="small-12 medium-3 columns">
-            <label>Fecha Nacimiento
-              <input type="text" name="fechanacimiento" required id="fechanacimiento" data-date-format="mm/dd/yy">
-            </label>
+          <div class="row ">
+            <div class="small-12 medium-6 columns">
+              <label>Direcci&oacute;n
+                <input type="text" name="direccion" id="direccion" required placeholder="Ingrese su direcci&oacute;n">
+              </label>
+            </div>
+            <div class="small-12 medium-3 columns">
+              <label>Barrio
+                <input type="text" name="barrio" required="" id="barrio" placeholder="Ingrese su barrio">
+              </label>
+            </div>
+            <div class="small-12 medium-3 columns">
+              <label>Ciudad
+                <select name="ciudad" required="" id="ciudad"></select>
+              </label>
+            </div>          
           </div>
-        </div>
-        <div class="row ">
-          <div class="small-12 medium-6 columns">
-            <label>Direcci&oacute;n
-              <input type="text" name="direccion" id="direccion" required placeholder="Ingrese su direcci&oacute;n">
-            </label>
+          <div class="row ">
+            <div class="small-12 medium-4 columns">
+              <label>Tel&eacute;fono
+                <input type="number" name="telefonofijo" id="telefonofijo" placeholder="Ingrese su n&uacute;mero de tel&eacute;fono">
+              </label>
+            </div>
+            <div class="small-12 medium-4 columns">
+              <label>Celular
+                <input type="number" name="celular" id="celular" required placeholder="Ingrese su n&uacute;mero celular">
+              </label>
+            </div>
+            <div class="small-12 medium-4 columns">
+              <label>Email
+                <input type="email" pattern="email" name="email" required id="email" placeholder="Ingrese su correo electronico">
+              </label>
+            </div>
+          </div> 
+          
+          <div class="row">
+            <div class="small-12 medium-6 columns">
+              <label>Contrase&ntilde;a
+                <input type="password" id="password" placeholder="Ingrese su contrase&ntilde;a" aria-describedby="exampleHelpText" required >
+                <span class="form-error">
+                  Es requerido!
+                </span>
+              </label>            
+            </div>
+            <div class="small-12 medium-6 columns">
+              <label>Confirme Contrase&ntilde;a
+                <input type="password" placeholder="Confirme su contrase&ntilde;a" aria-describedby="exampleHelpText2" required pattern="alpha_numeric" data-equalto="password">
+                <span class="form-error">
+                  La confirmacion de la contrase&ntilde;a no coincide!
+                </span>
+              </label>            
+            </div>          
           </div>
-          <div class="small-12 medium-3 columns">
-            <label>Barrio
-              <input type="text" name="barrio" required="" id="barrio" placeholder="Ingrese su barrio">
-            </label>
+
+          
+
+          <div class="row align-middle">
+            <div class="small-12 title-section">
+              <h6>Informaci&oacute;n Adicional</h6>
+            </div>
           </div>
-          <div class="small-12 medium-3 columns">
-            <label>Ciudad
-              <select name="ciudad" required="" id="ciudad"></select>
-            </label>
-          </div>          
-        </div>
-        <div class="row ">
-          <div class="small-12 medium-4 columns">
-            <label>Tel&eacute;fono
-              <input type="number" name="telefonofijo" id="telefonofijo" placeholder="Ingrese su n&uacute;mero de tel&eacute;fono">
-            </label>
+
+          <div class="row">
+            <div class="small-12 columns">
+              <p class="info">Ocupaci&oacute;n:</p>            
+            </div>
+            <div class="columns small-12">
+              <div class="row small-up-1 medium-up-2 large-up-4" id="ocupacion">
+                <div class="columns">
+                  <input value="1" name="ocupa[]" id="ocupa[]" type="radio"><label>Ama de casa</label>                          
+                </div>
+                <div class="columns">
+                  <input value="2" name="ocupa[]" id="ocupa[]" type="radio"><label>Empleado</label>                          
+                </div>
+                <div class="columns">
+                  <input value="3" name="ocupa[]" id="ocupa[]" type="radio"><label>Estudiante</label>                          
+                </div>
+                <div class="columns">
+                  <input value="4" name="ocupa[]" id="ocupa[]" type="radio"><label>Independiente</label>                          
+                </div>
+                <div class="columns">
+                  <input value="5" name="ocupa[]" id="ocupa[]" type="radio"><label>Pensionado(a)</label>                     
+                </div>
+              </div>    <!-- end row -->   
+            </div>
           </div>
-          <div class="small-12 medium-4 columns">
-            <label>Celular
-              <input type="number" name="celular" id="celular" required placeholder="Ingrese su n&uacute;mero celular">
-            </label>
+
+
+          <div class="row" id="estudios">
+            <div class="small-12 columns">
+              <p class="info">Nivel de estudios:</p>
+            </div>
+            <div class="columns small-12">
+              <div class="row small-up-1 medium-up-2 large-up-4">
+                <div class="columns">
+                  <input value="1" name="estudio[]" id="estudio[]" type="radio"><label>Primaria</label>                          
+                </div>
+                <div class="columns">
+                  <input value="2" name="estudio[]" id="estudio[]" type="radio"><label>Bachiller</label>                          
+                </div>
+                <div class="columns">
+                  <input value="3" name="estudio[]" id="estudio[]" type="radio"><label>Universitario</label>                         
+                </div>
+                <div class="columns">
+                  <input value="4" name="estudio[]" id="estudio[]" type="radio"><label>Post-grado</label>                         
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="small-12 medium-4 columns">
-            <label>Email
-              <input type="email" pattern="email" name="email" required id="email" placeholder="Ingrese su correo electronico">
-            </label>
+
+          <div class="row">
+            <div class="small-12 columns" id="patologias-content">
+                <p class="info">Deseo recibir informaci&oacute;n de ofertas sobre productos relacionados con las siguientes patolog&iacute;as y/o categor&iacute;as:</p>
+                <div class="row patologias" id="patologia-div">
+                  <div class="small-12 medium-6 columns">
+                    <input value="1" name="pat[]" type="checkbox"><label>Alzh&eacute;imer</label><br/>
+                    <input value="2" name="pat[]" type="checkbox"><label>Anemia</label><br/>
+                    <input value="3" name="pat[]" type="checkbox"><label>Artritis</label><br/>
+                    <input value="4" name="pat[]" type="checkbox"><label>Asma</label><br/>
+                    <input value="5" name="pat[]" type="checkbox"><label>Cancer</label><br/>
+                    <input value="6" name="pat[]" type="checkbox"><label>Cardiovasculares</label><br/>
+                    <input value="7" name="pat[]" type="checkbox"><label>Colesterol</label><br/>
+                    <input value="8" name="pat[]" type="checkbox"><label>Cuidado de Bebe</label><br/>
+                    <input value="9" name="pat[]" type="checkbox"><label>Cuidado de la Piel</label><br/>
+                    <input value="10" name="pat[]" type="checkbox"><label>Cuidado de Ni&ntilde;os</label><br/>
+                    <input value="11" name="pat[]" type="checkbox"><label>Depresion</label><br/>
+                    <input value="12" name="pat[]" type="checkbox"><label>Diabetes</label><br/>
+                    <input value="13" name="pat[]" type="checkbox"><label>Epilepsia</label><br/>
+                  </div>
+                  <div class="small-12 medium-6 columns">
+                    <input value="14" name="pat[]" type="checkbox"><label>Gestacion y Maternidad</label><br/>
+                    <input value="15" name="pat[]" type="checkbox"><label>Gripe</label><br/>
+                    <input value="16" name="pat[]" type="checkbox"><label>Hipertensión</label><br/>
+                    <input value="17" name="pat[]" type="checkbox"><label>Hipertiroidismo</label><br/>
+                    <input value="18" name="pat[]" type="checkbox"><label>Incontinencia</label><br/>
+                    <input value="19" name="pat[]" type="checkbox"><label>Menopausia</label><br/>
+                    <input value="20" name="pat[]" type="checkbox"><label>Migra&ntilde;a</label><br/>
+                    <input value="21" name="pat[]" type="checkbox"><label>Obesidad</label><br/>
+                    <input value="22" name="pat[]" type="checkbox"><label>Osteoporosis</label><br/>
+                    <input value="23" name="pat[]" type="checkbox"><label>Parkinson</label><br/>
+                    <input value="24" name="pat[]" type="checkbox"><label>Resfriado</label><br/>
+                    <input value="25" name="pat[]" type="checkbox"><label>Ulcera</label><br/>
+                  </div>
+                </div>
+            </div>
           </div>
-        </div> 
+          
+
+          <div class="row" id="nucleo-familia">
+            <div class="small-12 columns">
+              <p class="info">Que personas componen t&uacute; n&uacute;cleo de familia:</p>
+              <div class="row">
+                <div class="small-12 columns">
+                  <button type="button" id="agregar-miembro" class="button success">Agregar Miembro</button>
+                </div>            
+              </div>
+              <div id="contenedor-familia" class="columns small-12">
+                <table id="tablamiembros">
+                  <thead>
+                    <tr>
+                      <th>Miembro Familia</th>
+                      <th>Rango de Edad</th>
+                    </tr>
+                  </thead>
+                </table>                              
+              </div> <!-- end contenedor-familia -->
+            </div>          
+          </div>
         
-        <div class="row">
-          <div class="small-12 medium-6 columns">
-            <label>Contrase&ntilde;a
-              <input type="password" id="password" placeholder="Ingrese su contrase&ntilde;a" aria-describedby="exampleHelpText" required >
-              <span class="form-error">
-                Es requerido!
-              </span>
-            </label>            
-          </div>
-          <div class="small-12 medium-6 columns">
-            <label>Confirme Contrase&ntilde;a
-              <input type="password" placeholder="Confirme su contrase&ntilde;a" aria-describedby="exampleHelpText2" required pattern="alpha_numeric" data-equalto="password">
-              <span class="form-error">
-                La confirmacion de la contrase&ntilde;a no coincide!
-              </span>
-            </label>            
-          </div>          
-        </div>
-
-        
-
-        <div class="row align-middle">
-          <div class="small-12 title-section">
-            <h6>Informaci&oacute;n Adicional</h6>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="small-12 columns">
-            <p class="info">Ocupaci&oacute;n:</p>            
-          </div>
-          <div class="columns small-12">
-            <div class="row small-up-1 medium-up-2 large-up-4" id="ocupacion">
-              <div class="columns">
-                <input value="1" name="ocupa[]" id="ocupa[]" type="radio"><label>Ama de casa</label>                          
-              </div>
-              <div class="columns">
-                <input value="2" name="ocupa[]" id="ocupa[]" type="radio"><label>Empleado</label>                          
-              </div>
-              <div class="columns">
-                <input value="3" name="ocupa[]" id="ocupa[]" type="radio"><label>Estudiante</label>                          
-              </div>
-              <div class="columns">
-                <input value="4" name="ocupa[]" id="ocupa[]" type="radio"><label>Independiente</label>                          
-              </div>
-              <div class="columns">
-                <input value="5" name="ocupa[]" id="ocupa[]" type="radio"><label>Pensionado(a)</label>                     
-              </div>
-            </div>    <!-- end row -->   
-          </div>
-        </div>
-
-
-        <div class="row" id="estudios">
-          <div class="small-12 columns">
-            <p class="info">Nivel de estudios:</p>
-          </div>
-          <div class="columns small-12">
-            <div class="row small-up-1 medium-up-2 large-up-4">
-              <div class="columns">
-                <input value="1" name="estudio[]" id="estudio[]" type="radio"><label>Primaria</label>                          
-              </div>
-              <div class="columns">
-                <input value="2" name="estudio[]" id="estudio[]" type="radio"><label>Bachiller</label>                          
-              </div>
-              <div class="columns">
-                <input value="3" name="estudio[]" id="estudio[]" type="radio"><label>Universitario</label>                         
-              </div>
-              <div class="columns">
-                <input value="4" name="estudio[]" id="estudio[]" type="radio"><label>Post-grado</label>                         
-              </div>
+          <div class="row" id="hijos-cont">
+            <div class="small-12 columns">
+              <p class="info">Tengo hijo(s) en las siguientes edades:</p>
             </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="small-12 columns" id="patologias-content">
-              <p class="info">Deseo recibir informaci&oacute;n de ofertas sobre productos relacionados con las siguientes patolog&iacute;as y/o categor&iacute;as:</p>
-              <div class="row patologias" id="patologia-div">
-                <div class="small-12 medium-6 columns">
-                  <input value="1" name="pat[]" type="checkbox"><label>Alzh&eacute;imer</label><br/>
-                  <input value="2" name="pat[]" type="checkbox"><label>Anemia</label><br/>
-                  <input value="3" name="pat[]" type="checkbox"><label>Artritis</label><br/>
-                  <input value="4" name="pat[]" type="checkbox"><label>Asma</label><br/>
-                  <input value="5" name="pat[]" type="checkbox"><label>Cancer</label><br/>
-                  <input value="6" name="pat[]" type="checkbox"><label>Cardiovasculares</label><br/>
-                  <input value="7" name="pat[]" type="checkbox"><label>Colesterol</label><br/>
-                  <input value="8" name="pat[]" type="checkbox"><label>Cuidado de Bebe</label><br/>
-                  <input value="9" name="pat[]" type="checkbox"><label>Cuidado de la Piel</label><br/>
-                  <input value="10" name="pat[]" type="checkbox"><label>Cuidado de Ni&ntilde;os</label><br/>
-                  <input value="11" name="pat[]" type="checkbox"><label>Depresion</label><br/>
-                  <input value="12" name="pat[]" type="checkbox"><label>Diabetes</label><br/>
-                  <input value="13" name="pat[]" type="checkbox"><label>Epilepsia</label><br/>
+            <div class="columns small-12">
+              <div class="row small-up-1 medium-up-2 large-up-4">
+                <div class="columns">
+                  <input value="1" name="hijosmenoresde4" id="hijosmenoresde4" type="checkbox"><label>Menores de 4 a&ntilde;os</label>                          
                 </div>
-                <div class="small-12 medium-6 columns">
-                  <input value="14" name="pat[]" type="checkbox"><label>Gestacion y Maternidad</label><br/>
-                  <input value="15" name="pat[]" type="checkbox"><label>Gripe</label><br/>
-                  <input value="16" name="pat[]" type="checkbox"><label>Hipertensión</label><br/>
-                  <input value="17" name="pat[]" type="checkbox"><label>Hipertiroidismo</label><br/>
-                  <input value="18" name="pat[]" type="checkbox"><label>Incontinencia</label><br/>
-                  <input value="19" name="pat[]" type="checkbox"><label>Menopausia</label><br/>
-                  <input value="20" name="pat[]" type="checkbox"><label>Migra&ntilde;a</label><br/>
-                  <input value="21" name="pat[]" type="checkbox"><label>Obesidad</label><br/>
-                  <input value="22" name="pat[]" type="checkbox"><label>Osteoporosis</label><br/>
-                  <input value="23" name="pat[]" type="checkbox"><label>Parkinson</label><br/>
-                  <input value="24" name="pat[]" type="checkbox"><label>Resfriado</label><br/>
-                  <input value="25" name="pat[]" type="checkbox"><label>Ulcera</label><br/>
+                <div class="columns">
+                  <input value="2" name="hijosentre4y12" id="hijosentre4y12" type="checkbox"><label>Entre 4 - 12 a&ntilde;os</label>                          
+                </div>
+                <div class="columns">
+                  <input value="3" name="hijosentre13y18" id="hijosentre13y18" type="checkbox"><label>Entre 13 - 18 a&ntilde;os</label>                         
+                </div>
+                <div class="columns">
+                  <input value="4" name="hijosmayores" id="hijosmayores" type="checkbox"><label>Mayores de edad</label>
                 </div>
               </div>
-          </div>
-        </div>
-        
-
-        <div class="row" id="nucleo-familia">
-          <div class="small-12 columns">
-            <p class="info">Que personas componen t&uacute; n&uacute;cleo de familia:</p>
-            <div class="row">
-              <div class="small-12 columns">
-                <button type="button" id="agregar-miembro" class="button success">Agregar Miembro</button>
-              </div>            
-            </div>
-            <div id="contenedor-familia" class="columns small-12">
-              <table id="tablamiembros">
-                <thead>
-                  <tr>
-                    <th>Miembro Familia</th>
-                    <th>Rango de Edad</th>
-                  </tr>
-                </thead>
-              </table>                              
-            </div> <!-- end contenedor-familia -->
-          </div>          
-        </div>
-      
-        <div class="row" id="hijos-cont">
-          <div class="small-12 columns">
-            <p class="info">Tengo hijo(s) en las siguientes edades:</p>
-          </div>
-          <div class="columns small-12">
-            <div class="row small-up-1 medium-up-2 large-up-4">
-              <div class="columns">
-                <input value="1" name="hijosmenoresde4" id="hijosmenoresde4" type="checkbox"><label>Menores de 4 a&ntilde;os</label>                          
-              </div>
-              <div class="columns">
-                <input value="2" name="hijosentre4y12" id="hijosentre4y12" type="checkbox"><label>Entre 4 - 12 a&ntilde;os</label>                          
-              </div>
-              <div class="columns">
-                <input value="3" name="hijosentre13y18" id="hijosentre13y18" type="checkbox"><label>Entre 13 - 18 a&ntilde;os</label>                         
-              </div>
-              <div class="columns">
-                <input value="4" name="hijosmayores" id="hijosmayores" type="checkbox"><label>Mayores de edad</label>
-              </div>
             </div>
           </div>
-        </div>
 
-        <div class="row">
-          <div class="small-12 columns" id="patologias-content">
-              <p class="info">En su nucleo familiar algun miembro padece de alguna de estas patolog&iacute;as y/o categor&iacute;as:</p>
-              <div class="row patologias" id="patologia-div">
-                <div class="small-12 medium-6 columns">
-                  <input value="1" name="pat[]" type="checkbox"><label>Alzh&eacute;imer</label><br/>
-                  <input value="2" name="pat[]" type="checkbox"><label>Anemia</label><br/>
-                  <input value="3" name="pat[]" type="checkbox"><label>Artritis</label><br/>
-                  <input value="4" name="pat[]" type="checkbox"><label>Asma</label><br/>
-                  <input value="5" name="pat[]" type="checkbox"><label>Cancer</label><br/>
-                  <input value="6" name="pat[]" type="checkbox"><label>Cardiovasculares</label><br/>
-                  <input value="7" name="pat[]" type="checkbox"><label>Colesterol</label><br/>
-                  <input value="8" name="pat[]" type="checkbox"><label>Cuidado de Bebe</label><br/>
-                  <input value="9" name="pat[]" type="checkbox"><label>Cuidado de la Piel</label><br/>
-                  <input value="10" name="pat[]" type="checkbox"><label>Cuidado de Ni&ntilde;os</label><br/>
-                  <input value="11" name="pat[]" type="checkbox"><label>Depresion</label><br/>
-                  <input value="12" name="pat[]" type="checkbox"><label>Diabetes</label><br/>
-                  <input value="13" name="pat[]" type="checkbox"><label>Epilepsia</label><br/>
+          <div class="row">
+            <div class="small-12 columns" id="patologias-content">
+                <p class="info">En su nucleo familiar algun miembro padece de alguna de estas patolog&iacute;as y/o categor&iacute;as:</p>
+                <div class="row patologias" id="patologia-div">
+                  <div class="small-12 medium-6 columns">
+                    <input value="1" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Alzh&eacute;imer</label><br/>
+                    <input value="2" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Anemia</label><br/>
+                    <input value="3" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Artritis</label><br/>
+                    <input value="4" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Asma</label><br/>
+                    <input value="5" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Cancer</label><br/>
+                    <input value="6" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Cardiovasculares</label><br/>
+                    <input value="7" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Colesterol</label><br/>
+                    <input value="8" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Cuidado de Bebe</label><br/>
+                    <input value="9" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Cuidado de la Piel</label><br/>
+                    <input value="10" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Cuidado de Ni&ntilde;os</label><br/>
+                    <input value="11" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Depresion</label><br/>
+                    <input value="12" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Diabetes</label><br/>
+                    <input value="13" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Epilepsia</label><br/>
+                  </div>
+                  <div class="small-12 medium-6 columns">
+                    <input value="14" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Gestacion y Maternidad</label><br/>
+                    <input value="15" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Gripe</label><br/>
+                    <input value="16" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Hipertensión</label><br/>
+                    <input value="17" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Hipertiroidismo</label><br/>
+                    <input value="18" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Incontinencia</label><br/>
+                    <input value="19" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Menopausia</label><br/>
+                    <input value="20" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Migra&ntilde;a</label><br/>
+                    <input value="21" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Obesidad</label><br/>
+                    <input value="22" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Osteoporosis</label><br/>
+                    <input value="23" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Parkinson</label><br/>
+                    <input value="24" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Resfriado</label><br/>
+                    <input value="25" name="patmiembro[]" id="patmiembro[]" type="checkbox"><label>Ulcera</label><br/>
+                  </div>
                 </div>
-                <div class="small-12 medium-6 columns">
-                  <input value="14" name="pat[]" type="checkbox"><label>Gestacion y Maternidad</label><br/>
-                  <input value="15" name="pat[]" type="checkbox"><label>Gripe</label><br/>
-                  <input value="16" name="pat[]" type="checkbox"><label>Hipertensión</label><br/>
-                  <input value="17" name="pat[]" type="checkbox"><label>Hipertiroidismo</label><br/>
-                  <input value="18" name="pat[]" type="checkbox"><label>Incontinencia</label><br/>
-                  <input value="19" name="pat[]" type="checkbox"><label>Menopausia</label><br/>
-                  <input value="20" name="pat[]" type="checkbox"><label>Migra&ntilde;a</label><br/>
-                  <input value="21" name="pat[]" type="checkbox"><label>Obesidad</label><br/>
-                  <input value="22" name="pat[]" type="checkbox"><label>Osteoporosis</label><br/>
-                  <input value="23" name="pat[]" type="checkbox"><label>Parkinson</label><br/>
-                  <input value="24" name="pat[]" type="checkbox"><label>Resfriado</label><br/>
-                  <input value="25" name="pat[]" type="checkbox"><label>Ulcera</label><br/>
-                </div>
+            </div>
+          </div>        
+
+          <div class="row" id="recomienda">
+            <div class="small-12 columns">
+              <p class="info">Recomienda puntos farmanorte a tus amigos y gana 50 puntos por cada referido que se vincule al programa:</p>
+              <div class="row">
+                <div class="small-12 columns">
+                  <button type="button" id="agregar-referido" class="button success">Agregar Referido</button>
+                </div>            
               </div>
+              <div class="row small-up-1 medium-up-2" id="referido-content">
+                <div class="columns"><input name="referido1" id="referido1" type="email" placeholder="Ingresa email del referido No.1">
+                </div>                          
+              </div>
+            </div>          
           </div>
-        </div>        
 
-        <div class="row" id="recomienda">
-          <div class="small-12 columns">
-            <p class="info">Recomienda puntos farmanorte a tus amigos y gana 50 puntos por cada referido que se vincule al programa:</p>
-            <div class="row">
-              <div class="small-12 columns">
-                <button type="button" id="agregar-referido" class="button success">Agregar Referido</button>
-              </div>            
+          <hr/>
+          <div class="row">
+            <div class="small-12 columns align-middle">
+              <label for="checkboxterminos" class="checkbox-label labelterminos"><input id="checkboxterminos" name="terminos" required type="checkbox" > <span id="leyendaterminos">Acepto los Terminos y Condiciones</span></label>            
             </div>
-            <div class="row small-up-1 medium-up-2" id="referido-content">
-                          
-            </div>
-          </div>          
-        </div>
-
-        <hr/>
-        <div class="row">
-          <div class="small-12 columns align-middle">
-            <label for="checkboxterminos" class="checkbox-label labelterminos"><input id="checkboxterminos" name="terminos" required type="checkbox" > <span id="leyendaterminos">Acepto los Terminos y Condiciones</span></label>            
           </div>
-        </div>
-        <div class="row buttonsrow">
-          <div class="small-12 columns ">          
-            <button type="button" id="guardar-button" class="button float-right">Registrarse</button>
-            <button type="reset" id="cancelar-button" class="alert button float-right">Cancelar</button>
-          </div>            
-        </div>
-        </div> <!-- end blur content -->        
+          <div class="row buttonsrow">
+            <div class="small-12 columns ">          
+              <button type="button" id="guardar-button" class="button float-right">Registrarse</button>
+              <button type="reset" id="cancelar-button" class="alert button float-right">Cancelar</button>
+            </div>            
+          </div>
+        </div> <!-- end blur content --> 
+
       </form>      
     </section>
 
+
     <footer id="footer-form">
-    <div class="row expanded">
-      <div class="columns small-12" id="terminos">
-        <div class="terminos-content">
-          <img src="../images/logopuntosonly.svg" alt="Logo Puntos Farmanorte" id="terminoslogo" >
-          <a href="terminosycondiciones.html" target="_blank">
-            <span id="tituloterminos">T&eacute;rminos y Condiciones</span>            
-          </a>
-          <img src="../images/logopuntosonly.svg" alt="Logo Puntos Farmanorte" id="terminoslogo" >          
-        </div>
+      <div class="row expanded">
+        <div class="columns small-12" id="terminos">
+          <div class="terminos-content">
+            <img src="../images/logopuntosonly.svg" alt="Logo Puntos Farmanorte" id="terminoslogo">
+            <a href="terminosycondiciones.html" target="_blank">
+              <span id="tituloterminos">T&eacute;rminos y Condiciones</span>            
+            </a>
+            <img src="../images/logopuntosonly.svg" alt="Logo Puntos Farmanorte" id="terminoslogo">
+          </div>
+        </div>      
       </div>      
-    </div>      
     </footer>
-  </div> <!-- end data-off-canvas-conten -->
+  </div> <!-- end data-off-canvas-content -->
     
 
   <div id="dialog" title="Agregar Miembro" style="display: none;">
@@ -469,8 +475,6 @@
         <div id="slider-range"></div>
       </div>
       <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-
-
     </div>
   </div>
 
