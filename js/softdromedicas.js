@@ -358,6 +358,24 @@ function registrar() {
           urlWs += ("&valfin" + [i+1] + "=" + document.getElementById("valfin"+[i+1]).value);
         }
 
+        //hijos
+        if(document.getElementById("hijosmenoresde4").checked){
+          urlWs += "&hijosmenoresde4=true" ;
+        }
+        if(document.getElementById("hijosentre4y12").checked){
+          urlWs += "&=true";
+        }
+        if(document.getElementById("hijosentre13y18").checked){
+          urlWs += "&hijosentre4y12=true";
+        }
+        if(document.getElementById("hijosmayores").checked){
+          urlWs += "&hijosmayores=true";
+        }
+
+        //patologia nucleo familia
+        
+
+
         console.log("URL Servicio: " + urlWs);        
 
         if( document.getElementById("hijos").checked )
