@@ -328,7 +328,16 @@ function registrar() {
              "&tipodocumento=" + tipodocumento  + "&sexo=" + sexo  + "&direccion=" + direccion  + 
              "&fechanacimiento=" + fechanacimiento  + "&telefonofijo=" + telefonofijo  + 
              "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email + "&barrio=" + barrio +
-             "&claveweb=" + contrasenia + "&ocupacion=" + ocupacion + "&estudios=" + estudios;
+             "&claveweb=" + contrasenia  ;
+
+        if( estudios != null && estudios != "" ){
+          urlWs +=  "&estudios=" + estudios;
+        }
+
+        if( ocupacion != null && ocupacion != "" ){
+          urlWs +=  "&ocupacion=" + ocupacion;
+        }
+
 
         //obtengo valores de patologias afiliado
         var pato = document.getElementsByName("pat[]");
@@ -348,16 +357,17 @@ function registrar() {
 
         //hijos
         if(document.getElementById("hijosmenoresde4").checked){
-          urlWs += "&hijosmenoresde4=true" ;
+          urlWs += "&hijosmenoresde4=1" ;
         }
+
         if(document.getElementById("hijosentre4y12").checked){
-          urlWs += "&hijosentre4y12=true";
+          urlWs += "&hijosentre4y12=1";
         }
         if(document.getElementById("hijosentre13y18").checked){
-          urlWs += "&hijosentre4y12=true";
+          urlWs += "&hijosentre13y18=1";
         }
         if(document.getElementById("hijosmayores").checked){
-          urlWs += "&hijosmayores=true";
+          urlWs += "&hijosmayores=1";
         }
 
         //patologia nucleo familia
@@ -422,8 +432,7 @@ function stateChange() {
       document.getElementById("calloutFormAlert").style.display = 'none';
       
       //Aca redirecciono a la pagina de puntosfarmnorte
-      window.location.href = "http://localhost:8003/index.html?confirmado=true";
-      // window.location.href = "http://www.puntosfarmanorte.com.co?confirmado=true";
+      window.location.href = "http://www.puntosfarmanorte.com.co?confirmado=true";
             
     }else{
       if(response.data == '99'){

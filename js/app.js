@@ -11,10 +11,10 @@ var asyncRequest;
 
 
 function iniciar() {
-    console.log("funcion iniciar->");
+    console.log("funcion iniciar |->");
 
     //Registro de eventos y componente para la interfaz de afiliacion
-    if (location.pathname.substring(1) === "inscripcion.html") {
+    if (location.pathname.substring(1) === "seccion/inscripcion.html") {
         btnGuardar = document.getElementById('guardar-button');
         btnGuardar.addEventListener('click', registrar, false);
         //verifica el dispositivo para el componente date
