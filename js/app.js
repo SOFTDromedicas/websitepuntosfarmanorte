@@ -12,36 +12,40 @@ var asyncRequest;
 
 function iniciar() {
     console.log("funcion iniciar->");
-    btnGuardar = document.getElementById('guardar-button');
-    btnGuardar.addEventListener('click', registrar, false);
 
-    //prepara combo de ciudades
-    establecerCiudades();
+    //Registro de eventos y componente para la interfaz de afiliacion
+    if (location.pathname.substring(1) === "inscripcion.html") {
+        btnGuardar = document.getElementById('guardar-button');
+        btnGuardar.addEventListener('click', registrar, false);
+        //verifica el dispositivo para el componente date
+        if (mobilecheck() && mobileAndTabletcheck()) {
+            document.getElementById('fechanacimiento').setAttribute('type', 'date');
+        } else {
+            $('#fechanacimiento').fdatepicker({
+                closeButton: true,
+                language: 'es',
+                yearRange: "-100:+0",
+                constrainInput: true,
+                format: 'dd/mm/yyyy',
+            });
 
-    //verifica el dispositivo para el componente date
-    if( mobilecheck() && mobileAndTabletcheck()){
-      document.getElementById('fechanacimiento').setAttribute('type', 'date');
-
-    }else{
-      $('#fechanacimiento').fdatepicker({
-        closeButton: true,
-        language: 'es',
-        yearRange: "-100:+0",
-        constrainInput: true ,
-        format: 'dd/mm/yyyy',
-      });
-
-      $('#fechanacimiento').fdatepicker().on('changeDate', function(ev) {
-          if (ev.date.valueOf()) {
-              var newDate = new Date(ev.date)
-              newDate.setDate(newDate.getDate() + 1);
-              fechanacimiento = formatDateAnioMesDia(newDate);
-          }
-      });
+            $('#fechanacimiento').fdatepicker().on('changeDate', function(ev) {
+                if (ev.date.valueOf()) {
+                    var newDate = new Date(ev.date)
+                    newDate.setDate(newDate.getDate() + 1);
+                    fechanacimiento = formatDateAnioMesDia(newDate);
+                }
+            });
+        }
+        //prepara combo de ciudades
+        establecerCiudades();
     }
-    
-     console.log("device: " + mobilecheck());
-     console.log("device: " + mobileAndTabletcheck());
+
+    //si estoy en index valida que no se cargue a partir de la redireccion del formulario 2
+    if(getParameterURLByName('confirmado') == "true"){
+        document.getElementById("calloutafiliacion").style.display = 'block';      
+     }
+
 
 }
 
@@ -431,6 +435,16 @@ $(window).scroll(function(){
        menuItems.parent().removeClass("activa").end().filter("[href='#"+id+"']").parent().addClass("activa");
    }                   
 });
+
+function getParameterURLByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 
 
 //Validacion dispositivos mobiles

@@ -372,13 +372,13 @@ function registrar() {
         if (document.getElementsByName("referido1").value !== "" && referidoG > 1) {
             urlWs += "&cantreferido=" + referidoG;
             for (var i = 0; i < referidoG; i++) {
-                urlWs += ("&referido" + [i + 1] + "=" + document.getElementById("referido" + [i + 1]).value);
+                if(document.getElementById("referido" + [i + 1]).value !== ""){
+                  urlWs += ("&referido" + [i + 1] + "=" + document.getElementById("referido" + [i + 1]).value);                  
+                }
             }
         }
 
-
-
-        console.log("URL Servicio: " + urlWs);        
+        console.log("URL Servicio: " + urlWs);  
 
         try {
             asyncRequestProcess = new XMLHttpRequest();
@@ -420,9 +420,11 @@ function stateChange() {
       reestrablecerFormulario();
       document.getElementById("calloutForm").style.display = 'block';
       document.getElementById("calloutFormAlert").style.display = 'none';
-
+      
       //Aca redirecciono a la pagina de puntosfarmnorte
-      window.location.href = "http://www.puntosfarmanorte.com.co/";
+      window.location.href = "http://localhost:8003/index.html?confirmado=true";
+      // window.location.href = "http://www.puntosfarmanorte.com.co?confirmado=true";
+            
     }else{
       if(response.data == '99'){
         document.getElementById("spinner2").style.display = 'none';

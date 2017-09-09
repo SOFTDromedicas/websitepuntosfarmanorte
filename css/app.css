@@ -175,6 +175,12 @@ body{
 	box-shadow: 0 11px 25px rgba(3, 3, 3, 0.65);
 }
 
+#calloutafiliacion{
+	margin:0!important;
+	padding-top: 3rem;
+
+}
+
 #quesonpuntos{
 	background-image: url('../images/banner-desktop-queson.jpg');
 	height: 35rem;
@@ -659,7 +665,7 @@ label.checkbox-label input[type=checkbox]{
 	position: absolute;
 	background: rgba(63, 107, 163, 0.75);
 	/*background: linear-gradient(to bottom, rgba(0, 136, 205, 0.75), rgba(39, 75, 141, 0.75));*/
-	background: rgba(255, 255, 255, 0.8);	
+	background: rgba(255, 255, 255, 0.2);	
 	/*border:1px solid red;*/
 	width: 100%;
   height: 240%;
