@@ -376,11 +376,11 @@ function registrar() {
         }
 
         //referidos
-        console.log(document.getElementsByName("referido1").value != "")
+        console.log("referido: "+ document.getElementsByName("referido1").value != "")
         if (document.getElementsByName("referido1").value != "" ) {
             urlWs += "&cantreferido=" + referidoG;
             for (var i = 0; i < referidoG; i++) {
-                if(document.getElementById("referido" + [i + 1]).value != ""){
+               if(document.getElementById("referido" + [i + 1]).value != ""){
                   urlWs += ("&referido" + [i + 1] + "=" + document.getElementById("referido" + [i + 1]).value);                  
                 }
             }
