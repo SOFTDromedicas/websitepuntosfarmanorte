@@ -396,6 +396,7 @@ function registrar() {
         } catch (excepcion) {}
     } else {
         document.getElementById("calloutFormAlert").style.display = 'block';
+        document.getElementById("calloutFormAlert2").style.display = 'block';
     }
        
 }
@@ -407,6 +408,7 @@ function stateChange() {
     document.getElementById("spinner2").style.display = 'block';
     document.getElementById("blur").classList.add("blur-me");
     document.getElementById("calloutFormAlert").style.display = 'none';
+    document.getElementById("calloutFormAlert2").style.display = 'none';
     document.getElementById("calloutFormWarning").style.display = 'none';
   }
   console.log( asyncRequestProcess.readyState + " - " + asyncRequestProcess.status);
@@ -428,6 +430,7 @@ function stateChange() {
       reestrablecerFormulario();
       document.getElementById("calloutForm").style.display = 'block';
       document.getElementById("calloutFormAlert").style.display = 'none';
+      document.getElementById("calloutFormAlert2").style.display = 'none';
       
       //Aca redirecciono a la pagina de puntosfarmnorte
       window.location.href = "http://www.puntosfarmanorte.com.co?confirmado=true";
