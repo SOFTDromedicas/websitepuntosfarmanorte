@@ -11,8 +11,7 @@ var asyncRequest;
 
 
 function iniciar() {
-    console.log("funcion iniciar |->");
-
+    
     //Registro de eventos y componente para la interfaz de afiliacion
     if (location.pathname.substring(1) === "seccion/inscripcion.html") {
         btnGuardar = document.getElementById('guardar-button');
@@ -130,7 +129,7 @@ function stateChange() {
     document.getElementById("calloutFormAlert").style.display = 'none';
     document.getElementById("calloutFormWarning").style.display = 'none';
   }
-  console.log( asyncRequest.readyState + " - " + asyncRequest.status);
+  //console.log( asyncRequest.readyState + " - " + asyncRequest.status);
 
   if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {   
     
@@ -296,8 +295,6 @@ function establecerValores() {
     if( mobilecheck() && mobileAndTabletcheck()){
       fechanacimiento = document.getElementById('fechanacimiento').value;
     }
-  
-    console.log("-->" + fechanacimiento);
     
 
     documento = document.getElementById("documento").value.trim();

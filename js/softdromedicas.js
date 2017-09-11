@@ -32,7 +32,7 @@ function iniciar() {
     establecerCiudades();
 
     //verifica el dispositivo para el componente date
-    console.log("dispositivo mobil:" + (mobilecheck() && mobileAndTabletcheck() ));
+   
     if( mobilecheck() && mobileAndTabletcheck() ){
 
       document.getElementById('fechanacimiento').setAttribute('type', 'date');
@@ -142,7 +142,7 @@ function stateChangeDatos() {
         asyncRequest.readyState == 3) {
     }
 
-    console.log(asyncRequest.readyState + " - " + asyncRequest.status);
+    //console.log(asyncRequest.readyState + " - " + asyncRequest.status);
 
     if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {
         var response = JSON.parse(asyncRequest.responseText);
@@ -319,9 +319,6 @@ function registrar() {
 
     urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpformulario2/index.php?";
 
-    console.log( contadorG + " -- " + referidoG);
-    console.log( validarFormulario());
-
     if (validarFormulario()) {
         //Campos del formulario hasta datos basico -nivel de estudios
         urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +
@@ -379,10 +376,11 @@ function registrar() {
         }
 
         //referidos
-        if (document.getElementsByName("referido1").value !== "" && referidoG > 1) {
+        console.log(document.getElementsByName("referido1").value != "")
+        if (document.getElementsByName("referido1").value != "" ) {
             urlWs += "&cantreferido=" + referidoG;
             for (var i = 0; i < referidoG; i++) {
-                if(document.getElementById("referido" + [i + 1]).value !== ""){
+                if(document.getElementById("referido" + [i + 1]).value != ""){
                   urlWs += ("&referido" + [i + 1] + "=" + document.getElementById("referido" + [i + 1]).value);                  
                 }
             }
@@ -626,7 +624,7 @@ function establecerValores() {
       fechanacimiento = $('#fechanacimiento').fdatepicker().val(); 
     } 
     
-    console.log(">--" + fechanacimiento);
+    //console.log(">--" + fechanacimiento);
     
 }
 
