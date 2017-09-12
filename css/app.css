@@ -723,13 +723,37 @@ label.checkbox-label input[type=checkbox]{
  		filter: blur(3px);
 	}
 .blur-me2 {
- 		/*filter: grayscale(100%) blur(12px) ;*/
+		transition: 0.5s -webkit-filter linear;
+ 		filter: blur(10px) ;
 	}
 
 
-
-
 /****Login****/
+
+.container_14xz0pw {
+    position: fixed !important;
+    z-index: 2000 !important;
+    top: 0px !important;
+    right: 0px !important;
+    bottom: 0px !important;
+    left: 0px !important;
+    overflow-y: auto !important;
+    webkit-transform: translate3d(0,0,0) !important;
+}
+
+.innerContainer{
+	display: table !important;
+  height: 100% !important;
+  width: 100% !important;
+  /*background: rgba(0, 0, 0, 0.75) !important;*/
+  background: rgba(120, 120, 120, 0.55)!important;
+  /*background: rgba(9, 43, 171, 0.75)!important;*/
+}
+
+
+.paddingcontainer{
+	padding: 10rem 0;
+}
 
 #login-section{	
 	padding: 5rem 0 8rem 0;
@@ -739,10 +763,11 @@ label.checkbox-label input[type=checkbox]{
 #login-main{
 	/*border: 1px solid #808080;*/
 	border-radius: 7px;
-	box-shadow: 0px 1px 15px #787878;
+	/*box-shadow: 0px 1px 15px #2E2E2E;*/
 /*	min-height: 10rem;
 	min-width:  35rem;
 */	
+ background: #eff3f8;
 }
 
 #banda-login{

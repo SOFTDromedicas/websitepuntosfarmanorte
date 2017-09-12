@@ -41,19 +41,32 @@ function iniciar() {
     }
 
     console.log(location.pathname.substring(1));
-    if (location.pathname.substring(1) === "seccion/login.html") {
-      var mostrarClave = document.getElementById("p-mostrarclave");
-      mostrarClave.addEventListener('click', function(){
-        var password = document.getElementById('password');        
-        if(password.getAttribute('type') === 'password'){
-            password.setAttribute('type', 'text');
-            mostrarClave.innerHTML="Ocultar Contrase&ntilde;a"
-        }else{
-            password.setAttribute('type', 'password');
-            mostrarClave.innerHTML="Mostrar Contrase&ntilde;a"
-        }
-      }, false);
-    }
+    
+    //Eventos formulario login
+    var mostrarClave = document.getElementById("p-mostrarclave");
+    mostrarClave.addEventListener('click', function(){
+      var password = document.getElementById('password');        
+      if(password.getAttribute('type') === 'password'){
+          password.setAttribute('type', 'text');
+          mostrarClave.innerHTML="Ocultar Contrase&ntilde;a"
+      }else{
+          password.setAttribute('type', 'password');
+          mostrarClave.innerHTML="Mostrar Contrase&ntilde;a"
+      }
+    }, false);
+   
+    var login = document.getElementById('loginperfil');
+    login.addEventListener('click',function(){
+      var bodylogin = document.getElementById('blurme-container');
+      bodylogin.classList.add('blur-me2');
+      document.getElementById('login-container-main').style.display='block';
+    },false);
+
+    var loginout = document.getElementById('login-container-main');
+      loginout.addEventListener('click',function(){
+      document.getElementById('blurme-container').classList.remove('blur-me2');
+      document.getElementById('login-container-main').style.display='none';
+    },false);
 
 
     //si estoy en index valida que no se cargue a partir de la redireccion del formulario 2
