@@ -723,7 +723,7 @@ label.checkbox-label input[type=checkbox]{
  		filter: blur(3px);
 	}
 .blur-me2 {
- 		/*filter: grayscale(100%) blur(2px) ;*/
+ 		/*filter: grayscale(100%) blur(12px) ;*/
 	}
 
 
