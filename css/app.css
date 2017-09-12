@@ -4,8 +4,8 @@
 
 .columns{
 	border: 1px solid #FA0000;
-}*/
-
+}
+*/
 a:hover, a:active{
 	background: none;
 	border: none;
@@ -295,6 +295,7 @@ body{
 #terminos{
 	padding: 1rem 0;
 	background: #0D2580;
+	background: #1d3672;
 }
 
 #tituloterminos{
@@ -721,8 +722,124 @@ label.checkbox-label input[type=checkbox]{
 .blur-me {
  		filter: blur(3px);
 	}
+.blur-me2 {
+ 		/*filter: grayscale(100%) blur(2px) ;*/
+	}
 
 
+
+
+/****Login****/
+
+#login-section{	
+	padding: 5rem 0 8rem 0;
+}
+
+
+#login-main{
+	/*border: 1px solid #808080;*/
+	border-radius: 7px;
+	box-shadow: 0px 1px 15px #787878;
+/*	min-height: 10rem;
+	min-width:  35rem;
+*/	
+}
+
+#banda-login{
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
+	padding: 1rem;
+	background: #1c3672;
+	color: #FFFFFF;
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+#form-login{
+	padding: 0 1.5rem;
+}
+
+#login-main label{
+	font-size: 1.2rem;
+	font-family: 'Open Sans', sans-serif;
+
+}
+#login-main [type="text"],
+#login-main [type="password"]{
+	border: 2px solid #BFBFBF;
+}
+
+#recordarme{
+	zoom:1.8;
+	margin:0 0 0 1rem;
+}
+
+#mostrar-clave label{
+	display: inline-block!important;
+}
+
+#mostrar-clave p{
+	font-family: 'Open Sans', sans-serif;
+	margin: 0;
+	color: #FF3573;
+	font-size: 0.95rem;
+	font-weight: bold;	
+	padding-top: 4px;
+	cursor: pointer;
+}
+
+
+#iniciar-sesion{
+	background: #274B8D;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1rem;
+	margin-top: 1.5rem;
+}
+
+#iniciar-sesion:hover{
+	background: #0088cd;
+}
+
+#recordarme-content label{
+	display: inline-block!important;	
+}
+#recordarme-content [type="checkbox"]{
+	vertical-align: middle!important;	
+	padding: 0.2rem!important;
+	border-color: : #ddd!important;
+}
+
+#olvidocontrasenia{
+	font-family: 'Open Sans', sans-serif;
+	color: #FF3573;
+	text-align: center;
+}
+
+
+#olvidocontrasenia a{ 
+	/*font-weight: bold;*/
+	font-size: 1.05rem;
+	color: #FF3573;	
+	vertical-align: middle;
+}
+#olvidocontrasenia-content hr{ 
+	margin-top: 1rem!important;
+}
+#olvidocontrasenia p, #olvidocontrasenia{ 
+	margin-bottom: 0rem!important;
+}
+
+#creacuenta{
+	font-family: 'Open Sans', sans-serif;
+	text-align: center;
+	font-weight: bold;
+	color: #535353;
+	font-size: 1.1rem;
+}
+#creacuenta a{
+	font-weight: bold;
+	color: #FF3573;
+}
 
 
 
@@ -859,8 +976,29 @@ label.checkbox-label input[type=checkbox]{
 	#tituloterminos{
 		margin: 0 15px;
 		font-size: 1.1rem!important;
-
 	}	
+
+
+
+	#login-section{	
+		padding: 2rem 0 2rem 0;
+	}
+
+	#form-login{
+		padding: 0!important;	
+	}
+
+	#recordarme-content label{
+		font-size: 0.95rem;
+	}
+	#recordarme-content [type="checkbox"]{
+		zoom:1.5;
+	}
+	#mostrar-clave p{
+		font-size: 0.85rem;
+	}
+
+	
 
 }
 
@@ -868,8 +1006,6 @@ label.checkbox-label input[type=checkbox]{
 
 /*Custom media Query*/
 @media screen and (min-width: 40em) and (max-width: 47.375em) {
-
-	
 	
 	.sticky-container{
 		max-height: 9rem!important;	
@@ -990,8 +1126,7 @@ label.checkbox-label input[type=checkbox]{
 	#tituloterminos{
 		margin: 0 15px;
 		font-size: 1.3rem!important;
-
-	}	
+	}		
 
 
 }

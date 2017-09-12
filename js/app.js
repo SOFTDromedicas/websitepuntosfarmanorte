@@ -40,6 +40,22 @@ function iniciar() {
         establecerCiudades();
     }
 
+    console.log(location.pathname.substring(1));
+    if (location.pathname.substring(1) === "seccion/login.html") {
+      var mostrarClave = document.getElementById("p-mostrarclave");
+      mostrarClave.addEventListener('click', function(){
+        var password = document.getElementById('password');        
+        if(password.getAttribute('type') === 'password'){
+            password.setAttribute('type', 'text');
+            mostrarClave.innerHTML="Ocultar Contrase&ntilde;a"
+        }else{
+            password.setAttribute('type', 'password');
+            mostrarClave.innerHTML="Mostrar Contrase&ntilde;a"
+        }
+      }, false);
+    }
+
+
     //si estoy en index valida que no se cargue a partir de la redireccion del formulario 2
     if(getParameterURLByName('confirmado') == "true"){
         document.getElementById("calloutafiliacion").style.display = 'block';      
