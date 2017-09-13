@@ -119,6 +119,10 @@ body{
 	font-style: italic;	
 }
 
+#loginperfil{
+	cursor: pointer;	
+}
+
 .solapa a{
 	text-decoration: none;
 	cursor: pointer;
@@ -781,7 +785,7 @@ label.checkbox-label input[type=checkbox]{
 }
 
 #form-login{
-	padding: 0 1.5rem;
+	padding: 0 1rem;
 }
 
 #login-main label{

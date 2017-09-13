@@ -63,16 +63,23 @@ function iniciar() {
     },false);
 
     var loginout = document.getElementById('login-container-main');
-      loginout.addEventListener('click',function(){
-      document.getElementById('blurme-container').classList.remove('blur-me2');
-      document.getElementById('login-container-main').style.display='none';
-    },false);
+    loginout.addEventListener('click',exitLogin,false);
+
+    document.getElementById('login-main').removeEventListener('click', exitLogin);
 
 
     //si estoy en index valida que no se cargue a partir de la redireccion del formulario 2
     if(getParameterURLByName('confirmado') == "true"){
         document.getElementById("calloutafiliacion").style.display = 'block';      
      }
+
+     document.addEventListener('keyup', function(event){
+      console.log(event.key )
+        if (event.key == 'Escape'){
+          document.getElementById('blurme-container').classList.remove('blur-me2');
+          document.getElementById('login-container-main').style.display='none';    
+         }
+     },false);
 
 
 }
@@ -88,6 +95,16 @@ function establecerCiudades(){
   }catch(ex){
     mostrarFallaDelSistema(ex.message);
   }
+}
+
+function exitLogin(event){
+  if( event.target.getAttribute('id') == 'innerContainer' ||
+      event.target.getAttribute('id') == 'paddingcontainer' ||
+      event.target.getAttribute('id') == 'row-login'){
+    document.getElementById('blurme-container').classList.remove('blur-me2');
+    document.getElementById('login-container-main').style.display='none';    
+  } 
+
 }
 
 //Crea el combobox de operadores, metodo auxiliar del metodo getOperadores
