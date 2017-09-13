@@ -4,8 +4,9 @@
 
 .columns{
 	border: 1px solid #FA0000;
-}
-*/
+}*/
+
+
 a:hover, a:active{
 	background: none;
 	border: none;
@@ -727,7 +728,7 @@ label.checkbox-label input[type=checkbox]{
  		filter: blur(3px);
 	}
 .blur-me2 {
-		transition: 0.3s -webkit-filter linear;
+		transition: 0.4s -webkit-filter linear;
  		filter: blur(10px) ;
 	}
 
@@ -755,7 +756,7 @@ label.checkbox-label input[type=checkbox]{
 }
 
 .paddingcontainer{
-	padding: 10rem 0;
+	padding: 8rem 0;
 }
 
 #login-section{	
@@ -763,7 +764,7 @@ label.checkbox-label input[type=checkbox]{
 }
 
 
-#login-main{
+.login-main{
 	/*border: 1px solid #808080;*/
 	border-radius: 7px;
 	/*box-shadow: 0px 1px 15px #2E2E2E;*/
@@ -773,7 +774,7 @@ label.checkbox-label input[type=checkbox]{
  background: #eff3f8;
 }
 
-#closeicon{
+.closeicon{
 	background: #1c3672;
 	border-top-left-radius: 7px;
 	border-top-right-radius: 7px;
@@ -789,20 +790,20 @@ label.checkbox-label input[type=checkbox]{
 	background: #1c3672;
 	color: #FFFFFF;
 	text-align: center;
-	margin-bottom: 2rem;
+	margin-bottom: 1.3rem;
 }
 
 #form-login{
-	padding: 0 1rem;
+	padding: 0 .8rem;
 }
 
-#login-main label{
+.login-main label{
 	font-size: 1.2rem;
 	font-family: 'Open Sans', sans-serif;
 
 }
-#login-main [type="text"],
-#login-main [type="password"]{
+.login-main [type="text"],
+.login-main [type="password"]{
 	border: 2px solid #BFBFBF;
 }
 
@@ -830,7 +831,7 @@ label.checkbox-label input[type=checkbox]{
 	background: #274B8D;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 1rem;
-	margin-top: 1.5rem;
+	margin-top: 1.2rem;
 }
 
 #iniciar-sesion:hover{
@@ -876,6 +877,36 @@ label.checkbox-label input[type=checkbox]{
 #creacuenta a{
 	font-weight: bold;
 	color: #FF3573;
+}
+
+/*recuperar clave*/
+#recuperarClave{
+	background: #274B8D;
+	font-size: 1.1rem;
+}
+
+.banda-recuperar{
+	padding-bottom: 1rem;
+	background: #1c3672;
+	color: #FFFFFF;
+	text-align: center;
+	margin-bottom: 1rem;
+}
+
+.volver-sesion{
+	font-size: 1.2rem;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#volver-sesion{
+	font-size: 1.3rem;
+	font-family: 'Open Sans', sans-serif;
+	color: #FF3573;	
+	padding-top: 0.4em;
+}
+
+#rowlogin{
+	margin-right: 5px;
 }
 
 

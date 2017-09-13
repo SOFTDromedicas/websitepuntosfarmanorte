@@ -52,19 +52,19 @@
     <!-- Your page content lives here -->
 
     <!-- login -->
-    <div class="container_14xz0pw" id="login-container-main" style="display: none">
+    <div class="container_14xz0pw" id="login-container-main" style="display: none;">
       <div class="innerContainer" id="innerContainer">
         
         <div class="paddingcontainer" id="paddingcontainer">
           <div class="row" id="row-login">
-              <div class="columns small-12 medium-7 float-center" id="login-main"> 
+              <div class="columns small-12 medium-7 float-center login-main" id="login-main"> 
                 <div class="row">
-                  <div id="closeicon" class="columns small-12">
+                  <div id="closeicon" class="columns small-12 closeicon">
                     <img src="images/cerraricon.svg" alt="" id="iconocerrar" class="float-right">
                   </div>
                 </div>       
                 <div class="row">
-                   <div class="columns small-12 " id="banda-login">
+                   <div class="columns small-12" class="banda-login" id="banda-login">
                      <h3 class="float-center">Iniciar Sesi&oacute;n</h3>
                    </div>
                  </div> 
@@ -79,7 +79,7 @@
                     <div class="row">
                       <div class="columns small-12">
                         <label>Contrase&ntilde;a
-                          <input type="password" name="documento" id="password" placeholder="Ingrea tu clave">
+                          <input type="password" name="documento" id="password" placeholder="Ingresa tu clave">
                         </label>
                       </div>
                     </div>
@@ -120,6 +120,51 @@
       </div>  
     </div> <!-- end login container -->
     
+    <!-- Olvido su contrasenia -->
+    <div class="container_14xz0pw" id="olvido-container-main" style="display: none">
+      <div class="innerContainer" id="innerContainer-olvido">
+        
+        <div class="paddingcontainer" id="paddingcontainerrecuperar">
+          <div class="row" id="row-olvido">
+              <div class="columns small-12 medium-7 float-center login-main" id="recuperar-main"> 
+                <div class="row">
+                  <div id="closeiconolv" class="columns small-12 closeicon">
+                    <img src="images/cerraricon.svg" alt="" id="iconocerrarlogin" class="float-right">
+                  </div>
+                </div>       
+                <div class="row">
+                   <div class="columns small-12 banda-recuperar" >
+                     <h3 class="float-center">Restablecer contrase&ntilde;a</h3>
+                   </div>
+                 </div> 
+                  <form action="" id="form-login">
+                    <div class="row">
+                      <div class="columns small-12">
+                        <p class="volver-sesion">Ingresa la direcci&oacute;n de correo electr&oacute;nico asociada a tu cuenta y te enviaremos un enlace para restablecer tu contrase&ntilde;a.</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="columns small-12">                        
+                        <input type="password" name="documento" id="emialRecuperar" placeholder="Correo Electr&oacute;nico">                       
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="columns small-6 medium-8" id="recordarme-content">
+                        <p class="float-left" id="volver-sesion"><img src="images/returnlogin.svg" id="rowlogin">Volver al inicio de sesi&oacute;n</p>
+                      </div>
+                      <div class="columns small-6 medium-4" id="mostrar-clave">      
+                        <button type="button" id="recuperarClave" class="button float-right">Enviar Enlace</button>                                       
+                      </div>
+                    </div>          
+                  </form>           
+              </div> <!-- end login main -->
+          </div> <!-- end row ppal -->      
+        </div> <!-- end paddingcontainer -->
+      </div>  
+    </div> <!-- end login container -->
+    <!-- end Olvido su contrasenia -->
+    
+
     <!-- Dentro de blur esta todo el contenido de la pagina -->
     <div id="blurme-container" > 
 
