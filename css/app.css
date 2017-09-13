@@ -727,7 +727,7 @@ label.checkbox-label input[type=checkbox]{
  		filter: blur(3px);
 	}
 .blur-me2 {
-		transition: 0.5s -webkit-filter linear;
+		transition: 0.3s -webkit-filter linear;
  		filter: blur(10px) ;
 	}
 
@@ -774,10 +774,10 @@ label.checkbox-label input[type=checkbox]{
 }
 
 #closeicon{
-		background: #1c3672;
+	background: #1c3672;
 	border-top-left-radius: 7px;
 	border-top-right-radius: 7px;
-	padding-top: 10px;
+	padding-top: 15px;
 }
 
 #iconocerrar{

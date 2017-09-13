@@ -8,6 +8,8 @@ var btnGuardar;
 var urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
 var ciudadesService = "http://dromedicas.sytes.net:9999/dropos/wsjson/ciudades/";
 var asyncRequest;
+//teclas eventos para scroll
+var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
 
 function iniciar() {
@@ -58,6 +60,7 @@ function iniciar() {
       var bodylogin = document.getElementById('blurme-container');
       bodylogin.classList.add('blur-me2');
       document.getElementById('login-container-main').style.display='block';
+      disableScroll();
     },false);
 
     var loginout = document.getElementById('login-container-main');
@@ -91,10 +94,42 @@ function establecerCiudades(){
   }
 }
 
+//funciones para el bloqueo del scroll
+function preventDefault(e) {
+  e = e || window.event;
+  if (e.preventDefault)
+      e.preventDefault();
+  e.returnValue = false;  
+}
+
+function preventDefaultForScrollKeys(e) {
+    if (keys[e.keyCode]) {
+        preventDefault(e);
+        return false;
+    }
+}
+
+function disableScroll() {
+  if (window.addEventListener) // older FF
+      window.addEventListener('DOMMouseScroll', preventDefault, false);
+  window.onwheel = preventDefault; // modern standard
+  window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+  window.ontouchmove  = preventDefault; // mobile
+  document.onkeydown  = preventDefaultForScrollKeys;
+}
+
+function enableScroll() {
+    if (window.removeEventListener)
+        window.removeEventListener('DOMMouseScroll', preventDefault, false);
+    window.onmousewheel = document.onmousewheel = null; 
+    window.onwheel = null; 
+    window.ontouchmove = null;  
+    document.onkeydown = null;  
+}
+// end funciones para el bloqueo del scroll
 
 //cierra el cuadro de login
-function exitLogin(event){
-
+function exitLogin(event){ 
   if( event.target.getAttribute('id') == 'innerContainer' ||
       event.target.getAttribute('id') == 'paddingcontainer' ||
       event.target.getAttribute('id') == 'row-login' ||
@@ -106,6 +141,7 @@ function exitLogin(event){
     document.getElementById('documentologin').value="";
     document.getElementById('password').value="";
     document.getElementById('recordarme').checked = false;
+    enableScroll();
 
   } 
 }
