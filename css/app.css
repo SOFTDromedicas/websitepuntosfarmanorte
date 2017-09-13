@@ -1099,13 +1099,6 @@ label.checkbox-label input[type=checkbox]{
 		padding: 3.4rem 0.75rem 0 0;
 	}
 	
-
-	/*#head-container .medium-5,
-	#head-container .medium-7{
-		flex: 0 0 16.66667%!important;
-    max-width: 16.66667%!important;
-	}*/
-
 	#quesonpuntos{	
 		background-image: url('../images/fondoquesondos.png');
 		background-position: center!important;
@@ -1196,6 +1189,25 @@ label.checkbox-label input[type=checkbox]{
 		font-size: 1.3rem!important;
 	}		
 
+	#login-section{	
+		padding: 2rem 0 2rem 0;
+	}
+
+	#form-login{
+		padding: 0!important;	
+	}
+
+	#recordarme-content label{
+		font-size: 1rem;
+	}
+	#recordarme-content [type="checkbox"]{
+		zoom:1.5;
+	}
+	#mostrar-clave p{
+		font-size: 0.88rem;
+	}
+
+
 
 }
 
@@ -1264,8 +1276,22 @@ label.checkbox-label input[type=checkbox]{
 	#tituloterminos{
 		margin: 0 15px;
 		font-size: 1.3rem!important;
-
 	}	
+
+	#form-login{
+		padding: 0!important;	
+	}
+
+	#recordarme-content label{
+		font-size: 1rem;
+	}
+	#recordarme-content [type="checkbox"]{
+		zoom:1.5;
+	}
+	#mostrar-clave p{
+		font-size: 0.95rem;
+	}
+
 
 }
 

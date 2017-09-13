@@ -76,9 +76,7 @@ function iniciar() {
     if(getParameterURLByName('confirmado') == "true"){
         document.getElementById("calloutafiliacion").style.display = 'block';      
      }
-
-
-
+     
 }
 
 function establecerCiudades(){
