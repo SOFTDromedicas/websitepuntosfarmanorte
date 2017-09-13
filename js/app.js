@@ -40,8 +40,6 @@ function iniciar() {
         establecerCiudades();
     }
 
-    console.log(location.pathname.substring(1));
-    
     //Eventos formulario login
     var mostrarClave = document.getElementById("p-mostrarclave");
     mostrarClave.addEventListener('click', function(){
@@ -65,21 +63,17 @@ function iniciar() {
     var loginout = document.getElementById('login-container-main');
     loginout.addEventListener('click',exitLogin,false);
 
-    document.getElementById('login-main').removeEventListener('click', exitLogin);
+    var iconocerrar = document.getElementById('iconocerrar');
+    iconocerrar.addEventListener('click', exitLogin,false);
 
+    //registro de evento techa de escape para el formulario de login
+    document.addEventListener('keyup',exitLogin,false);
 
     //si estoy en index valida que no se cargue a partir de la redireccion del formulario 2
     if(getParameterURLByName('confirmado') == "true"){
         document.getElementById("calloutafiliacion").style.display = 'block';      
      }
 
-     document.addEventListener('keyup', function(event){
-      console.log(event.key )
-        if (event.key == 'Escape'){
-          document.getElementById('blurme-container').classList.remove('blur-me2');
-          document.getElementById('login-container-main').style.display='none';    
-         }
-     },false);
 
 
 }
@@ -97,14 +91,23 @@ function establecerCiudades(){
   }
 }
 
+
+//cierra el cuadro de login
 function exitLogin(event){
+
   if( event.target.getAttribute('id') == 'innerContainer' ||
       event.target.getAttribute('id') == 'paddingcontainer' ||
-      event.target.getAttribute('id') == 'row-login'){
+      event.target.getAttribute('id') == 'row-login' ||
+      event.target.getAttribute('id') == 'row-iconocerrar' ||
+      event.target.getAttribute('id') == 'iconocerrar' ||
+      event.key == 'Escape'){
     document.getElementById('blurme-container').classList.remove('blur-me2');
-    document.getElementById('login-container-main').style.display='none';    
-  } 
+    document.getElementById('login-container-main').style.display='none';  
+    document.getElementById('documentologin').value="";
+    document.getElementById('password').value="";
+    document.getElementById('recordarme').checked = false;
 
+  } 
 }
 
 //Crea el combobox de operadores, metodo auxiliar del metodo getOperadores

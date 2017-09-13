@@ -754,7 +754,6 @@ label.checkbox-label input[type=checkbox]{
   /*background: rgba(9, 43, 171, 0.75)!important;*/
 }
 
-
 .paddingcontainer{
 	padding: 10rem 0;
 }
@@ -774,10 +773,19 @@ label.checkbox-label input[type=checkbox]{
  background: #eff3f8;
 }
 
-#banda-login{
+#closeicon{
+		background: #1c3672;
 	border-top-left-radius: 7px;
 	border-top-right-radius: 7px;
-	padding: 1rem;
+	padding-top: 10px;
+}
+
+#iconocerrar{
+	cursor: pointer;
+}
+
+#banda-login{
+	padding-bottom: 1rem;
 	background: #1c3672;
 	color: #FFFFFF;
 	text-align: center;
