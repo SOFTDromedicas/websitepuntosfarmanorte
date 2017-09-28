@@ -42,7 +42,10 @@ function iniciar() {
         establecerCiudades();
     }
 
-    if (location.pathname.substring(1) != "seccion/inscripcion.html"){
+
+
+    if (location.pathname.substring(1) == "index.html"){
+    // if (location.pathname.substring(1) == "xxxx.html"){
         //Eventos formulario login
         var mostrarClave = document.getElementById("p-mostrarclave");
         mostrarClave.addEventListener('click', function() {
@@ -385,26 +388,32 @@ function establecerValores() {
 
     documento = document.getElementById("documento").value.trim();
     var nombresTemp = document.getElementById("nombres").value.toUpperCase().trim();
-    nombres = nombresTemp.replace('Ñ', '%D1');
+    nombres = nombresTemp.replace('Ñ', 'N');
     nombres = removeDiacritics(nombres);
     var apellidosTemp = document.getElementById("apellidos").value.toUpperCase().trim();
-    apellidos = apellidosTemp.replace('Ñ', '%D1');
+    apellidos = apellidosTemp.replace('Ñ', 'N');
     apellidos = removeDiacritics(apellidos);
     tipodocumento = document.getElementById("tipodocumento").value;
     sexo = document.getElementById("sexo").value;
+    
     var direcciontemp = document.getElementById("direccion").value.toUpperCase().trim();
-    direccion = direcciontemp.replace('#', '%23');
+    direcciontemp = direcciontemp.replace('#', '%23');
     direcciontemp = direcciontemp.replace('Ñ', 'N');
     direccion = removeDiacritics(direcciontemp);
+
+
+   
     var barriotemp = document.getElementById("barrio").value.toUpperCase().trim();
-    barriotemp = barriotemp.replace('Ñ', 'N'); 
+    barriotemp = barriotemp.replace('#', '%23');
+    barriotemp = barriotemp.replace('Ñ', 'N');
     barrio = removeDiacritics(barriotemp);
+
     telefonofijo = document.getElementById("telefonofijo").value.trim();
     celular = document.getElementById("celular").value.trim();
     ciudad = document.getElementById("ciudad").value.toUpperCase().trim();
     email = document.getElementById("email").value.trim();
     terminos = document.getElementById("checkboxterminos").value;    
-
+    
 }
 
 function validateEmail(email){        
@@ -477,7 +486,6 @@ $('.off-canvas a').on('click', function() {
 
 
 //valida que la pagina actual sea el index para activar opciones de menu
-//
 if (location.pathname.substring(1) === "index.html") {
     //Activa opcion del menu cuando la navegacion es por scroll
     var lastId,

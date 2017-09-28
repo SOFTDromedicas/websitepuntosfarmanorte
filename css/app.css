@@ -728,7 +728,7 @@ label.checkbox-label input[type=checkbox]{
  		filter: blur(3px);
 	}
 .blur-me2 {
-		transition: 0.4s -webkit-filter linear;
+		transition: 0.2s -webkit-filter linear;
  		filter: blur(10px) ;
 	}
 
@@ -786,11 +786,11 @@ label.checkbox-label input[type=checkbox]{
 }
 
 #banda-login{
-	padding-bottom: 1rem;
+	padding-bottom: 1rem 1rem 0 1rem;
 	background: #1c3672;
 	color: #FFFFFF;
 	text-align: center;
-	margin-bottom: 1.3rem;
+	margin-bottom: 1.1rem;
 }
 
 #form-login{
@@ -805,6 +805,7 @@ label.checkbox-label input[type=checkbox]{
 .login-main [type="text"],
 .login-main [type="password"]{
 	border: 2px solid #BFBFBF;
+	margin-bottom: .85rem!important;
 }
 
 #recordarme{
@@ -831,7 +832,7 @@ label.checkbox-label input[type=checkbox]{
 	background: #274B8D;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 1rem;
-	margin-top: 1.2rem;
+	margin: 0.9rem 0;
 }
 
 #iniciar-sesion:hover{
@@ -861,7 +862,7 @@ label.checkbox-label input[type=checkbox]{
 	vertical-align: middle;
 }
 #olvidocontrasenia-content hr{ 
-	margin-top: 1rem!important;
+	margin: 0.8rem 0!important;
 }
 #olvidocontrasenia p, #olvidocontrasenia{ 
 	margin-bottom: 0rem!important;
@@ -870,7 +871,7 @@ label.checkbox-label input[type=checkbox]{
 #creacuenta{
 	font-family: 'Open Sans', sans-serif;
 	text-align: center;
-	font-weight: bold;
+	/*font-weight: bold;*/
 	color: #535353;
 	font-size: 1.1rem;
 }
