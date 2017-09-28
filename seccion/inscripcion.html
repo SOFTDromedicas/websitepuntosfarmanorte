@@ -171,17 +171,80 @@
           </div>
         </div>
         <div class="row ">
-          <div class="small-12 medium-6 columns">
+          <div class="small-12 medium-2 columns">
             <label>Direcci&oacute;n
-              <input type="text" name="direccion" id="direccion" required placeholder="Ingrese su direcci&oacute;n">
+            <select class="" id="street1">
+                <option value="AVENIDA">AVENIDA</option>
+                <option value="AUTOPISTA">AUTOPISTA</option>
+                <option value="BLOQUE">BLOQUE</option>
+                <option value="BOULEVAR">BOULEVAR</option>
+                <option value="CALLE">CALLE</option>
+                <option value="CARRERA">CARRERA</option>
+                <option value="CARRETERA">CARRETERA</option>
+                <option value="CASA">CASA</option>
+                <option value="CIRCUNVALAR">CIRCUNVALAR</option>
+                <option value="CORREGIMIENTO">CORREGIMIENTO</option>
+                <option value="DIAGONAL">DIAGONAL</option>
+                <option value="EDIFICIO">EDIFICIO</option>
+                <option value="FINCA">FINCA</option>
+                <option value="HACIENDA">HACIENDA</option>
+                <option value="KILOMETRO">KILOMETRO</option>
+                <option value="LOTE">LOTE</option>
+                <option value="MANZANA">MANZANA</option>
+                <option value="TRANSVERSAL">TRANSVERSAL</option>
+                <option value="TRONCAL">TRONCAL</option>
+                <option value="URBANIZACION">URBANIZACION</option>
+                <option value="VEREDA">VEREDA</option>
+                <option value="VIA">VIA</option>
+            </select>
             </label>
           </div>
-          <div class="small-12 medium-3 columns">
+          <div class="small-12 medium-2 columns">
+            <label>&nbsp;
+              <input type="text" name="street1-valor" id="street1-valor" required placeholder="">
+            </label>
+          </div>
+          <div class="small-12 medium-2 columns">
+            <label>&nbsp;
+            <select class="" id="street2">
+              <option value=""></option>
+              <option value="No.">No.</option>
+              <option value="AVENIDA">AVENIDA</option>
+              <option value="AUTOPISTA">AUTOPISTA</option>
+              <option value="BLOQUE">BLOQUE</option>
+              <option value="BOULEVAR">BOULEVAR</option>
+              <option value="CALLE">CALLE</option>
+              <option value="CARRERA">CARRERA</option>
+              <option value="CARRETERA">CARRETERA</option>
+              <option value="CASA">CASA</option>
+              <option value="CIRCUNVALAR">CIRCUNVALAR</option>
+              <option value="CORREGIMIENTO">CORREGIMIENTO</option>
+              <option value="DIAGONAL">DIAGONAL</option>
+              <option value="EDIFICIO">EDIFICIO</option>
+              <option value="FINCA">FINCA</option>
+              <option value="HACIENDA">HACIENDA</option>
+              <option value="KILOMETRO">KILOMETRO</option>
+              <option value="LOTE">LOTE</option>
+              <option value="MANZANA">MANZANA</option>
+              <option value="TRANSVERSAL">TRANSVERSAL</option>
+              <option value="TRONCAL">TRONCAL</option>
+              <option value="URBANIZACION">URBANIZACION</option>
+              <option value="VEREDA">VEREDA</option>
+              <option value="VIA">VIA</option></select>
+            </select>
+            </label>
+          </div> 
+          <div class="small-12 medium-2 columns">
+            <label>&nbsp;
+              <input type="text" name="street2-valor" id="street2-valor" required placeholder="">
+            </label>
+          </div>         
+          <div class="small-12 medium-2 columns">
             <label>Barrio
               <input type="text" name="barrio" required="" id="barrio" placeholder="Ingrese su barrio">
             </label>
           </div>
-          <div class="small-12 medium-3 columns">
+          <div class="small-12 medium-2 columns">
             <label>Ciudad
               <select  name="ciudad" required="" id="ciudad"></select>
             </label>

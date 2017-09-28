@@ -44,8 +44,8 @@ function iniciar() {
 
 
 
-    if (location.pathname.substring(1) == "index.html"){
-    // if (location.pathname.substring(1) == "xxxx.html"){
+    // if (location.pathname.substring(1) == "index.html"){
+    if (location.pathname.substring(1) == "xxxx.html"){
         //Eventos formulario login
         var mostrarClave = document.getElementById("p-mostrarclave");
         mostrarClave.addEventListener('click', function() {
