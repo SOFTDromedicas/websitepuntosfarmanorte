@@ -42,42 +42,46 @@ function iniciar() {
         establecerCiudades();
     }
 
-    //Eventos formulario login
-    var mostrarClave = document.getElementById("p-mostrarclave");
-    mostrarClave.addEventListener('click', function(){
-      var password = document.getElementById('password');        
-      if(password.getAttribute('type') === 'password'){
-          password.setAttribute('type', 'text');
-          mostrarClave.innerHTML="Ocultar Contrase&ntilde;a"
-      }else{
-          password.setAttribute('type', 'password');
-          mostrarClave.innerHTML="Mostrar Contrase&ntilde;a"
-      }
-    }, false);
-   
-    var login = document.getElementById('loginperfil');
-    login.addEventListener('click',function(){
-      var bodylogin = document.getElementById('blurme-container');
-      bodylogin.classList.add('blur-me2');
-      document.getElementById('login-container-main').style.display='block';
-      disableScroll();
-    },false);
+    if (location.pathname.substring(1) != "seccion/inscripcion.html"){
+        //Eventos formulario login
+        var mostrarClave = document.getElementById("p-mostrarclave");
+        mostrarClave.addEventListener('click', function() {
+            var password = document.getElementById('password');
+            if (password.getAttribute('type') === 'password') {
+                password.setAttribute('type', 'text');
+                mostrarClave.innerHTML = "Ocultar Contrase&ntilde;a"
+            } else {
+                password.setAttribute('type', 'password');
+                mostrarClave.innerHTML = "Mostrar Contrase&ntilde;a"
+            }
+        }, false);
 
-    var loginout = document.getElementById('login-container-main');
-    loginout.addEventListener('click',exitLogin,false);
+        var login = document.getElementById('loginperfil');
+        login.addEventListener('click', function() {
+            var bodylogin = document.getElementById('blurme-container');
+            bodylogin.classList.add('blur-me2');
+            document.getElementById('login-container-main').style.display = 'block';
+            disableScroll();
+        }, false);
 
-    var iconocerrar = document.getElementById('iconocerrar');
-    iconocerrar.addEventListener('click', exitLogin,false);
+        var loginout = document.getElementById('login-container-main');
+        loginout.addEventListener('click', exitLogin, false);
 
-    //registro de evento techa de escape para el formulario de login
-    document.addEventListener('keyup',exitLogin,false);
+        var iconocerrar = document.getElementById('iconocerrar');
+        iconocerrar.addEventListener('click', exitLogin, false);
 
+        //registro de evento techa de escape para el formulario de login
+        document.addEventListener('keyup', exitLogin, false);
+    }
+
+    
     //si estoy en index valida que no se cargue a partir de la redireccion del formulario 2
     if(getParameterURLByName('confirmado') == "true"){
         document.getElementById("calloutafiliacion").style.display = 'block';      
      }
      
 }
+
 
 function establecerCiudades(){
   try{
@@ -199,7 +203,6 @@ function registrar() {
     }else{
         document.getElementById("calloutFormAlert").style.display = 'block';
     }
-
        
 }
 
@@ -391,13 +394,17 @@ function establecerValores() {
     sexo = document.getElementById("sexo").value;
     var direcciontemp = document.getElementById("direccion").value.toUpperCase().trim();
     direccion = direcciontemp.replace('#', '%23');
-    barrio = document.getElementById("barrio").value.toUpperCase().trim();
+    direcciontemp = direcciontemp.replace('Ñ', 'N');
+    direccion = removeDiacritics(direcciontemp);
+    var barriotemp = document.getElementById("barrio").value.toUpperCase().trim();
+    barriotemp = barriotemp.replace('Ñ', 'N'); 
+    barrio = removeDiacritics(barriotemp);
     telefonofijo = document.getElementById("telefonofijo").value.trim();
     celular = document.getElementById("celular").value.trim();
     ciudad = document.getElementById("ciudad").value.toUpperCase().trim();
     email = document.getElementById("email").value.trim();
     terminos = document.getElementById("checkboxterminos").value;    
-    
+
 }
 
 function validateEmail(email){        
@@ -467,54 +474,66 @@ $('.off-canvas a').on('click', function() {
     $(this).addClass("activa");                                            
 });   
 
-//Activa opcion del menu cuando la navegacion es por scroll
-var lastId,
-    topMenu = $("#menppal"),
 
-    topMenuHeight = topMenu.outerHeight()+30 ;
+
+//valida que la pagina actual sea el index para activar opciones de menu
+//
+if (location.pathname.substring(1) === "index.html") {
+    //Activa opcion del menu cuando la navegacion es por scroll
+    var lastId,
+        topMenu = $("#menppal"),
+
+        topMenuHeight = topMenu.outerHeight() + 30;
     // All list items
-    menuItems = topMenu.find("a");  
+    menuItems = topMenu.find("a");
 
     // Anchors corresponding to menu items
-    scrollItems = menuItems.map(function(){
-      var item = $($(this).attr("href"));
-      if (item.length) { return item; }
+    scrollItems = menuItems.map(function() {
+        var item = $($(this).attr("href"));
+        if (item.length) {
+            return item;
+        }
     });
-  // Bind click handler to menu items
-  // so we can get a fancy scroll animation
-  menuItems.click(function(e){
-    var href = $(this).attr("href"),
-        offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
-    $('html, body').stop().animate({ scrollTop: offsetTop }, 300);
-    e.preventDefault();
-  });
+    // Bind click handler to menu items
+    // so we can get a fancy scroll animation
+    menuItems.click(function(e) {
+        var href = $(this).attr("href"),
+            offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 1;
+        $('html, body').stop().animate({
+            scrollTop: offsetTop
+        }, 300);
+        e.preventDefault();
+    });
 
 
-// Bind to scroll
-$(window).scroll(function(){
-   // Get container scroll position  
-   var fromTop = $(this).scrollTop()+topMenuHeight;
-    
-   var cur = scrollItems.map(function(){
-     if ($(this).offset().top < fromTop)
+    // Bind to scroll
+    $(window).scroll(function() {
+        // Get container scroll position  
+        var fromTop = $(this).scrollTop() + topMenuHeight;
 
-       return this;
-   });
-   // Get the id of the current element       
-   // Get id of current scroll item
-   cur = cur[cur.length-1];
-   var id = cur && cur.length ? cur[0].id : "";
-   
-   if (lastId !== id) {
-       lastId = id;       
-       if(currentElement != null){       
-         if(currentElement.attr("href").replace("#","") !== id);          
-          currentElement.removeClass("activa");
-       }
-       // Set/remove active class
-       menuItems.parent().removeClass("activa").end().filter("[href='#"+id+"']").parent().addClass("activa");
-   }                   
-});
+        var cur = scrollItems.map(function() {
+            if ($(this).offset().top < fromTop)
+
+                return this;
+        });
+        // Get the id of the current element       
+        // Get id of current scroll item
+        cur = cur[cur.length - 1];
+        var id = cur && cur.length ? cur[0].id : "";
+
+        if (lastId !== id) {
+            lastId = id;
+            if (currentElement != null) {
+                if (currentElement.attr("href").replace("#", "") !== id);
+                currentElement.removeClass("activa");
+            }
+            // Set/remove active class
+            menuItems.parent().removeClass("activa").end().filter("[href='#" + id + "']").parent().addClass("activa");
+        }
+    });
+}
+
+
 
 function getParameterURLByName(name, url) {
     if (!url) url = window.location.href;
