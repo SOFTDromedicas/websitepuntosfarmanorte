@@ -13,6 +13,16 @@ var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
 
 function iniciar() {
+
+  // Almacena la información en sessionStorage
+// sessionStorage.setItem('paco', 'lk');
+
+// Obtiene la información almacenada desde sessionStorage
+var data = sessionStorage.getItem('paco');
+
+
+console.log("Session--> " + data);
+console.log("this--> " + this.sessionStorage.getItem('paco'));
     
     //Registro de eventos y componente para la interfaz de afiliacion
     if (location.pathname.substring(1) === "seccion/inscripcion.html") {
@@ -40,12 +50,28 @@ function iniciar() {
         }
         //prepara combo de ciudades
         establecerCiudades();
+
+        var street1 = document.getElementById('street1');
+        street1.addEventListener('change', concatenardireccion, false);
+        
+        var street1valor = document.getElementById('street1-valor');
+        street1valor.addEventListener('keyup', concatenardireccion, false);
+        
+        var street1 = document.getElementById('street2');
+        street1.addEventListener('change', concatenardireccion, false);
+
+        var street1valor = document.getElementById('street2-valor');
+        street1valor.addEventListener('keyup', concatenardireccion, false);
+        
+        document.getElementById('cancelar-button').addEventListener('click',
+          limpiarFormulario, false);
+
     }
 
 
 
-    // if (location.pathname.substring(1) == "index.html"){
-    if (location.pathname.substring(1) == "xxxx.html"){
+    if (location.pathname.substring(1) == "index.html"){
+    // if (location.pathname.substring(1) == "xxxx.html"){
         //Eventos formulario login
         var mostrarClave = document.getElementById("p-mostrarclave");
         mostrarClave.addEventListener('click', function() {
@@ -82,8 +108,9 @@ function iniciar() {
     if(getParameterURLByName('confirmado') == "true"){
         document.getElementById("calloutafiliacion").style.display = 'block';      
      }
-     
-}
+
+
+}//end function iniciar
 
 
 function establecerCiudades(){
@@ -98,6 +125,24 @@ function establecerCiudades(){
     mostrarFallaDelSistema(ex.message);
   }
 }
+
+
+function concatenardireccion(){
+  var dirTemp = new Array();
+
+  var street1 = document.getElementById('street1');    
+  dirTemp.push( document.getElementById('street1').value );     
+  dirTemp.push( document.getElementById('street1-valor').value.toUpperCase().trim() );     
+  dirTemp.push( document.getElementById('street2').value );     
+  dirTemp.push( document.getElementById('street2-valor').value.toUpperCase().trim() );     
+   
+  document.getElementById('direccion').innerHTML = dirTemp.join(" ") ;  
+}
+
+function limpiarFormulario(){
+  document.getElementById('direccion').innerHTML ="";
+}
+
 
 //funciones para el bloqueo del scroll
 function preventDefault(e) {
@@ -259,7 +304,12 @@ function reestrablecerFormulario(){
   document.getElementById("apellidos").value =""; 
   document.getElementById("tipodocumento").value =""; 
   document.getElementById("sexo").value =""; 
-  document.getElementById("direccion").value =""; 
+  document.getElementById("direccion").innerHTML =""; 
+  document.getElementById("street1").selectIndex = 1; 
+  document.getElementById("street1-valor").value =""; 
+  document.getElementById("street2").selectIndex = 1; 
+  document.getElementById("street2-valor").value =""; 
+
   document.getElementById("barrio").value =""; 
   document.getElementById("fechanacimiento").value =""; 
   document.getElementById("telefonofijo").value =""; 
@@ -317,16 +367,20 @@ function validarFormulario(){
     document.getElementById("fechanacimiento").closest("label").setAttribute("class","is-invalid-label");
   }
   //validacion de barrio
-  document.getElementById("direccion").addEventListener("invalid.zf.abide",function(ev,el) {
+  document.getElementById("street1-valor").addEventListener("invalid.zf.abide",function(ev,el) {
       valido = false;
-    document.getElementById("direccion").setAttribute("class","is-invalid-input");
-    document.getElementById("direccion").closest("label").setAttribute("class","is-invalid-label");
+    document.getElementById("street1-valor").setAttribute("class","is-invalid-input");
+    document.getElementById("street1-valor").closest("label").setAttribute("class","is-invalid-label");
   });
 
-  if(direccion == "" ){
+console.log("-------" + (direccion=== ""));
+
+  if(direccion=== "" || direccion=== "AVENIDA" ){
     valido = false;
-    document.getElementById("direccion").setAttribute("class","is-invalid-input");
-    document.getElementById("direccion").closest("label").setAttribute("class","is-invalid-label");
+    document.getElementById("street1-valor").setAttribute("class","is-invalid-input");
+    document.getElementById("street1-valor").closest("label").setAttribute("class","is-invalid-label");
+    document.getElementById("street2-valor").setAttribute("class","is-invalid-input");
+    document.getElementById("street2-valor").closest("label").setAttribute("class","is-invalid-label");
   }
   //validacion de barrio
   document.getElementById("barrio").addEventListener("invalid.zf.abide",function(ev,el) {
@@ -396,7 +450,7 @@ function establecerValores() {
     tipodocumento = document.getElementById("tipodocumento").value;
     sexo = document.getElementById("sexo").value;
     
-    var direcciontemp = document.getElementById("direccion").value.toUpperCase().trim();
+    var direcciontemp = document.getElementById("direccion").innerHTML.toUpperCase().trim();
     direcciontemp = direcciontemp.replace('#', '%23');
     direcciontemp = direcciontemp.replace('Ñ', 'N');
     direccion = removeDiacritics(direcciontemp);
@@ -413,7 +467,8 @@ function establecerValores() {
     ciudad = document.getElementById("ciudad").value.toUpperCase().trim();
     email = document.getElementById("email").value.trim();
     terminos = document.getElementById("checkboxterminos").value;    
-    
+
+   // console.log( direccion +" " + barrio); throw new Error("Something went badly wrong!");    
 }
 
 function validateEmail(email){        
