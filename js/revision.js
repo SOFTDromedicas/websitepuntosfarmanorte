@@ -366,7 +366,7 @@ function validarFormulario(){
   if(direccion=== ""  ){
     valido = false;
     document.getElementById("direccion").setAttribute("class","is-invalid-input");
-    console.log(document.getElementById("direccion").closest("label"))
+    console.log(document.getElementById("direccion"))
     document.getElementById("direccion").closest("label").setAttribute("class","is-invalid-label");
    
   }
@@ -438,8 +438,9 @@ function establecerValores() {
     tipodocumento = document.getElementById("tipodocumento").value;
     sexo = document.getElementById("sexo").value;
     
-    var direcciontemp = document.getElementById("direccion").innerHTML.toUpperCase().trim();
-    direcciontemp = direcciontemp.replace('#', '%23');
+    var direcciontemp = document.getElementById("direccion").value.toUpperCase().trim();
+    direcciontemp = direcciontemp.replace('#', 'NO.');
+    direcciontemp = direcciontemp.replace('%23', 'NO.');
     direcciontemp = direcciontemp.replace('Ñ', 'N');
     direccion = removeDiacritics(direcciontemp);
 
