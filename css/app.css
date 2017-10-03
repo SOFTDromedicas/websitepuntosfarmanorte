@@ -497,6 +497,23 @@ legend{
 	height: 1.2rem;
 }
 
+.busqueda{
+	background: #CBDDBF;
+	margin-bottom: 1rem;
+}
+.busqueda label{
+	color: #4A7F26!important;
+}
+
+#buscar-button{
+	margin-bottom: 0;
+	min-width: 7rem;
+	background: #3C9600!important;
+}
+
+#buscar-button:hover{
+	background: #307402!important;
+}
 
 
 [type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'],
@@ -580,6 +597,14 @@ textarea {
 
 #inscripcion-title{
 	color: #0A3D84;
+	font-family: 'Open Sans', sans-serif;
+	margin-top: 3.5rem;
+	font-weight: bold;
+	text-align: center;
+}
+
+#revision-title{
+	color: #4A7F26;
 	font-family: 'Open Sans', sans-serif;
 	margin-top: 3.5rem;
 	font-weight: bold;

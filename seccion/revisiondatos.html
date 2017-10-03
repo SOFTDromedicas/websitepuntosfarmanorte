@@ -91,7 +91,7 @@
     <!-- formulario de inscripcion -->
     <section id="inscripcion-content">
       <div class="row">
-        <h3 id="inscripcion-title" class="float-center">Formulario de inscripci&oacute;n  Puntos Farmanorte</h3>
+        <h3 id="inscripcion-title" class="float-center">Revisi&oacute;n de Datos Puntos Farmanorte</h3>
       </div>
       
         <div class="row expanded">
@@ -126,7 +126,18 @@
           </div>
         </div>
         <div id="blur">
-          
+         
+        <div class="row busqueda align-middle">
+          <div class="columns small-6">
+              <label>Buscar Afiliado por documento:
+              <input type="number" name="documentobusqueda" id="documentobusqueda" required placeholder="N&uacute;mero de documento">
+            </label>
+          </div>
+          <div class="columns small-6 align-middle">
+            <button type="button" id="buscar-button" class="button float-left">Buscar</button>
+          </div>
+        </div>
+
         <div class="row ">
           <div class="small-12 medium-6 columns">
             <label>Nombres
@@ -171,81 +182,17 @@
           </div>
         </div>
         <div class="row ">
-          <div class="small-12 medium-2 columns">
+          <div class="small-12 medium-6 columns">
             <label>Direcci&oacute;n
-            <select class="" id="street1">
-                <option value="AVENIDA">AVENIDA</option>
-                <option value="AUTOPISTA">AUTOPISTA</option>
-                <option value="BLOQUE">BLOQUE</option>
-                <option value="BOULEVAR">BOULEVAR</option>
-                <option value="CALLE">CALLE</option>
-                <option value="CARRERA">CARRERA</option>
-                <option value="CARRETERA">CARRETERA</option>
-                <option value="CASA">CASA</option>
-                <option value="CIRCUNVALAR">CIRCUNVALAR</option>
-                <option value="CONJUNTO CERRADO">CONJUNTO CERRADO</option>
-                <option value="CORREGIMIENTO">CORREGIMIENTO</option>
-                <option value="DIAGONAL">DIAGONAL</option>
-                <option value="EDIFICIO">EDIFICIO</option>
-                <option value="FINCA">FINCA</option>
-                <option value="HACIENDA">HACIENDA</option>
-                <option value="KILOMETRO">KILOMETRO</option>
-                <option value="LOTE">LOTE</option>
-                <option value="MANZANA">MANZANA</option>
-                <option value="TRANSVERSAL">TRANSVERSAL</option>
-                <option value="TRONCAL">TRONCAL</option>
-                <option value="URBANIZACION">URBANIZACION</option>
-                <option value="VEREDA">VEREDA</option>
-                <option value="VIA">VIA</option>
-            </select>
+              <input type="text" name="direccion" id="street1-valor" required placeholder="">
             </label>
           </div>
-          <div class="small-12 medium-2 columns">
-            <label>&nbsp;
-              <input type="text" name="street1-valor" id="street1-valor" required placeholder="">
-            </label>
-          </div>
-          <div class="small-12 medium-2 columns">
-            <label>&nbsp;
-            <select class="" id="street2">
-              <option value=""></option>
-              <option value="No.">No.</option>
-              <option value="AVENIDA">AVENIDA</option>
-              <option value="AUTOPISTA">AUTOPISTA</option>
-              <option value="BLOQUE">BLOQUE</option>
-              <option value="BOULEVAR">BOULEVAR</option>
-              <option value="CALLE">CALLE</option>
-              <option value="CARRERA">CARRERA</option>
-              <option value="CARRETERA">CARRETERA</option>
-              <option value="CASA">CASA</option>
-              <option value="CIRCUNVALAR">CIRCUNVALAR</option>
-              <option value="CORREGIMIENTO">CORREGIMIENTO</option>
-              <option value="DIAGONAL">DIAGONAL</option>
-              <option value="EDIFICIO">EDIFICIO</option>
-              <option value="FINCA">FINCA</option>
-              <option value="HACIENDA">HACIENDA</option>
-              <option value="KILOMETRO">KILOMETRO</option>
-              <option value="LOTE">LOTE</option>
-              <option value="MANZANA">MANZANA</option>
-              <option value="TRANSVERSAL">TRANSVERSAL</option>
-              <option value="TRONCAL">TRONCAL</option>
-              <option value="URBANIZACION">URBANIZACION</option>
-              <option value="VEREDA">VEREDA</option>
-              <option value="VIA">VIA</option></select>
-            </select>
-            </label>
-          </div> 
-          <div class="small-12 medium-2 columns">
-            <label>&nbsp;
-              <input type="text" name="street2-valor" id="street2-valor" required placeholder="">
-            </label>
-          </div>         
-          <div class="small-12 medium-2 columns">
+          <div class="small-12 medium-3 columns">
             <label>Barrio
               <input type="text" name="barrio" required="true" id="barrio" placeholder="Ingrese su barrio">
             </label>
           </div>
-          <div class="small-12 medium-2 columns">
+          <div class="small-12 medium-3 columns">
             <label>Ciudad
               <select  name="ciudad" required="" id="ciudad"></select>
             </label>
@@ -280,7 +227,7 @@
         </div>
         <div class="row buttonsrow">
           <div class="small-12 columns ">          
-            <button type="button" id="guardar-button" class="button float-right">Registrarse</button>
+            <button type="button" id="guardar-button" class="button float-right">Actualizar</button>
             <button type="reset" id="cancelar-button" class="alert button float-right">Cancelar</button>
           </div>            
         </div>
@@ -308,7 +255,7 @@
     <script src="../js/vendor/jquery.js"></script>
     <script src="../js/vendor/what-input.js"></script>
     <script src="../js/vendor/foundation.js"></script>
-    <script src="../js/app.js"></script>
+    <script src="../js/revision.js"></script>
     <script src="../js/foundation-datepicker.js"></script>
     <script src="../js/locales/foundation-datepicker.es.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

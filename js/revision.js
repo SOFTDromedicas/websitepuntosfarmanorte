@@ -25,7 +25,7 @@ function iniciar() {
 // console.log("this--> " + this.sessionStorage.getItem('paco'));
     
     //Registro de eventos y componente para la interfaz de afiliacion
-    if (location.pathname.substring(1) === "seccion/inscripcion.html") {
+    if (location.pathname.substring(1) === "seccion/revisiondatos.html") {
         btnGuardar = document.getElementById('guardar-button');
         btnGuardar.addEventListener('click', registrar, false);
         //verifica el dispositivo para el componente date
@@ -51,18 +51,6 @@ function iniciar() {
 
         //prepara combo de ciudades
         establecerCiudades();
-
-        var street1 = document.getElementById('street1');
-        street1.addEventListener('change', concatenardireccion, false);
-        
-        var street1valor = document.getElementById('street1-valor');
-        street1valor.addEventListener('keyup', concatenardireccion, false);
-        
-        var street1 = document.getElementById('street2');
-        street1.addEventListener('change', concatenardireccion, false);
-
-        var street1valor = document.getElementById('street2-valor');
-        street1valor.addEventListener('keyup', concatenardireccion, false);
         
         document.getElementById('cancelar-button').addEventListener('click',
           limpiarFormulario, false);
@@ -367,21 +355,20 @@ function validarFormulario(){
     document.getElementById("fechanacimiento").setAttribute("class","is-invalid-input");
     document.getElementById("fechanacimiento").closest("label").setAttribute("class","is-invalid-label");
   }
-  //validacion de barrio
-  document.getElementById("street1-valor").addEventListener("invalid.zf.abide",function(ev,el) {
+
+  //validacion de barrio  
+   document.getElementById("direccion").addEventListener("invalid.zf.abide",function(ev,el) {
       valido = false;
-    document.getElementById("street1-valor").setAttribute("class","is-invalid-input");
-    document.getElementById("street1-valor").closest("label").setAttribute("class","is-invalid-label");
+    document.getElementById("direccion").setAttribute("class","is-invalid-input");
+    document.getElementById("direccion").closest("label").setAttribute("class","is-invalid-label");
   });
 
-console.log("-------" + (direccion=== ""));
-
-  if(direccion=== "" || direccion=== "AVENIDA" ){
+  if(direccion=== ""  ){
     valido = false;
-    document.getElementById("street1-valor").setAttribute("class","is-invalid-input");
-    document.getElementById("street1-valor").closest("label").setAttribute("class","is-invalid-label");
-    document.getElementById("street2-valor").setAttribute("class","is-invalid-input");
-    document.getElementById("street2-valor").closest("label").setAttribute("class","is-invalid-label");
+    document.getElementById("direccion").setAttribute("class","is-invalid-input");
+    console.log(document.getElementById("direccion").closest("label"))
+    document.getElementById("direccion").closest("label").setAttribute("class","is-invalid-label");
+   
   }
   //validacion de barrio
   document.getElementById("barrio").addEventListener("invalid.zf.abide",function(ev,el) {
