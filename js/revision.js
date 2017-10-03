@@ -14,15 +14,6 @@ var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
 function iniciar() {
 
-  // Almacena la información en sessionStorage
-// sessionStorage.setItem('paco', 'lk');
-
-// Obtiene la información almacenada desde sessionStorage
-// var data = sessionStorage.getItem('paco');
-
-
-// console.log("Session--> " + data);
-// console.log("this--> " + this.sessionStorage.getItem('paco'));
     
     //Registro de eventos y componente para la interfaz de afiliacion
     if (location.pathname.substring(1) === "seccion/revisiondatos.html") {
@@ -51,10 +42,9 @@ function iniciar() {
 
         //prepara combo de ciudades
         establecerCiudades();
-        
-        document.getElementById('cancelar-button').addEventListener('click',
-          limpiarFormulario, false);
 
+        var btn_buscar = document.getElementById("buscar-button");
+        btn_buscar.addEventListener('click', buscarAfiliado, false);
     }
 
 
@@ -111,26 +101,69 @@ function establecerCiudades(){
           "application/json; charset=utf-8" );
     xhrCiudad.send();     
   }catch(ex){
-    mostrarFallaDelSistema(ex.message);
+    console.log(ex.message);
   }
 }
 
 
-function concatenardireccion(){
-  var dirTemp = new Array();
+function buscarAfiliado(){
+    console.log("Busacando afiliado...");
 
-  var street1 = document.getElementById('street1');    
-  dirTemp.push( document.getElementById('street1').value );     
-  dirTemp.push( document.getElementById('street1-valor').value.toUpperCase().trim() );     
-  dirTemp.push( document.getElementById('street2').value );     
-  dirTemp.push( document.getElementById('street2-valor').value.toUpperCase().trim() );     
-   
-  document.getElementById('direccion').innerHTML = dirTemp.join(" ") ;  
+    reestrablecerFormulario();
+    $('#m-busqueda').html("");
+
+    var documentoTemp = document.querySelector('#documentobusqueda').value;
+    var consultaService = 
+      "http://dromedicas.sytes.net:9999/dropos/wsjson/fpdatosafiliado/index.php?documento=";
+    consultaService += documentoTemp;
+    console.log("URL: " + consultaService);
+    try{ 
+      var xhrConsulta = new XMLHttpRequest();
+      xhrConsulta.addEventListener('readystatechange', 
+                    function(){obtenerDatosAfiliado(xhrConsulta)},false);
+      xhrConsulta.open( "GET", consultaService, true );
+      xhrConsulta.setRequestHeader("Accept",
+          "application/json; charset=utf-8" );
+      xhrConsulta.send(); 
+
+    }catch(exception){
+      alert("Hay problemas con el servicio de busqueda");
+    }
 }
 
-function limpiarFormulario(){
-  document.getElementById('direccion').innerHTML ="";
-}
+function obtenerDatosAfiliado(xhr) {
+
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        var response = JSON.parse(xhr.responseText);
+        //console.log(response.status);
+        if (response.status === "sucess") {
+            var afiliado = response.data[0];
+            document.getElementById("nombres").value = removeDiacritics(afiliado.nombres).toUpperCase();
+            document.getElementById("apellidos").value = removeDiacritics(afiliado.apellidos).toUpperCase();
+            document.getElementById("tipodocumento").value = afiliado.tipodocumento;
+            document.getElementById("documento").value = afiliado.documento;
+            document.getElementById("sexo").value = afiliado.sexo;
+
+            if (mobilecheck() && mobileAndTabletcheck()) {
+                document.getElementById('fechanacimiento').value = afiliado.fechanacimiento;
+            } else {
+                $('#fechanacimiento').fdatepicker().val(afiliado.fechanacimiento);
+            }
+
+            document.getElementById("direccion").value = afiliado.street.replace('%23', 'NO. ');
+            document.getElementById("barrio").value = afiliado.streetdos;
+            document.getElementById("ciudad").value = afiliado.ciudad;
+            document.getElementById("telefonofijo").value = afiliado.telefonofijo
+            document.getElementById("celular").value = afiliado.celular;
+            document.getElementById("email").value = afiliado.email;
+            document.getElementById("checkboxterminos").checked = true;
+            // terminos = document.getElementById("checkboxterminos").value;
+        } else {
+          document.querySelector("#m-busqueda").innerHTML = response.message;
+        }
+    }
+
+} //end function 
 
 
 //funciones para el bloqueo del scroll
@@ -292,19 +325,14 @@ function reestrablecerFormulario(){
   document.getElementById("documento").value =""; 
   document.getElementById("nombres").value =""; 
   document.getElementById("apellidos").value =""; 
-  document.getElementById("tipodocumento").value =""; 
-  document.getElementById("sexo").value =""; 
-  document.getElementById("direccion").innerHTML =""; 
-  document.getElementById("street1").selectIndex = 1; 
-  document.getElementById("street1-valor").value =""; 
-  document.getElementById("street2").selectIndex = 1; 
-  document.getElementById("street2-valor").value =""; 
+  document.getElementById("tipodocumento").selectIndex = 1; 
+  document.getElementById("sexo").selectIndex = 1; 
+  document.getElementById("direccion").value =""; 
 
   document.getElementById("barrio").value =""; 
   document.getElementById("fechanacimiento").value =""; 
   document.getElementById("telefonofijo").value =""; 
   document.getElementById("celular").value =""; 
-  document.getElementById("ciudad").value =""; 
   document.getElementById("email").value =""; 
   document.getElementById("checkboxterminos").checked = false; 
 }
@@ -366,7 +394,6 @@ function validarFormulario(){
   if(direccion=== ""  ){
     valido = false;
     document.getElementById("direccion").setAttribute("class","is-invalid-input");
-    console.log(document.getElementById("direccion"))
     document.getElementById("direccion").closest("label").setAttribute("class","is-invalid-label");
    
   }
