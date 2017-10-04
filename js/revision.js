@@ -45,6 +45,9 @@ function iniciar() {
 
         var btn_buscar = document.getElementById("buscar-button");
         btn_buscar.addEventListener('click', buscarAfiliado, false);
+
+        var inputDocumento = document.getElementById("documentobusqueda");
+        inputDocumento.addEventListener('keyup', buscarAfiliadoEnter, false );
     }
 
 
@@ -105,6 +108,10 @@ function establecerCiudades(){
   }
 }
 
+function buscarAfiliadoEnter(event){
+  if( event.keyCode == 13 )
+      buscarAfiliado();
+}
 
 function buscarAfiliado(){
     console.log("Busacando afiliado...");
@@ -254,7 +261,7 @@ function registrar() {
     
     establecerValores();
 
-    urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
+    urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpactualizaafiliado/index.php?";
 
     if(validarFormulario()){
       urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +
@@ -303,6 +310,9 @@ function stateChange() {
       document.getElementById("calloutForm").style.display = 'block';
       document.getElementById("calloutFormAlert").style.display = 'none';
       fechanacimiento = "";
+      document.querySelector("#documentobusqueda").value="";
+      document.querySelector("#documentobusqueda").focus();
+
     }else{
       if(response.data == '99'){
         document.getElementById("spinner").style.display = 'none';
@@ -471,10 +481,12 @@ function establecerValores() {
     direcciontemp = direcciontemp.replace('Ñ', 'N');
     direccion = removeDiacritics(direcciontemp);
 
+    console.log(direccion)
+
 
    
     var barriotemp = document.getElementById("barrio").value.toUpperCase().trim();
-    barriotemp = barriotemp.replace('#', '%23');
+    barriotemp = barriotemp.replace('#', 'NO. ');
     barriotemp = barriotemp.replace('Ñ', 'N');
     barrio = removeDiacritics(barriotemp);
 
