@@ -18,7 +18,7 @@ function iniciar() {
     //Registro de eventos y componente para la interfaz de afiliacion
     if (location.pathname.substring(1) === "seccion/revisiondatos.html") {
         btnGuardar = document.getElementById('guardar-button');
-        btnGuardar.addEventListener('click', registrar, false);
+        btnGuardar.addEventListener('click', actualizarAfiliado, false);
         //verifica el dispositivo para el componente date
         if (mobilecheck() && mobileAndTabletcheck()) {
             document.getElementById('fechanacimiento').setAttribute('type', 'date');
@@ -114,7 +114,7 @@ function buscarAfiliadoEnter(event){
 }
 
 function buscarAfiliado(){
-    console.log("Busacando afiliado...");
+    //console.log("Busacando afiliado...");
 
     reestrablecerFormulario();
     $('#m-busqueda').html("");
@@ -123,7 +123,7 @@ function buscarAfiliado(){
     var consultaService = 
       "http://dromedicas.sytes.net:9999/dropos/wsjson/fpdatosafiliado/index.php?documento=";
     consultaService += documentoTemp;
-    console.log("URL: " + consultaService);
+    //console.log("URL: " + consultaService);
     try{ 
       var xhrConsulta = new XMLHttpRequest();
       xhrConsulta.addEventListener('readystatechange', 
@@ -255,10 +255,9 @@ function capitalize(s){
     return s.toLowerCase().replace( /\b./g, function(a){ return a.toUpperCase(); } );
 }
 
-function registrar() {
-
-    console.log("Procesando formulario.... ");
-    
+function actualizarAfiliado() {
+    //console.log("Procesando formulario.... ");   
+     
     establecerValores();
 
     urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpactualizaafiliado/index.php?";
@@ -269,7 +268,7 @@ function registrar() {
              "&fechanacimiento=" + fechanacimiento  + "&telefonofijo=" + telefonofijo  + 
              "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email + "&barrio=" + barrio;
 
-      console.log( "URL Servicio: " + urlWs);
+      //console.log( "URL Servicio: " + urlWs);
 
       try {
         asyncRequest = new XMLHttpRequest();
@@ -296,11 +295,11 @@ function stateChange() {
 
   if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {   
     
-    //`console.log("Respuesta antes json: " + asyncRequest.responseText);
+    console.log("Respuesta antes json: " + asyncRequest.responseText);
     
     var response = JSON.parse(asyncRequest.responseText);
 
-    console.log("Respuesta: " + asyncRequest.responseText);
+    //console.log("Respuesta: " + asyncRequest.responseText);
     if(response.status === "sucess"){  
       document.getElementById("spinner").style.display = 'none';
       document.getElementById("calloutFormWarning").style.display = 'none';
@@ -312,6 +311,9 @@ function stateChange() {
       fechanacimiento = "";
       document.querySelector("#documentobusqueda").value="";
       document.querySelector("#documentobusqueda").focus();
+      setTimeout(function() {
+        $("#calloutForm").hide('blind', {}, 500)
+      }, 2000);
 
     }else{
       if(response.data == '99'){
@@ -480,10 +482,6 @@ function establecerValores() {
     direcciontemp = direcciontemp.replace('%23', 'NO.');
     direcciontemp = direcciontemp.replace('Ñ', 'N');
     direccion = removeDiacritics(direcciontemp);
-
-    console.log(direccion)
-
-
    
     var barriotemp = document.getElementById("barrio").value.toUpperCase().trim();
     barriotemp = barriotemp.replace('#', 'NO. ');
@@ -525,14 +523,6 @@ function validateEmail(email){
 
 //registro de manejo de eventos para la carga de la pagina
 window.addEventListener("load", iniciar, false);
-console.log("%cMade for %cDromedicas del Oriente  %c(specially this project)",       
-        "background-color: #FFFFFF; color: #00612E",
-        "background-color: #FFFFFF; color: #000a7b",
-        "background-color: #FFFFFF; color: #AE000C");
-
-    console.log("%cVisit us! %chttp:www.dromedicas.com.co",
-        "background-color: #FFFFFF; color: #000",
-        "background-color: #FFFFFF; color: #008ce2");
 
 var currentElement = null;
 

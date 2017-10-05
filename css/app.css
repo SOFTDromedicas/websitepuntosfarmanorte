@@ -791,9 +791,9 @@ label.checkbox-label input[type=checkbox]{
 	display: table !important;
   height: 100% !important;
   width: 100% !important;
-  background: rgba(0, 0, 0, 0.75) !important;
+  background: rgba(0, 0, 0, 0.65) !important;
   background: rgba(120, 120, 120, 0.65)!important;
-  /*background: rgba(34, 156, 52, 0.65)!important;*/
+  /*background: rgba(35, 108, 194, 0.55)!important;*/
 }
 
 .paddingcontainer{
@@ -936,16 +936,22 @@ label.checkbox-label input[type=checkbox]{
 	margin-bottom: 1rem;
 }
 
+.banda-recuperar h3{
+	margin-bottom: 0!important;
+}
+
 .volver-sesion{
 	font-size: 1.2rem;
+	line-height: 1.6rem;
 	font-family: 'Open Sans', sans-serif;
 }
 
 #volver-sesion{
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 	font-family: 'Open Sans', sans-serif;
 	color: #FF3573;	
 	padding-top: 0.4em;
+	cursor: pointer;
 }
 
 #rowlogin{

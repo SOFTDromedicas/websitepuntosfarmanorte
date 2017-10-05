@@ -86,22 +86,25 @@ function iniciar() {
             }
         }, false);
 
+        //Eventos para cuadro de Login
         var login = document.getElementById('loginperfil');
-        login.addEventListener('click', function() {
-            var bodylogin = document.getElementById('blurme-container');
-            bodylogin.classList.add('blur-me2');
-            document.getElementById('login-container-main').style.display = 'block';
-            disableScroll();
-        }, false);
+        login.addEventListener('click', showLogin, false);       
 
         var loginout = document.getElementById('login-container-main');
-        loginout.addEventListener('click', exitLogin, false);
+        loginout.addEventListener('click', exitLogin, false);       
 
         var iconocerrar = document.getElementById('iconocerrar');
         iconocerrar.addEventListener('click', exitLogin, false);
 
+        var olividoDedeLogin = document.getElementById('olvidocontrasenia');
+        olividoDedeLogin.addEventListener('click', irARecuperarClave, false);
+
+        //Eventos para cuadro de dialogo Reestablecer contrasenia
+       
+
         //registro de evento techa de escape para el formulario de login
         document.addEventListener('keyup', exitLogin, false);
+        
     }
 
     
@@ -179,6 +182,14 @@ function enableScroll() {
 }
 // end funciones para el bloqueo del scroll
 
+//muestra el cuadro de login
+function showLogin(event) {
+    var bodylogin = document.getElementById('blurme-container');
+    bodylogin.classList.add('blur-me2');
+    document.getElementById('login-container-main').style.display = 'block';
+    disableScroll();
+}
+
 //cierra el cuadro de login
 function exitLogin(event){    
   if( event.target.getAttribute('id') == 'innerContainer' ||
@@ -196,6 +207,36 @@ function exitLogin(event){
 
   } 
 }
+
+
+//muestra el cuadro de reestablecer clave
+function showRestablecerContrasena(event) {
+    var bodylogin = document.getElementById('blurme-container');
+    bodylogin.classList.add('blur-me2');
+    document.getElementById('olvido-container-main').style.display = 'block';
+    disableScroll();
+}
+
+//cierra el cuadro de reestablecer clave
+function exitLoginOlvido(event){    
+
+  console.log("olvido")
+  console.log(event.target.getAttribute('id'))
+  console.log(event.key)
+  if( event.target.getAttribute('id') == 'innerContainer-olvido' ||
+      event.target.getAttribute('id') == 'paddingcontainerrecuperar-olvido' ||
+      event.target.getAttribute('id') == 'row-olvido' ||
+      event.target.getAttribute('id') == 'row-iconocerrar-olvido' ||
+      event.target.getAttribute('id') == 'iconocerrar-olvido' ||
+      event.key == 'Escape'){
+    document.getElementById('blurme-container').classList.remove('blur-me2');
+    document.getElementById('login-container-main-olvido').style.display='none';     
+    enableScroll();
+
+  } 
+}
+
+
 
 //Crea el combobox de operadores, metodo auxiliar del metodo getOperadores
 function creandoComboCiudad(xhr) {
