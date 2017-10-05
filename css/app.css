@@ -569,6 +569,11 @@ textarea {
      -moz-appearance: none;
           appearance: none; }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
 #body-inscripciones{
 	background: #EFF3F8;
 }

@@ -25,7 +25,7 @@ function iniciar() {
 // console.log("this--> " + this.sessionStorage.getItem('paco'));
     
     //Registro de eventos y componente para la interfaz de afiliacion
-    if (location.pathname.substring(1) === "seccion/inscripcion.html") {
+    if (location.pathname.substring(1) === "seccion/inscripcionoficina.html") {
         btnGuardar = document.getElementById('guardar-button');
         btnGuardar.addEventListener('click', registrar, false);
         //verifica el dispositivo para el componente date
@@ -335,6 +335,8 @@ function stateChange() {
       document.getElementById("calloutFormAlert").style.display = 'none';
       fechanacimiento = "";
       document.getElementById("nombres").focus();
+      document.getElementById("ciudad").value = "CUCUTA";
+
     }else{
       if(response.data == '99'){
         document.getElementById("spinner").style.display = 'none';
@@ -368,8 +370,7 @@ function reestrablecerFormulario(){
   document.getElementById("barrio").value =""; 
   document.getElementById("fechanacimiento").value =""; 
   document.getElementById("telefonofijo").value =""; 
-  document.getElementById("celular").value =""; 
-  document.getElementById("ciudad").value =""; 
+  document.getElementById("celular").value ="";   
   document.getElementById("email").value =""; 
   document.getElementById("checkboxterminos").checked = false; 
 }
