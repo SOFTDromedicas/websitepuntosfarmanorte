@@ -884,21 +884,20 @@ label.checkbox-label input[type=checkbox]{
 	display: inline-block!important;	
 	font-size: 1rem;
 }
-#recordarme-content [type="checkbox"]{
+#recordarme-content [type="checkbox"]{	
 	vertical-align: middle!important;	
-	padding: 0.2rem!important;
-	border-color: : #ddd!important;
+	padding: 0.2rem!important;	
 }
 
 #olvidocontrasenia{
 	font-family: 'Open Sans', sans-serif;
 	color: #FF3573;
 	text-align: center;
+	cursor: pointer;
 }
 
 
-#olvidocontrasenia a{ 
-	/*font-weight: bold;*/
+#olvidocontrasenia a{ 	
 	font-size: 1.05rem;
 	color: #FF3573;	
 	vertical-align: middle;

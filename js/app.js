@@ -191,30 +191,41 @@ function showLogin(event) {
 }
 
 //cierra el cuadro de login
-function exitLogin(event){    
+function exitLogin(event){   
+console.log(event.type) 
   if( event.target.getAttribute('id') == 'innerContainer' ||
       event.target.getAttribute('id') == 'paddingcontainer' ||
       event.target.getAttribute('id') == 'row-login' ||
       event.target.getAttribute('id') == 'row-iconocerrar' ||
       event.target.getAttribute('id') == 'iconocerrar' ||
+      event.target.getAttribute('id') == 'olvidocontrasenia' ||
       event.key == 'Escape'){
-    document.getElementById('blurme-container').classList.remove('blur-me2');
+
+    console.log("cerrando login")
+    document.getElementById('blurme-container').classList.remove('blur-me2');    
     document.getElementById('login-container-main').style.display='none';  
     document.getElementById('documentologin').value="";
     document.getElementById('password').value="";
     document.getElementById('recordarme').checked = false;
     enableScroll();
-
   } 
 }
 
 
+function irARecuperarClave(event){
+  exitLogin(event); 
+
+  showRestablecerContrasena();
+}
+
+
 //muestra el cuadro de reestablecer clave
-function showRestablecerContrasena(event) {
-    var bodylogin = document.getElementById('blurme-container');
-    bodylogin.classList.add('blur-me2');
+function showRestablecerContrasena() {
     document.getElementById('olvido-container-main').style.display = 'block';
     disableScroll();
+    var content_main = document.getElementById('blurme-container');
+    content_main.classList.add('blur-me2');
+    console.log("end mostrar reestablecer")
 }
 
 //cierra el cuadro de reestablecer clave
