@@ -29,25 +29,25 @@ function iniciar() {
         btnGuardar = document.getElementById('guardar-button');
         btnGuardar.addEventListener('click', registrar, false);
         //verifica el dispositivo para el componente date
-        // if (mobilecheck() && mobileAndTabletcheck()) {
-        //     document.getElementById('fechanacimiento').setAttribute('type', 'date');
-        // } else {
-        //     $('#fechanacimiento').fdatepicker({
-        //         closeButton: true,
-        //         language: 'es',
-        //         yearRange: "-100:+0",
-        //         constrainInput: true,
-        //         format: 'dd/mm/yyyy',
-        //     });
+        if (mobilecheck() && mobileAndTabletcheck()) {
+            document.getElementById('fechanacimiento').setAttribute('type', 'date');
+        } else {
+            $('#fechanacimiento').fdatepicker({
+                closeButton: true,
+                language: 'es',
+                yearRange: "-100:+0",
+                constrainInput: true,
+                format: 'dd/mm/yyyy',
+            });
 
-        //     $('#fechanacimiento').fdatepicker().on('changeDate', function(ev) {
-        //         if (ev.date.valueOf()) {
-        //             var newDate = new Date(ev.date)
-        //             newDate.setDate(newDate.getDate() + 1);
-        //             fechanacimiento = formatDateAnioMesDia(newDate);
-        //         }
-        //     });
-        // }
+            $('#fechanacimiento').fdatepicker().on('changeDate', function(ev) {
+                if (ev.date.valueOf()) {
+                    var newDate = new Date(ev.date)
+                    newDate.setDate(newDate.getDate() + 1);
+                    fechanacimiento = formatDateAnioMesDia(newDate);
+                }
+            });
+        }
 
         //prepara combo de ciudades
         establecerCiudades();
@@ -71,8 +71,8 @@ function iniciar() {
 
 
 
-    //if (location.pathname.substring(1) == "index.html"){
-    if (location.pathname.substring(1) == "xxxx.html"){
+    if (location.pathname.substring(1) == "index.html"){
+    // if (location.pathname.substring(1) == "xxxx.html"){
         //Eventos formulario login
         var mostrarClave = document.getElementById("p-mostrarclave");
         mostrarClave.addEventListener('click', function() {
@@ -99,8 +99,9 @@ function iniciar() {
         var olividoDedeLogin = document.getElementById('olvidocontrasenia');
         olividoDedeLogin.addEventListener('click', irARecuperarClave, false);
 
-        //Eventos para cuadro de dialogo Reestablecer contrasenia
-       
+        //Eventos para cuadro de dialogo Reestablecer contrasenia       
+       var recuperarContainer = document.getElementById('olvido-container-main');
+       recuperarContainer.addEventListener('click', exitLoginOlvido, false);
 
         //registro de evento techa de escape para el formulario de login
         document.addEventListener('keyup', exitLogin, false);
@@ -192,7 +193,6 @@ function showLogin(event) {
 
 //cierra el cuadro de login
 function exitLogin(event){   
-console.log(event.type) 
   if( event.target.getAttribute('id') == 'innerContainer' ||
       event.target.getAttribute('id') == 'paddingcontainer' ||
       event.target.getAttribute('id') == 'row-login' ||
@@ -200,8 +200,9 @@ console.log(event.type)
       event.target.getAttribute('id') == 'iconocerrar' ||
       event.target.getAttribute('id') == 'olvidocontrasenia' ||
       event.key == 'Escape'){
-
-    console.log("cerrando login")
+    //cancelo el burbujeo de eventos
+    event.cancelBubble = true;
+   
     document.getElementById('blurme-container').classList.remove('blur-me2');    
     document.getElementById('login-container-main').style.display='none';  
     document.getElementById('documentologin').value="";
@@ -224,8 +225,7 @@ function showRestablecerContrasena() {
     document.getElementById('olvido-container-main').style.display = 'block';
     disableScroll();
     var content_main = document.getElementById('blurme-container');
-    content_main.classList.add('blur-me2');
-    console.log("end mostrar reestablecer")
+    content_main.classList.add('blur-me2');    
 }
 
 //cierra el cuadro de reestablecer clave
@@ -240,8 +240,10 @@ function exitLoginOlvido(event){
       event.target.getAttribute('id') == 'row-iconocerrar-olvido' ||
       event.target.getAttribute('id') == 'iconocerrar-olvido' ||
       event.key == 'Escape'){
+    //cancelo el burbujeo de eventos
+    event.cancelBubble = true;
     document.getElementById('blurme-container').classList.remove('blur-me2');
-    document.getElementById('login-container-main-olvido').style.display='none';     
+    document.getElementById('olvido-container-main').style.display='none';     
     enableScroll();
 
   } 
@@ -522,9 +524,7 @@ function establecerValores() {
     email = document.getElementById("email").value.trim();
     terminos = document.getElementById("checkboxterminos").value;    
 
-    fechanacimiento = document.getElementById('fechanacimiento').value;
-    fechanacimiento = formatDateAnioMesDia(fechanacimiento);
-
+    
 
    console.log( "fechanacimiento: " + fechanacimiento); 
    // throw new Error("Something went badly wrong!");    

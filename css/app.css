@@ -27,6 +27,8 @@ body{
   z-index: 99!important;
 }
 
+
+
 #ancla_quesonpuntos,
 #ancla_registro-section,
 #ancla_beneficion-section{
@@ -894,11 +896,16 @@ label.checkbox-label input[type=checkbox]{
 	padding: 0.2rem!important;	
 }
 
+.olvido-cont{
+	display: flex;
+}
+
 #olvidocontrasenia{
 	font-family: 'Open Sans', sans-serif;
 	color: #FF3573;
 	text-align: center;
 	cursor: pointer;
+	display: inline-block;	
 }
 
 
@@ -916,8 +923,7 @@ label.checkbox-label input[type=checkbox]{
 
 #creacuenta{
 	font-family: 'Open Sans', sans-serif;
-	text-align: center;
-	/*font-weight: bold;*/
+	text-align: center;	
 	color: #535353;
 	font-size: 1.1rem;
 }
