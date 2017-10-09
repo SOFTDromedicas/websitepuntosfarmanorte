@@ -829,7 +829,8 @@ label.checkbox-label input[type=checkbox]{
 	padding-top: 15px;
 }
 
-#iconocerrar{
+#iconocerrar,
+#iconocerrarlogin-olvido{
 	cursor: pointer;
 }
 
@@ -838,7 +839,7 @@ label.checkbox-label input[type=checkbox]{
 	background: #1c3672;
 	color: #FFFFFF;
 	text-align: center;
-	margin-bottom: 1.1rem;
+	margin-bottom: 0.8rem;
 }
 
 #form-login{

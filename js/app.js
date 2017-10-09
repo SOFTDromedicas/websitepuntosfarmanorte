@@ -13,6 +13,7 @@ var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
 
 function iniciar() {
+ 
 
   // Almacena la información en sessionStorage
 // sessionStorage.setItem('paco', 'lk');
@@ -84,70 +85,46 @@ function iniciar() {
                 password.setAttribute('type', 'password');
                 mostrarClave.innerHTML = "Mostrar Contrase&ntilde;a"
             }
-        }, false);
-
-        //Eventos para cuadro de Login
-        var login = document.getElementById('loginperfil');
-        login.addEventListener('click', showLogin, false);       
-
-        var loginout = document.getElementById('login-container-main');
-        loginout.addEventListener('click', exitLogin, false);       
-
-        var iconocerrar = document.getElementById('iconocerrar');
-        iconocerrar.addEventListener('click', exitLogin, false);
-
-        var olividoDedeLogin = document.getElementById('olvidocontrasenia');
-        olividoDedeLogin.addEventListener('click', irARecuperarClave, false);
-
-        //Eventos para cuadro de dialogo Reestablecer contrasenia       
-       var recuperarContainer = document.getElementById('olvido-container-main');
-       recuperarContainer.addEventListener('click', exitLoginOlvido, false);
-
-        //registro de evento techa de escape para el formulario de login
-        document.addEventListener('keyup', exitLogin, false);
-        
+        }, false);        
     }
 
-    
     //si estoy en index valida que no se cargue a partir de la redireccion del formulario 2
     if(getParameterURLByName('confirmado') == "true"){
         document.getElementById("calloutafiliacion").style.display = 'block';      
-     }
+    }
 
+    //Eventos para cuadro de Login
+    registerEventLogin();        
 
 }//end function iniciar
 
+//** Funciones Cuadro Login **//
+function registerEventLogin() {
+    var login = document.getElementById('loginperfil');
+    login.addEventListener('click', showLogin, false);
 
-function establecerCiudades(){
-  try{
-    var xhrCiudad = new XMLHttpRequest()
-    xhrCiudad.addEventListener("readystatechange", function(){creandoComboCiudad(xhrCiudad);}, false);
-    xhrCiudad.open( "GET", ciudadesService, true );
-    xhrCiudad.setRequestHeader("Accept",
-          "application/json; charset=utf-8" );
-    xhrCiudad.send();     
-  }catch(ex){
-    mostrarFallaDelSistema(ex.message);
-  }
+    var loginout = document.getElementById('login-container-main');
+    loginout.addEventListener('click', exitLogin, false);
+
+    var iconocerrar = document.getElementById('iconocerrar');
+    iconocerrar.addEventListener('click', exitLogin, false);
+
+    var olividoDedeLogin = document.getElementById('olvidocontrasenia');
+    olividoDedeLogin.addEventListener('click', irARecuperarClave, false);
+
+    //Eventos para cuadro de dialogo Reestablecer contrasenia       
+    var recuperarContainer = document.getElementById('olvido-container-main');
+    recuperarContainer.addEventListener('click', exitLoginOlvido, false);
+
+    var iconocerrarRegistrar = document.getElementById('iconocerrarlogin-olvido');
+    iconocerrarRegistrar.addEventListener('click', exitLoginOlvido, false);
+
+    var volverS = document.getElementById('volver-sesion');
+    volverS.addEventListener('click', volverSesion, false);
+
+    //registro de evento techa de escape para el formulario de login
+    document.addEventListener('keyup', exitLogin, false);
 }
-
-
-function concatenardireccion(){
-  var dirTemp = new Array();
-
-  var street1 = document.getElementById('street1');    
-  dirTemp.push( document.getElementById('street1').value );     
-  dirTemp.push( document.getElementById('street1-valor').value.toUpperCase().trim() );     
-  dirTemp.push( document.getElementById('street2').value );     
-  dirTemp.push( document.getElementById('street2-valor').value.toUpperCase().trim() );     
-   
-  document.getElementById('direccion').innerHTML = dirTemp.join(" ") ;  
-}
-
-function limpiarFormulario(){
-  document.getElementById('direccion').innerHTML ="";
-}
-
 
 //funciones para el bloqueo del scroll
 function preventDefault(e) { 
@@ -184,7 +161,7 @@ function enableScroll() {
 // end funciones para el bloqueo del scroll
 
 //muestra el cuadro de login
-function showLogin(event) {
+function showLogin(event){
     var bodylogin = document.getElementById('blurme-container');
     bodylogin.classList.add('blur-me2');
     document.getElementById('login-container-main').style.display = 'block';
@@ -201,24 +178,22 @@ function exitLogin(event){
       event.target.getAttribute('id') == 'olvidocontrasenia' ||
       event.key == 'Escape'){
     //cancelo el burbujeo de eventos
-    event.cancelBubble = true;
-   
+    event.cancelBubble = true;   
     document.getElementById('blurme-container').classList.remove('blur-me2');    
     document.getElementById('login-container-main').style.display='none';  
     document.getElementById('documentologin').value="";
     document.getElementById('password').value="";
     document.getElementById('recordarme').checked = false;
     enableScroll();
+    exitLoginOlvido(event);
   } 
 }
 
-
+//ir a cuadro recuperacion de clave
 function irARecuperarClave(event){
   exitLogin(event); 
-
   showRestablecerContrasena();
 }
-
 
 //muestra el cuadro de reestablecer clave
 function showRestablecerContrasena() {
@@ -230,26 +205,61 @@ function showRestablecerContrasena() {
 
 //cierra el cuadro de reestablecer clave
 function exitLoginOlvido(event){    
-
   console.log("olvido")
   console.log(event.target.getAttribute('id'))
   console.log(event.key)
   if( event.target.getAttribute('id') == 'innerContainer-olvido' ||
-      event.target.getAttribute('id') == 'paddingcontainerrecuperar-olvido' ||
+      event.target.getAttribute('id') == 'paddingcontainer-olvido' ||
       event.target.getAttribute('id') == 'row-olvido' ||
       event.target.getAttribute('id') == 'row-iconocerrar-olvido' ||
-      event.target.getAttribute('id') == 'iconocerrar-olvido' ||
+      event.target.getAttribute('id') == 'iconocerrarlogin-olvido' ||
+      event.target.getAttribute('id') == 'volver-sesion' ||
       event.key == 'Escape'){
     //cancelo el burbujeo de eventos
     event.cancelBubble = true;
     document.getElementById('blurme-container').classList.remove('blur-me2');
     document.getElementById('olvido-container-main').style.display='none';     
     enableScroll();
-
   } 
 }
 
+//ir a login afiliado
+function volverSesion(event){
+  exitLoginOlvido(event);
+  showLogin(event);
+}
+//***End Funciones de Login ****//
 
+
+function establecerCiudades(){
+  try{
+    var xhrCiudad = new XMLHttpRequest()
+    xhrCiudad.addEventListener("readystatechange", function(){creandoComboCiudad(xhrCiudad);}, false);
+    xhrCiudad.open( "GET", ciudadesService, true );
+    xhrCiudad.setRequestHeader("Accept",
+          "application/json; charset=utf-8" );
+    xhrCiudad.send();     
+  }catch(ex){
+    mostrarFallaDelSistema(ex.message);
+  }
+}
+
+
+function concatenardireccion(){
+  var dirTemp = new Array();
+
+  var street1 = document.getElementById('street1');    
+  dirTemp.push( document.getElementById('street1').value );     
+  dirTemp.push( document.getElementById('street1-valor').value.toUpperCase().trim() );     
+  dirTemp.push( document.getElementById('street2').value );     
+  dirTemp.push( document.getElementById('street2-valor').value.toUpperCase().trim() );     
+   
+  document.getElementById('direccion').innerHTML = dirTemp.join(" ") ;  
+}
+
+function limpiarFormulario(){
+  document.getElementById('direccion').innerHTML ="";
+}
 
 //Crea el combobox de operadores, metodo auxiliar del metodo getOperadores
 function creandoComboCiudad(xhr) {
@@ -556,10 +566,11 @@ function validateEmail(email){
 
 //registro de manejo de eventos para la carga de la pagina
 window.addEventListener("load", iniciar, false);
-console.log("%cMade for %cDromedicas del Oriente  %c(specially this project)",       
+console.log("%cDromedicas del Oriente  %c(Made by %c☕%c)",       
         "background-color: #FFFFFF; color: #00612E",
         "background-color: #FFFFFF; color: #000a7b",
-        "background-color: #FFFFFF; color: #AE000C");
+        "background-color: #FFFFFF; color: #AE000C",
+        "background-color: #FFFFFF; color: #000a7b");
 
     console.log("%cVisit us! %chttp:www.dromedicas.com.co",
         "background-color: #FFFFFF; color: #000",

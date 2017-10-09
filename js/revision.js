@@ -13,7 +13,7 @@ var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
 
 function iniciar() {
-
+    document.querySelector("#documentobusqueda").focus();
     
     //Registro de eventos y componente para la interfaz de afiliacion
     if (location.pathname.substring(1) === "seccion/revisiondatos.html") {
@@ -140,8 +140,16 @@ function buscarAfiliado(){
 
 function obtenerDatosAfiliado(xhr) {
 
+    if(xhr.readyState == 1 || xhr.readyState == 2 ||
+        xhr.readyState == 3 ){
+      document.getElementById("spinner").style.display = 'block';
+      document.getElementById("blur").classList.add("blur-me");      
+    }
+
     if (xhr.readyState == 4 && xhr.status == 200) {
         var response = JSON.parse(xhr.responseText);
+        document.getElementById("spinner").style.display = 'none';
+        document.getElementById("blur").classList.remove("blur-me");
         //console.log(response.status);
         if (response.status === "sucess") {
             var afiliado = response.data[0];

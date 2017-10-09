@@ -422,27 +422,7 @@ function validarFormulario(){
     document.getElementById("fechanacimiento").closest("label").setAttribute("class","is-invalid-label");
   }
   //validacion de barrio
-  document.getElementById("street1-valor").addEventListener("invalid.zf.abide",function(ev,el) {
-      valido = false;
-    document.getElementById("street1-valor").setAttribute("class","is-invalid-input");
-    document.getElementById("street1-valor").closest("label").setAttribute("class","is-invalid-label");
-  });
-
-console.log("-------" + (direccion=== ""));
-
-  if(direccion=== "" || direccion=== "AVENIDA" ){
-    valido = false;
-    document.getElementById("street1-valor").setAttribute("class","is-invalid-input");
-    document.getElementById("street1-valor").closest("label").setAttribute("class","is-invalid-label");
-    document.getElementById("street2-valor").setAttribute("class","is-invalid-input");
-    document.getElementById("street2-valor").closest("label").setAttribute("class","is-invalid-label");
-  }
-  //validacion de barrio
-  document.getElementById("barrio").addEventListener("invalid.zf.abide",function(ev,el) {
-      valido = false;
-    document.getElementById("barrio").setAttribute("class","is-invalid-input");
-    document.getElementById("barrio").closest("label").setAttribute("class","is-invalid-label");
-  });
+    
 
   if(barrio == "" ){
     valido = false;
@@ -524,11 +504,9 @@ function establecerValores() {
     terminos = document.getElementById("checkboxterminos").value;    
 
     fechanacimiento = document.getElementById('fechanacimiento').value;
-    fechanacimiento = formatDateAnioMesDia(fechanacimiento);
 
-
-   console.log( "fechanacimiento: " + fechanacimiento); 
-   // throw new Error("Something went badly wrong!");    
+    console.log( "fechanacimiento: " + fechanacimiento); 
+   //throw new Error("Something went badly wrong!");    
 }
 
 
@@ -557,10 +535,11 @@ function validateEmail(email){
 
 //registro de manejo de eventos para la carga de la pagina
 window.addEventListener("load", iniciar, false);
-console.log("%cMade for %cDromedicas del Oriente  %c(specially this project)",       
+console.log("%cDromedicas del Oriente  %c(Made with %c❤%c)",       
         "background-color: #FFFFFF; color: #00612E",
         "background-color: #FFFFFF; color: #000a7b",
-        "background-color: #FFFFFF; color: #AE000C");
+        "background-color: #FFFFFF; color: #AE000C",
+        "background-color: #FFFFFF; color: #000a7b");
 
     console.log("%cVisit us! %chttp:www.dromedicas.com.co",
         "background-color: #FFFFFF; color: #000",
