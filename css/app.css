@@ -27,8 +27,6 @@ body{
   z-index: 99!important;
 }
 
-
-
 #ancla_quesonpuntos,
 #ancla_registro-section,
 #ancla_beneficion-section{
@@ -96,8 +94,6 @@ body{
 #menuppal ul li a:active{	
   /*outline: none;*/
 }
-
-
 
 .activa {
 	background: #1e3c72;  /* fallback for old browsers */
@@ -773,11 +769,11 @@ label.checkbox-label input[type=checkbox]{
 
 
 .blur-me {
- 		filter: blur(3px);
+ 		filter: blur(10px);
 	}
 .blur-me2 {
-		transition: 0.2s -webkit-filter linear;
- 		filter: blur(10px) ;
+		transition: 0.25s -webkit-filter linear;
+ 		filter: blur(14px) ;
 	}
 
 

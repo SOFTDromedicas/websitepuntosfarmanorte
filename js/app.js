@@ -261,7 +261,7 @@ function limpiarFormulario(){
   document.getElementById('direccion').innerHTML ="";
 }
 
-//Crea el combobox de operadores, metodo auxiliar del metodo getOperadores
+//Crea el elemento select para las ciudades del formulario
 function creandoComboCiudad(xhr) {
     if (xhr.readyState == 4 && xhr.status == 200) {
         var data = JSON.parse(xhr.responseText);
@@ -298,12 +298,14 @@ function registrar() {
     establecerValores();
 
     urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
+    //urlWs = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?";
 
     if(validarFormulario()){
       urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +
              "&tipodocumento=" + tipodocumento  + "&sexo=" + sexo  + "&direccion=" + direccion  + 
              "&fechanacimiento=" + fechanacimiento  + "&telefonofijo=" + telefonofijo  + 
-             "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email + "&barrio=" + barrio;
+             "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email + "&barrio=" + barrio +
+             "&usuario=" + "paginaweb";
 
       console.log( "URL Servicio: " + urlWs);
 
@@ -566,7 +568,7 @@ function validateEmail(email){
 
 //registro de manejo de eventos para la carga de la pagina
 window.addEventListener("load", iniciar, false);
-console.log("%cDromedicas del Oriente  %c(Made by %c☕%c)",       
+console.log("%cDromedicas del Oriente  %c(Made with %c)",       
         "background-color: #FFFFFF; color: #00612E",
         "background-color: #FFFFFF; color: #000a7b",
         "background-color: #FFFFFF; color: #AE000C",
