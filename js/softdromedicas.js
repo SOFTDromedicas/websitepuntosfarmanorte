@@ -70,7 +70,7 @@ function iniciar() {
     // updateURL += documentoAfiliado;
 
 
-    var updateURL = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?id=";
+    var updateURL = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/validacorreo?id=";
     updateURL += documentoAfiliado;
     // updateURL += "88239811";
     
@@ -78,7 +78,7 @@ function iniciar() {
             url: updateURL,
         })
         .done(function(res) {
-            console.log(res);
+            //console.log(res);
 
         })
         .fail(function(xhr, status, error) {
@@ -130,41 +130,54 @@ function creandoComboCiudad(xhr) {
 }
 
 function obtenerDatosAfiliado() {
-    var datosURL = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpdatosafiliado/?documento=";
-    datosURL += documentoAfiliado;
+    // var datosURL = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpdatosafiliado/?documento=";
+    // datosURL += documentoAfiliado;
     // datosURL += "373950743";
+    
+    var datosURL = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/obtenerafiliado?id=";
+    datosURL += documentoAfiliado;
 
+    console.log("URL " + datosURL);
     try {
         asyncRequest = new XMLHttpRequest();
         asyncRequest.addEventListener("readystatechange", stateChangeDatos, false);
         asyncRequest.open("GET", datosURL, true);
         asyncRequest.send(null);
-    } catch (excepcion) {}
+    } catch (excepcion) {
+
+    }
 }
 
 function stateChangeDatos() {
+
+    
+    console.log(asyncRequest.readyState + " - " + asyncRequest.status);
+
     if (asyncRequest.readyState == 1 || asyncRequest.readyState == 2 ||
         asyncRequest.readyState == 3) {
+        console.log(asyncRequest.readyState + " - " + asyncRequest.status);
     }
-
-    //console.log(asyncRequest.readyState + " - " + asyncRequest.status);
 
     if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {
         var response = JSON.parse(asyncRequest.responseText);
         console.log("Respuesta: " + response.status);
-        if (response.status === "sucess") {
-            var afiliado = response.data[0];
 
-            document.getElementById("nombres").value = removeDiacritics(afiliado.nombres); 
+        if (response.status === "OK") {
+            //var afiliado = response.data[0];
+            var afiliado = response.afiliado;
+
+            console.log("----> " + afiliado.nombres);
+
+            document.getElementById("nombres").value = removeDiacritics(afiliado.nombres);
             document.getElementById("apellidos").value = removeDiacritics(afiliado.apellidos);
-            document.getElementById("tipodocumento").value = afiliado.tipodocumento;
+            document.getElementById("tipodocumento").value = afiliado.tipodocumentoBean.idtipodocumento;
             document.getElementById("documento").value = afiliado.documento;
             document.getElementById("sexo").value = afiliado.sexo;
 
             if (mobilecheck() && mobileAndTabletcheck()) {
-               document.getElementById('fechanacimiento').value = afiliado.fechanacimiento;
+                document.getElementById('fechanacimiento').value = afiliado.fechanacimiento;
             } else {
-              $('#fechanacimiento').fdatepicker().val(afiliado.fechanacimiento);
+                $('#fechanacimiento').fdatepicker().val(afiliado.fechanacimiento);
             }
 
             document.getElementById("direccion").value = afiliado.street;
@@ -178,7 +191,10 @@ function stateChangeDatos() {
 
         }
     }
+
+
 }
+
 
 function agregarmiembro() {
     if (window.matchMedia('(max-width: 768px)').matches) {
