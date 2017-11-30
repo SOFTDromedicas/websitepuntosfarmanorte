@@ -70,9 +70,9 @@ function iniciar() {
 
     }
 
+      console.log(location.pathname.substring(1));
 
-
-    if (location.pathname.substring(1) == "index.html"){
+    if ( location.pathname.substring(1) == "index.html" ){
     // if (location.pathname.substring(1) == "xxxx.html"){
         //Eventos formulario login
         var mostrarClave = document.getElementById("p-mostrarclave");
@@ -94,7 +94,7 @@ function iniciar() {
     }
 
     //Eventos para cuadro de Login
-    registerEventLogin();        
+    //registerEventLogin();        
 
 }//end function iniciar
 
@@ -297,15 +297,15 @@ function registrar() {
     
     establecerValores();
 
-    urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
-    //urlWs = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?";
+    //urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
+    urlWs = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?";
 
     if(validarFormulario()){
       urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +
              "&tipodocumento=" + tipodocumento  + "&sexo=" + sexo  + "&direccion=" + direccion  + 
              "&fechanacimiento=" + fechanacimiento  + "&telefonofijo=" + telefonofijo  + 
              "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email + "&barrio=" + barrio +
-             "&usuario=" + "paginaweb";
+             "&usuario=" + "PAGINAWEB";
 
       console.log( "URL Servicio: " + urlWs);
 
@@ -330,7 +330,8 @@ function stateChange() {
     document.getElementById("calloutFormAlert").style.display = 'none';
     document.getElementById("calloutFormWarning").style.display = 'none';
   }
-  //console.log( asyncRequest.readyState + " - " + asyncRequest.status);
+
+  // console.log( asyncRequest.readyState + " - " + asyncRequest.status);
 
   if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {   
     
@@ -338,8 +339,9 @@ function stateChange() {
     
     var response = JSON.parse(asyncRequest.responseText);
 
-    console.log("Respuesta: " + asyncRequest.responseText);
-    if(response.status === "sucess"){  
+    // console.log("Respuesta: " + asyncRequest.responseText);
+    
+    if(response.status === "OK"){  
       document.getElementById("spinner").style.display = 'none';
       document.getElementById("calloutFormWarning").style.display = 'none';
       document.getElementById("blur").classList.remove("blur-me");
@@ -350,7 +352,8 @@ function stateChange() {
       fechanacimiento = "";
       document.getElementById("nombres").focus();
     }else{
-      if(response.data == '99'){
+      console.log()
+      if(response.status == 'Bad Request' ){
         document.getElementById("spinner").style.display = 'none';
         document.getElementById("mensaje").innerHTML ="";
         document.getElementById("mensaje").appendChild(document.createTextNode(response.message));
@@ -568,15 +571,15 @@ function validateEmail(email){
 
 //registro de manejo de eventos para la carga de la pagina
 window.addEventListener("load", iniciar, false);
-console.log("%cDromedicas del Oriente  %c(Made with %c)",       
+console.log("%cMade for %cDromedicas del Oriente  %c(specially this project)",       
         "background-color: #FFFFFF; color: #00612E",
         "background-color: #FFFFFF; color: #000a7b",
-        "background-color: #FFFFFF; color: #AE000C",
-        "background-color: #FFFFFF; color: #000a7b");
+        "background-color: #FFFFFF; color: #AE000C");
 
     console.log("%cVisit us! %chttp:www.dromedicas.com.co",
         "background-color: #FFFFFF; color: #000",
         "background-color: #FFFFFF; color: #008ce2");
+
 
 var currentElement = null;
 

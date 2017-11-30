@@ -63,9 +63,14 @@ function iniciar() {
     tabla.appendChild(tbody);
 
     //validacion de correo electronico del cliente
-    documentoAfiliado = getParameterURLByName('documento'); 
+    // documentoAfiliado = getParameterURLByName('documento'); 
+    documentoAfiliado = getParameterURLByName('id'); 
 
-    var updateURL = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpvalidarcuentaemail/?documento=";
+    // var updateURL = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpvalidarcuentaemail/?documento=";
+    // updateURL += documentoAfiliado;
+
+
+    var updateURL = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?id=";
     updateURL += documentoAfiliado;
     // updateURL += "88239811";
     
