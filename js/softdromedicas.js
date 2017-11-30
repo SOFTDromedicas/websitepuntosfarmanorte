@@ -155,18 +155,16 @@ function stateChangeDatos() {
 
     if (asyncRequest.readyState == 1 || asyncRequest.readyState == 2 ||
         asyncRequest.readyState == 3) {
-        console.log(asyncRequest.readyState + " - " + asyncRequest.status);
     }
 
     if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {
         var response = JSON.parse(asyncRequest.responseText);
+       
         console.log("Respuesta: " + response.status);
 
         if (response.status === "OK") {
             //var afiliado = response.data[0];
             var afiliado = response.afiliado;
-
-            console.log("----> " + afiliado.nombres);
 
             document.getElementById("nombres").value = removeDiacritics(afiliado.nombres);
             document.getElementById("apellidos").value = removeDiacritics(afiliado.apellidos);
