@@ -150,9 +150,6 @@ function obtenerDatosAfiliado() {
 
 function stateChangeDatos() {
 
-    
-    console.log(asyncRequest.readyState + " - " + asyncRequest.status);
-
     if (asyncRequest.readyState == 1 || asyncRequest.readyState == 2 ||
         asyncRequest.readyState == 3) {
     }
@@ -189,7 +186,6 @@ function stateChangeDatos() {
 
         }
     }
-
 
 }
 
@@ -337,6 +333,7 @@ function registrar() {
     establecerValores();
 
     urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpformulario2/index.php?";
+    urlWs = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/actualizarafiliadoweb?";
 
     if (validarFormulario()) {
         //Campos del formulario hasta datos basico -nivel de estudios
@@ -410,7 +407,7 @@ function registrar() {
         try {
             asyncRequestProcess = new XMLHttpRequest();
             asyncRequestProcess.addEventListener("readystatechange", stateChange, false);
-            asyncRequestProcess.open("GET", urlWs, true);
+            asyncRequestProcess.open("POST", urlWs, true);
             asyncRequestProcess.send(null);
         } catch (excepcion) {}
     } else {
