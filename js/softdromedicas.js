@@ -70,7 +70,7 @@ function iniciar() {
     // updateURL += documentoAfiliado;
 
 
-    var updateURL = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/validacorreo?id=";
+    var updateURL = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/validacorreo?id=";
     updateURL += documentoAfiliado;
     // updateURL += "88239811";
     
@@ -134,7 +134,7 @@ function obtenerDatosAfiliado() {
     // datosURL += documentoAfiliado;
     // datosURL += "373950743";
     
-    var datosURL = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/obtenerafiliado?id=";
+    var datosURL = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/obtenerafiliado?id=";
     datosURL += documentoAfiliado;
 
     console.log("URL " + datosURL);
@@ -332,8 +332,8 @@ function registrar() {
 
     establecerValores();
 
-    urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpformulario2/index.php?";
-    urlWs = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/actualizarafiliadoweb?";
+   // urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpformulario2/index.php?";
+    urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/actualizarafiliadoweb?";
 
     if (validarFormulario()) {
         //Campos del formulario hasta datos basico -nivel de estudios
@@ -438,7 +438,7 @@ function stateChange() {
     var response = JSON.parse(asyncRequestProcess.responseText);
 
     console.log("Respuesta: " + asyncRequestProcess.responseText);
-    if(response.status === "sucess"){  
+    if(response.status === "OK"){  
       document.getElementById("spinner2").style.display = 'none';
       document.getElementById("calloutFormWarning").style.display = 'none';
       document.getElementById("blur").classList.remove("blur-me");

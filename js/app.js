@@ -298,7 +298,7 @@ function registrar() {
     establecerValores();
 
     //urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
-    urlWs = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?";
+    urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?";
 
     if(validarFormulario()){
       urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +
