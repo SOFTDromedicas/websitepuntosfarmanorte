@@ -94,7 +94,7 @@ function iniciar() {
     }
 
     //Eventos para cuadro de Login
-    // registerEventLogin();        
+    registerEventLogin();        
 
 }//end function iniciar
 

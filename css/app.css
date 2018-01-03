@@ -929,6 +929,10 @@ label.checkbox-label input[type=checkbox]{
 	color: #FF3573;
 }
 
+#creacuenta a:hover {
+	text-shadow: 0 0 3px rgba(255, 51, 112, 0.4);
+}
+
 /*recuperar clave*/
 #recuperarClave{
 	background: #274B8D;
