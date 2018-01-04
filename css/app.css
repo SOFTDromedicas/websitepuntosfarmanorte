@@ -969,11 +969,22 @@ label.checkbox-label input[type=checkbox]{
 	margin-right: 5px;
 }
 
-/**css para perfil*****/
+/**CSS PARA PERFIL*****/
 #perfilmenu{
 	margin-right: 3rem;
 	border: 1px solid peru;
 	padding: 0 1rem;
+}
+
+.mnperfilo{
+	width: 7rem;
+}
+
+#menuppal ul li.mnperfilo a {
+	margin: 0 auto!important;
+	text-align: center!important;
+	display: block;
+
 }
 
 #fotoperfilmenu{
@@ -1011,8 +1022,64 @@ label.checkbox-label input[type=checkbox]{
 }
 
 
+#perfil-seccion-container{
+	height: 50rem;
+	background: #0098DA;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #284B8C, #0098DA);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #284B8C, #0098DA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 
-/*************MEDIA QUERIES*****************/
+#backmain{
+	min-height: 100%;
+	min-width: 100%;
+	background-image: url(../images/gridbackground.png);
+  background-size: cover;
+  /*background-position: center;*/
+	/*max-height: 50%!important;*/
+}
+
+#container-perfil{
+	padding-top: 5rem;	
+}
+
+#fieldsetperfil{
+	border: 2px solid #fff!important;
+	border-radius: 25px 0 0 25px;
+	padding: 0rem 3rem 2rem 3rem;
+
+}
+
+#legendperfilmain{
+	/*margin:0!important;*/
+	background: none!important;
+	padding: .7rem;
+	border: 2px solid #fff;
+	border-radius: 10px;
+	background: linear-gradient(to top, #38568F, #0098DA)!important; 
+	color: #fff;
+	font-size: 1.3rem;
+	font-weight: bold;
+}
+
+
+#fotoperfilmain{
+	border: 1px solid #C4C4C4;
+	border-radius: 50%;
+	width: 10rem!important;
+	height: 10rem!important;
+	margin-top: 1.5rem;
+	overflow: hidden!important;
+
+}
+
+#imgperfilmain{
+
+}
+
+
+
+
+/*************MEDIA QUERIES****************
 
 /*Default Media Queries Foundation*/
 /* Small only */

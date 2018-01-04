@@ -75,7 +75,7 @@
             <!-- columna logo -->
             <div class="columns small-10 medium-5 large-5">
               <a href="index.html">
-                <figure id="logotipo"><img src="../images/logoPuntosFarmanorte.svg" alt="Logo Puntos Farmanorte" ></figure>              
+                <figure id="logotipo"><img src="../images/logoPuntosFarmanorte.svg" alt="Logo Puntos Farmanorte" ></figure>
               </a>
             </div>
             <!-- columna Menu -->
@@ -88,9 +88,9 @@
               <div class="row  show-for-medium" id="rowmenu" >
                 <nav id="menuppal" data-magellan class="float-center">  
                   <ul class="dropdown menu navbar align-spaced show-for-medium" id="menppal">
-                    <li class="activa"><a href="#ancla_quesonpuntos">¿Qu&eacute; son Puntos <br/>Farmanorte?</a></li>
-                    <li><a href="#ancla_registro-section">¿C&oacute;mo <br/>registrarse?</a></li>
-                    <li><a href="#ancla_beneficion-section" class="">¿Cuales son los <br/>beneficios?</a></li>
+                    <li class="activa mnperfilo"><a href="#ancla_quesonpuntos">Pefil del <br/>Afiliado</a></li>
+                    <li class="mnperfilo"><a href="#ancla_registro-section">Mis Datos</a></li>
+                    <li class="mnperfilo"><a href="#ancla_beneficion-section" class="">Mis Puntos</a></li>
                   </ul>
                 </nav> 
                 <div id="perfilmenu">
@@ -98,7 +98,7 @@
                     <img src="../images/iconoFotoPerfil.png" alt="foto perfil">                    
                   </div>
                   <div id="etiquetanombre" class="float-center">
-                    <p id="etiquetaafiliado">Zaida Eliana Arredondo</p>
+                    <p id="etiquetaafiliado">Nombre Completo Afiliado</p>
                   </div>
                   <div id="puntoscontentmenu" class="float-center">
                      <input type="text"  id="puntosafmenu" value="1.650" readonly="true">
@@ -110,9 +110,28 @@
         </div> <!-- end menu-container -->
       </section> <!-- end Head Section -->
 
-      <!-- seccion slide -->
-      <section id="orbit-containers">
-        
+      <!-- seccion main -->
+      <section id="perfil-seccion-container">
+        <div id="backmain">
+          <div class="row" id="container-perfil">
+            <div class="columns small-12">
+              <fieldset id="fieldsetperfil">
+                <legend id="legendperfilmain">Nombre Completo Afiliado</legend>
+                  <div class="row" id="innerperfil">
+                    <div class="columns small-12 medium-6">
+                      <div id="fotoperfilmain">
+                        <img src="" alt="" id="imgperfilmain" class="float-center">
+                      </div>
+                    </div>
+                    <div class="columns small-12 medium-6">
+                      
+                    </div>
+                  </div>
+              </fieldset>
+            </div>
+
+          </div> <!-- end container-perfil -->
+        </div>
       </section> <!-- end section orbit -->
       
       <footer>
@@ -134,5 +153,6 @@
     <script src="../js/vendor/jquery.js"></script>
     <script src="../js/vendor/what-input.js"></script>
     <script src="../js/vendor/foundation.js"></script>
+    <script src="../js/app.js"></script>
   </body>
 </html>
