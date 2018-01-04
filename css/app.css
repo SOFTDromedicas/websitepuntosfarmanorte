@@ -1,10 +1,10 @@
-/*.row{
+.row{
 	border: 1px solid #E2EA03;
 }
 
 .columns{
 	border: 1px solid #FA0000;
-}*/
+}
 
 
 a:hover, a:active{
@@ -969,6 +969,47 @@ label.checkbox-label input[type=checkbox]{
 	margin-right: 5px;
 }
 
+/**css para perfil*****/
+#perfilmenu{
+	margin-right: 3rem;
+	border: 1px solid peru;
+	padding: 0 1rem;
+}
+
+#fotoperfilmenu{
+	border: 1px solid #CFCFCF;
+	border-radius: 50%;
+	width: 3rem!important;
+	height: 3rem!important;
+	margin-top: 1.5rem;
+	overflow: hidden!important;
+
+}
+
+#fotoperfilmenu img{
+	display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+  width: 100%;
+}
+
+#etiquetaafiliado{
+	color: #fff;
+	margin-bottom: 3px;
+}
+
+#puntosafmenu{
+	padding: 0.3rem!important;
+	width: 6rem;
+	height: 2rem;
+	margin: 0 auto;
+	text-align: center!important; 
+}
+
+#puntosafmenu:read-only{
+	background: #fff;
+}
+
 
 
 /*************MEDIA QUERIES*****************/
@@ -1125,11 +1166,7 @@ label.checkbox-label input[type=checkbox]{
 	#mostrar-clave p{
 		font-size: 0.85rem;
 	}
-
-	
-
 }
-
 
 
 /*Custom media Query*/
