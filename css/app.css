@@ -1,10 +1,10 @@
-/*.row{
+.row{
 	border: 1px solid #E2EA03;
 }
 
 .columns{
 	border: 1px solid #FA0000;
-}*/
+}
 
 
 a:hover, a:active{
@@ -989,7 +989,12 @@ label.checkbox-label input[type=checkbox]{
 	font-size: 2rem;
 	padding-left: 0.4rem;
 	display: inline-block;
-	cursor: pointer;
+	cursor: pointer; 
+}
+
+#exit i:hover{
+	text-shadow: 0 0 8px #02319B!important;
+	color: #DEEDF2;
 }
 
 .mnperfilo{
@@ -1041,21 +1046,22 @@ label.checkbox-label input[type=checkbox]{
 #perfil-seccion-container{
 	/*height: 40rem;*/
 	background: #0098DA;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #284B8C, #0098DA);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #284B8C, #0098DA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to top, #284B8C, #20ABE8);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #284B8C, #20ABE8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #backmain{
-	min-height: 100%;
-	min-width: 100%;
+	/*min-height: 70%;
+	min-width: 70%;*/
 	background-image: url(../images/gridbackground.png);
   background-size: cover;
   /*background-position: center;*/
 	/*max-height: 50%!important;*/
+
 }
 
 #container-perfil{
-	padding-top: 5rem;	
+	padding-top: 4rem;	
 }
 
 #fieldsetperfil{
@@ -1136,10 +1142,10 @@ label.checkbox-label input[type=checkbox]{
 	margin: 0;
 	margin-left: 5rem;	
 	background: #B2B2B2!important;
-	padding: 0.55rem;
+	padding: 0.55rem 2rem;
 	border-radius: 10px;
 	font-size: 1.1rem;
-	color: #043865;
+	color: #024F97;
 	font-weight: bold;
 	/*overflow: hidden!important;*/
 }
@@ -1153,9 +1159,21 @@ label.checkbox-label input[type=checkbox]{
 	padding: 1rem!important;
 	max-width: 95%;
 	min-height: 15rem;
+	border-radius: 15px;
 	
 }
 
+#container-misdatos{
+	padding-top: 4rem;	
+}
+
+#column-misdatos{
+	border: 10px solid #00B4FF;
+	border-radius: 25px;
+	padding: 15rem;
+	box-shadow: 0 0 0 3px rgba(6, 121, 209, 0.8);
+	background: #F4F4F4;
+}
 
 
 
