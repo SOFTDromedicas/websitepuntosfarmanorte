@@ -1,10 +1,10 @@
-.row{
+/*.row{
 	border: 1px solid #E2EA03;
 }
 
 .columns{
 	border: 1px solid #FA0000;
-}
+}*/
 
 
 a:hover, a:active{
@@ -972,7 +972,6 @@ label.checkbox-label input[type=checkbox]{
 /**CSS PARA PERFIL*****/
 #perfilmenu{
 	margin-right: 3rem;
-	border: 1px solid peru;
 	padding: 0 1rem;
 }
 
@@ -1065,15 +1064,44 @@ label.checkbox-label input[type=checkbox]{
 #fotoperfilmain{
 	border: 1px solid #C4C4C4;
 	border-radius: 50%;
-	width: 10rem!important;
-	height: 10rem!important;
+	width: 12rem!important;
+	height: 12rem!important;
 	margin-top: 1.5rem;
 	overflow: hidden!important;
-
 }
 
 #imgperfilmain{
 
+}
+
+.tituloestcuenta{
+	text-align: center;
+	margin:0 auto;
+	max-width: 15rem;
+	border: 1px solid red;
+	background: #FF0000;
+	border-radius: 10px;
+	vertical-align: middle;
+	color: #fff;
+	padding: .25rem 0;
+}
+.tituloestcuenta h5{
+	margin:0!important;
+}
+
+.detalleestado{
+	height: 11rem;
+	margin-top: 10px;
+	overflow: auto;
+}
+
+.detalleestado input{
+	padding: 0.3rem!important;
+	/*width: 6rem;*/
+	height: 2rem;
+	margin: 0 auto;
+	margin-top: 5px;
+	text-align: center!important; 
 }
 
 
