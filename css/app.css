@@ -1,10 +1,10 @@
-.row{
+/*.row{
 	border: 1px solid #E2EA03;
 }
 
 .columns{
 	border: 1px solid #FA0000;
-}
+}*/
 
 
 a:hover, a:active{
@@ -1044,6 +1044,7 @@ label.checkbox-label input[type=checkbox]{
 
 
 #perfil-seccion-container{
+	height: 100vh;
 	/*height: 40rem;*/
 	background: #0098DA;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to top, #284B8C, #20ABE8);  /* Chrome 10-25, Safari 5.1-6 */
@@ -1055,6 +1056,7 @@ label.checkbox-label input[type=checkbox]{
 	min-width: 70%;*/
 	background-image: url(../images/gridbackground.png);
   background-size: cover;
+  height: 100vh;
   /*background-position: center;*/
 	/*max-height: 50%!important;*/
 
@@ -1170,10 +1172,173 @@ label.checkbox-label input[type=checkbox]{
 #column-misdatos{
 	border: 10px solid #00B4FF;
 	border-radius: 25px;
-	padding: 15rem;
-	box-shadow: 0 0 0 3px rgba(6, 121, 209, 0.8);
-	background: #F4F4F4;
+	padding: 1.5rem;
+	box-shadow: 0 0 0 4px rgba(6, 121, 209, 0.8);
+	background: #FFFFFF;
+	margin-bottom: 3rem; 
 }
+
+.content-input{
+	margin-bottom: 1rem;
+}
+
+#misdaots-contentform label{
+	display: inline-block;
+  width: 140px;
+  text-align: right;
+  color: #000A7B;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+#misdaots-contentform [type='text'],
+#misdaots-contentform [type='password'], 
+#misdaots-contentform [type='date'], 
+#misdaots-contentform [type='month'], 
+#misdaots-contentform [type='week'], 
+#misdaots-contentform [type='email'], 
+#misdaots-contentform [type='number'], 
+#misdaots-contentform [type='search'], 
+#misdaots-contentform [type='tel'], 
+#misdaots-contentform [type='time'], 
+#misdaots-contentform [type='url'], 
+#misdaots-contentform [type='color'],
+#misdaots-contentform textarea,
+#misdaots-contentform select {
+  display: inline!important;
+  box-sizing: border-box;
+  width: 65%!important;
+  height: 2.2rem;
+  margin:0;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 7px;
+  background-color: #E6E6E6;
+ }
+#misdaots-contentform select {
+  padding: 0.2rem 0.2rem 0.2rem 0.4rem;  
+  
+  }
+
+#misdaots-contentform [type='text']:focus, 
+#misdaots-contentform [type='password']:focus, 
+#misdaots-contentform [type='date']:focus, 
+#misdaots-contentform  [type='datetime']:focus, 
+#misdaots-contentform  [type='datetime-local']:focus, 
+#misdaots-contentform  [type='month']:focus, 
+#misdaots-contentform  [type='week']:focus, 
+#misdaots-contentform   [type='email']:focus, 
+#misdaots-contentform   [type='number']:focus, 
+#misdaots-contentform   [type='search']:focus, 
+#misdaots-contentform   [type='tel']:focus, 
+#misdaots-contentform   [type='time']:focus, 
+#misdaots-contentform   [type='color']:focus,
+#misdaots-contentform   textarea:focus, #misdaots-contentform select:focus {
+    outline: none;
+    border: 3px solid #8a8a8a;
+    background-color: #fefefe;
+    box-shadow: 0 0 5px #99CFF1;
+    transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
+
+button#fotoperfil-button{
+	background: #1CB5E0!important;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #1CB5E0, #094D86)!important;  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #1CB5E0, #094D86)!important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  margin-left: 4px;
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+button#actperfil-button{
+	background: #F00000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #DC281E, #F00000);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #DC281E, #F00000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	padding: 0.3em 2em;
+	border-radius: 8px;
+	font-family: 'Barlow Condensed', sans-serif;
+	font-size: 1.3rem;
+}
+
+/**mis puntos**/
+
+
+#container-mispuntos{
+	padding-top: 4rem;	
+}
+
+#column-mispuntos{
+	border: 3px solid #CDCDCD;
+	border-radius: 25px;
+	padding: 1rem;
+	height: 30rem;
+	margin-bottom: 2rem; 
+}
+
+.titulo-mispuntos{
+	display: inline-block;
+	/*z-index: 90;*/
+	margin: -20% 20%;
+	position: relative;
+	top: -40px!important;
+
+}
+.titulo-mispuntos img{
+	margin-left: 50px;
+	
+}
+
+.tiulotexto{
+	margin-left: 80px;
+}
+
+.mispuntos{
+	background: #F5F5F5;
+	margin: -7% 0;
+	border-radius: 25px;
+	height: 100%;
+	padding: 1rem;
+}
+
+.content-input{
+	border-bottom:  2px solid #CBCBCB;
+}
+
+
+#misdaots-contentform label{
+	display: inline-block;
+  width: 140px;
+  text-align: right;
+  color: #000A7B;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+#misdaots-contentform [type='text'],
+#misdaots-contentform [type='password'], 
+#misdaots-contentform [type='date'], 
+#misdaots-contentform [type='month'], 
+#misdaots-contentform [type='week'], 
+#misdaots-contentform [type='email'], 
+#misdaots-contentform [type='number'], 
+#misdaots-contentform [type='search'], 
+#misdaots-contentform [type='tel'], 
+#misdaots-contentform [type='time'], 
+#misdaots-contentform [type='url'], 
+#misdaots-contentform [type='color'],
+#misdaots-contentform textarea,
+#misdaots-contentform select {
+  display: inline!important;
+  box-sizing: border-box;
+  width: 65%!important;
+  height: 2.2rem;
+  margin:0;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 7px;
+  background-color: #E6E6E6;
+ }
+
+
+
 
 
 
