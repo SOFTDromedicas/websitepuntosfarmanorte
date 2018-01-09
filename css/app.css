@@ -1,10 +1,10 @@
-.row{
+/*.row{
 	border: 1px solid #E2EA03;
 }
 
 .columns{
 	border: 1px solid #FA0000;
-}
+}*/
 
 
 a:hover, a:active{
@@ -972,12 +972,48 @@ label.checkbox-label input[type=checkbox]{
 }
 
 /******CSS PARA PERFIL*****/
+#perfil-offcanvas{
+	margin-top: 3rem;
+
+}
+#exit-offcanvas{
+	margin-bottom: 1.1rem;
+
+}
+#exit-offcanvas h5 {
+	display: inline-block;
+	font-size: 1.1rem;
+	margin-left: 15px;
+}
+#exit-offcanvas i {	
+	font-size: 1.4rem;
+	margin-left: 15px;
+
+}
+
+#perfil-offcanvas .etiquetaafiliado{
+	text-align: center;
+}
+
+#exit-offcanvas{
+	position: absolute;
+	bottom: 0;
+	color: #ffffff;
+}
+
+.divider {
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    margin: 18px 0 46px;}
+
+
 #perfilmenu{
 	/*border: 1px solid peru;*/
 	padding: 0 1rem;
 }
 
-#exit{
+.exit{
 	margin-right: 3rem;
 	color: #ffffff;
 	display: block;
@@ -985,7 +1021,7 @@ label.checkbox-label input[type=checkbox]{
 	padding-top: 4rem;
 }
 
-#exit i{
+.exit i{
 	vertical-align: middle!important;	
 	font-size: 2rem;
 	padding-left: 0.4rem;
@@ -993,7 +1029,7 @@ label.checkbox-label input[type=checkbox]{
 	cursor: pointer; 
 }
 
-#exit i:hover{
+.exit i:hover{
 	text-shadow: 0 0 8px #02319B!important;
 	color: #DEEDF2;
 }
@@ -1026,7 +1062,7 @@ label.checkbox-label input[type=checkbox]{
   width: 100%;
 }
 
-#etiquetaafiliado{
+.etiquetaafiliado{
 	color: #fff;
 	margin-bottom: 3px;
 }
@@ -1812,7 +1848,7 @@ button#actperfil-button{
     box-sizing: border-box;
     width: 100%!important;
     height: 2.2rem;
-    margin: 5px 0 10px 10px;
+    margin: 5px 0 10px 0px;
     padding: 0.7rem;
     border: none;
     border-radius: 2px;
@@ -1876,7 +1912,7 @@ button#actperfil-button{
     box-sizing: border-box;
     width: 100%!important;
     height: 2.2rem;
-    margin: 5px 0 10px 10px;
+    margin: 5px 0 10px 0px;
     padding: 0.7rem;
     border: none;
     border-radius: 2px;

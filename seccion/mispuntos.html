@@ -51,10 +51,26 @@
     <!-- Menu  off canvas-->
     <nav id="nav-contente" data-magellan>
       <ul class="vertical menu" id="menuoffcanvas">
-        <li><a href="#ancla_quesonpuntos">¿Qu&eacute; son Puntos Farmanorte?</a></li>
-        <li><a href="#ancla_registro-section">¿C&oacute;mo registrarse?</a></li>
-        <li><a href="#ancla_beneficion-section">¿Cuales son los beneficios?</a></li>
+        <li><a href="#ancla_quesonpuntos">Mis Puntos</a></li>
+        <li><a href="#ancla_registro-section">Mis Datos</a></li>
+        <li><a href="#ancla_beneficion-section">Mis pupntos</a></li>
       </ul>
+      <!-- <div class="divider"></div> -->
+      <div id="perfil-offcanvas">
+        <div id="fotoperfilmenu" class="float-center fotoperfilmenu">
+          <img src="../images/iconoFotoPerfil.png" alt="foto perfil">                    
+        </div>
+        <div id="etiquetanombre" class="float-center etiquetaafiliado">
+          <p id="etiquetaafiliado">Nombre Completo Afiliado</p>
+        </div>
+        <div id="puntoscontentmenu" class="float-center puntoscontentmenu">
+          <input type="text"  id="puntosafmenu" value="1.650" readonly="true">
+        </div>
+      </div> <!-- end perfil-offcanvas -->
+      <div id="exit-offcanvas">
+        <h5>Cerrar Sesi&oacute;n</h5>
+        <i class="fa fa-sign-out" aria-hidden="true" title="Salir de Puntos Farmanorte"></i>
+      </div> 
     </nav>
   </div>
   
@@ -97,14 +113,14 @@
                   <div id="fotoperfilmenu" class="float-center">
                     <img src="../images/iconoFotoPerfil.png" alt="foto perfil">                    
                   </div>
-                  <div id="etiquetanombre" class="float-center">
-                    <p id="etiquetaafiliado">Nombre Completo Afiliado</p>
+                  <div id="etiquetanombre" class="float-center etiquetanombre">
+                    <p id="etiquetaafiliado" class="etiquetaafiliado">Nombre Completo Afiliado</p>
                   </div>
-                  <div id="puntoscontentmenu" class="float-center">
-                     <input type="text"  id="puntosafmenu" value="1.650" readonly="true">
+                  <div id="puntoscontentmenu" class="float-center puntoscontentmenu">
+                     <input type="text"  id="puntosafmenu" value="1.650" readonly="true" class="puntosafmenu">
                   </div>
                 </div>  
-                <div id="exit">
+                <div id="exit" class="exit">
                   <i class="fa fa-sign-out" aria-hidden="true" title="Salir de Puntos Farmanorte"></i>
                 </div>    
                          
