@@ -63,6 +63,7 @@ body{
 
 #burger-menu i{
 	color: #000A7B;
+	color: #FFFFFF;
 	font-size: 1.8rem;
 }
 
@@ -1048,6 +1049,8 @@ label.checkbox-label input[type=checkbox]{
 	background: #0098DA;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to top, #284B8C, #20ABE8);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to top, #284B8C, #20ABE8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	
+	/*background-image: linear-gradient(90deg,#c074b2,#8ab5e8);*/    /*Spotify*/
 }
 
 #backmain{
@@ -1058,6 +1061,8 @@ label.checkbox-label input[type=checkbox]{
   min-height: 100vh; /*ocupa todo el contenedor (A)*/
   background-position: center;
 	/*max-height: 50%!important;*/
+
+	/*background-image: linear-gradient(transparent,#000);*/     /*Spotify*/
 }
 
 #container-perfil{
@@ -1674,6 +1679,7 @@ button#actperfil-button{
 
 
 
+
 }
 
 
@@ -1783,6 +1789,49 @@ button#actperfil-button{
 }
 
 /*Custom media Query*/
+@media screen and (min-width: 40.000em) and (max-width: 53.688em) {
+
+	.titulo-mispuntos img {
+    margin-left: 20px;
+	}
+	 #container-detalle-puntos [type='text'], 
+	 #container-detalle-puntos [type='password'], 
+	 #container-detalle-puntos [type='date'], 
+	 #container-detalle-puntos [type='month'], 
+	 #container-detalle-puntos [type='week'], 
+	 #container-detalle-puntos [type='email'], 
+	 #container-detalle-puntos [type='number'], 
+	 #container-detalle-puntos [type='search'], 
+	 #container-detalle-puntos [type='tel'], 
+	 #container-detalle-puntos [type='time'], 
+	 #container-detalle-puntos [type='url'], 
+	 #container-detalle-puntos [type='color'], 
+	 #container-detalle-puntos textarea, 
+	 #container-detalle-puntos select {
+    display: inline!important;
+    box-sizing: border-box;
+    width: 100%!important;
+    height: 2.2rem;
+    margin: 5px 0 10px 10px;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 2px;
+    background-color: #E6E6E6;
+    text-align: center;
+	}
+
+
+
+}
+
+
+
+
+
+
+
+
+/*Custom media Query*/
 @media only screen and (max-width : 486px) {
 	#misdatos-contentform label{
 	  text-align: center;
@@ -1803,9 +1852,40 @@ button#actperfil-button{
 	#misdatos-contentform textarea,
 	#misdatos-contentform select {	  
 	  width: 100%!important;	  
-	  background-color: #E6E6E6;
-	 
+	  background-color: #E6E6E6;	 
  }
+
+ .titulo-mispuntos img {
+    margin-left: 15px;
+	}
+	 #container-detalle-puntos [type='text'], 
+	 #container-detalle-puntos [type='password'], 
+	 #container-detalle-puntos [type='date'], 
+	 #container-detalle-puntos [type='month'], 
+	 #container-detalle-puntos [type='week'], 
+	 #container-detalle-puntos [type='email'], 
+	 #container-detalle-puntos [type='number'], 
+	 #container-detalle-puntos [type='search'], 
+	 #container-detalle-puntos [type='tel'], 
+	 #container-detalle-puntos [type='time'], 
+	 #container-detalle-puntos [type='url'], 
+	 #container-detalle-puntos [type='color'], 
+	 #container-detalle-puntos textarea, 
+	 #container-detalle-puntos select {
+    display: inline!important;
+    box-sizing: border-box;
+    width: 100%!important;
+    height: 2.2rem;
+    margin: 5px 0 10px 10px;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 2px;
+    background-color: #E6E6E6;
+    text-align: center;
+	}
+
+
+
 }
 
 
