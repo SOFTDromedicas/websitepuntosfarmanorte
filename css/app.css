@@ -1182,7 +1182,7 @@ label.checkbox-label input[type=checkbox]{
 	margin-bottom: 1rem;
 }
 
-#misdaots-contentform label{
+#misdatos-contentform label{
 	display: inline-block;
   width: 140px;
   text-align: right;
@@ -1191,20 +1191,20 @@ label.checkbox-label input[type=checkbox]{
   font-size: 1.2rem;
   font-weight: bold;
 }
-#misdaots-contentform [type='text'],
-#misdaots-contentform [type='password'], 
-#misdaots-contentform [type='date'], 
-#misdaots-contentform [type='month'], 
-#misdaots-contentform [type='week'], 
-#misdaots-contentform [type='email'], 
-#misdaots-contentform [type='number'], 
-#misdaots-contentform [type='search'], 
-#misdaots-contentform [type='tel'], 
-#misdaots-contentform [type='time'], 
-#misdaots-contentform [type='url'], 
-#misdaots-contentform [type='color'],
-#misdaots-contentform textarea,
-#misdaots-contentform select {
+#misdatos-contentform [type='text'],
+#misdatos-contentform [type='password'], 
+#misdatos-contentform [type='date'], 
+#misdatos-contentform [type='month'], 
+#misdatos-contentform [type='week'], 
+#misdatos-contentform [type='email'], 
+#misdatos-contentform [type='number'], 
+#misdatos-contentform [type='search'], 
+#misdatos-contentform [type='tel'], 
+#misdatos-contentform [type='time'], 
+#misdatos-contentform [type='url'], 
+#misdatos-contentform [type='color'],
+#misdatos-contentform textarea,
+#misdatos-contentform select {
   display: inline!important;
   box-sizing: border-box;
   width: 65%!important;
@@ -1215,25 +1215,25 @@ label.checkbox-label input[type=checkbox]{
   border-radius: 7px;
   background-color: #E6E6E6;
  }
-#misdaots-contentform select {
-  padding: 0.2rem 0.2rem 0.2rem 0.4rem;  
+#misdatos-contentform select {
+  padding: 0.1rem 0.1rem 0.1rem 0.4rem!important;  
   
   }
 
-#misdaots-contentform [type='text']:focus, 
-#misdaots-contentform [type='password']:focus, 
-#misdaots-contentform [type='date']:focus, 
-#misdaots-contentform  [type='datetime']:focus, 
-#misdaots-contentform  [type='datetime-local']:focus, 
-#misdaots-contentform  [type='month']:focus, 
-#misdaots-contentform  [type='week']:focus, 
-#misdaots-contentform   [type='email']:focus, 
-#misdaots-contentform   [type='number']:focus, 
-#misdaots-contentform   [type='search']:focus, 
-#misdaots-contentform   [type='tel']:focus, 
-#misdaots-contentform   [type='time']:focus, 
-#misdaots-contentform   [type='color']:focus,
-#misdaots-contentform   textarea:focus, #misdaots-contentform select:focus {
+#misdatos-contentform [type='text']:focus, 
+#misdatos-contentform [type='password']:focus, 
+#misdatos-contentform [type='date']:focus, 
+#misdatos-contentform  [type='datetime']:focus, 
+#misdatos-contentform  [type='datetime-local']:focus, 
+#misdatos-contentform  [type='month']:focus, 
+#misdatos-contentform  [type='week']:focus, 
+#misdatos-contentform   [type='email']:focus, 
+#misdatos-contentform   [type='number']:focus, 
+#misdatos-contentform   [type='search']:focus, 
+#misdatos-contentform   [type='tel']:focus, 
+#misdatos-contentform   [type='time']:focus, 
+#misdatos-contentform   [type='color']:focus,
+#misdatos-contentform   textarea:focus, #misdaots-contentform select:focus {
     outline: none;
     border: 3px solid #8a8a8a;
     background-color: #fefefe;
@@ -1268,7 +1268,7 @@ button#actperfil-button{
 #column-mispuntos{
 	border: 3px solid #CDCDCD;
 	border-radius: 25px;
-	padding: 1rem;
+	padding: 1rem 1rem 0.3rem 1rem; 
 	height: 30rem;
 	margin-bottom: 2rem; 
 }
@@ -1295,15 +1295,21 @@ button#actperfil-button{
 	margin: -7% 0;
 	border-radius: 25px;
 	height: 100%;
-	padding: 1rem;
+	padding: 1rem 3rem;
 }
 
-.content-input{
-	border-bottom:  2px solid #CBCBCB;
+.content-input-puntos{
+	border-bottom:  2px solid #0080D9;
+}
+
+#container-detalle-puntos{
+	padding-top: 2rem;
 }
 
 
-#misdaots-contentform label{
+#container-detalle-puntos label{
+	text-align: center!important;
+	line-height: 25px;
 	display: inline-block;
   width: 140px;
   text-align: right;
@@ -1311,29 +1317,30 @@ button#actperfil-button{
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.2rem;
   font-weight: bold;
+  margin-left: 20px;
 }
-#misdaots-contentform [type='text'],
-#misdaots-contentform [type='password'], 
-#misdaots-contentform [type='date'], 
-#misdaots-contentform [type='month'], 
-#misdaots-contentform [type='week'], 
-#misdaots-contentform [type='email'], 
-#misdaots-contentform [type='number'], 
-#misdaots-contentform [type='search'], 
-#misdaots-contentform [type='tel'], 
-#misdaots-contentform [type='time'], 
-#misdaots-contentform [type='url'], 
-#misdaots-contentform [type='color'],
-#misdaots-contentform textarea,
-#misdaots-contentform select {
+#container-detalle-puntos [type='text'],
+#container-detalle-puntos [type='password'], 
+#container-detalle-puntos [type='date'], 
+#container-detalle-puntos [type='month'], 
+#container-detalle-puntos [type='week'], 
+#container-detalle-puntos [type='email'], 
+#container-detalle-puntos [type='number'], 
+#container-detalle-puntos [type='search'], 
+#container-detalle-puntos [type='tel'], 
+#container-detalle-puntos [type='time'], 
+#container-detalle-puntos [type='url'], 
+#container-detalle-puntos [type='color'],
+#container-detalle-puntos textarea,
+#container-detalle-puntos select {
   display: inline!important;
   box-sizing: border-box;
-  width: 65%!important;
+  width: 45%!important;
   height: 2.2rem;
-  margin:0;
+  margin:5px 0 15px 10px;
   padding: 0.7rem;
   border: none;
-  border-radius: 7px;
+  border-radius: 4px;
   background-color: #E6E6E6;
  }
 
