@@ -1268,7 +1268,7 @@ button#actperfil-button{
 #column-mispuntos{
 	border: 3px solid #CDCDCD;
 	border-radius: 25px;
-	padding: 1rem 1rem 1rem 1rem; 
+	padding: 1em 0.3rem 0.3rem 0.3rem; 
 	margin-bottom: 2rem;  
 }
 
@@ -1343,8 +1343,9 @@ button#actperfil-button{
   margin:5px 0 10px 10px;
   padding: 0.7rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 2px;
   background-color: #CFCFCF;
+  text-align: center;
  }
 
 
