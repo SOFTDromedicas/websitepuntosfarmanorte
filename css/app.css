@@ -1,10 +1,10 @@
-/*.row{
+.row{
 	border: 1px solid #E2EA03;
 }
 
 .columns{
 	border: 1px solid #FA0000;
-}*/
+}
 
 
 a:hover, a:active{
@@ -1052,10 +1052,11 @@ label.checkbox-label input[type=checkbox]{
 
 #backmain{
 	background-image: url(../images/gridbackground.png);
+  /*background-size: 100%;*/
   background-size: cover;
-  background-size: 100%;
+  background-repeat: no-repeat;
   min-height: 100vh; /*ocupa todo el contenedor (A)*/
-  /*background-position: center;*/
+  background-position: center;
 	/*max-height: 50%!important;*/
 }
 
@@ -1504,6 +1505,8 @@ button#actperfil-button{
 	#mostrar-clave p{
 		font-size: 0.85rem;
 	}
+
+
 }
 
 
@@ -1551,7 +1554,6 @@ button#actperfil-button{
 		display: block;
     margin-left: auto;
     margin-right: auto;
-
 	}
 
 	#quesonpuntos .medium-6{
@@ -1598,7 +1600,6 @@ button#actperfil-button{
     height: 23rem;
 	}
 
-
 	#beneficion-section .medium-4,
 	#beneficion-section .medium-8{
 		flex: 0 0 100%;
@@ -1642,7 +1643,13 @@ button#actperfil-button{
 		font-size: 0.88rem;
 	}
 
+	#backmain{
+		background-image: url(../images/gridbackground.png);
+	  /*background-position: cover!important;*/
+	  background-size: cover;
+	  /*background: red;*/
 
+	}
 
 }
 
@@ -1650,8 +1657,6 @@ button#actperfil-button{
 /*Custom media Query*/
 @media screen and (min-width: 47.376em) and (max-width: 59.125em) {
 	
-	
-
 	#menu-container{		
 		background-position: left;
 	}	
@@ -1703,9 +1708,7 @@ button#actperfil-button{
 		background-size: cover;
 	  background-position: top center;
 	  height: 29rem;
-
 	  padding: 4.5rem 1rem 1rem 2rem;
-	  
 	}
 
 	#tituloterminos{
@@ -1727,6 +1730,9 @@ button#actperfil-button{
 		font-size: 0.95rem;
 	}
 
+	#perfilmenu{
+		display: none;
+	}
 
 }
 
@@ -1748,8 +1754,6 @@ button#actperfil-button{
 
 /* Medium only */
 @media screen and (min-width: 59.126em) and (max-width: 63.9375em) {
-
-	
 	
 	#logotipo{
 		margin: .2rem 0 0 4rem;
@@ -1758,10 +1762,15 @@ button#actperfil-button{
 		z-index: 2;
 	}
 
+	#perfilmenu{
+		display: none;
+	}
+
 }
 
 /* Large and up */
 @media screen and (min-width: 64em) {
+
 	
 }
 
@@ -1774,8 +1783,13 @@ button#actperfil-button{
 	}
 
 	#quesonpuntos{		
-	  background-position: left
+	  background-position: left;
 	}
+
+	#perfilmenu{
+		display: none;
+	}
+
 
 	
 }
