@@ -1220,17 +1220,17 @@ label.checkbox-label input[type=checkbox]{
 #misdatos-contentform [type='text']:focus, 
 #misdatos-contentform [type='password']:focus, 
 #misdatos-contentform [type='date']:focus, 
-#misdatos-contentform  [type='datetime']:focus, 
-#misdatos-contentform  [type='datetime-local']:focus, 
-#misdatos-contentform  [type='month']:focus, 
-#misdatos-contentform  [type='week']:focus, 
-#misdatos-contentform   [type='email']:focus, 
-#misdatos-contentform   [type='number']:focus, 
-#misdatos-contentform   [type='search']:focus, 
-#misdatos-contentform   [type='tel']:focus, 
-#misdatos-contentform   [type='time']:focus, 
-#misdatos-contentform   [type='color']:focus,
-#misdatos-contentform   textarea:focus, #misdaots-contentform select:focus {
+#misdatos-contentform [type='datetime']:focus, 
+#misdatos-contentform [type='datetime-local']:focus, 
+#misdatos-contentform [type='month']:focus, 
+#misdatos-contentform [type='week']:focus, 
+#misdatos-contentform [type='email']:focus, 
+#misdatos-contentform [type='number']:focus, 
+#misdatos-contentform [type='search']:focus, 
+#misdatos-contentform [type='tel']:focus, 
+#misdatos-contentform [type='time']:focus, 
+#misdatos-contentform [type='color']:focus,
+#misdatos-contentform textarea:focus, #misdaots-contentform select:focus {
     outline: none;
     border: 3px solid #8a8a8a;
     background-color: #fefefe;
@@ -1648,8 +1648,31 @@ button#actperfil-button{
 	  /*background-position: cover!important;*/
 	  background-size: cover;
 	  /*background: red;*/
-
 	}
+	
+	#misdatos-contentform label{
+	  text-align: center;
+	}
+	
+	#misdatos-contentform [type='text'],
+	#misdatos-contentform [type='password'], 
+	#misdatos-contentform [type='date'], 
+	#misdatos-contentform [type='month'], 
+	#misdatos-contentform [type='week'], 
+	#misdatos-contentform [type='email'], 
+	#misdatos-contentform [type='number'], 
+	#misdatos-contentform [type='search'], 
+	#misdatos-contentform [type='tel'], 
+	#misdatos-contentform [type='time'], 
+	#misdatos-contentform [type='url'], 
+	#misdatos-contentform [type='color'],
+	#misdatos-contentform textarea,
+	#misdatos-contentform select {	  
+	  width: 100%!important;	  
+	  background-color: #E6E6E6;	  
+ }
+
+
 
 }
 
@@ -1734,6 +1757,55 @@ button#actperfil-button{
 		display: none;
 	}
 
+
+	#misdatos-contentform label{
+	  text-align: center;
+	}
+	
+	#misdatos-contentform [type='text'],
+	#misdatos-contentform [type='password'], 
+	#misdatos-contentform [type='date'], 
+	#misdatos-contentform [type='month'], 
+	#misdatos-contentform [type='week'], 
+	#misdatos-contentform [type='email'], 
+	#misdatos-contentform [type='number'], 
+	#misdatos-contentform [type='search'], 
+	#misdatos-contentform [type='tel'], 
+	#misdatos-contentform [type='time'], 
+	#misdatos-contentform [type='url'], 
+	#misdatos-contentform [type='color'],
+	#misdatos-contentform textarea,
+	#misdatos-contentform select {	  
+	  width: 100%!important;	  
+	  background-color: #E6E6E6;
+ }
+
+}
+
+/*Custom media Query*/
+@media only screen and (max-width : 486px) {
+	#misdatos-contentform label{
+	  text-align: center;
+	}
+	
+	#misdatos-contentform [type='text'],
+	#misdatos-contentform [type='password'], 
+	#misdatos-contentform [type='date'], 
+	#misdatos-contentform [type='month'], 
+	#misdatos-contentform [type='week'], 
+	#misdatos-contentform [type='email'], 
+	#misdatos-contentform [type='number'], 
+	#misdatos-contentform [type='search'], 
+	#misdatos-contentform [type='tel'], 
+	#misdatos-contentform [type='time'], 
+	#misdatos-contentform [type='url'], 
+	#misdatos-contentform [type='color'],
+	#misdatos-contentform textarea,
+	#misdatos-contentform select {	  
+	  width: 100%!important;	  
+	  background-color: #E6E6E6;
+	 
+ }
 }
 
 
