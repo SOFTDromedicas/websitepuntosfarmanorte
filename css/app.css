@@ -1044,22 +1044,19 @@ label.checkbox-label input[type=checkbox]{
 
 
 #perfil-seccion-container{
-	height: 100vh;
-	/*height: 40rem;*/
+	min-height: 100vh; /*ocupa todo el contenedor (A)*/ 
 	background: #0098DA;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to top, #284B8C, #20ABE8);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to top, #284B8C, #20ABE8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #backmain{
-	/*min-height: 70%;
-	min-width: 70%;*/
 	background-image: url(../images/gridbackground.png);
   background-size: cover;
-  height: 100vh;
+  background-size: 100%;
+  min-height: 100vh; /*ocupa todo el contenedor (A)*/
   /*background-position: center;*/
 	/*max-height: 50%!important;*/
-
 }
 
 #container-perfil{
@@ -1074,7 +1071,6 @@ label.checkbox-label input[type=checkbox]{
 }
 
 #legendperfilmain{
-	/*margin:0!important;*/
 	background: none!important;
 	padding: .7rem;
 	border: 2px solid #fff;
