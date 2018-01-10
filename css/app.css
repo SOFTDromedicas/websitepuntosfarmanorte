@@ -971,31 +971,37 @@ label.checkbox-label input[type=checkbox]{
 	margin-right: 5px;
 }
 
-/******CSS PARA PERFIL*****/
+/**********CSS PARA PERFIL**********/
+
 #perfil-offcanvas{
 	margin-top: 3rem;
 
 }
-#exit-offcanvas{
-	margin-bottom: 1.1rem;
 
+#exit-offcanvas,
+#login-offcanvas{
+	margin-bottom: 1.2rem;
 }
-#exit-offcanvas h5 {
+
+#exit-offcanvas h5,
+#login-offcanvas h5 {
 	display: inline-block;
-	font-size: 1.1rem;
+	font-size: 1.2rem;
 	margin-left: 15px;
 }
-#exit-offcanvas i {	
+
+#exit-offcanvas i,
+#login-offcanvas i {	
 	font-size: 1.4rem;
 	margin-left: 15px;
-
 }
 
 #perfil-offcanvas .etiquetaafiliado{
 	text-align: center;
 }
 
-#exit-offcanvas{
+#exit-offcanvas,
+#login-offcanvas{
 	position: absolute;
 	bottom: 0;
 	color: #ffffff;
@@ -1919,6 +1925,12 @@ button#actperfil-button{
     background-color: #E6E6E6;
     text-align: center;
 	}
+
+	#burger-menu i {
+    color: #FFFFFF;
+    color: #000A7B;
+    font-size: 1.8rem;
+}
 
 
 

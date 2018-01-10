@@ -7,7 +7,6 @@ var ciudad, documento, nombres, apellidos, tipodocumento, sexo, direccion,
 var btnGuardar;
 var urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
 var ciudadesService = "http://dromedicas.sytes.net:9999/dropos/wsjson/ciudades/";
-var servicioLogin = "";
 var asyncRequest;
 //teclas eventos para scroll
 var keys = {37: 1, 38: 1, 39: 1, 40: 1};

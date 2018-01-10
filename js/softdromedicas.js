@@ -70,7 +70,7 @@ function iniciar() {
     // updateURL += documentoAfiliado;
 
 
-    var updateURL = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/validacorreo?id=";
+    var updateURL = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/validacorreo?id=";   
     updateURL += documentoAfiliado;
     // updateURL += "88239811";
     
@@ -134,7 +134,7 @@ function obtenerDatosAfiliado() {
     // datosURL += documentoAfiliado;
     // datosURL += "373950743";
     
-    var datosURL = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/obtenerafiliado?id=";
+    var datosURL = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/obtenerafiliado?id=";  
     datosURL += documentoAfiliado;
 
     console.log("URL " + datosURL);
@@ -334,6 +334,7 @@ function registrar() {
 
    // urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpformulario2/index.php?";
     urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/actualizarafiliadoweb?";
+   
 
     if (validarFormulario()) {
         //Campos del formulario hasta datos basico -nivel de estudios
