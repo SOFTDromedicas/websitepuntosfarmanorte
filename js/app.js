@@ -5,9 +5,10 @@ $(document).foundation()
 var ciudad, documento, nombres, apellidos, tipodocumento, sexo, direccion,
             barrio, fechanacimiento, telefonofijo, celular, email, terminos;
 var btnGuardar;
-var urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
 var ciudadesService = "http://dromedicas.sytes.net:9999/dropos/wsjson/ciudades/";
-var servicioLogin = "";
+
+var urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?";
+var servicioLogin = "http://localhost:8080/puntosfarmanorte/webservice/apiwebafiliado/login";
 var asyncRequest;
 //teclas eventos para scroll
 var keys = {37: 1, 38: 1, 39: 1, 40: 1};
@@ -71,7 +72,7 @@ function iniciar() {
 
     }
 
-      console.log(location.pathname.substring(1));
+    console.log(location.pathname.substring(1));
 
     if ( location.pathname.substring(1) == "index.html" ){
     // if (location.pathname.substring(1) == "xxxx.html"){
@@ -95,7 +96,9 @@ function iniciar() {
     }
 
     //Eventos para cuadro de Login
-    registerEventLogin();        
+    registerEventLogin();  
+
+
 
 }//end function iniciar
 
@@ -123,11 +126,15 @@ function registerEventLogin() {
     var volverS = document.getElementById('volver-sesion');
     volverS.addEventListener('click', volverSesion, false);
 
+    //inicio de sesion 
+    document.getElementById('iniciar-sesion').addEventListener('click', 
+    iniciarSesion, false);
+
     //registro de evento techa de escape para el formulario de login
     document.addEventListener('keyup', exitLogin, false);
 }
 
-//funciones para el bloqueo del scroll
+//funciones para el bloqueo del scroll cuando se ejecuta el login
 function preventDefault(e) { 
   e = e || window.event;
   if (e.preventDefault)
@@ -141,6 +148,47 @@ function preventDefaultForScrollKeys(e) {
         return false;
     }
 }
+
+//iniciar session del perfil de puntos farmanorte
+function iniciarSesion(){
+  //lamada al servicio de puntos farmanorte para la autenticacion
+  getToken();
+
+}
+
+//Obtien el JWT para el login 
+function getToken(){
+  
+  var xhr = new XMLHttpRequest();
+  var userElement = document.getElementById('documentologin');
+  var passwordElement = document.getElementById('password');
+  var tokenElement = document.getElementById('token');
+  var user = userElement.value;
+  var password = passwordElement.value;
+
+  servicioLogin += "?login=" + user + "&password=" + password;
+
+  xhr.open('POST', servicioLogin, true);
+  xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+  xhr.addEventListener('load', function() {
+    var responseObject = JSON.parse(this.response);
+    console.log(responseObject);
+    if (responseObject.token) {
+      tokenElement.innerHTML = responseObject.token;
+    } else {
+      tokenElement.innerHTML = "No token received";
+    }
+  });
+
+  var sendObject = JSON.stringify({name: user, password: password});
+
+  console.log('going to send', sendObject);
+
+  xhr.send(sendObject);
+
+}
+
+
 
 function disableScroll() {
   if (window.addEventListener) // older FF
