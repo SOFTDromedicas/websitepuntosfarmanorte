@@ -836,10 +836,37 @@ label.checkbox-label input[type=checkbox]{
 	background: #1c3672;
 	color: #FFFFFF;
 	text-align: center;
-	margin-bottom: 0.8rem;
+	
+}
+
+.loaderlogin {
+  height: 4px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #eff3f8;
+}
+.loaderlogin:before{
+  position: absolute;
+  content: "";
+  left: -200px;
+  width: 200px;
+  height: 4px;
+  background-color: #155BF9;
+  animation: loadingf 2s linear infinite;
+}
+
+@keyframes loadingf {
+    from {left: -200px; width: 30%;}
+    50% {width: 30%;}
+    70% {width: 70%;}
+    80% { left: 50%;}
+    95% {left: 120%;}
+    to {left: 100%;}
 }
 
 #form-login{
+	margin-top: 0.8rem;
 	padding: 0 .8rem;
 }
 

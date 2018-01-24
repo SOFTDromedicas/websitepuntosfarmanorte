@@ -15,18 +15,12 @@ var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
 
 function iniciar() {
- 
 
-  // Almacena la información en sessionStorage
-// sessionStorage.setItem('paco', 'lk');
+  var data = localStorage.getItem('token');
+  console.log("VERIFICANDO QUE EXITA SESION " + data);
 
-// Obtiene la información almacenada desde sessionStorage
-// var data = sessionStorage.getItem('paco');
-
-
-// console.log("Session--> " + data);
-// console.log("this--> " + this.sessionStorage.getItem('paco'));
-    
+  localStorage.clear();
+     
     //Registro de eventos y componente para la interfaz de afiliacion
     if (location.pathname.substring(1) === "seccion/inscripcion.html") {
         btnGuardar = document.getElementById('guardar-button');
@@ -160,32 +154,51 @@ function iniciarSesion(){
 function getToken(){
   
   var xhr = new XMLHttpRequest();
-  var userElement = document.getElementById('documentologin');
-  var passwordElement = document.getElementById('password');
+  var userElement = null;
+  userElement = document.getElementById('documentologin');
+  var passwordElement = null;
+   passwordElement = document.getElementById('password');
   var tokenElement = document.getElementById('token');
-  var user = userElement.value;
-  var password = passwordElement.value;
+  var user = null;
+  user = userElement.value;
+  var password = null;
+  password = passwordElement.value;
 
-  servicioLogin += "?login=" + user + "&password=" + password;
+  servicioLogin = "http://localhost:8080/puntosfarmanorte/webservice/apiwebafiliado/login";
 
-  xhr.open('POST', servicioLogin, true);
-  xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-  xhr.addEventListener('load', function() {
-    var responseObject = JSON.parse(this.response);
-    console.log(responseObject);
-    if (responseObject.token) {
-      tokenElement.innerHTML = responseObject.token;
-    } else {
-      tokenElement.innerHTML = "No token received";
-    }
-  });
+  servicioLogin += "?user=" + user + "&password=" + password;
+  console.log("URL: " + servicioLogin);
+  try{
+   
+    xhr.addEventListener("readystatechange", function(){
+      if(this.readyState >= 1 && this.readyState <= 3 ){
+        document.getElementById("loadinglogin").style.display = 'block';
+      }
+        
 
-  var sendObject = JSON.stringify({name: user, password: password});
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("loadinglogin").style.display = 'none';
+        var token = this.getResponseHeader('AUTHORIZATION');
+        console.log("TOKEN:" + token);
+        if (token) {
+          // Almacena el token en localStorage
+          localStorage.setItem('token', token);
+        } else {
+          var resp = JSON.parse(this.responseText);
+          var mes = resp.message;
+          //muestra los mensajes de error
+          console.log("------" + mes);
+        } 
+      }
+     }, false);
+    xhr.open( "POST", servicioLogin, true );
+    xhr.setRequestHeader("Accept",
+          "application/json; charset=utf-8" );
+    xhr.send();     
 
-  console.log('going to send', sendObject);
-
-  xhr.send(sendObject);
-
+  }catch(ex){
+   // console.log(ex)    
+  }
 }
 
 
