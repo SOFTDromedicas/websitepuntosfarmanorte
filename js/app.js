@@ -172,12 +172,12 @@ function getToken(){
    
     xhr.addEventListener("readystatechange", function(){
       if(this.readyState >= 1 && this.readyState <= 3 ){
-        document.getElementById("loadinglogin").style.display = 'block';
+        document.getElementById("loadinglogin").classList.add("loaderlogin");
       }
         
 
       if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("loadinglogin").style.display = 'none';
+        document.getElementById("loadinglogin").classList.remove("loaderlogin");
         var token = this.getResponseHeader('AUTHORIZATION');
         console.log("TOKEN:" + token);
         if (token) {
