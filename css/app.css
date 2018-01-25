@@ -776,6 +776,10 @@ label.checkbox-label input[type=checkbox]{
 		transition: 0.25s -webkit-filter linear;
  		filter: blur(14px) ;
 	}
+.ocultarLogin{
+	transition: 0.25s -webkit-filter linear;
+ 	filter: blur(0px) ;
+}
 
 
 /****Login****/
@@ -810,7 +814,7 @@ label.checkbox-label input[type=checkbox]{
 
 #calloutLoginAlert{
 	padding: 0.65rem;	
-	
+
 }
 #calloutLoginAlert h6{
 	margin-bottom: 0;

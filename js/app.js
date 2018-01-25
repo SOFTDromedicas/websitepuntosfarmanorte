@@ -232,6 +232,7 @@ function enableScroll() {
 //muestra el cuadro de login
 function showLogin(event){
     var bodylogin = document.getElementById('blurme-container');
+    bodylogin.classList.remove('ocultarLogin');
     bodylogin.classList.add('blur-me2');
     document.getElementById('login-container-main').style.display = 'block';
     disableScroll();
@@ -249,10 +250,18 @@ function exitLogin(event){
     //cancelo el burbujeo de eventos
     event.cancelBubble = true;   
     document.getElementById('blurme-container').classList.remove('blur-me2');    
+    document.getElementById('blurme-container').classList.add('ocultarLogin');    
     document.getElementById('login-container-main').style.display='none';  
     document.getElementById('documentologin').value="";
     document.getElementById('password').value="";
     document.getElementById('recordarme').checked = false;
+    
+    //si hay mensajes de error los elimina 
+    $('#documentologin').removeClass('is-invalid-input');
+    $('#documentologin').parent().removeClass('is-invalid-label');
+    $('#password').removeClass('is-invalid-input');
+    $('#password').parent().removeClass('is-invalid-label');
+    $('#calloutLoginAlert').css("display", "none");
     enableScroll();
     exitLoginOlvido(event);
   } 
