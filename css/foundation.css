@@ -1019,7 +1019,7 @@ select {
     background-image: none; }
 
 .is-invalid-input:not(:focus) {
-  border-color: #c60f13;
+  border-color: #c60f13!important;
   background-color: #f8e6e7; }
   .is-invalid-input:not(:focus)::-webkit-input-placeholder {
     color: #c60f13; }

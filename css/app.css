@@ -808,6 +808,17 @@ label.checkbox-label input[type=checkbox]{
 	padding: 5rem 0 8rem 0;
 }
 
+#calloutLoginAlert{
+	padding: 0.65rem;	
+	
+}
+#calloutLoginAlert h6{
+	margin-bottom: 0;
+}
+#closeloginc{
+	font-size: 1.65rem!important;
+}
+
 
 .login-main{
 	/*border: 1px solid #808080;*/
@@ -878,10 +889,10 @@ label.checkbox-label input[type=checkbox]{
 .login-main label{
 	font-size: 1.1rem;
 	font-family: 'Open Sans', sans-serif;
-
 }
-.login-main [type="text"],
-.login-main [type="password"]{
+
+#documentologin,
+#password{
 	border: 2px solid #BFBFBF;
 	margin-bottom: .85rem!important;
 }

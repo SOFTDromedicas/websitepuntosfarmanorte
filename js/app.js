@@ -154,32 +154,30 @@ function iniciarSesion(){
 function getToken(){
   
   var xhr = new XMLHttpRequest();
-  var userElement = null;
-  userElement = document.getElementById('documentologin');
-  var passwordElement = null;
-   passwordElement = document.getElementById('password');
+  var userElement = document.getElementById('documentologin'); 
+  var passwordElement = document.getElementById('password');  
   var tokenElement = document.getElementById('token');
-  var user = null;
-  user = userElement.value;
-  var password = null;
-  password = passwordElement.value;
-
+  var user = userElement.value;  
+  var password = passwordElement.value;
   servicioLogin = "http://localhost:8080/puntosfarmanorte/webservice/apiwebafiliado/login";
-
   servicioLogin += "?user=" + user + "&password=" + password;
+
   console.log("URL: " + servicioLogin);
+  
   try{
    
     xhr.addEventListener("readystatechange", function(){
+      //muestra el loader de linea mientras procesa la solicitud
       if(this.readyState >= 1 && this.readyState <= 3 ){
         document.getElementById("loadinglogin").classList.add("loaderlogin");
-      }
-        
+      } 
 
+      //al recibir la respuesta del servicio oculta el loader y procesa la respuesta
       if (this.readyState == 4 && this.status == 200) {
         document.getElementById("loadinglogin").classList.remove("loaderlogin");
         var token = this.getResponseHeader('AUTHORIZATION');
-        console.log("TOKEN:" + token);
+        
+        //si se obtiene el token se registra
         if (token) {
           // Almacena el token en localStorage
           localStorage.setItem('token', token);
@@ -187,7 +185,16 @@ function getToken(){
           var resp = JSON.parse(this.responseText);
           var mes = resp.message;
           //muestra los mensajes de error
-          console.log("------" + mes);
+          $('#documentologin').addClass('is-invalid-input');
+          $('#documentologin').parent().addClass('is-invalid-label');
+          $('#password').addClass('is-invalid-input');
+          $('#password').parent().addClass('is-invalid-label');
+
+          $('#calloutLoginAlert').css("display", "block");
+
+
+        console.log($('#documentologin').parent());
+
         } 
       }
      }, false);
