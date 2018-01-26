@@ -1,10 +1,10 @@
-/*.row{
+.row{
 	border: 1px solid #E2EA03;
 }
 
 .columns{
 	border: 1px solid #FA0000;
-}*/
+}
 
 
 a:hover, a:active{
@@ -776,7 +776,7 @@ label.checkbox-label input[type=checkbox]{
  		filter: blur(14px) ;
 	}
 .ocultarLogin{
-	transition: 0.25s -webkit-filter linear;
+	transition: 0.28s -webkit-filter linear;
  	filter: blur(0px) ;
 }
 
@@ -1120,7 +1120,8 @@ label.checkbox-label input[type=checkbox]{
 	margin-bottom: 3px;
 }
 
-#puntosafmenu{
+#puntosafmenu,
+#puntosafmenuoff{
 	padding: 0.3rem!important;
 	width: 6rem;
 	height: 2rem;
@@ -1128,7 +1129,8 @@ label.checkbox-label input[type=checkbox]{
 	text-align: center!important; 
 }
 
-#puntosafmenu:read-only{
+#puntosafmenu:read-only,
+#puntosafmenuoff:read-only{
 	background: #fff;
 }
 
@@ -1208,12 +1210,21 @@ label.checkbox-label input[type=checkbox]{
 .detalleestado{
 	height: 11rem;
 	margin-top: 10px;
-	overflow: auto;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.detalleestado label{
+	margin-left: 5px;
+	color: #FFF;
+	text-shadow: 2px 2px 4px #383838;
+	font-size: 1.1rem;
 }
 
 .detalleestado input{
 	padding: 0.3rem!important;
-	/*width: 6rem;*/
+	display: inline!important;
+	/*width: 40%;*/
 	height: 2rem;
 	margin: 0 auto;
 	margin-top: 5px;

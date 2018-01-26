@@ -19,7 +19,7 @@ function iniciar() {
   var data = localStorage.getItem('token');
   console.log("VERIFICANDO QUE EXITA SESION " + data);
 
-  localStorage.clear();
+  //localStorage.clear();
      
     //Registro de eventos y componente para la interfaz de afiliacion
     if (location.pathname.substring(1) === "seccion/inscripcion.html") {
@@ -90,6 +90,7 @@ function iniciar() {
     }
 
     //Eventos para cuadro de Login
+    rememberMe();
     registerEventLogin();  
 
 
@@ -128,6 +129,22 @@ function registerEventLogin() {
     document.addEventListener('keyup', exitLogin, false);
 }
 
+function rememberMe() {
+  console.log("-------------xxx=> " + localStorage.chkbx );
+  console.log("-------------xxx=> " + $('#recordarme').is(':checked') );
+    
+    if (localStorage.chkbx && localStorage.chkbx != '') {
+        $('#recordarme').attr('checked', 'checked');
+        $('#documentologin').val(localStorage.usrname);
+        $('#password').val(localStorage.pass);
+    } else {
+        $('#recordarme').removeAttr('checked');
+        $('#documentologin').val('');
+        $('#password').val('');
+    }
+}
+
+
 //funciones para el bloqueo del scroll cuando se ejecuta el login
 function preventDefault(e) { 
   e = e || window.event;
@@ -146,6 +163,7 @@ function preventDefaultForScrollKeys(e) {
 //iniciar session del perfil de puntos farmanorte
 function iniciarSesion(){
   //lamada al servicio de puntos farmanorte para la autenticacion
+  removeWrongLoging();
   getToken();
 
 }
@@ -181,6 +199,25 @@ function getToken(){
         if (token) {
           // Almacena el token en localStorage
           localStorage.setItem('token', token);
+          console.log("Recordarme: " + ($('#recordarme').is(':checked')));
+
+          if ($('#recordarme').is(':checked')) {
+              // save username and password
+              localStorage.usrname = $('#documentologin').val();
+              localStorage.pass = $('#password').val();
+              localStorage.chkbx = $('#recordarme').val();
+          } else {
+              localStorage.usrname = '';
+              localStorage.pass = '';
+              localStorage.chkbx = '';
+          }
+
+          //se redirecciona a la pagina de perfil
+          window.location.href = "/seccion/perfilafiliado.html";
+
+          //se limpia los campos del formulario
+          $('#documentologin').val('');
+          $('#password').val('');
         } else {
           var resp = JSON.parse(this.responseText);
           var mes = resp.message;
@@ -189,12 +226,9 @@ function getToken(){
           $('#documentologin').parent().addClass('is-invalid-label');
           $('#password').addClass('is-invalid-input');
           $('#password').parent().addClass('is-invalid-label');
-
           $('#calloutLoginAlert').css("display", "block");
-
-
-        console.log($('#documentologin').parent());
-
+          
+          console.log($('#documentologin').parent());
         } 
       }
      }, false);
@@ -257,14 +291,18 @@ function exitLogin(event){
     document.getElementById('recordarme').checked = false;
     
     //si hay mensajes de error los elimina 
+    removeWrongLoging();
+    enableScroll();
+    exitLoginOlvido(event);
+  } 
+}
+
+function removeWrongLoging(){
     $('#documentologin').removeClass('is-invalid-input');
     $('#documentologin').parent().removeClass('is-invalid-label');
     $('#password').removeClass('is-invalid-input');
     $('#password').parent().removeClass('is-invalid-label');
     $('#calloutLoginAlert').css("display", "none");
-    enableScroll();
-    exitLoginOlvido(event);
-  } 
 }
 
 //ir a cuadro recuperacion de clave

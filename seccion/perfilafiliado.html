@@ -61,10 +61,10 @@
           <img src="../images/iconoFotoPerfil.png" alt="foto perfil">                    
         </div>
         <div id="etiquetanombre" class="float-center etiquetaafiliado">
-          <p id="etiquetaafiliado">Nombre Completo Afiliado</p>
+          <p id="etiquetaafiliadooff"></p>
         </div>
         <div id="puntoscontentmenu" class="float-center puntoscontentmenu">
-          <input type="text"  id="puntosafmenu" value="1.650" readonly="true">
+          <input type="text"  id="puntosafmenuoff" readonly="true">
         </div>
       </div> <!-- end perfil-offcanvas -->
       <div id="exit-offcanvas">
@@ -117,7 +117,7 @@
                     <p id="etiquetaafiliado" class="etiquetaafiliado">Nombre Completo Afiliado</p>
                   </div>
                   <div id="puntoscontentmenu" class="float-center puntoscontentmenu">
-                     <input type="text"  id="puntosafmenu" value="1.650" readonly="true" class="puntosafmenu">
+                     <input type="text"  id="puntosafmenu" readonly="true" class="puntosafmenu">
                   </div>
                 </div>  
                 <div id="exit" class="exit">
@@ -136,28 +136,79 @@
           <div class="row" id="container-perfil">
             <div class="columns small-12">
               <fieldset id="fieldsetperfil">
-                <legend id="legendperfilmain">Nombre Completo Afiliado</legend>
-                  <div class="row" id="innerperfil">
-                    <div class="columns small-12 medium-6">
+                <legend id="legendperfilmain"></legend>
+                  <div class="row medium-collapse" id="innerperfil">
+                    <div class="columns small-12 medium-5">
                       <div id="fotoperfilmain" class="float-center">
                         <img src="../images/fotoPerfilMain.png" alt="" id="imgperfilmain">
                       </div>
                     </div>
-                    <div class="columns small-12 medium-6">
+                    <div class="columns small-12 medium-7">
                       <div class="tituloestcuenta">
                         <h5>Estado de Cuentas</h5>
                       </div>
                       <div class="detalleestado">
-                        <input type="text" name="" id=""  placeholder="">
-                        <input type="text" name="" id=""  placeholder="">
-                        <input type="text" name="" id=""  placeholder="">
-                        <input type="text" name="" id=""  placeholder="">
-                        <input type="text" name="" id=""  placeholder="">
-                        <input type="text" name="" id=""  placeholder="">
-                        <input type="text" name="" id=""  placeholder="">
-                        <input type="text" name="" id=""  placeholder="">
-                      </div>
-                    </div>
+                        <div class="row align-middle">
+                          <div class="columns small-8 medium-7 large-6">
+                            <label for="p_acumulados">
+                              Puntos Acumulados
+                            </label>
+                          </div>
+                          <div class="columns small-4 medium-5 large-6 ">
+                              <input type="text" name="" id="p_acumulados"  readonly="">
+                          </div>
+                        </div>
+                        <div class="row align-middle">
+                          <div class="columns small-8 medium-7 large-6">
+                            <label for="p_redimidos">
+                              Puntos Redimidos
+                            </label>
+                          </div>
+                          <div class="columns small-4 medium-5 large-6">
+                              <input type="text" name="" id="p_redimidos"  readonly="">
+                          </div>
+                        </div>
+                        <div class="row align-middle">
+                          <div class="columns small-8 medium-7 large-6">
+                            <label for="p_vencidos">
+                              Puntos Vencidos
+                            </label>
+                          </div>
+                          <div class="columns small-4 medium-5 large-6">
+                              <input type="text" name="" id="p_vencidos"  readonly="">
+                          </div>
+                        </div>
+                        <div class="row align-middle">
+                          <div class="columns small-8 medium-7 large-6">
+                            <label for="p_avencer">
+                              Puntos A Vencer
+                            </label>
+                          </div>
+                          <div class="columns small-4 medium-5 large-6">
+                              <input type="text" name="" id="p_avencer"  readonly="">
+                          </div>
+                        </div>
+                        <div class="row align-middle">
+                          <div class="columns small-8 medium-7 large-6">
+                            <label for="p_fecha">
+                              Vencen 
+                            </label>
+                          </div>
+                          <div class="columns small-4 medium-5 large-6">
+                              <input type="text" name="" id="p_fecha"  readonly="">
+                          </div>
+                        </div>
+                        <div class="row align-middle">
+                          <div class="columns small-8 medium-7 large-6">
+                            <label for="p_actual">
+                              Saldo Puntos 
+                            </label>
+                          </div>
+                          <div class="columns small-4 medium-5 large-6">
+                              <input type="text" name="" id="p_actual"  readonly="">
+                          </div>
+                        </div>                        
+                    </div> <!-- end detalleestado -->
                   </div>
               </fieldset>
             </div> <!-- end column estado de cuentas -->
