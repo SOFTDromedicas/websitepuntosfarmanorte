@@ -18,6 +18,8 @@ function iniciar() {
 
   document.getElementById('salirPuntos').addEventListener('click', cerrarSesion, false);
   document.getElementById('exit-offcanvas').addEventListener('click', cerrarSesion, false);
+  document.getElementById('actperfil-button').addEventListener('click', actualizarAfiliado, false);
+
 }//end function iniciar
 
 
@@ -60,50 +62,34 @@ function cargarDatosAfiliado(){
   $('#pais').val(afiliado.nacionalidad);
 
   $('#xxxxx').val();
-
-  
-
-  //transacciones
-  var tabla = document.getElementById('txrecord');
-  console.log(txs);
-  for( var i = 0 ; i < 10; i++ ){
-    var descripcion  = txs[i].tipotransaccion.descripcion;
-    var tipoTx;
-    if( descripcion == "ACUMULACION"){
-      tipoTx = "Compra"
-    }
-    if( descripcion == "REDENCION"){
-      tipoTx = "Redencion de Puntos"
-    }
-    if( descripcion == "DEVOLUCION DE COMPRA"){
-      tipoTx = "Devolucion en Compra"
-    }
-    if( descripcion == "INSCRIPCION AFILIADO"){
-      tipoTx = "Inscripción"
-    }
-    if( descripcion == "REFERIDO INSCRIPCION REFERIDO"){
-      tipoTx = "Refirio Amigo"
-    }
-
-    var thDatos = document.createElement("td");
-    // thDatos.setAttribute("class", "datosTx")
-    thDatos.appendChild( document.createTextNode( tipoTx ) );
-    var thFecha = document.createElement("td");
-    // thFecha.setAttribute("class", "fechaTx")
-    var fecha = ""+txs[i].fechatransaccion;
-    thFecha.appendChild( document.createTextNode( fecha.substring(0,10) ) );
-    var thPuntos = document.createElement("td");
-    thPuntos.setAttribute("class", "puntosTx")
-    thPuntos.appendChild( document.createTextNode( txs[i].puntostransaccion  ));
-    var fila = document.createElement("tr");
-
-    tabla.appendChild(fila);
-    fila.appendChild(thDatos);
-    fila.appendChild(thFecha);
-    fila.appendChild(thPuntos);
-  }
   
 }
+
+function actualizarAfiliado(){
+  var file = $('#fotoperfil').get(0).files[0];
+  console.log (file);
+  var formData = new FormData();
+  formData.append('file', file);
+  $.ajax({
+  url : urlServicioAct +'/uploadfoto',
+  type : 'POST',
+  data : formData,
+  cache : false,
+  contentType : false,
+  processData : false,
+  success : function(data, textStatus, jqXHR) {
+    var userObj = JSON.parse(jqXHR.responseText);
+    alert(userObj);
+  },
+  error : function(jqXHR, textStatus, errorThrown) {
+    alert(textStatus);
+  }
+});
+
+
+}
+
+
 
 
 function cerrarSesion(){
