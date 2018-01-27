@@ -274,15 +274,7 @@ function enableScroll() {
 
 //muestra el cuadro de login
 function showLogin(event){
-
-    $('.off-canvas h5').on('click', function() {
-    $('.off-canvas').foundation('close');
-    });
-   
-    //si el llamado es desde el menu off canvas debo ocultarlo
-    if(event.target.getAttribute('id') === 'login-offcanvas'){
-    }
-
+    rememberMe(); 
     var bodylogin = document.getElementById('blurme-container');
     bodylogin.classList.remove('ocultarLogin');
     bodylogin.classList.add('blur-me2');
