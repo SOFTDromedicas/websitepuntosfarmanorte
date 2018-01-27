@@ -1,10 +1,10 @@
-.row{
+/*.row{
 	border: 1px solid #E2EA03;
 }
 
 .columns{
 	border: 1px solid #FA0000;
-}
+}*/
 
 
 a:hover, a:active{
@@ -1236,7 +1236,7 @@ label.checkbox-label input[type=checkbox]{
 	margin-bottom: 3rem;
 	border:2px solid #7FC8EA;
 	border-radius: 25px 0 0 25px!important;
-	max-width: 60%;
+	max-width: 90%;
 	padding: 1rem;
 	/*overflow: hidden;*/
 }
@@ -1259,11 +1259,26 @@ label.checkbox-label input[type=checkbox]{
 	display: block;
 }
 #tablacontainer{
-	background: #EEEEEE;
+	background: #FFFFFF;
 	padding: 1rem!important;
 	max-width: 95%;
 	min-height: 15rem;
 	border-radius: 15px;
+}
+#txrecord{
+
+}
+table#txrecord{
+  border-collapse: collapse;
+}
+
+#txrecord tr{
+	border-bottom: 1px solid #B4B4B4;
+	height: 2rem!important;
+}
+
+table#txrecord td.puntosTx{
+	text-align: right!important;
 	
 }
 
@@ -1279,6 +1294,7 @@ label.checkbox-label input[type=checkbox]{
 	background: #FFFFFF;
 	margin-bottom: 3rem; 
 }
+
 
 .content-input{
 	margin-bottom: 1rem;

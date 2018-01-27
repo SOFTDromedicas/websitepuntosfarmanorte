@@ -121,8 +121,8 @@
                   </div>
                 </div>  
                 <div id="exit" class="exit">
-                  <i class="fa fa-sign-out" aria-hidden="true" title="Salir de Puntos Farmanorte"></i>
-                </div>    
+                  <i class="fa fa-sign-out" id="salirPuntos" aria-hidden="true" title="Salir de Puntos Farmanorte"></i>
+                </div>  
                          
               </div> <!-- end row-content for nav -->
             </div> <!-- end columna menu -->
@@ -215,16 +215,15 @@
             <div class="columns small-12" >
               <fieldset id="fieldsetultmov" class="float-center">
                 <legend id="legendultmov">&Uacute;ltimos Movimientos</legend>
-                  <div class="row" id="innerutlmov">
-                    
+                  <div class="row" id="innerutlmov">                    
                     <div class="columns small-12 float-center" id="tablacontainer">
-                      
+                      <table id="txrecord">  
+                      </table>
                     </div>
-
                   </div>
               </fieldset>
             </div> <!-- end column ultimos movimientos -->
-          </div> <!-- end container-perfil -->
+          </div> <!-- end row  container-perfil -->
         </div> <!-- end backmain -->
       </section> <!-- end perfil-seccion-container -->
       
@@ -248,5 +247,7 @@
     <script src="../js/vendor/what-input.js"></script>
     <script src="../js/vendor/foundation.js"></script>
     <script src="../js/perfil.js"></script>
+    
+
   </body>
 </html>

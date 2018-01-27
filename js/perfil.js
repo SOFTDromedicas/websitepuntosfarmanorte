@@ -11,9 +11,12 @@ function iniciar() {
     if(infoAfiliado.code == 200){
       cargarDatosAfiliado();
     }else{
-       window.location.href = "index.html";
+       window.location.href = "../index.html";
     }
   });
+
+  document.getElementById('salirPuntos').addEventListener('click', cerrarSesion, false);
+  document.getElementById('exit-offcanvas').addEventListener('click', cerrarSesion, false);
 }//end function iniciar
 
 
@@ -33,7 +36,7 @@ function obtenerInfoAfiliado(callback) {
 
 function cargarDatosAfiliado(){
   var afiliado = infoAfiliado.afiliado;
-  var txs = infoAfiliado.transaccions;
+  var txs = afiliado.transaccions;
   var balance = infoAfiliado.balance;
   $('#legendperfilmain').text(onwName(afiliado.nombres + " " + afiliado.apellidos));
   $('#etiquetaafiliado').text(onwName(afiliado.nombres + " " + afiliado.apellidos));
@@ -41,11 +44,66 @@ function cargarDatosAfiliado(){
  
   $('#puntosafmenuoff').val(number_format(balance.totalpuntosactual,0));
   $('#puntosafmenu').val(number_format(balance.totalpuntosactual,0));
+  
   $('#p_acumulados').val(number_format(balance.acumulados,0));
+  $('#p_redimidos').val(number_format(balance.redimidos,0));
+  $('#p_vencidos').val(number_format(balance.avencer,0));
+  $('#p_vencidos').val(number_format(balance.vencidos,0));
+  $('#p_fecha').val(balance.fechavencimiento);
+  $('#p_actual').val(number_format(balance.totalpuntosactual,0));
+
+  //transacciones
+  var tabla = document.getElementById('txrecord');
+  console.log(txs);
+  for( var i = 0 ; i < 10; i++ ){
+    var descripcion  = txs[i].tipotransaccion.descripcion;
+    var tipoTx;
+    if( descripcion == "ACUMULACION"){
+      tipoTx = "Compra"
+    }
+    if( descripcion == "REDENCION"){
+      tipoTx = "Redencion de Puntos"
+    }
+    if( descripcion == "DEVOLUCION DE COMPRA"){
+      tipoTx = "Devolucion en Compra"
+    }
+    if( descripcion == "INSCRIPCION AFILIADO"){
+      tipoTx = "Inscripción"
+    }
+    if( descripcion == "REFERIDO INSCRIPCION REFERIDO"){
+      tipoTx = "Refirio Amigo"
+    }
+
+    var thDatos = document.createElement("td");
+    // thDatos.setAttribute("class", "datosTx")
+    thDatos.appendChild( document.createTextNode( tipoTx ) );
+    var thFecha = document.createElement("td");
+    // thFecha.setAttribute("class", "fechaTx")
+    var fecha = ""+txs[i].fechatransaccion;
+    thFecha.appendChild( document.createTextNode( fecha.substring(0,10) ) );
+    var thPuntos = document.createElement("td");
+    thPuntos.setAttribute("class", "puntosTx")
+    thPuntos.appendChild( document.createTextNode( txs[i].puntostransaccion  ));
+    var fila = document.createElement("tr");
+
+    tabla.appendChild(fila);
+    fila.appendChild(thDatos);
+    fila.appendChild(thFecha);
+    fila.appendChild(thPuntos);
+  }
+  
 }
 
 
+function cerrarSesion(){
 
+  //elimina el token
+  localStorage.removeItem('token');
+
+  //redireccion al index
+  window.location.href = "../index.html";
+
+}
 
 
 //Funciones de utilidad y formato///

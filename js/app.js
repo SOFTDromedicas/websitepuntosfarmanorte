@@ -293,7 +293,7 @@ function exitLogin(event){
     //si hay mensajes de error los elimina 
     removeWrongLoging();
     enableScroll();
-    exitLoginOlvido(event);
+    exitLoginOlvido(event);    
   } 
 }
 
