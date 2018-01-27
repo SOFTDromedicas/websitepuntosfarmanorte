@@ -61,10 +61,10 @@
           <img src="../images/iconoFotoPerfil.png" alt="foto perfil">                    
         </div>
         <div id="etiquetanombre" class="float-center etiquetaafiliado">
-          <p id="etiquetaafiliado">Nombre Completo Afiliado</p>
+          <p id="etiquetaafiliadooff"></p>
         </div>
         <div id="puntoscontentmenu" class="float-center puntoscontentmenu">
-          <input type="text"  id="puntosafmenu" value="1.650" readonly="true">
+          <input type="text"  id="puntosafmenuoff" readonly="true">
         </div>
       </div> <!-- end perfil-offcanvas -->
       <div id="exit-offcanvas">
@@ -110,18 +110,18 @@
                   </ul>
                 </nav> 
                 <div id="perfilmenu">
-                  <div id="fotoperfilmenu" class="float-center">
+                  <div id="fotoperfilmenu" class="float-center fotoperfilmenu">
                     <img src="../images/iconoFotoPerfil.png" alt="foto perfil">                    
                   </div>
                   <div id="etiquetanombre" class="float-center etiquetanombre">
                     <p id="etiquetaafiliado" class="etiquetaafiliado">Nombre Completo Afiliado</p>
                   </div>
                   <div id="puntoscontentmenu" class="float-center puntoscontentmenu">
-                     <input type="text"  id="puntosafmenu" value="1.650" readonly="true" class="puntosafmenu">
+                     <input type="text"  id="puntosafmenu" readonly="true" class="puntosafmenu">
                   </div>
                 </div>  
                 <div id="exit" class="exit">
-                  <i class="fa fa-sign-out" aria-hidden="true" title="Salir de Puntos Farmanorte"></i>
+                  <i class="fa fa-sign-out" id="salirPuntos" aria-hidden="true" title="Salir de Puntos Farmanorte"></i>
                 </div>   
                          
               </div> <!-- end row-content for nav -->
@@ -165,7 +165,7 @@
                   </div>
                   <div class="content-input">
                     <label>Ciudad</label>
-                    <select  name="ciudad" required="" id="ciudad"></select>
+                    <input type="text" name="ciudad" required="" id="ciudad">
                   
                   </div>
                   <div class="content-input">
@@ -189,7 +189,7 @@
                   </div>
                   <div class="content-input">
                     <label>Fecha Nacimiento</label>
-                    <input type="text" name="fechanacimiento" id="fechanacimiento" data-date-format="mm/dd/yy">
+                    <input type="date" name="fechanacimiento" id="fechanacimiento" data-date-format="mm/dd/yy">
                   </div>
                   <div class="content-input">
                     <label>Barrio</label>
@@ -237,6 +237,6 @@
     <script src="../js/vendor/jquery.js"></script>
     <script src="../js/vendor/what-input.js"></script>
     <script src="../js/vendor/foundation.js"></script>
-    <script src="../js/app.js"></script>
+    <script src="../js/misdatos.js"></script>
   </body>
 </html>

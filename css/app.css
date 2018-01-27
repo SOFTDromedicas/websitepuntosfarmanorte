@@ -855,11 +855,11 @@ label.checkbox-label input[type=checkbox]{
 
 .basic{
   background: #eff3f8;
-  height: 4px;
+  height: 5px;
 }
 
 .loaderlogin {
-  height: 4px;
+  height: 5px;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -870,7 +870,7 @@ label.checkbox-label input[type=checkbox]{
   content: "";
   left: -200px;
   width: 200px;
-  height: 4px;
+  height: 5px;
   background-color: #155BF9;
   animation: loadingf 2s linear infinite;
 }
