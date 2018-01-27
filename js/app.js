@@ -93,13 +93,22 @@ function iniciar() {
     rememberMe();
     registerEventLogin();  
 
-
+    //estos eventos permiten cerrar el menu off-canvas cuando se invoca el login
+    $('.off-canvas h5').on('click', function() {
+      $('.off-canvas').foundation('close');
+    });
+    $('.off-canvas i.fa-sign-in').on('click', function() {
+      $('.off-canvas').foundation('close');
+    });
 
 }//end function iniciar
 
 //** Funciones Cuadro Login **//
 function registerEventLogin() {
     var login = document.getElementById('loginperfil');
+    login.addEventListener('click', showLogin, false);
+    
+    var login = document.getElementById('login-offcanvas');
     login.addEventListener('click', showLogin, false);
 
     var loginout = document.getElementById('login-container-main');
@@ -265,6 +274,15 @@ function enableScroll() {
 
 //muestra el cuadro de login
 function showLogin(event){
+
+    $('.off-canvas h5').on('click', function() {
+    $('.off-canvas').foundation('close');
+    });
+   
+    //si el llamado es desde el menu off canvas debo ocultarlo
+    if(event.target.getAttribute('id') === 'login-offcanvas'){
+    }
+
     var bodylogin = document.getElementById('blurme-container');
     bodylogin.classList.remove('ocultarLogin');
     bodylogin.classList.add('blur-me2');
@@ -308,6 +326,7 @@ function removeWrongLoging(){
 //ir a cuadro recuperacion de clave
 function irARecuperarClave(event){
   exitLogin(event); 
+  document.getElementById('blurme-container').classList.remove('ocultarLogin');    
   showRestablecerContrasena();
 }
 
@@ -334,6 +353,7 @@ function exitLoginOlvido(event){
     //cancelo el burbujeo de eventos
     event.cancelBubble = true;
     document.getElementById('blurme-container').classList.remove('blur-me2');
+     document.getElementById('blurme-container').classList.add('ocultarLogin');    
     document.getElementById('olvido-container-main').style.display='none';     
     enableScroll();
   } 
