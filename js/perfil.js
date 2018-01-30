@@ -38,6 +38,7 @@ function cargarDatosAfiliado(){
   var afiliado = infoAfiliado.afiliado;
   var txs = afiliado.transaccions;
   var balance = infoAfiliado.balance;
+  var foto =  infoAfiliado.urlFotoAfiliado;
   $('#legendperfilmain').text(onwName(afiliado.nombres + " " + afiliado.apellidos));
   $('#etiquetaafiliado').text(onwName(afiliado.nombres + " " + afiliado.apellidos));
   $('#etiquetaafiliadooff').text(onwName(afiliado.nombres + " " + afiliado.apellidos));
@@ -51,6 +52,12 @@ function cargarDatosAfiliado(){
   $('#p_vencidos').val(number_format(balance.vencidos,0));
   $('#p_fecha').val(balance.fechavencimiento);
   $('#p_actual').val(number_format(balance.totalpuntosactual,0));
+  
+  if(foto){
+    $('#imgperfilmain').attr("src",foto);
+    $('#fotoPerfilMenu').attr("src",foto);
+    $('#fotoperfilmenuOff').attr("src",foto);
+  }
 
   //transacciones
   var tabla = document.getElementById('txrecord');

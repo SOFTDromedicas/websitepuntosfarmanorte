@@ -1099,7 +1099,7 @@ label.checkbox-label input[type=checkbox]{
 }
 
 #fotoperfilmenu{
-	border: 1px solid #CFCFCF;
+	border: 2px solid #CFCFCF;
 	border-radius: 50%;
 	width: 3rem!important;
 	height: 3rem!important;
@@ -1189,6 +1189,7 @@ label.checkbox-label input[type=checkbox]{
 }
 
 #imgperfilmain{
+	height: 100%;
 
 }
 
@@ -1229,6 +1230,7 @@ label.checkbox-label input[type=checkbox]{
 	margin: 0 auto;
 	margin-top: 5px;
 	text-align: center!important; 
+	font-weight: bold;
 }
 
 #fieldsetultmov{
@@ -1328,7 +1330,7 @@ table#txrecord td.puntosTx{
   width: 65%!important;
   height: 2.2rem;
   margin:0;
-  padding: 0.7rem;
+  padding: 0.6rem;
   border: none;
   border-radius: 7px;
   background-color: #E6E6E6;

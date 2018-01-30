@@ -299,6 +299,8 @@ function exitLogin(event){
     document.getElementById('documentologin').value="";
     document.getElementById('password').value="";
     document.getElementById('recordarme').checked = false;
+    document.getElementById('loadinglogin').classList.remove('loaderlogin');    
+    
     
     //si hay mensajes de error los elimina 
     removeWrongLoging();
