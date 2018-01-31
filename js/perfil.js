@@ -1,6 +1,6 @@
 $(document).foundation()
 
-var urlServicio = "http://localhost:8080/puntosfarmanorte/webservice/puntos/datosafiliado/";
+var urlServicio = "http://192.168.14.241:8080/puntosfarmanorte/webservice/puntos/datosafiliado/";
 var infoAfiliado;
 
 function iniciar() {

@@ -159,6 +159,7 @@ body{
 {
   position: relative;
 }
+
 .sombraderecha:before
 {
   z-index: -0;
@@ -1307,6 +1308,7 @@ table#txrecord td.puntosTx{
 
 .content-input label{
 	display: inline-block;
+	line-height: 20px;
   width: 140px;
   text-align: right;
   color: #000A7B;
@@ -1324,6 +1326,7 @@ table#txrecord td.puntosTx{
 .content-input [type='search'], 
 .content-input [type='tel'], 
 .content-input [type='time'], 
+.content-input [type='date'], 
 .content-input [type='url'], 
 .content-input [type='color'],
 .content-input textarea,
@@ -1419,6 +1422,20 @@ button#actperfil-button{
 }
 
 /**mis puntos**/
+
+	#p_acumulados,
+  #p_redimidos,
+  #p_avencer,
+  #p_vencidos,
+  #p_fecha,
+  #p_actual{
+  	font-weight: bold;
+  	font-family: 'Average Sans', sans-serif!important;			
+  }
+	#p_actual{
+	  	color: #0051E6;			
+	  	text-shadow: 1px 1px 3px #959595;
+	  }
 
 
 #container-mispuntos{
@@ -1675,7 +1692,7 @@ button#actperfil-button{
 
 /*Custom media Query*/
 @media screen and (min-width: 40em) and (max-width: 47.375em) {
-	
+
 	.sticky-container{
 		max-height: 9rem!important;	
 	}
@@ -1844,6 +1861,7 @@ button#actperfil-button{
 /*Custom media Query*/
 @media screen and (min-width: 47.376em) and (max-width: 59.125em) {
 	
+
 	#menu-container{		
 		background-position: left;
 	}	
@@ -1924,6 +1942,8 @@ button#actperfil-button{
 
 	#misdatos-contentform label{
 	  text-align: center;
+	  width: 100%;
+
 	}
 	
 	#misdatos-contentform [type='text'],
@@ -1942,6 +1962,11 @@ button#actperfil-button{
 	#misdatos-contentform select {	  
 	  width: 100%!important;	  
 	  background-color: #E6E6E6;
+ }
+
+ #misdatos-contentform [type='date']{
+ 		background-color: #E6E6E6;
+ 		padding: 0;
  }
 
 }

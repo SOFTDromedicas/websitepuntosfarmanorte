@@ -58,13 +58,13 @@
       <!-- <div class="divider"></div> -->
       <div id="perfil-offcanvas">
         <div id="fotoperfilmenu" class="float-center fotoperfilmenu">
-          <img src="../images/iconoFotoPerfil.png" alt="foto perfil">                    
+          <img src="../images/iconoFotoPerfil.png" alt="foto perfil" id="fotoperfilmenuOff">                    
         </div>
         <div id="etiquetanombre" class="float-center etiquetaafiliado">
-          <p id="etiquetaafiliado">Nombre Completo Afiliado</p>
+          <p id="etiquetaafiliadooff"></p>
         </div>
         <div id="puntoscontentmenu" class="float-center puntoscontentmenu">
-          <input type="text"  id="puntosafmenu" value="1.650" readonly="true">
+          <input type="text"  id="puntosafmenuoff" readonly="true">
         </div>
       </div> <!-- end perfil-offcanvas -->
       <div id="exit-offcanvas">
@@ -108,21 +108,21 @@
                     <li class="mnperfilo"><a href="/seccion/misdatos.html">Mis Datos</a></li>
                     <li class="activa mnperfilo"><a href="/seccion/mispuntos.html" class="">Mis Puntos</a></li>
                   </ul>
-                </nav>  
+                </nav> 
                 <div id="perfilmenu">
-                  <div id="fotoperfilmenu" class="float-center">
-                    <img src="../images/iconoFotoPerfil.png" alt="foto perfil">                    
+                  <div id="fotoperfilmenu" class="float-center fotoperfilmenu">
+                    <img src="../images/iconoFotoPerfil.png" alt="foto perfil" id="fotoPerfilMenu">                    
                   </div>
                   <div id="etiquetanombre" class="float-center etiquetanombre">
                     <p id="etiquetaafiliado" class="etiquetaafiliado">Nombre Completo Afiliado</p>
                   </div>
                   <div id="puntoscontentmenu" class="float-center puntoscontentmenu">
-                     <input type="text"  id="puntosafmenu" value="1.650" readonly="true" class="puntosafmenu">
+                     <input type="text"  id="puntosafmenu" readonly="true" class="puntosafmenu">
                   </div>
                 </div>  
                 <div id="exit" class="exit">
-                  <i class="fa fa-sign-out" aria-hidden="true" title="Salir de Puntos Farmanorte"></i>
-                </div>    
+                  <i class="fa fa-sign-out" id="salirPuntos" aria-hidden="true" title="Salir de Puntos Farmanorte"></i>
+                </div>   
                          
               </div> <!-- end row-content for nav -->
             </div> <!-- end columna menu -->
@@ -143,27 +143,27 @@
 
                   <div class="content-input-puntos">
                     <label>Puntos<br/> Acumulados</label>
-                    <input type="text" name="pacumulados" id="pacumulados" readonly="true">
+                    <input type="text" name="p_acumulados" id="p_acumulados" readonly="true">
                   </div>
                   <div class="content-input-puntos">
                     <label>Puntos<br/> Redimidos</label>
-                    <input type="text" name="predimidos" id="pacumulados" readonly="true">
+                    <input type="text" name="p_redimidos" id="p_redimidos" readonly="true">
                   </div>
                   <div class="content-input-puntos">
                     <label>Puntos<br/> A Vencer</label>
-                    <input type="text" name="pavencer" id="pacumulados" readonly="true">
+                    <input type="text" name="p_avencer" id="p_avencer" readonly="true">
                   </div>
                   <div class="content-input-puntos">
                     <label>Fecha<br/> Vencimiento</label>
-                    <input type="text" name="fvencimiento" id="pacumulados" readonly="true" >
+                    <input type="text" name="p_fecha" id="p_fecha" readonly="true" >
                   </div>
                   <div class="content-input-puntos">
                     <label>Puntos<br/> Vencidos</label>
-                    <input type="text" name="pvencidos" id="pacumulados" readonly="true">
+                    <input type="text" name="p_vencidos" id="p_vencidos" readonly="true">
                   </div>
                   <div class="content-input-puntos">
                     <label>Puntos<br/> Disponibles</label>
-                    <input type="text" name="pdisponibles" id="pacumulados" readonly="true" value="12345">
+                    <input type="text" name="p_actual" id="p_actual" readonly="true" >
                   </div>
 
                 </div> <!-- end container-detalle-puntos -->
@@ -192,6 +192,6 @@
     <script src="../js/vendor/jquery.js"></script>
     <script src="../js/vendor/what-input.js"></script>
     <script src="../js/vendor/foundation.js"></script>
-    <script src="../js/app.js"></script>
+    <script src="../js/mispuntos.js"></script>
   </body>
 </html>

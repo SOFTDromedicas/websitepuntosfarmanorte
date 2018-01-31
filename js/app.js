@@ -8,7 +8,7 @@ var btnGuardar;
 var ciudadesService = "http://dromedicas.sytes.net:9999/dropos/wsjson/ciudades/";
 
 var urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?";
-var servicioLogin = "http://localhost:8080/puntosfarmanorte/webservice/apiwebafiliado/login";
+var servicioLogin = "http://192.168.14.241:8080/puntosfarmanorte/webservice/apiwebafiliado/login";
 var asyncRequest;
 //teclas eventos para scroll
 var keys = {37: 1, 38: 1, 39: 1, 40: 1};
@@ -186,7 +186,7 @@ function getToken(){
   var tokenElement = document.getElementById('token');
   var user = userElement.value;  
   var password = passwordElement.value;
-  servicioLogin = "http://localhost:8080/puntosfarmanorte/webservice/apiwebafiliado/login";
+  servicioLogin = "http://192.168.14.241:8080/puntosfarmanorte/webservice/apiwebafiliado/login";
   servicioLogin += "?user=" + user + "&password=" + password;
 
   console.log("URL: " + servicioLogin);
