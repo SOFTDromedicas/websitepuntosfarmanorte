@@ -23,6 +23,7 @@ function iniciar() {
 function obtenerInfoAfiliado(callback) {
     var xobj = new XMLHttpRequest();
     urlEndPoint = urlServicio + localStorage.getItem('token');
+    console.log(urlEndPoint);
     xobj.overrideMimeType("application/json");
     xobj.open('GET', urlEndPoint, true); // Replace 'my_data' with the path to your file
     xobj.onreadystatechange = function() {
@@ -52,7 +53,7 @@ function cargarDatosAfiliado(){
   $('#p_vencidos').val(number_format(balance.vencidos,0));
   $('#p_fecha').val(balance.fechavencimiento);
   $('#p_actual').val(number_format(balance.totalpuntosactual,0));
-  
+
   if(foto){
     $('#imgperfilmain').attr("src",foto);
     $('#fotoPerfilMenu').attr("src",foto);

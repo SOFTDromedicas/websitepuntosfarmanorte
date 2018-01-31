@@ -1020,18 +1020,18 @@ select {
 
 .is-invalid-input:not(:focus) {
   border-color: #c60f13!important;
-  background-color: #f8e6e7; }
+  background-color: #f8e6e7!important; }
   .is-invalid-input:not(:focus)::-webkit-input-placeholder {
-    color: #c60f13; }
+    color: #c60f13!important; }
   .is-invalid-input:not(:focus)::-moz-placeholder {
-    color: #c60f13; }
+    color: #c60f13!important; }
   .is-invalid-input:not(:focus):-ms-input-placeholder {
-    color: #c60f13; }
+    color: #c60f13!important; }
   .is-invalid-input:not(:focus)::placeholder {
-    color: #c60f13; }
+    color: #c60f13!important; }
 
 .is-invalid-label {
-  color: #c60f13; }
+  color: #c60f13!important; }
 
 .form-error {
   display: none;

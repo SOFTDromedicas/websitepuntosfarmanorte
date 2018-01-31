@@ -852,11 +852,14 @@ label.checkbox-label input[type=checkbox]{
 	text-align: center;
 	
 }
-
 .basic{
   background: #eff3f8;
   height: 4px;
 }
+.basicdatos{
+  height: 4px;
+}
+
 
 .loaderlogin {
   height: 4px;
@@ -872,7 +875,7 @@ label.checkbox-label input[type=checkbox]{
   width: 200px;
   height: 4px;
   background-color: #155BF9;
-  animation: loadingf 2s linear infinite;
+  animation: loadingf 2s linear infinite; 
 }
 
 @keyframes loadingf {
@@ -1302,7 +1305,7 @@ table#txrecord td.puntosTx{
 	margin-bottom: 1rem;
 }
 
-#misdatos-contentform label{
+.content-input label{
 	display: inline-block;
   width: 140px;
   text-align: right;
@@ -1311,20 +1314,20 @@ table#txrecord td.puntosTx{
   font-size: 1.2rem;
   font-weight: bold;
 }
-#misdatos-contentform [type='text'],
-#misdatos-contentform [type='password'], 
-#misdatos-contentform [type='date'], 
-#misdatos-contentform [type='month'], 
-#misdatos-contentform [type='week'], 
-#misdatos-contentform [type='email'], 
-#misdatos-contentform [type='number'], 
-#misdatos-contentform [type='search'], 
-#misdatos-contentform [type='tel'], 
-#misdatos-contentform [type='time'], 
-#misdatos-contentform [type='url'], 
-#misdatos-contentform [type='color'],
-#misdatos-contentform textarea,
-#misdatos-contentform select {
+.content-input [type='text'],
+.content-input [type='password'], 
+.content-input [type='date'], 
+.content-input [type='month'], 
+.content-input [type='week'], 
+.content-input [type='email'], 
+.content-input [type='number'], 
+.content-input [type='search'], 
+.content-input [type='tel'], 
+.content-input [type='time'], 
+.content-input [type='url'], 
+.content-input [type='color'],
+.content-input textarea,
+.content-input select {
   display: inline!important;
   box-sizing: border-box;
   width: 65%!important;
@@ -1334,6 +1337,11 @@ table#txrecord td.puntosTx{
   border: none;
   border-radius: 7px;
   background-color: #E6E6E6;
+ }
+
+ #misdatos-contentform .is-invalid-input:not(:focus){
+ 	   border: 2px solid #c60f13!important;
+    background-color: #f8e6e7!important
  }
 
 .custom-file-input{
@@ -1393,6 +1401,7 @@ table#txrecord td.puntosTx{
 button#fotoperfil-button{
 	background: #1CB5E0!important;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to bottom, #1CB5E0, #094D86)!important;  /* Chrome 10-25, Safari 5.1-6 */
+  background: -moz-linear-gradient(to bottom, #1CB5E0, #094D86)!important;  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom, #1CB5E0, #094D86)!important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   margin-left: 4px;
   font-family: 'Barlow Condensed', sans-serif;
@@ -1401,6 +1410,7 @@ button#fotoperfil-button{
 button#actperfil-button{
 	background: #F00000;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #DC281E, #F00000);  /* Chrome 10-25, Safari 5.1-6 */
+  background: -moz-linear-gradient(to right, #DC281E, #F00000);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #DC281E, #F00000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	padding: 0.3em 2em;
 	border-radius: 8px;

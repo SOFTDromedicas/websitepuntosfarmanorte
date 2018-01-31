@@ -126,24 +126,28 @@
                          
               </div> <!-- end row-content for nav -->
             </div> <!-- end columna menu -->
+
           </div> <!-- end row contenedor  -->
         </div> <!-- end menu-container -->
       </section> <!-- end Head Section -->
 
       <!-- seccion main -->
       <section id="perfil-seccion-container">
+       <div class="row expanded" >
+          <div id="loadinglogin" class="columns small-12 basicdatos"></div>
+        </div> <!-- end loader div -->
         <div id="backmain">
           <div class="row" id="container-misdatos">
             <div class="columns small-12" id="column-misdatos">
-              <form action="">
+              <form action="form-content-misdatos" data-abide novalidate>
               <div class="row medium-uncollapse large-collapse" id="misdatos-contentform">
                 <div class="columns small-12 medium-6">
                   <div class="content-input">
-                    <label for="">Nombres</label>
+                    <label for="nombres">Nombres</label>
                     <input type="text" name="nombres" id="nombres" required placeholder="Ingrese sus nombres">
                   </div>
                   <div class="content-input">
-                    <label>Tipo de Documento</label>
+                    <label for="tipodocumento">Tipo de Documento</label>
                     <select name="tipodocumento" id="tipodocumento">
                       <option value="1">Cedula de Ciudadan&iacute;a</option>
                       <option value="2">Cedula de Extranjer&iacute;a</option>
@@ -152,7 +156,7 @@
                     </select>
                   </div>
                   <div class="content-input">
-                    <label>G&eacute;nero - Sexo</label>
+                    <label for="sexo">G&eacute;nero - Sexo</label>
                       <select name="sexo" id="sexo">
                         <option value="F">Femenino</option>
                         <option value="M">Masculino</option>
@@ -160,51 +164,51 @@
                       </select>
                   </div>
                   <div class="content-input">
-                    <label>Direcci&oacute;n</label>
+                    <label for="direccion">Direcci&oacute;n</label>
                     <input type="text" name="direccion" id="direccion" required placeholder="">
                   </div>
                   <div class="content-input">
-                    <label>Ciudad</label>
+                    <label for="ciudad">Ciudad</label>
                     <input type="text" name="ciudad" required="" id="ciudad">
                   
                   </div>
                   <div class="content-input">
-                    <label>Celular</label>
+                    <label for="celular">Celular</label>
                     <input type="number" name="celular" id="celular" required placeholder="Ingrese su n&uacute;mero celular">
                   </div>
                    <div class="content-input">
-                    <label>Pais</label>
+                    <label for="pais">Pais</label>
                     <input type="text" name="pais" required="true" id="pais" placeholder="Ingrese nacionalidad">
                   </div>
                   
                 </div>
                 <div class="columns small-12 medium-6">
                   <div class="content-input">
-                    <label for="">Apellidos</label>
+                    <label for="apellidos">Apellidos</label>
                     <input type="text" name="apellidos" id="apellidos" required placeholder="Ingrese sus apellidos">
                   </div>
                   <div class="content-input">
-                    <label>Documento</label>
+                    <label for="documento">Documento</label>
                     <input type="number" name="documento" id="documento" required placeholder="N&uacute;mero de documento">
                   </div>
                   <div class="content-input">
-                    <label>Fecha Nacimiento</label>
+                    <label for="fechanacimiento">Fecha Nacimiento</label>
                     <input type="date" name="fechanacimiento" id="fechanacimiento" data-date-format="mm/dd/yy">
                   </div>
                   <div class="content-input">
-                    <label>Barrio</label>
+                    <label for="barrio">Barrio</label>
                     <input type="text" name="barrio" required="true" id="barrio" placeholder="Ingrese su barrio">
                   </div>
                   <div class="content-input">
-                    <label>Tel&eacute;fono</label>
+                    <label for="telefonofijo">Tel&eacute;fono</label>
                     <input type="number" name="telefonofijo" id="telefonofijo" placeholder="Ingrese su n&uacute;mero de tel&eacute;fono">                 
                   </div>
                    <div class="content-input">
-                    <label>Email</label>
+                    <label for="email">Email</label>
                     <input type="email" name="email" id="email" placeholder="Ingrese su correo electronico">
                   </div>
                    <div class="content-input">
-                    <label>Foto de perfil</label>
+                    <label for="fotoperfil">Foto de perfil</label>
                     <input type="file" id="fotoperfil" class="custom-file-input">
                   </div>
                 </div>
