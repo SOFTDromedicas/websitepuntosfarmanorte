@@ -61,7 +61,14 @@ function cargarDatosAfiliado(){
   $('#tipodocumento').val(afiliado.tipodocumentoBean.idtipodocumento);
   $('#documento').val(afiliado.documento);
   $('#sexo').val(afiliado.sexo);
+  
   $('#fechanacimiento').val(afiliado.fechanacimiento);
+ 
+  var fecTem = $('#fechanacimiento').val();
+  if (fecTem === ''){
+    $('#fechanacimiento').val(ConvertToDatetime(afiliado.fechanacimiento) );
+  }
+  
   $('#direccion').val(afiliado.street);
   $('#barrio').val(afiliado.streetdos);
   $('#ciudad').val(afiliado.ciudad);
@@ -93,12 +100,10 @@ function actualizarAfiliado(){
 
 function actualizarFoto(callback) {
     var file = document.querySelector('#fotoperfil').files[0];
-    console.log(file);
-
+    
     if (file) {
         var token = localStorage.getItem('token');
-        console.log(token);
-
+        
         var formData = new FormData();
         formData.append('file', file);
         formData.append('token', token);
@@ -131,10 +136,11 @@ function actualizarDatosAfiliado(){
         urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +
              "&tipodocumento=" + tipodocumento  + "&sexo=" + sexo  + "&direccion=" + direccion  + 
              "&fechanacimiento=" + fechanacimiento  + "&telefonofijo=" + telefonofijo  + 
-             "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email + "&barrio=" + barrio  ;
+             "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email + "&barrio=" + barrio  +
+             "&token=" + localStorage.getItem('token');
 
 
-        console.log("URL Servicio: " + urlWs);  
+       // console.log("URL Servicio: " + urlWs);  
 
         try {
             asyncRequestProcess = new XMLHttpRequest();
@@ -153,15 +159,12 @@ function stateChange() {
     //activa el loadin efecto
     $('#loadinglogin').addClass("loaderlogin");
   }
-  console.log( asyncRequestProcess.readyState + " - " + asyncRequestProcess.status);
-
+  
   if (asyncRequestProcess.readyState == 4 && asyncRequestProcess.status == 200) {  
     //desactiva la linea de loading
     $('#loadinglogin').removeClass("loaderlogin");    
     //parse a json la respuesta de la peticion
     var response = JSON.parse(asyncRequestProcess.responseText);
-    console.log("Respuesta: " + asyncRequestProcess.responseText);
-
     if(response.status === "OK"){  
       infoAfiliado = response;
       cargarDatosAfiliado();
@@ -302,6 +305,29 @@ function cerrarSesion(){
 
 
 //Funciones de utilidad y formato///
+
+
+//convierte un epoch a date
+function ConvertToDatetime(dateValue) {
+  var regex = /-?\d+/;
+  var match = regex.exec(dateValue);
+  return  formatDate(new Date(parseInt(match[0])));
+}
+
+//Da formato de  YYYY-MM-DD a un objeto date
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+
 //Nombre Propio 
 function onwName(str)
 {
