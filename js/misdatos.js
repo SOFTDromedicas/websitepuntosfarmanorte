@@ -84,7 +84,8 @@ function cargarDatosAfiliado(){
 function actualizarAfiliado(){
   actualizarDatosAfiliado();
   actualizarFoto();
-  obtenerDatosAfiliado();
+  
+  
 
 }
 
@@ -154,7 +155,7 @@ function stateChange() {
     var response = JSON.parse(asyncRequestProcess.responseText);
     console.log("Respuesta: " + asyncRequestProcess.responseText);
     if(response.status === "OK"){  
-            
+            obtenerDatosAfiliado();
     }else{
       if(response.data == '99'){
         
