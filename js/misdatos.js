@@ -88,19 +88,25 @@ function cargarDatosAfiliado(){
 
 
 function actualizarAfiliado(){
-  actualizarFoto(function(response) {
-    //Parse JSON string into object
-    infoAfiliado = JSON.parse(response);
-    if(infoAfiliado.code == 200){
-      actualizarDatosAfiliado();
-    }
-  });
+  var file =  document.querySelector('#fotoperfil').files[0];
+
+  if(file){
+    actualizarFoto(function(response) {
+      //Parse JSON string into object
+      infoAfiliado = JSON.parse(response);
+
+      if(infoAfiliado.code == 200){
+        actualizarDatosAfiliado();
+      }
+    });
+  }else{
+    actualizarDatosAfiliado();
+  }
 }
 
 
 function actualizarFoto(callback) {
-    var file = document.querySelector('#fotoperfil').files[0];
-    
+    var file =  document.querySelector('#fotoperfil').files[0];
     if (file) {
         var token = localStorage.getItem('token');
         
@@ -129,6 +135,7 @@ function actualizarFoto(callback) {
 
 
 function actualizarDatosAfiliado(){
+  $("#calloutFormWarning").css("display","none");
   establecerValores();
   var urlWs = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/updateprofilepartner?";
   if (validarFormulario()) {
@@ -138,8 +145,6 @@ function actualizarDatosAfiliado(){
              "&fechanacimiento=" + fechanacimiento  + "&telefonofijo=" + telefonofijo  + 
              "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email + "&barrio=" + barrio  +
              "&token=" + localStorage.getItem('token');
-
-
        // console.log("URL Servicio: " + urlWs);  
 
         try {
@@ -166,10 +171,16 @@ function stateChange() {
     //parse a json la respuesta de la peticion
     var response = JSON.parse(asyncRequestProcess.responseText);
     if(response.status === "OK"){  
+      console.log(response.status);
       infoAfiliado = response;
       cargarDatosAfiliado();
     }else{
-      
+      console.log(response.status);
+      $('#mensajeerror').append().text(response.message);
+      $("#calloutFormWarning").css("display","block");
+     
+      // document.getElementById("mensajeerror").appendChild(document.createTextNode(response.message));
+      // document.getElementById("calloutFormWarning").style.display = 'block';
     }      
   } 
 }

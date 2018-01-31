@@ -140,6 +140,13 @@
           <div class="row" id="container-misdatos">
             <div class="columns small-12" id="column-misdatos">
               <form action="form-content-misdatos" data-abide novalidate>
+              <div data-abide-error class="warning  callout columns small-12" style="display: none;" id="calloutFormWarning" data-closable>
+                <h6>Ups! Hay problemas en nuestro sistema.</h6>
+                <p id="mensajeerror"></p>
+                <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
               <div class="row medium-uncollapse large-collapse" id="misdatos-contentform">
                 <div class="columns small-12 medium-6">
                   <div class="content-input">
