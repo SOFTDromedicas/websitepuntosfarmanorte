@@ -4,8 +4,8 @@
 
 .columns{
 	border: 1px solid #FA0000;
-}*/
-
+}
+*/
 
 a:hover, a:active{
 	background: none;
@@ -1693,6 +1693,14 @@ button#actperfil-button{
 /*Custom media Query*/
 @media screen and (min-width: 40em) and (max-width: 47.375em) {
 
+	#volver-sesion{
+		font-size: 1rem;
+	}
+	#recuperarClave{
+		padding: 0.7rem;
+		font-size: 0.95rem!important;
+	}
+
 	.sticky-container{
 		max-height: 9rem!important;	
 	}
@@ -1860,7 +1868,11 @@ button#actperfil-button{
 
 /*Custom media Query*/
 @media screen and (min-width: 47.376em) and (max-width: 59.125em) {
-	
+		
+	#recuperarClave{
+		padding: 0.7rem;
+		font-size: 0.95rem!important;
+	}
 
 	#menu-container{		
 		background-position: left;
@@ -2009,6 +2021,10 @@ button#actperfil-button{
 
 /*Custom media Query*/
 @media only screen and (max-width : 486px) {
+
+	#volver-sesion{
+		font-size: 1rem;
+	}
 	#misdatos-contentform label{
 	  text-align: center;
 	}

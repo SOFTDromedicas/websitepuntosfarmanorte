@@ -16,11 +16,6 @@ var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
 function iniciar() {
 
-  var data = localStorage.getItem('token');
-  console.log("VERIFICANDO QUE EXITA SESION " + data);
-
-  //localStorage.clear();
-     
     //Registro de eventos y componente para la interfaz de afiliacion
     if (location.pathname.substring(1) === "seccion/inscripcion.html") {
         btnGuardar = document.getElementById('guardar-button');
@@ -49,6 +44,7 @@ function iniciar() {
         //prepara combo de ciudades
         establecerCiudades();
 
+        //eventos para el formulario de login
         var street1 = document.getElementById('street1');
         street1.addEventListener('change', concatenardireccion, false);
         
@@ -104,6 +100,7 @@ function iniciar() {
 }//end function iniciar
 
 //** Funciones Cuadro Login **//
+//Registro de eventos para los controles del cuadro de login
 function registerEventLogin() {
     var login = document.getElementById('loginperfil');
     login.addEventListener('click', showLogin, false);
@@ -138,10 +135,10 @@ function registerEventLogin() {
     document.addEventListener('keyup', exitLogin, false);
 }
 
+
+//si en previo login se marco rememberme se cargan los 
+//datos en el formulario de login
 function rememberMe() {
-  console.log("-------------xxx=> " + localStorage.chkbx );
-  console.log("-------------xxx=> " + $('#recordarme').is(':checked') );
-    
     if (localStorage.chkbx && localStorage.chkbx != '') {
         $('#recordarme').attr('checked', 'checked');
         $('#documentologin').val(localStorage.usrname);
@@ -178,8 +175,7 @@ function iniciarSesion(){
 }
 
 //Obtien el JWT para el login 
-function getToken(){
-  
+function getToken(){  
   var xhr = new XMLHttpRequest();
   var userElement = document.getElementById('documentologin'); 
   var passwordElement = document.getElementById('password');  
@@ -192,7 +188,7 @@ function getToken(){
   console.log("URL: " + servicioLogin);
   
   try{
-   
+    //callback
     xhr.addEventListener("readystatechange", function(){
       //muestra el loader de linea mientras procesa la solicitud
       if(this.readyState >= 1 && this.readyState <= 3 ){
@@ -202,16 +198,18 @@ function getToken(){
       //al recibir la respuesta del servicio oculta el loader y procesa la respuesta
       if (this.readyState == 4 && this.status == 200) {
         document.getElementById("loadinglogin").classList.remove("loaderlogin");
+
+        //obtiene el JWT del cabecero  de la respuesta
         var token = this.getResponseHeader('AUTHORIZATION');
         
-        //si se obtiene el token se registra
+        //si hay token se registra
         if (token) {
           // Almacena el token en localStorage
           localStorage.setItem('token', token);
-          console.log("Recordarme: " + ($('#recordarme').is(':checked')));
-
+          //si el checkbox de recordar usuario esta marcado 
+          //los valores son guardados en el localstorage (no por cookies)
           if ($('#recordarme').is(':checked')) {
-              // save username and password
+              // guarda usuario y contrasenia
               localStorage.usrname = $('#documentologin').val();
               localStorage.pass = $('#password').val();
               localStorage.chkbx = $('#recordarme').val();
@@ -227,7 +225,10 @@ function getToken(){
           //se limpia los campos del formulario
           $('#documentologin').val('');
           $('#password').val('');
+
         } else {
+          //si hay error en el login se obtiene el mensaje para 
+          //desplegarce en el callout
           var resp = JSON.parse(this.responseText);
           var mes = resp.message;
           //muestra los mensajes de error
@@ -236,10 +237,8 @@ function getToken(){
           $('#password').addClass('is-invalid-input');
           $('#password').parent().addClass('is-invalid-label');
           $('#calloutLoginAlert').css("display", "block");
-          
-          console.log($('#documentologin').parent());
-        } 
-      }
+        } //end else token 
+      }//end validacion estado de la peticion 
      }, false);
     xhr.open( "POST", servicioLogin, true );
     xhr.setRequestHeader("Accept",
@@ -247,17 +246,17 @@ function getToken(){
     xhr.send();     
 
   }catch(ex){
-   // console.log(ex)    
+   console.log(ex)    
   }
 }
 
 
-
+//deshabilita el scroll cuando se muestra el login
 function disableScroll() {
-  if (window.addEventListener) // older FF
+  if (window.addEventListener) 
       window.addEventListener('DOMMouseScroll', preventDefault, false);
-  window.onwheel = preventDefault; // modern standard
-  window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+  window.onwheel = preventDefault; 
+  window.onmousewheel = document.onmousewheel = preventDefault; 
   window.ontouchmove  = preventDefault; // mobile
   document.onkeydown  = preventDefaultForScrollKeys;
 }
@@ -274,6 +273,7 @@ function enableScroll() {
 
 //muestra el cuadro de login
 function showLogin(event){
+
     rememberMe(); 
     var bodylogin = document.getElementById('blurme-container');
     bodylogin.classList.remove('ocultarLogin');
@@ -347,8 +347,10 @@ function exitLoginOlvido(event){
     //cancelo el burbujeo de eventos
     event.cancelBubble = true;
     document.getElementById('blurme-container').classList.remove('blur-me2');
-     document.getElementById('blurme-container').classList.add('ocultarLogin');    
-    document.getElementById('olvido-container-main').style.display='none';     
+    document.getElementById('blurme-container').classList.add('ocultarLogin');    
+    document.getElementById('olvido-container-main').style.display='none';   
+    document.getElementById('emialRecuperar').value='';   
+
     enableScroll();
   } 
 }
