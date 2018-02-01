@@ -419,6 +419,7 @@ function exitOlvido(){
     document.getElementById('olvido-container-main').style.display='none';   
     document.getElementById('emialRecuperar').value='';       
     $('#calloutRecupera').css("display", "none");
+    document.getElementById("loadclave").classList.remove("loaderlogin");
 
     enableScroll();
 }
