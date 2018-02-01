@@ -186,6 +186,10 @@ body{
 
 }
 
+#calloutrecuparacionclave{
+	margin:0!important;
+}
+
 #quesonpuntos{
 	background-image: url('../images/banner-desktop-queson.jpg');
 	height: 35rem;
@@ -995,7 +999,6 @@ label.checkbox-label input[type=checkbox]{
 	background: #1c3672;
 	color: #FFFFFF;
 	text-align: center;
-	margin-bottom: 1rem;
 }
 
 .banda-recuperar h3{
@@ -1003,6 +1006,7 @@ label.checkbox-label input[type=checkbox]{
 }
 
 .volver-sesion{
+	margin-top: 0.9rem;
 	font-size: 1.2rem;
 	line-height: 1.6rem;
 	font-family: 'Open Sans', sans-serif;

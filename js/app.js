@@ -55,11 +55,10 @@ function iniciar() {
         street1.addEventListener('change', concatenardireccion, false);
 
         var street1valor = document.getElementById('street2-valor');
-        street1valor.addEventListener('keyup', concatenardireccion, false);
-        
+        street1valor.addEventListener('keyup', concatenardireccion, false);        
+
         document.getElementById('cancelar-button').addEventListener('click',
           limpiarFormulario, false);
-
     }
 
     console.log(location.pathname.substring(1));
@@ -127,6 +126,9 @@ function registerEventLogin() {
     var volverS = document.getElementById('volver-sesion');
     volverS.addEventListener('click', volverSesion, false);
 
+    var recuperarClaveBtn = document.getElementById('recuperarClave');
+    recuperarClaveBtn.addEventListener('click', enviarCorreoRecuperaClave, false);
+
     //inicio de sesion 
     document.getElementById('iniciar-sesion').addEventListener('click', 
     iniciarSesion, false);
@@ -165,6 +167,62 @@ function preventDefaultForScrollKeys(e) {
         return false;
     }
 }
+
+//Procesa la solicitud de recuparacion de clave 
+function enviarCorreoRecuperaClave() {
+  
+    var servicioRecuperaClave = "http://192.168.14.241:8080/puntosfarmanorte/webservice/afiliado/recuperaclave";
+    var email = $('#emialRecuperar').val(); //email afiliado
+    var xhr = new XMLHttpRequest();
+
+    if (email != ''&& validateEmail(email)) {
+        try {
+            servicioRecuperaClave += "/" + email;
+            
+            //callback
+            xhr.addEventListener("readystatechange", function(){stateChangeRec(xhr)}, false);
+            xhr.open("GET", servicioRecuperaClave, true);
+            xhr.setRequestHeader("Accept",
+                "application/json; charset=utf-8");
+            xhr.send();
+        } catch (ex) {
+            document.getElementById("loadclave").classList.remove("loaderlogin");
+            console.log(ex)
+        }
+
+    } else { //el email dado no es valido (Evaluado por Regex)
+      document.getElementById("loadclave").classList.remove("loaderlogin");
+       $('#calloutRecupera').css("display", "block");
+       $('#inforecupera').text("Cuenta de email no valida");
+    }
+}
+
+function stateChangeRec(xhr) {
+  
+    if (xhr.readyState >= 1 && xhr.readyState <= 3) {
+        $('#calloutRecupera').css("display", "none");
+        document.getElementById("loadclave").classList.add("loaderlogin");
+    }
+    //al recibir la respuesta del servicio oculta el loader y procesa la respuesta
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        var res =  JSON.parse(xhr.responseText);
+        console.log("--" + res.code)
+        if(res.code == 200){
+          document.getElementById("loadclave").classList.remove("loaderlogin");
+          exitOlvido();
+          $('#calloutrecuparacionclave').css("display", "block");
+
+        }else{
+          document.getElementById("loadclave").classList.remove("loaderlogin");
+          $('#calloutRecupera').css("display", "block");
+          $('#inforecupera').text(res.message);        
+        }
+    } /*end if 200*/
+}
+
+
+
+
 
 //iniciar session del perfil de puntos farmanorte
 function iniciarSesion(){
@@ -333,10 +391,7 @@ function showRestablecerContrasena() {
 }
 
 //cierra el cuadro de reestablecer clave
-function exitLoginOlvido(event){    
-  console.log("olvido")
-  console.log(event.target.getAttribute('id'))
-  console.log(event.key)
+function exitLoginOlvido(event){      
   if( event.target.getAttribute('id') == 'innerContainer-olvido' ||
       event.target.getAttribute('id') == 'paddingcontainer-olvido' ||
       event.target.getAttribute('id') == 'row-olvido' ||
@@ -349,10 +404,23 @@ function exitLoginOlvido(event){
     document.getElementById('blurme-container').classList.remove('blur-me2');
     document.getElementById('blurme-container').classList.add('ocultarLogin');    
     document.getElementById('olvido-container-main').style.display='none';   
-    document.getElementById('emialRecuperar').value='';   
+    document.getElementById('emialRecuperar').value='';       
+    $('#calloutRecupera').css("display", "none");
 
     enableScroll();
   } 
+}
+
+//usada solamente por el evento de recuperacion de clave
+function exitOlvido(){
+  event.cancelBubble = true;
+    document.getElementById('blurme-container').classList.remove('blur-me2');
+    document.getElementById('blurme-container').classList.add('ocultarLogin');    
+    document.getElementById('olvido-container-main').style.display='none';   
+    document.getElementById('emialRecuperar').value='';       
+    $('#calloutRecupera').css("display", "none");
+
+    enableScroll();
 }
 
 //ir a login afiliado
