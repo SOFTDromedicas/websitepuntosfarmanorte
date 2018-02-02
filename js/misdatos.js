@@ -1,7 +1,7 @@
 $(document).foundation()
 
-var urlServicio = "http://192.168.14.241:8080/puntosfarmanorte/webservice/puntos/datosafiliado/";
-var urlServicioAct = "http://192.168.14.241:8080/puntosfarmanorte/webservice/afiliado/";
+var urlServicio = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/puntos/datosafiliado/";
+var urlServicioAct = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/";
 var infoAfiliado;
 
 var ciudad, documento, nombres, apellidos, tipodocumento, sexo, direccion,
@@ -137,7 +137,7 @@ function actualizarFoto(callback) {
 function actualizarDatosAfiliado(){
   $("#calloutFormWarning").css("display","none");
   establecerValores();
-  var urlWs = "http://192.168.14.241:8080/puntosfarmanorte/webservice/afiliado/updateprofilepartner?";
+  var urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/updateprofilepartner?";
   if (validarFormulario()) {
         //Campos del formulario hasta datos basico -nivel de estudios
         urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +

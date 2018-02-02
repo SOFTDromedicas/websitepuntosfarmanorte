@@ -175,7 +175,7 @@ function preventDefaultForScrollKeys(e) {
 //Procesa la solicitud de recuparacion de clave 
 function enviarCorreoRecuperaClave() {
   
-    var servicioRecuperaClave = "http://192.168.14.241:8080/puntosfarmanorte/webservice/afiliado/recuperaclave";
+    var servicioRecuperaClave = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/recuperaclave";
     var email = $('#emialRecuperar').val(); //email afiliado
     var xhr = new XMLHttpRequest();
 
@@ -244,7 +244,7 @@ function getToken(){
   var tokenElement = document.getElementById('token');
   var user = userElement.value;  
   var password = passwordElement.value;
-  servicioLogin = "http://192.168.14.241:8080/puntosfarmanorte/webservice/apiwebafiliado/login";
+  servicioLogin = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/apiwebafiliado/login";
   servicioLogin += "?user=" + user + "&password=" + password;
 
   console.log("URL: " + servicioLogin);
@@ -346,6 +346,11 @@ function showLogin(event){
 
 //cierra el cuadro de login
 function exitLogin(event){   
+  
+  if( event.target.getAttribute('id') == 'password' && event.keyCode == 13){
+     iniciarSesion();
+  }
+
   if( event.target.getAttribute('id') == 'innerContainer' ||
       event.target.getAttribute('id') == 'paddingcontainer' ||
       event.target.getAttribute('id') == 'row-login' ||
@@ -502,7 +507,6 @@ function registrar() {
     
     establecerValores();
 
-    //urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
     urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?";
 
     if(validarFormulario()){
@@ -648,8 +652,6 @@ function validarFormulario(){
     document.getElementById("street1-valor").setAttribute("class","is-invalid-input");
     document.getElementById("street1-valor").closest("label").setAttribute("class","is-invalid-label");
   });
-
-console.log("-------" + (direccion=== ""));
 
   if(direccion=== "" || direccion=== "AVENIDA" ){
     valido = false;

@@ -1,7 +1,7 @@
 $(document).foundation()
 
 
-var urlServicio = "http://192.168.14.241:8080/puntosfarmanorte/webservice/puntos/datosafiliado/";
+var urlServicio = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/puntos/datosafiliado/";
 var infoAfiliado;
 
 

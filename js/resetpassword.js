@@ -42,7 +42,7 @@ function passwordChanged() {
 function reestablecer() {
 
   var token = getParameterURLByName('id');
-  var urlServicio = "http://192.168.14.241:8080/puntosfarmanorte/webservice/afiliado/reestablecerclave";
+  var urlServicio = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/reestablecerclave";
   var clave = $('#passw1').val(); //email afiliado
   var xhr = new XMLHttpRequest();
   $('#calloutreset').css('display','none');

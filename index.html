@@ -142,8 +142,7 @@
     
     <!-- Olvido su contrasenia -->
     <div class="container_14xz0pw" id="olvido-container-main" style="display:none;">
-      <div class="innerContainer" id="innerContainer-olvido">
-        
+      <div class="innerContainer" id="innerContainer-olvido">        
         <div class="paddingcontainer" id="paddingcontainer-olvido">
           <div class="row" id="row-olvido">
               <div class="columns small-12 medium-7 float-center login-main" id="recuperar-main-olvido"> 
@@ -166,7 +165,7 @@
                   <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                  <form action="" id="form-login-olvido">
+                  <form action="" id="form-login-olvido" data-abide novalidate>
                     <div class="row">
                       <div class="columns small-12">
                         <p class="volver-sesion">Ingresa la direcci&oacute;n de correo electr&oacute;nico asociada a tu cuenta y te enviaremos un enlace para restablecer tu contrase&ntilde;a.</p>
@@ -174,7 +173,7 @@
                     </div>
                     <div class="row">
                       <div class="columns small-12">                        
-                        <input type="email" name="documento" id="emialRecuperar" placeholder="Correo Electr&oacute;nico">                       
+                        <input type="email"  id="emialRecuperar" placeholder="Correo Electr&oacute;nico" required="true">
                       </div>
                     </div>
                     <div class="row">
@@ -182,10 +181,10 @@
                         <p class="float-left" id="volver-sesion"><img src="images/returnlogin.svg" id="rowlogin">Volver al inicio de sesi&oacute;n</p>
                       </div>
                       <div class="columns small-6 medium-5" id="mostrar-clave">      
-                        <button type="button" id="recuperarClave" class="button float-right">Enviar Enlace</button>                                       
+                        <button type="button" id="recuperarClave" class="button float-right">Enviar Enlace</button>
                       </div>
                     </div>          
-                  </form>           
+                             
               </div> <!-- end login main -->
           </div> <!-- end row ppal -->      
         </div> <!-- end paddingcontainer -->
