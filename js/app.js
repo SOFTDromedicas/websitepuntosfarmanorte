@@ -60,8 +60,7 @@ function iniciar() {
         document.getElementById('cancelar-button').addEventListener('click',
           limpiarFormulario, false);
     }
-
-    console.log(location.pathname.substring(1));
+  
 
     if ( location.pathname.substring(1) == "index.html" ){
     // if (location.pathname.substring(1) == "xxxx.html"){

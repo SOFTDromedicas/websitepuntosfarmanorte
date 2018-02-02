@@ -1,5 +1,6 @@
 $(document).foundation()
 
+
 var urlServicio = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/puntos/datosafiliado/";
 var infoAfiliado;
 
@@ -23,7 +24,6 @@ function iniciar() {
 function obtenerInfoAfiliado(callback) {
     var xobj = new XMLHttpRequest();
     urlEndPoint = urlServicio + localStorage.getItem('token');
-    console.log(urlEndPoint);
     xobj.overrideMimeType("application/json");
     xobj.open('GET', urlEndPoint, true); // Replace 'my_data' with the path to your file
     xobj.onreadystatechange = function() {
@@ -62,7 +62,6 @@ function cargarDatosAfiliado(){
 
   //transacciones
   var tabla = document.getElementById('txrecord');
-  console.log(txs);
   for( var i = 0 ; i < 10; i++ ){
     var descripcion  = txs[i].tipotransaccion.descripcion;
     var tipoTx;
@@ -87,10 +86,14 @@ function cargarDatosAfiliado(){
     thDatos.appendChild( document.createTextNode( tipoTx ) );
     var thFecha = document.createElement("td");
     // thFecha.setAttribute("class", "fechaTx")
-    var fecha = ""+txs[i].fechatransaccion;
-    thFecha.appendChild( document.createTextNode( fecha.substring(0,10) ) );
+    var fecha = txs[i].fechatransaccion;
+    var fechaTemp = moment(fecha, moment.ISO_8601);
+    var fechaFinal = moment(fechaTemp).format("DD/MM/YYYY");
+
+    thFecha.appendChild( document.createTextNode( fechaFinal ) );
     var thPuntos = document.createElement("td");
     thPuntos.setAttribute("class", "puntosTx")
+
     thPuntos.appendChild( document.createTextNode( txs[i].puntostransaccion  ));
     var fila = document.createElement("tr");
 

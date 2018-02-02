@@ -1180,7 +1180,6 @@ label.checkbox-label input[type=checkbox]{
 	border: 2px solid #fff!important;
 	border-radius: 25px 0 0 25px;
 	padding: 0rem 3rem 2rem 3rem;
-
 }
 
 #legendperfilmain{
@@ -2085,11 +2084,26 @@ button#actperfil-button{
 /*Custom media Query*/
 @media only screen and (max-width : 486px) {
 
+	.paddingcontainer{
+		padding: 3.5rem 0;
+	}
+
+
+	#fieldsetperfil{
+		border: 2px solid #fff!important;
+		border-radius: 25px 0 0 25px;
+		padding: 0rem 0.3rem 2rem 0.3rem;
+	}
+
 	#volver-sesion{
 		font-size: 1rem;
 	}
 	#misdatos-contentform label{
 	  text-align: center;
+	}
+
+	.detalleestado input:read-only{
+		font-size: 1rem;
 	}
 	
 	#misdatos-contentform [type='text'],
@@ -2136,7 +2150,7 @@ button#actperfil-button{
     border: none;
     border-radius: 2px;
     background-color: #E6E6E6;
-    text-align: center;
+    text-align: center;    
 	}
 
 	#burger-menu i {

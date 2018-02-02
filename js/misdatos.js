@@ -61,9 +61,8 @@ function cargarDatosAfiliado(){
   $('#tipodocumento').val(afiliado.tipodocumentoBean.idtipodocumento);
   $('#documento').val(afiliado.documento);
   $('#sexo').val(afiliado.sexo);
-  
-  $('#fechanacimiento').val(afiliado.fechanacimiento);
- 
+  var fechaA = moment(afiliado.fechanacimiento).format('YYYY-MM-DD');
+  $('#fechanacimiento').val(fechaA);  
   var fecTem = $('#fechanacimiento').val();
   if (fecTem === ''){
     $('#fechanacimiento').val(ConvertToDatetime(afiliado.fechanacimiento) );
