@@ -82,6 +82,10 @@ function iniciar() {
     //si estoy en index valida que no se cargue a partir de la redireccion del formulario 2
     if(getParameterURLByName('confirmado') == "true"){
         document.getElementById("calloutafiliacion").style.display = 'block';      
+    }    
+
+    if(getParameterURLByName('cambioclave') == "true"){
+        document.getElementById("calloutrecuperaok").style.display = 'block';      
     }
 
     //Eventos para cuadro de Login

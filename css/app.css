@@ -190,6 +190,11 @@ body{
 	margin:0!important;
 }
 
+#calloutrecuperaok{
+	margin:0!important;
+	padding-top: 2.5rem;
+}
+
 #quesonpuntos{
 	background-image: url('../images/banner-desktop-queson.jpg');
 	height: 35rem;

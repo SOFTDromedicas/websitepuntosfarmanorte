@@ -45,9 +45,11 @@ function reestablecer() {
   var urlServicio = "http://192.168.14.241:8080/puntosfarmanorte/webservice/afiliado/reestablecerclave";
   var clave = $('#passw1').val(); //email afiliado
   var xhr = new XMLHttpRequest();
+  $('#calloutreset').css('display','none');
 
   if (clave != '') {
         try {
+
             urlServicio += "?token=" + token + "&pswd=" + clave;
             
             //callback
@@ -62,7 +64,9 @@ function reestablecer() {
         }
 
     } else { //el email dado no es valido (Evaluado por Regex)
+
       document.getElementById("loadclave").classList.remove("loaderlogin");
+      $('#calloutreset').css('display','block');
        
     }
 }
@@ -80,7 +84,7 @@ function stateChangeRec(xhr) {
         if(res.code == 200){
           document.getElementById("loadclave").classList.remove("loaderlogin");
 
-          window.location.href = "http://www.puntosfarmanorte.com.co?cambioclave=true";
+          window.location.href = "../index.html?cambioclave=true";
 
         }else{
           document.getElementById("loadclave").classList.remove("loaderlogin");
