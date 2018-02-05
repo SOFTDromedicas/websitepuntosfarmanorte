@@ -31,7 +31,6 @@ function iniciar() {
                 constrainInput: true,
                 format: 'dd/mm/yyyy',
             });
-
             $('#fechanacimiento').fdatepicker().on('changeDate', function(ev) {
                 if (ev.date.valueOf()) {
                     var newDate = new Date(ev.date)
@@ -100,6 +99,7 @@ function iniciar() {
     });
 
 }//end function iniciar
+
 
 //** Funciones Cuadro Login **//
 //Registro de eventos para los controles del cuadro de login
@@ -209,9 +209,10 @@ function stateChangeRec(xhr) {
     //al recibir la respuesta del servicio oculta el loader y procesa la respuesta
     if (xhr.readyState == 4 && xhr.status == 200) {
         var res =  JSON.parse(xhr.responseText);
-        console.log("--" + res.code)
+        
         if(res.code == 200){
           document.getElementById("loadclave").classList.remove("loaderlogin");
+          window.scrollTo(0, 0);
           exitOlvido();
           $('#calloutrecuparacionclave').css("display", "block");
 

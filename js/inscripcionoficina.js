@@ -5,8 +5,11 @@ $(document).foundation()
 var ciudad, documento, nombres, apellidos, tipodocumento, sexo, direccion,
             barrio, fechanacimiento, telefonofijo, celular, email, terminos;
 var btnGuardar;
-var urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
 var ciudadesService = "http://dromedicas.sytes.net:9999/dropos/wsjson/ciudades/";
+var sucursalesService = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/getsucursales/";
+
+var urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?";
+var servicioLogin = "http://192.168.14.241:8080/puntosfarmanorte/webservice/apiwebafiliado/login";
 var asyncRequest;
 //teclas eventos para scroll
 var keys = {37: 1, 38: 1, 39: 1, 40: 1};
@@ -14,44 +17,37 @@ var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
 function iniciar() {
 
-  // Almacena la información en sessionStorage
-// sessionStorage.setItem('paco', 'lk');
 
-// Obtiene la información almacenada desde sessionStorage
-// var data = sessionStorage.getItem('paco');
-
-
-// console.log("Session--> " + data);
-// console.log("this--> " + this.sessionStorage.getItem('paco'));
-    
     //Registro de eventos y componente para la interfaz de afiliacion
     if (location.pathname.substring(1) === "seccion/inscripcionoficina.html") {
         btnGuardar = document.getElementById('guardar-button');
         btnGuardar.addEventListener('click', registrar, false);
         //verifica el dispositivo para el componente date
-        // if (mobilecheck() && mobileAndTabletcheck()) {
-        //     document.getElementById('fechanacimiento').setAttribute('type', 'date');
-        // } else {
-        //     $('#fechanacimiento').fdatepicker({
-        //         closeButton: true,
-        //         language: 'es',
-        //         yearRange: "-100:+0",
-        //         constrainInput: true,
-        //         format: 'dd/mm/yyyy',
-        //     });
-
-        //     $('#fechanacimiento').fdatepicker().on('changeDate', function(ev) {
-        //         if (ev.date.valueOf()) {
-        //             var newDate = new Date(ev.date)
-        //             newDate.setDate(newDate.getDate() + 1);
-        //             fechanacimiento = formatDateAnioMesDia(newDate);
-        //         }
-        //     });
-        // }
+        if (mobilecheck() && mobileAndTabletcheck()) {
+            document.getElementById('fechanacimiento').setAttribute('type', 'date');
+        } else {
+            $('#fechanacimiento').fdatepicker({
+                closeButton: true,
+                language: 'es',
+                yearRange: "-100:+0",
+                constrainInput: true,
+                format: 'dd/mm/yyyy',
+            });
+            $('#fechanacimiento').fdatepicker().on('changeDate', function(ev) {
+                if (ev.date.valueOf()) {
+                    var newDate = new Date(ev.date)
+                    newDate.setDate(newDate.getDate() + 1);
+                    fechanacimiento = formatDateAnioMesDia(newDate);
+                }
+            });
+        }
 
         //prepara combo de ciudades
         establecerCiudades();
+        establecerSucursales();
 
+
+        //eventos para el formulario de login
         var street1 = document.getElementById('street1');
         street1.addEventListener('change', concatenardireccion, false);
         
@@ -62,17 +58,15 @@ function iniciar() {
         street1.addEventListener('change', concatenardireccion, false);
 
         var street1valor = document.getElementById('street2-valor');
-        street1valor.addEventListener('keyup', concatenardireccion, false);
-        
+        street1valor.addEventListener('keyup', concatenardireccion, false);        
+
         document.getElementById('cancelar-button').addEventListener('click',
           limpiarFormulario, false);
-
     }
+  
 
-
-
-    //if (location.pathname.substring(1) == "index.html"){
-    if (location.pathname.substring(1) == "xxxx.html"){
+    if ( location.pathname.substring(1) == "index.html" ){
+    // if (location.pathname.substring(1) == "xxxx.html"){
         //Eventos formulario login
         var mostrarClave = document.getElementById("p-mostrarclave");
         mostrarClave.addEventListener('click', function() {
@@ -84,37 +78,29 @@ function iniciar() {
                 password.setAttribute('type', 'password');
                 mostrarClave.innerHTML = "Mostrar Contrase&ntilde;a"
             }
-        }, false);
-
-        //Eventos para cuadro de Login
-        var login = document.getElementById('loginperfil');
-        login.addEventListener('click', showLogin, false);       
-
-        var loginout = document.getElementById('login-container-main');
-        loginout.addEventListener('click', exitLogin, false);       
-
-        var iconocerrar = document.getElementById('iconocerrar');
-        iconocerrar.addEventListener('click', exitLogin, false);
-
-        var olividoDedeLogin = document.getElementById('olvidocontrasenia');
-        olividoDedeLogin.addEventListener('click', irARecuperarClave, false);
-
-        //Eventos para cuadro de dialogo Reestablecer contrasenia
-       
-
-        //registro de evento techa de escape para el formulario de login
-        document.addEventListener('keyup', exitLogin, false);
-        
+        }, false);        
     }
 
-    
     //si estoy en index valida que no se cargue a partir de la redireccion del formulario 2
     if(getParameterURLByName('confirmado') == "true"){
         document.getElementById("calloutafiliacion").style.display = 'block';      
-     }
+    }    
 
+    if(getParameterURLByName('cambioclave') == "true"){
+        document.getElementById("calloutrecuperaok").style.display = 'block';      
+    }
+
+    
+    //estos eventos permiten cerrar el menu off-canvas cuando se invoca el login
+    $('.off-canvas h5').on('click', function() {
+      $('.off-canvas').foundation('close');
+    });
+    $('.off-canvas i.fa-sign-in').on('click', function() {
+      $('.off-canvas').foundation('close');
+    });
 
 }//end function iniciar
+
 
 
 function establecerCiudades(){
@@ -122,6 +108,19 @@ function establecerCiudades(){
     var xhrCiudad = new XMLHttpRequest()
     xhrCiudad.addEventListener("readystatechange", function(){creandoComboCiudad(xhrCiudad);}, false);
     xhrCiudad.open( "GET", ciudadesService, true );
+    xhrCiudad.setRequestHeader("Accept",
+          "application/json; charset=utf-8" );
+    xhrCiudad.send();     
+  }catch(ex){
+    mostrarFallaDelSistema(ex.message);
+  }
+}
+
+function establecerSucursales(){
+  try{
+    var xhrCiudad = new XMLHttpRequest()
+    xhrCiudad.addEventListener("readystatechange", function(){crearComboSucursal(xhrCiudad);}, false);
+    xhrCiudad.open( "GET", sucursalesService, true );
     xhrCiudad.setRequestHeader("Accept",
           "application/json; charset=utf-8" );
     xhrCiudad.send();     
@@ -147,109 +146,7 @@ function limpiarFormulario(){
   document.getElementById('direccion').innerHTML ="";
 }
 
-
-//funciones para el bloqueo del scroll
-function preventDefault(e) { 
-  e = e || window.event;
-  if (e.preventDefault)
-      e.preventDefault();
-  e.returnValue = false;  
-}
-
-function preventDefaultForScrollKeys(e) {
-    if (keys[e.keyCode]) {
-        preventDefault(e);
-        return false;
-    }
-}
-
-function disableScroll() {
-  if (window.addEventListener) // older FF
-      window.addEventListener('DOMMouseScroll', preventDefault, false);
-  window.onwheel = preventDefault; // modern standard
-  window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
-  window.ontouchmove  = preventDefault; // mobile
-  document.onkeydown  = preventDefaultForScrollKeys;
-}
-
-function enableScroll() {
-    if (window.removeEventListener)
-        window.removeEventListener('DOMMouseScroll', preventDefault, false);
-    window.onmousewheel = document.onmousewheel = null; 
-    window.onwheel = null; 
-    window.ontouchmove = null;  
-    document.onkeydown = null;  
-}
-// end funciones para el bloqueo del scroll
-
-//muestra el cuadro de login
-function showLogin(event) {
-    var bodylogin = document.getElementById('blurme-container');
-    bodylogin.classList.add('blur-me2');
-    document.getElementById('login-container-main').style.display = 'block';
-    disableScroll();
-}
-
-//cierra el cuadro de login
-function exitLogin(event){   
-console.log(event.type) 
-  if( event.target.getAttribute('id') == 'innerContainer' ||
-      event.target.getAttribute('id') == 'paddingcontainer' ||
-      event.target.getAttribute('id') == 'row-login' ||
-      event.target.getAttribute('id') == 'row-iconocerrar' ||
-      event.target.getAttribute('id') == 'iconocerrar' ||
-      event.target.getAttribute('id') == 'olvidocontrasenia' ||
-      event.key == 'Escape'){
-
-    console.log("cerrando login")
-    document.getElementById('blurme-container').classList.remove('blur-me2');    
-    document.getElementById('login-container-main').style.display='none';  
-    document.getElementById('documentologin').value="";
-    document.getElementById('password').value="";
-    document.getElementById('recordarme').checked = false;
-    enableScroll();
-  } 
-}
-
-
-function irARecuperarClave(event){
-  exitLogin(event); 
-
-  showRestablecerContrasena();
-}
-
-
-//muestra el cuadro de reestablecer clave
-function showRestablecerContrasena() {
-    document.getElementById('olvido-container-main').style.display = 'block';
-    disableScroll();
-    var content_main = document.getElementById('blurme-container');
-    content_main.classList.add('blur-me2');
-    console.log("end mostrar reestablecer")
-}
-
-//cierra el cuadro de reestablecer clave
-function exitLoginOlvido(event){    
-
-  console.log("olvido")
-  console.log(event.target.getAttribute('id'))
-  console.log(event.key)
-  if( event.target.getAttribute('id') == 'innerContainer-olvido' ||
-      event.target.getAttribute('id') == 'paddingcontainerrecuperar-olvido' ||
-      event.target.getAttribute('id') == 'row-olvido' ||
-      event.target.getAttribute('id') == 'row-iconocerrar-olvido' ||
-      event.target.getAttribute('id') == 'iconocerrar-olvido' ||
-      event.key == 'Escape'){
-    document.getElementById('blurme-container').classList.remove('blur-me2');
-    document.getElementById('login-container-main-olvido').style.display='none';     
-    enableScroll();
-
-  } 
-}
-
-
-
-//Crea el combobox de operadores, metodo auxiliar del metodo getOperadores
+//Crea el elemento select para las ciudades del formulario
 function creandoComboCiudad(xhr) {
     if (xhr.readyState == 4 && xhr.status == 200) {
         var data = JSON.parse(xhr.responseText);
@@ -258,8 +155,8 @@ function creandoComboCiudad(xhr) {
         for (var i = 0; i < ciudadList.length; i++) {
             var option = document.createElement("option");
             option.setAttribute("value", ciudadList[i].nombre);
-            option.appendChild(document.createTextNode(
-                capitalize(ciudadList[i].nombre) +" ("+ capitalize(ciudadList[i].departamento)+")" ));
+            var ciudad = capitalize(ciudadList[i].nombre) +" ("+ capitalize(ciudadList[i].departamento)+")";
+            option.appendChild(document.createTextNode(ciudad));
             if( ciudadList[i].nombre == 'CUCUTA'){
               option.setAttribute("selected", 'true');
             }
@@ -274,6 +171,35 @@ function creandoComboCiudad(xhr) {
     }
 }
 
+function crearComboSucursal(xhr) {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        var data = JSON.parse(xhr.responseText);
+        var sucursalSelect = document.getElementById("sucursal");
+        var sucursalList = data.contenedor;
+        for (var i = 0; i < sucursalList.length; i++) {
+          
+            var option = document.createElement("option");
+            var sucursal = capitalize(sucursalList[i].nombreSucursal);
+            if( sucursalList[i].nombreSucursal !== 'DROMEDICAS DEL ORIENTE'){
+              option.setAttribute("value", sucursalList[i].codigointerno);
+              option.appendChild(document.createTextNode(sucursal));
+            }
+             if( sucursalList[i].nombreSucursal == 'FARMANORTE 01'){
+               option.setAttribute("selected", 'true');
+            }
+          sucursalSelect.appendChild(option);
+        }
+        //oculta el mensaje de inicio de la carga
+        $("#mensaje-inicio").fadeOut(4000);
+    } else {
+        if (xhr.status == 404) {
+           mostrarFallaDelSistema("Error 404 para Operador");            
+        } 
+    }
+}
+
+
+
 
 function capitalize(s){
     return s.toLowerCase().replace( /\b./g, function(a){ return a.toUpperCase(); } );
@@ -285,13 +211,14 @@ function registrar() {
     
     establecerValores();
 
-    urlWs = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpafiliacion/index.php?";
+    urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?";
 
     if(validarFormulario()){
       urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +
              "&tipodocumento=" + tipodocumento  + "&sexo=" + sexo  + "&direccion=" + direccion  + 
              "&fechanacimiento=" + fechanacimiento  + "&telefonofijo=" + telefonofijo  + 
-             "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email + "&barrio=" + barrio;
+             "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email + "&barrio=" + barrio +
+             "&usuario=" + "PAGINAWEB" + "&sucursal=" + sucursal;
 
       console.log( "URL Servicio: " + urlWs);
 
@@ -303,8 +230,7 @@ function registrar() {
       } catch (excepcion) {}
     }else{
         document.getElementById("calloutFormAlert").style.display = 'block';
-    }
-       
+    }       
 }
 
 
@@ -316,7 +242,7 @@ function stateChange() {
     document.getElementById("calloutFormAlert").style.display = 'none';
     document.getElementById("calloutFormWarning").style.display = 'none';
   }
-  //console.log( asyncRequest.readyState + " - " + asyncRequest.status);
+  // console.log( asyncRequest.readyState + " - " + asyncRequest.status);
 
   if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {   
     
@@ -324,8 +250,9 @@ function stateChange() {
     
     var response = JSON.parse(asyncRequest.responseText);
 
-    console.log("Respuesta: " + asyncRequest.responseText);
-    if(response.status === "sucess"){  
+    // console.log("Respuesta: " + asyncRequest.responseText);
+    
+    if(response.status === "OK"){  
       document.getElementById("spinner").style.display = 'none';
       document.getElementById("calloutFormWarning").style.display = 'none';
       document.getElementById("blur").classList.remove("blur-me");
@@ -335,10 +262,9 @@ function stateChange() {
       document.getElementById("calloutFormAlert").style.display = 'none';
       fechanacimiento = "";
       document.getElementById("nombres").focus();
-      document.getElementById("ciudad").value = "CUCUTA";
-
     }else{
-      if(response.data == '99'){
+      console.log()
+      if(response.status == 'Bad Request' ){
         document.getElementById("spinner").style.display = 'none';
         document.getElementById("mensaje").innerHTML ="";
         document.getElementById("mensaje").appendChild(document.createTextNode(response.message));
@@ -370,7 +296,8 @@ function reestrablecerFormulario(){
   document.getElementById("barrio").value =""; 
   document.getElementById("fechanacimiento").value =""; 
   document.getElementById("telefonofijo").value =""; 
-  document.getElementById("celular").value ="";   
+  document.getElementById("celular").value =""; 
+  document.getElementById("ciudad").value =""; 
   document.getElementById("email").value =""; 
   document.getElementById("checkboxterminos").checked = false; 
 }
@@ -422,7 +349,25 @@ function validarFormulario(){
     document.getElementById("fechanacimiento").closest("label").setAttribute("class","is-invalid-label");
   }
   //validacion de barrio
-    
+  document.getElementById("street1-valor").addEventListener("invalid.zf.abide",function(ev,el) {
+      valido = false;
+    document.getElementById("street1-valor").setAttribute("class","is-invalid-input");
+    document.getElementById("street1-valor").closest("label").setAttribute("class","is-invalid-label");
+  });
+
+  if(direccion=== "" || direccion=== "AVENIDA" ){
+    valido = false;
+    document.getElementById("street1-valor").setAttribute("class","is-invalid-input");
+    document.getElementById("street1-valor").closest("label").setAttribute("class","is-invalid-label");
+    document.getElementById("street2-valor").setAttribute("class","is-invalid-input");
+    document.getElementById("street2-valor").closest("label").setAttribute("class","is-invalid-label");
+  }
+  //validacion de barrio
+  document.getElementById("barrio").addEventListener("invalid.zf.abide",function(ev,el) {
+      valido = false;
+    document.getElementById("barrio").setAttribute("class","is-invalid-input");
+    document.getElementById("barrio").closest("label").setAttribute("class","is-invalid-label");
+  });
 
   if(barrio == "" ){
     valido = false;
@@ -503,10 +448,10 @@ function establecerValores() {
     email = document.getElementById("email").value.trim();
     terminos = document.getElementById("checkboxterminos").value;    
 
-    fechanacimiento = document.getElementById('fechanacimiento').value;
+    
 
-    console.log( "fechanacimiento: " + fechanacimiento); 
-   //throw new Error("Something went badly wrong!");    
+   console.log( "fechanacimiento: " + fechanacimiento); 
+   // throw new Error("Something went badly wrong!");    
 }
 
 
@@ -535,15 +480,15 @@ function validateEmail(email){
 
 //registro de manejo de eventos para la carga de la pagina
 window.addEventListener("load", iniciar, false);
-console.log("%cDromedicas del Oriente  %c(Made with %c❤%c)",       
+console.log("%cMade for %cDromedicas del Oriente  %c(specially this project)",       
         "background-color: #FFFFFF; color: #00612E",
         "background-color: #FFFFFF; color: #000a7b",
-        "background-color: #FFFFFF; color: #AE000C",
-        "background-color: #FFFFFF; color: #000a7b");
+        "background-color: #FFFFFF; color: #AE000C");
 
     console.log("%cVisit us! %chttp:www.dromedicas.com.co",
         "background-color: #FFFFFF; color: #000",
         "background-color: #FFFFFF; color: #008ce2");
+
 
 var currentElement = null;
 
