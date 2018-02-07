@@ -6,42 +6,27 @@ var ciudad, documento, nombres, apellidos, tipodocumento, sexo, direccion,
             barrio, fechanacimiento, telefonofijo, celular, email, terminos;
 var btnGuardar;
 var ciudadesService = "http://dromedicas.sytes.net:9999/dropos/wsjson/ciudades/";
-var sucursalesService = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/getsucursales/";
+var sucursalesService = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/getsucursales/";
 
 var urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?";
-var servicioLogin = "http://192.168.14.241:8080/puntosfarmanorte/webservice/apiwebafiliado/login";
 var asyncRequest;
 //teclas eventos para scroll
 var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
+var suc;
+
 
 function iniciar() {
 
+
+    suc = getParameterURLByName('suc');
 
     //Registro de eventos y componente para la interfaz de afiliacion
     if (location.pathname.substring(1) === "seccion/inscripcionoficina.html") {
         btnGuardar = document.getElementById('guardar-button');
         btnGuardar.addEventListener('click', registrar, false);
         //verifica el dispositivo para el componente date
-        if (mobilecheck() && mobileAndTabletcheck()) {
-            document.getElementById('fechanacimiento').setAttribute('type', 'date');
-        } else {
-            $('#fechanacimiento').fdatepicker({
-                closeButton: true,
-                language: 'es',
-                yearRange: "-100:+0",
-                constrainInput: true,
-                format: 'dd/mm/yyyy',
-            });
-            $('#fechanacimiento').fdatepicker().on('changeDate', function(ev) {
-                if (ev.date.valueOf()) {
-                    var newDate = new Date(ev.date)
-                    newDate.setDate(newDate.getDate() + 1);
-                    fechanacimiento = formatDateAnioMesDia(newDate);
-                }
-            });
-        }
-
+       
         //prepara combo de ciudades
         establecerCiudades();
         establecerSucursales();
@@ -184,7 +169,7 @@ function crearComboSucursal(xhr) {
               option.setAttribute("value", sucursalList[i].codigointerno);
               option.appendChild(document.createTextNode(sucursal));
             }
-             if( sucursalList[i].nombreSucursal == 'FARMANORTE 01'){
+             if( sucursalList[i].codigointerno == suc){
                option.setAttribute("selected", 'true');
             }
           sucursalSelect.appendChild(option);
@@ -197,8 +182,6 @@ function crearComboSucursal(xhr) {
         } 
     }
 }
-
-
 
 
 function capitalize(s){
@@ -258,10 +241,13 @@ function stateChange() {
       document.getElementById("blur").classList.remove("blur-me");
       // reestablece el formulario    
       reestrablecerFormulario();
+      establecerCiudades();
+      establecerSucursales();
       document.getElementById("calloutForm").style.display = 'block';
       document.getElementById("calloutFormAlert").style.display = 'none';
       fechanacimiento = "";
       document.getElementById("nombres").focus();
+      $("#calloutForm").fadeOut(8000);
     }else{
       console.log()
       if(response.status == 'Bad Request' ){
@@ -282,6 +268,8 @@ function stateChange() {
 }
 
 function reestrablecerFormulario(){
+
+  documento = null;
   document.getElementById("documento").value =""; 
   document.getElementById("nombres").value =""; 
   document.getElementById("apellidos").value =""; 
@@ -415,9 +403,7 @@ function validarFormulario(){
 
 function establecerValores() {
 
-    if( mobilecheck() && mobileAndTabletcheck()){
-      fechanacimiento = document.getElementById('fechanacimiento').value;
-    }
+    fechanacimiento = document.getElementById('fechanacimiento').value;
     
 
     documento = document.getElementById("documento").value.trim();
@@ -435,6 +421,8 @@ function establecerValores() {
     direcciontemp = direcciontemp.replace('Ñ', 'N');
     direccion = removeDiacritics(direcciontemp);
 
+    sucursal = document.getElementById("sucursal").value;
+    console.log(sucursal);
 
    
     var barriotemp = document.getElementById("barrio").value.toUpperCase().trim();
@@ -591,6 +579,18 @@ function getParameterURLByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+
+
+function getParameterURLByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
 
 
 //Validacion dispositivos mobiles
