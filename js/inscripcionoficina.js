@@ -3,8 +3,9 @@ $(document).foundation()
 
 //Campos del formulario
 var ciudad, documento, nombres, apellidos, tipodocumento, sexo, direccion,
-            barrio, fechanacimiento, telefonofijo, celular, email, terminos;
+            barrio, fechanacimiento, telefonofijo, celular, email, terminos, codvende;
 var btnGuardar;
+//Servicio para obtener ciudades
 var ciudadesService = "http://dromedicas.sytes.net:9999/dropos/wsjson/ciudades/";
 var sucursalesService = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/getsucursales/";
 
@@ -143,6 +144,7 @@ function creandoComboCiudad(xhr) {
             var ciudad = capitalize(ciudadList[i].nombre) +" ("+ capitalize(ciudadList[i].departamento)+")";
             option.appendChild(document.createTextNode(ciudad));
             if( ciudadList[i].nombre == 'CUCUTA'){
+              console.log([i])
               option.setAttribute("selected", 'true');
             }
             ciudadSelect.appendChild(option);
@@ -164,7 +166,7 @@ function crearComboSucursal(xhr) {
         for (var i = 0; i < sucursalList.length; i++) {
           
             var option = document.createElement("option");
-            var sucursal = capitalize(sucursalList[i].nombreSucursal);
+            var sucursal = "FN " + sucursalList[i].codigointerno;
             if( sucursalList[i].nombreSucursal !== 'DROMEDICAS DEL ORIENTE'){
               option.setAttribute("value", sucursalList[i].codigointerno);
               option.appendChild(document.createTextNode(sucursal));
@@ -201,7 +203,7 @@ function registrar() {
              "&tipodocumento=" + tipodocumento  + "&sexo=" + sexo  + "&direccion=" + direccion  + 
              "&fechanacimiento=" + fechanacimiento  + "&telefonofijo=" + telefonofijo  + 
              "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email + "&barrio=" + barrio +
-             "&usuario=" + "PAGINAWEB" + "&sucursal=" + sucursal;
+             "&usuario=" + "PAGINAWEB" + "&sucursal=" + sucursal + "&codvende=" + codvende;
 
       console.log( "URL Servicio: " + urlWs);
 
@@ -229,12 +231,12 @@ function stateChange() {
 
   if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {   
     
-    //`console.log("Respuesta antes json: " + asyncRequest.responseText);
+    //console.log("Respuesta antes json: " + asyncRequest.responseText);
     
     var response = JSON.parse(asyncRequest.responseText);
 
     // console.log("Respuesta: " + asyncRequest.responseText);
-    
+   
     if(response.status === "OK"){  
       document.getElementById("spinner").style.display = 'none';
       document.getElementById("calloutFormWarning").style.display = 'none';
@@ -247,7 +249,19 @@ function stateChange() {
       document.getElementById("calloutFormAlert").style.display = 'none';
       fechanacimiento = "";
       document.getElementById("nombres").focus();
-      $("#calloutForm").fadeOut(8000);
+      $("#calloutForm").fadeOut(5000);
+
+      //Se redirecciona a una pagina del DROPOS
+      var so = getParameterURLByName('so');
+      if( so === 'WINDOWS' ){
+        window.location.href = "http://192.168.0.20:8080/dropos/puntosfarmanorte.php?opcion=actualizarglobalespuntos";
+      }
+      if( so === 'LINUX' ){
+        window.location.href = "http://192.168.0.20:8082/dropos/puntosfarmanorte.php?opcion=actualizarglobalespuntos";
+      }
+
+
+
     }else{
       console.log()
       if(response.status == 'Bad Request' ){
@@ -279,6 +293,7 @@ function reestrablecerFormulario(){
   document.getElementById("street1").selectIndex = 1; 
   document.getElementById("street1-valor").value =""; 
   document.getElementById("street2").selectIndex = 1; 
+  document.getElementById("ciudad").selectIndex = 260; 
   document.getElementById("street2-valor").value =""; 
 
   document.getElementById("barrio").value =""; 
@@ -287,7 +302,8 @@ function reestrablecerFormulario(){
   document.getElementById("celular").value =""; 
   document.getElementById("ciudad").value =""; 
   document.getElementById("email").value =""; 
-  document.getElementById("checkboxterminos").checked = false; 
+  document.getElementById("codvende").value =""; 
+  document.getElementById("checkboxterminos").checked = true; 
 }
 
 function validarFormulario(){
@@ -397,6 +413,19 @@ function validarFormulario(){
     document.getElementById("checkboxterminos").closest("label").setAttribute("class","is-invalid-label");
   }
 
+  //validacion de codigo vendedor
+  document.getElementById("codvende").addEventListener("invalid.zf.abide",function(ev,el) {
+      valido = false;
+    document.getElementById("codvende").setAttribute("class","is-invalid-input");
+    document.getElementById("codvende").closest("label").setAttribute("class","is-invalid-label");
+  });
+
+  if(codvende == "" ){
+    valido = false;
+    document.getElementById("codvende").setAttribute("class","is-invalid-input");
+    document.getElementById("codvende").closest("label").setAttribute("class","is-invalid-label");
+  }
+
   return valido
 }
 
@@ -433,11 +462,12 @@ function establecerValores() {
     telefonofijo = document.getElementById("telefonofijo").value.trim();
     celular = document.getElementById("celular").value.trim();
     ciudad = document.getElementById("ciudad").value.toUpperCase().trim();
-    email = document.getElementById("email").value.trim();
+    email = document.getElementById("email").value.trim().toLowerCase();
     terminos = document.getElementById("checkboxterminos").value;    
 
-    
+    codvende = document.getElementById("codvende").value.trim();  
 
+   console.log( "codvende: " + codvende); 
    console.log( "fechanacimiento: " + fechanacimiento); 
    // throw new Error("Something went badly wrong!");    
 }
