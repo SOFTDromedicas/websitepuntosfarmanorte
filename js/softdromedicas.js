@@ -66,10 +66,6 @@ function iniciar() {
     // documentoAfiliado = getParameterURLByName('documento'); 
     documentoAfiliado = getParameterURLByName('id'); 
 
-    // var updateURL = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpvalidarcuentaemail/?documento=";
-    // updateURL += documentoAfiliado;
-
-
     var updateURL = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/validacorreo?id=";   
     updateURL += documentoAfiliado;
     // updateURL += "88239811";
@@ -77,7 +73,7 @@ function iniciar() {
     $.ajax({
             url: updateURL,
         })
-        .done(function(res) {
+        .done(function(res) {     
             //console.log(res);
 
         })
@@ -130,10 +126,7 @@ function creandoComboCiudad(xhr) {
 }
 
 function obtenerDatosAfiliado() {
-    // var datosURL = "http://dromedicas.sytes.net:9999/dropos/wsjson/fpdatosafiliado/?documento=";
-    // datosURL += documentoAfiliado;
-    // datosURL += "373950743";
-    
+   
     var datosURL = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/obtenerafiliado?id=";  
     datosURL += documentoAfiliado;
 

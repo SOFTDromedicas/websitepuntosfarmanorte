@@ -16,6 +16,8 @@ var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
 var suc;
 
+var version =  "Version 1.7";
+
 
 function iniciar() {
 
@@ -48,6 +50,8 @@ function iniciar() {
 
         document.getElementById('cancelar-button').addEventListener('click',
           limpiarFormulario, false);
+
+        document.getElementById("version").innerHTML = version;
     }
   
 
@@ -143,8 +147,7 @@ function creandoComboCiudad(xhr) {
             option.setAttribute("value", ciudadList[i].nombre);
             var ciudad = capitalize(ciudadList[i].nombre) +" ("+ capitalize(ciudadList[i].departamento)+")";
             option.appendChild(document.createTextNode(ciudad));
-            if( ciudadList[i].nombre == 'CUCUTA'){
-              console.log([i])
+            if( ciudadList[i].nombre == 'CUCUTA'){             
               option.setAttribute("selected", 'true');
             }
             ciudadSelect.appendChild(option);
@@ -196,9 +199,11 @@ function registrar() {
     
     establecerValores();
 
-    urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?";
+     urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?";
+    //urlWs = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?";
 
-    if(validarFormulario()){
+
+    if(validarFormulario()){    
       urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +
              "&tipodocumento=" + tipodocumento  + "&sexo=" + sexo  + "&direccion=" + direccion  + 
              "&fechanacimiento=" + fechanacimiento  + "&telefonofijo=" + telefonofijo  + 
@@ -249,18 +254,16 @@ function stateChange() {
       document.getElementById("calloutFormAlert").style.display = 'none';
       fechanacimiento = "";
       document.getElementById("nombres").focus();
-      $("#calloutForm").fadeOut(5000);
+      $("#calloutForm").fadeOut(3000);
 
       //Se redirecciona a una pagina del DROPOS
       var so = getParameterURLByName('so');
       if( so === 'WINDOWS' ){
-        window.location.href = "http://192.168.0.20:8080/dropos/puntosfarmanorte.php?opcion=actualizarglobalespuntos";
+        window.location.href = "http://192.168.0.20:8080/dropos/puntosfarmanorte.php?opcion=actualizarglobalespuntos&so=WINDOWS";
       }
       if( so === 'LINUX' ){
-        window.location.href = "http://192.168.0.20:8082/dropos/puntosfarmanorte.php?opcion=actualizarglobalespuntos";
+        window.location.href = "http://192.168.0.20:8082/dropos/puntosfarmanorte.php?opcion=actualizarglobalespuntos&so=LINUX";
       }
-
-
 
     }else{
       console.log()
@@ -352,6 +355,20 @@ function validarFormulario(){
     document.getElementById("fechanacimiento").setAttribute("class","is-invalid-input");
     document.getElementById("fechanacimiento").closest("label").setAttribute("class","is-invalid-label");
   }
+
+ 
+  if(  esMayorDeEdad(fechanacimiento) && fechanacimiento != ""  ){
+    document.getElementById("spinner").style.display = 'none';
+    document.getElementById("mensaje").innerHTML ="";
+    document.getElementById("mensaje").appendChild(document.createTextNode("Es Menor de Edad"));
+    document.getElementById("calloutFormWarning").style.display = 'block';
+    document.getElementById("blur").classList.remove("blur-me");     
+
+    document.getElementById("fechanacimiento").setAttribute("class","is-invalid-input");
+    document.getElementById("fechanacimiento").closest("label").setAttribute("class","is-invalid-label");
+    valido = false;
+  }
+
   //validacion de barrio
   document.getElementById("street1-valor").addEventListener("invalid.zf.abide",function(ev,el) {
       valido = false;
@@ -451,7 +468,7 @@ function establecerValores() {
     direccion = removeDiacritics(direcciontemp);
 
     sucursal = document.getElementById("sucursal").value;
-    console.log(sucursal);
+    
 
    
     var barriotemp = document.getElementById("barrio").value.toUpperCase().trim();
@@ -467,7 +484,7 @@ function establecerValores() {
 
     codvende = document.getElementById("codvende").value.trim();  
 
-   console.log( "codvende: " + codvende); 
+   
    console.log( "fechanacimiento: " + fechanacimiento); 
    // throw new Error("Something went badly wrong!");    
 }
@@ -641,6 +658,27 @@ function getParameterURLByName(name, url) {
         })(navigator.userAgent || navigator.vendor || window.opera);
         return check;
     };
+
+
+
+function esMayorDeEdad(fecNacimiento){
+   
+   var edad = getAge(moment(fecNacimiento));
+   return edad >= 18 ? false : true;
+
+}
+
+
+function getAge(dateString) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
 
 
 function removeDiacritics (str) {

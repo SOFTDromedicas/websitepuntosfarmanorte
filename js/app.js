@@ -1,6 +1,6 @@
+//@utor-> @lfernandortiz | @SOFTDromedicas
 $(document).foundation()
 //Procesamiento del formulario de inscripcion basico
-
 //Campos del formulario
 var ciudad, documento, nombres, apellidos, tipodocumento, sexo, direccion,
             barrio, fechanacimiento, telefonofijo, celular, email, terminos;
