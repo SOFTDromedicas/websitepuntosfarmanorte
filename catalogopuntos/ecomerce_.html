@@ -1,0 +1,545 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-88757058-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-88757058-2');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0">    
+    <meta name="description" content="Puntos Farmanorte es el programa de fidelizaci&oacute;n de clientes de la cadena Drogueria Faramanorte">
+    <meta name="author" content="SoftDeromedicas">
+    <title>Catalogo de Productos a Redimir</title>
+    <link rel="canonical" href="http://www.puntosfarmanorte.com.co">
+    <meta name="robots" content="all">    
+    <link rel="stylesheet" href="../css/foundation.css">
+    <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">   
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600i" rel="stylesheet">   
+    
+    <meta property="og:title" content="Puntos Farmanorte" />
+    <meta property="og:url" content="http://www.puntosfarmanorte.com.co" />
+    <meta property="og:description" content="Vinculate a nuestro programa de clientes fieles, de Drogueria Farmanorte">
+    <meta property="og:image" content="../images/iconospuntos-192x192.png">
+    <meta property="og:type" content="Application" />
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+    <link rel="manifest" href="../images/manifest.json">
+    <meta name="theme-color" content="#ffffff">
+
+  </head>
+  <body>
+  <!-- Menu off-canvas -->
+  <div class="off-canvas position-right" id="offCanvas" data-off-canvas>
+    <!-- Close button -->
+    <button class="close-button" aria-label="Close menu" type="button" data-close>
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+    <!-- Menu  off canvas-->
+    <nav id="nav-contente" data-magellan>
+      <ul class="vertical menu" id="menuoffcanvas">
+        <li><a href="#ancla_quesonpuntos">¿Qu&eacute; son Puntos Farmanorte?</a></li>
+        <li><a href="#ancla_registro-section">¿C&oacute;mo registrarse?</a></li>
+        <li><a href="#ancla_beneficion-section">¿C&uacute;ales son los beneficios?</a></li>
+      </ul>
+    </nav>
+    <div id="login-offcanvas">
+      <h5>Iniciar Sesi&oacute;n</h5>
+      <i class="fa fa-sign-in" aria-hidden="true" ></i>
+    </div> 
+  </div>
+  
+  <!-- Contenido de la pagina normal -->
+  <div class="off-canvas-content" data-off-canvas-content>
+    <!-- Your page content lives here -->
+
+    <!-- login -->
+    <div class="container_14xz0pw" id="login-container-main" style="display: none;">
+      <div class="innerContainer" id="innerContainer">
+        
+        <div class="paddingcontainer" id="paddingcontainer">
+          <div class="row" id="row-login">
+              <div class="columns small-12 medium-6  large-5 float-center login-main" id="login-main"> 
+                <div class="row">
+                  <div id="closeicon" class="columns small-12 closeicon">
+                    <img src="../images/cerraricon.svg" alt="" id="iconocerrar" class="float-right">
+                  </div>
+                </div>       
+                <div class="row">
+                   <div class="columns small-12" class="banda-login" id="banda-login">
+                     <h3 class="float-center">Iniciar Sesi&oacute;n</h3>
+                   </div>
+                 </div> 
+                 <div class="row" > <!-- loader div -->
+                   <div id="loadinglogin" class="columns small-12 basic"></div>
+                 </div> <!-- end loader div -->
+                <div data-abide-error class="alert callout columns small-12" style="display: none;" id="calloutLoginAlert" data-closable>
+                  <h6><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Verifique Usuario y Contrase&ntilde;a.</h6>                 
+                  <button class="close-button" aria-label="Dismiss alert" id="closeloginc" type="button" data-close>
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                  <form action="" id="form-login">
+                    <div class="row">
+                      <div class="columns small-12">
+                        <label>N&uacute;mero de Documento
+                          <input type="text" name="documento" id="documentologin" placeholder="Ingresa tu documento">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="columns small-12">
+                        <label>Contrase&ntilde;a
+                          <input type="password" name="documento" id="password" placeholder="Ingresa tu clave">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="columns small-6 medium-6" id="recordarme-content">
+                        <label>
+                          <input type="checkbox" name="documento" id="recordarme" placeholder="Ingrea tu clave">
+                          Recordarme
+                        </label>
+                      </div>
+                      <div class="columns small-6 medium-6" id="mostrar-clave"> 
+                          <p class="float-right" id="p-mostrarclave">Mostrar Contrase&ntilde;a</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="columns small-12">
+                        <button type="button" id="iniciar-sesion" class="button expanded">Continuar</button>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="columns small-12" id="olvidocontrasenia-content">
+                        <div class="olvido-cont"><span id="olvidocontrasenia" class="float-center">¿Olvidaste tu Contrase&ntilde;a?</span></div>
+                        <hr/>
+                      </div>
+                    </div>              
+                    <div class="row">
+                      <div class="columns small-12">
+                        <p id="creacuenta">¿No tiene una cuenta? <a href="http://www.puntosfarmanorte.com.co/seccion/inscripcion.html">Reg&iacute;strate.</a></p>
+                      </div>
+                    </div>                    
+                  </form>           
+              </div> <!-- end login main -->
+          </div> <!-- end row ppal -->      
+        </div> <!-- end paddingcontainer -->
+
+      </div>  
+    </div> <!-- end login container -->
+    
+    <!-- Olvido su contrasenia -->
+    <div class="container_14xz0pw" id="olvido-container-main" style="display:none;">
+      <div class="innerContainer" id="innerContainer-olvido">        
+        <div class="paddingcontainer" id="paddingcontainer-olvido">
+          <div class="row" id="row-olvido">
+              <div class="columns small-12 medium-7 float-center login-main" id="recuperar-main-olvido"> 
+                <div class="row">
+                  <div id="closeiconolv-olvido" class="columns small-12 closeicon">
+                    <img src="../images/cerraricon.svg" alt="" id="iconocerrarlogin-olvido" class="float-right">
+                  </div>
+                </div>       
+                <div class="row">
+                   <div class="columns small-12 banda-recuperar" >
+                     <h3 class="float-center">Restablecer contrase&ntilde;a</h3>
+                   </div>
+                </div> 
+                <div class="row" > <!-- loader div -->
+                   <div id="loadclave" class="columns small-12 basic"></div>
+                </div> <!-- end loader div -->
+                <div data-abide-error class="alert callout columns small-12" style="display: none;" id="calloutRecupera" data-closable>
+                  <h6><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <span id="inforecupera"></span></h6>
+                  <button class="close-button" aria-label="Dismiss alert" id="closeloginc" type="button" data-close>
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                  <form action="" id="form-login-olvido" data-abide novalidate>
+                    <div class="row">
+                      <div class="columns small-12">
+                        <p class="volver-sesion">Ingresa la direcci&oacute;n de correo electr&oacute;nico asociada a tu cuenta y te enviaremos un enlace para restablecer tu contrase&ntilde;a.</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="columns small-12">                        
+                        <input type="email"  id="emialRecuperar" placeholder="Correo Electr&oacute;nico" required="true">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="columns small-6 medium-7" id="recordarme-content">
+                        <p class="float-left" id="volver-sesion"><img src="../images/returnlogin.svg" id="rowlogin">Volver al inicio de sesi&oacute;n</p>
+                      </div>
+                      <div class="columns small-6 medium-5" id="mostrar-clave">      
+                        <button type="button" id="recuperarClave" class="button float-right">Enviar Enlace</button>
+                      </div>
+                    </div>          
+                             
+              </div> <!-- end login main -->
+          </div> <!-- end row ppal -->      
+        </div> <!-- end paddingcontainer -->
+      </div>  
+    </div> <!-- end login container -->
+    <!-- end Olvido su contrasenia -->
+    
+
+    <!-- Dentro de blur esta todo el contenido de la pagina -->
+    <div id="blurme-container" > 
+
+      <!--Head Section-->
+      <section id="head-container">
+        <!-- barra azul -->
+        <div class="row expanded columns small-12 spaceblue">        
+        </div>
+        <!-- Menu Normal-->      
+        <div id="menu-container" data-sticky-container data-sticky data-options="marginTop:0;" data-sticky-on="small" >
+          <div class="row expanded menuc-row" > 
+            <!-- columna logo -->
+            <div class="columns small-10 medium-5 large-5">
+              <a href="index.html">
+                <figure id="logotipo"><img src="../images/logoPuntosFarmanorte.svg" alt="Logo Puntos Farmanorte" ></figure>              
+              </a>
+            </div>
+            <!-- columna Menu -->
+            <div class="columns small-2 medium-7 large-7" id="contenedor-menu">
+              <!-- burger menu -->
+              <div class="show-for-small-only align-right" id="burger-menu">
+                <a href="#" data-toggle="offCanvas" class="burgerb"><i class="fa fa-bars" aria-hidden="true"></i></a>
+              </div>
+              <!-- Menu normal -->
+              <div class="row align-center show-for-medium" id="rowmenu" >
+                <nav id="menuppal" data-magellan>  
+                  <ul class="dropdown menu navbar align-spaced show-for-medium" id="menppal">
+                    <li class="activa"><a href="#ancla_quesonpuntos">¿Qu&eacute; son Puntos <br/>Farmanorte?</a></li>
+                    <li><a href="#ancla_registro-section">¿C&oacute;mo <br/>registrarse?</a></li>
+                    <li><a href="#ancla_beneficion-section" class="">¿C&uacute;ales son los <br/>beneficios?</a></li>
+                  </ul>
+                </nav>
+                <div class="solapa" >
+                  <p id="loginperfil">Ingresar</p>                
+                </div>
+              </div> <!-- end row-content for nav -->
+            </div> <!-- end columna menu -->
+          </div> <!-- end row contenedor  -->
+        </div> <!-- end menu-container -->
+      </section> <!-- end Head Section -->
+
+      
+   
+
+
+    <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+      <ul class="orbit-container">
+        <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
+        <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+        <li class="orbit-slide is-active">
+          <img src="http://placehold.it/2000x750">
+        </li>
+        <li class="orbit-slide">
+          <img src="http://placehold.it/2000x750">
+        </li>
+        <li class="orbit-slide">
+          <img src="http://placehold.it/2000x750">
+        </li>
+        <li class="orbit-slide">
+          <img src="http://placehold.it/2000x750">
+        </li>
+      </ul>
+    </div>
+
+    <div class="row column text-center">
+      <h2>Our Newest Products</h2>
+      <hr>
+    </div>
+
+    <div class="row small-up-2 large-up-4">
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button expanded">Buy</a>
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button expanded">Buy</a>
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button expanded">Buy</a>
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button expanded">Buy</a>
+      </div>
+    </div>
+
+    <div class="row small-up-2 large-up-4">
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button expanded">Buy</a>
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button expanded">Buy</a>
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button expanded">Buy</a>
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button expanded">Buy</a>
+      </div>
+    </div>
+    <div class="row small-up-2 large-up-4">
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button expanded">Buy</a>
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button expanded">Buy</a>
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button expanded">Buy</a>
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button expanded">Buy</a>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row column">
+      <div class="callout primary">
+        <h3>Really big special this week on items.</h3>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row column text-center">
+      <h2>Some Other Neat Products</h2>
+      <hr>
+    </div>
+
+    <div class="row small-up-2 medium-up-3 large-up-6">
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button small expanded hollow">Buy</a>
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button small expanded hollow">Buy</a>
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button small expanded hollow">Buy</a>
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button small expanded hollow">Buy</a>
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button small expanded hollow">Buy</a>
+      </div>
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5>Nulla At Nulla Justo, Eget</h5>
+        <p>$400</p>
+        <a href="#" class="button small expanded hollow">Buy</a>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div class="medium-4 columns">
+        <h4>Top Products</h4>
+        <div class="media-object">
+          <div class="media-object-section">
+            <img class="thumbnail" src="http://placehold.it/100x100">
+          </div>
+          <div class="media-object-section">
+            <h5>Nunc Eu Ullamcorper Orci</h5>
+            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
+          </div>
+        </div>
+        <div class="media-object">
+          <div class="media-object-section">
+            <img class="thumbnail" src="http://placehold.it/100x100">
+          </div>
+          <div class="media-object-section">
+            <h5>Nunc Eu Ullamcorper Orci</h5>
+            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
+          </div>
+        </div>
+        <div class="media-object">
+          <div class="media-object-section">
+            <img class="thumbnail" src="http://placehold.it/100x100">
+          </div>
+          <div class="media-object-section">
+            <h5>Nunc Eu Ullamcorper Orci</h5>
+            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
+          </div>
+        </div>
+      </div>
+      <div class="medium-4 columns">
+        <h4>Top Products</h4>
+        <div class="media-object">
+          <div class="media-object-section">
+            <img class="thumbnail" src="http://placehold.it/100x100">
+          </div>
+          <div class="media-object-section">
+            <h5>Nunc Eu Ullamcorper Orci</h5>
+            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
+          </div>
+        </div>
+        <div class="media-object">
+          <div class="media-object-section">
+            <img class="thumbnail" src="http://placehold.it/100x100">
+          </div>
+          <div class="media-object-section">
+            <h5>Nunc Eu Ullamcorper Orci</h5>
+            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
+          </div>
+        </div>
+        <div class="media-object">
+          <div class="media-object-section">
+            <img class="thumbnail" src="http://placehold.it/100x100">
+          </div>
+          <div class="media-object-section">
+            <h5>Nunc Eu Ullamcorper Orci</h5>
+            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
+          </div>
+        </div>
+      </div>
+      <div class="medium-4 columns">
+        <h4>Top Products</h4>
+        <div class="media-object">
+          <div class="media-object-section">
+            <img class="thumbnail" src="http://placehold.it/100x100">
+          </div>
+          <div class="media-object-section">
+            <h5>Nunc Eu Ullamcorper Orci</h5>
+            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
+          </div>
+        </div>
+        <div class="media-object">
+          <div class="media-object-section">
+            <img class="thumbnail" src="http://placehold.it/100x100">
+          </div>
+          <div class="media-object-section">
+            <h5>Nunc Eu Ullamcorper Orci</h5>
+            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
+          </div>
+        </div>
+        <div class="media-object">
+          <div class="media-object-section">
+            <img class="thumbnail" src="http://placehold.it/100x100">
+          </div>
+          <div class="media-object-section">
+            <h5>Nunc Eu Ullamcorper Orci</h5>
+            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout large secondary">
+      <div class="row">
+        <div class="large-4 columns">
+          <h5>Vivamus Hendrerit Arcu Sed Erat Molestie</h5>
+          <p>Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed molestie augue sit.</p>
+        </div>
+        <div class="large-3 large-offset-2 columns">
+          <ul class="menu vertical">
+            <li><a href="#">One</a></li>
+            <li><a href="#">Two</a></li>
+            <li><a href="#">Three</a></li>
+            <li><a href="#">Four</a></li>
+          </ul>
+        </div>
+        <div class="large-3 columns">
+          <ul class="menu vertical">
+            <li><a href="#">One</a></li>
+            <li><a href="#">Two</a></li>
+            <li><a href="#">Three</a></li>
+            <li><a href="#">Four</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+      
+     
+      
+      
+
+      <footer>
+      <div class="row expanded">
+        <div class="columns small-12" id="terminos">
+          <div class="terminos-content">
+            <img src="../images/logopuntosonly.svg" alt="Logo Puntos Farmanorte" id="terminoslogo" >
+            <a href="seccion/terminosycondiciones.html" target="_blank">
+              <span id="tituloterminos">T&eacute;rminos y Condiciones</span>            
+            </a>
+            <img src="../images/logopuntosonly.svg" alt="Logo Puntos Farmanorte" id="terminoslogo" >          
+          </div>
+        </div>      
+      </div>      
+      </footer>
+    </div>
+  </div>
+
+
+    <script src="../js/vendor/jquery.js"></script>
+    <script src="../js/vendor/what-input.js"></script>
+    <script src="../js/vendor/foundation.js"></script>
+    <script src="../js/app.js"></script>
+  </body>
+</html>
