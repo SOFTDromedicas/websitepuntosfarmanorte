@@ -2,6 +2,7 @@ $(document).foundation()
 
 
 var urlServicio = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/puntos/datosafiliado/";
+var urlTransacciones = "";
 var infoAfiliado;
 
 function iniciar() {
