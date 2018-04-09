@@ -47,7 +47,6 @@ function obtenerInfoAfiliado(callback) {
 
 function cargarDatosAfiliado(){
   var afiliado = infoAfiliado.afiliado;
-  var txs = afiliado.transaccions;
   var balance = infoAfiliado.balance;
   var foto =  infoAfiliado.urlFotoAfiliado;
   $('#etiquetaafiliado').text(onwName(afiliado.nombres + " " + afiliado.apellidos));
@@ -85,7 +84,9 @@ function cargarDatosAfiliado(){
 }
 
 
-
+/**
+ * Actualiza la foto del perfil 
+ */
 function actualizarAfiliado(){
   var file =  document.querySelector('#fotoperfil').files[0];
 
@@ -316,13 +317,14 @@ function cerrarSesion(){
 
 //Funciones de utilidad y formato///
 
-
 //convierte un epoch a date
 function ConvertToDatetime(dateValue) {
   var regex = /-?\d+/;
   var match = regex.exec(dateValue);
   return  formatDate(new Date(parseInt(match[0])));
 }
+
+
 
 //Da formato de  YYYY-MM-DD a un objeto date
 function formatDate(date) {

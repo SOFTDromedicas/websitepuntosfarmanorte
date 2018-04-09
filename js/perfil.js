@@ -2,11 +2,17 @@ $(document).foundation()
 
 
 var urlServicio = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/puntos/datosafiliado/";
-var urlTransacciones = "";
+var urlTxs      = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/puntos/ultimastxs/";
+var urlTxs      = "http://localhost:8080/puntosfarmanorte/webservice/puntos/ultimastxs/";
 var infoAfiliado;
+var infoTxs;
 
+/**
+ * Funcion que se ejecuta cuando el DOM ya esta cargado
+ */
 function iniciar() {
-  //valido las respuestas del endpoint
+  
+ //Carga asincrona de los datos del afiliado
   obtenerInfoAfiliado(function(response) {
     //Parse JSON string into object
     infoAfiliado = JSON.parse(response);
@@ -17,11 +23,49 @@ function iniciar() {
     }
   });
 
+  //Carga asincrona de las ultimas transadcciones
+  obtenerTxAfiliado(
+    function(response) {
+        //Parse JSON string into object
+        infoTxs = JSON.parse(response);
+        if(infoTxs.code == 200){
+          cargarTxAfiliado();
+        }else{
+           window.location.href = "../index.html";
+        }
+      }
+  );
+
   document.getElementById('salirPuntos').addEventListener('click', cerrarSesion, false);
   document.getElementById('exit-offcanvas').addEventListener('click', cerrarSesion, false);
 }//end function iniciar
 
 
+/**
+ * Obtiene las transacciones del afiliado desde el servicio definido
+ * para este fin.
+ * @param {function} callback 
+ */
+function obtenerTxAfiliado(callback) {
+    var xobj = new XMLHttpRequest();
+    urlEndPoint = urlTxs + localStorage.getItem('token');
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', urlEndPoint, true); // Replace 'my_data' with the path to your file
+    xobj.onreadystatechange = function() {
+        if (xobj.readyState == 4 && xobj.status == "200") {
+            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+            callback(xobj.responseText);
+        }
+    };
+    xobj.send(null);
+}
+
+/**
+ * Obtiene los datos del afiliado desde el servicio definido para
+ * este fin, se debe enviar el token para validar la identidad del 
+ * afiliado (JWT)
+ * @param {function} callback 
+ */
 function obtenerInfoAfiliado(callback) {
     var xobj = new XMLHttpRequest();
     urlEndPoint = urlServicio + localStorage.getItem('token');
@@ -36,9 +80,14 @@ function obtenerInfoAfiliado(callback) {
     xobj.send(null);
 }
 
+
+/**
+ * Establece en los elementos del DOM los datos
+ * obtenidos del afiliado desde el servicio web
+ * Datos del afiliado de la plataforma de puntos.
+ */
 function cargarDatosAfiliado(){
-  var afiliado = infoAfiliado.afiliado;
-  var txs = afiliado.transaccions;
+  var afiliado = infoAfiliado.afiliado;  
   var balance = infoAfiliado.balance;
   var foto =  infoAfiliado.urlFotoAfiliado;
   $('#legendperfilmain').text(onwName(afiliado.nombres + " " + afiliado.apellidos));
@@ -60,9 +109,17 @@ function cargarDatosAfiliado(){
     $('#fotoPerfilMenu').attr("src",foto);
     $('#fotoperfilmenuOff').attr("src",foto);
   }
+}
 
-  //transacciones
+
+/**
+ * Crea el detalle de la tabla de transacciones del 
+ * perfil del afiliado
+ */
+function cargarTxAfiliado(){
+    //transacciones
   var tabla = document.getElementById('txrecord');
+  var txs = infoTxs.contenedor;
   for( var i = 0 ; i < 10; i++ ){
     var descripcion  = txs[i].tipotransaccion.descripcion;
     var tipoTx;
@@ -102,11 +159,14 @@ function cargarDatosAfiliado(){
     fila.appendChild(thDatos);
     fila.appendChild(thFecha);
     fila.appendChild(thPuntos);
-  }
-  
+  }//fin del for que itera las transaccion
 }
 
 
+/**
+ * Cierra sesion y elimina el Json Web Token del
+ * Local Storage
+ */
 function cerrarSesion(){
 
   //elimina el token
@@ -114,12 +174,17 @@ function cerrarSesion(){
 
   //redireccion al index
   window.location.href = "../index.html";
-
 }
 
 
+
+
 //Funciones de utilidad y formato///
-//Nombre Propio 
+/**
+ * Convierte la cadena en formato de nombre propio.
+ * la primera letra en mayuscula de cada token
+ * @param {String} str 
+ */
 function onwName(str)
 {
   var array1 = str.toLowerCase().split(' ');
@@ -131,7 +196,12 @@ function onwName(str)
   return newarray1.join(' ');
 }
 
-//Da formato de miles a un numero 
+
+/**
+ * Da formato de miles al parametro amount
+ * @param {int} amount 
+ * @param {int} decimals 
+ */
 function number_format(amount, decimals) {
 
     amount += ''; // por si pasan un numero en vez de un string
