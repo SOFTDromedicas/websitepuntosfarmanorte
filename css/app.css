@@ -1585,10 +1585,23 @@ button#actperfil-button{
 
 #titulo-catalogo{
 	margin-top: 2.5rem;
+	font-family: 'Open Sans', sans-serif;
 }
 
 .row-productos{
-	/* margin-bottom: 10px; */
+	font-family: 'Open Sans', sans-serif;
+}
+
+.tituloProducto{
+	font-family: 'Open Sans', sans-serif;
+}
+
+.point{
+	color: #0a2c9c;
+}
+
+.descripcion-prod{
+	font-family: 'Open Sans', sans-serif;
 }
 
 .thumbnail{
@@ -1606,7 +1619,7 @@ button#actperfil-button{
 	border-radius: 3px;	
 	/* padding-bottom: 5px; */
 	color: #ffffff;
-	transition: 0.65s ;
+	transition: 0.55s ;
 }
 
 
@@ -1615,6 +1628,12 @@ button#actperfil-button{
 	border: 1px solid rgb(254, 255, 255)!important;
 	background: #ffffff2a!important;
 }
+
+
+.item-activo:hover i{
+	color: #fff;
+}
+
 
 
 
