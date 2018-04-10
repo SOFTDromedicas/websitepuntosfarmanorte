@@ -12,9 +12,6 @@ a:hover, a:active{
 	border: none;
 }
 
-body{
-	/*background: #CFE109*/
-}
 
 .spaceblue{
 	min-height:  1.5rem!important;
@@ -1584,8 +1581,39 @@ button#actperfil-button{
 }
 
 
+/** Pagina Catalogo Puntos **/
+
+#titulo-catalogo{
+	margin-top: 2.5rem;
+}
 
 
+.row-productos{
+	margin-bottom: 10px;
+}
+
+.item-activo{
+	transition: 0.45s ;
+}
+
+
+.item-activo:hover{
+	background: #0984c9;
+	background:#1d3572;
+	box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
+	padding-top: 7px;
+	border-radius: 3px;
+	
+	color: #ffffff;
+	transition: 0.45s ;
+}
+
+
+.item-activo:hover a.button.expanded{
+	background: none!important;
+	border: 1px solid rgb(254, 255, 255)!important;
+	background: #ffffff2a!important;
+}
 
 
 

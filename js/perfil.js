@@ -7,11 +7,11 @@ var urlTxs      = "http://localhost:8080/puntosfarmanorte/webservice/puntos/ulti
 var infoAfiliado;
 var infoTxs;
 
+
 /**
  * Funcion que se ejecuta cuando el DOM ya esta cargado
  */
-function iniciar() {
-  
+function iniciar() {  
  //Carga asincrona de los datos del afiliado
   obtenerInfoAfiliado(function(response) {
     //Parse JSON string into object
@@ -22,7 +22,6 @@ function iniciar() {
        window.location.href = "../index.html";
     }
   });
-
   //Carga asincrona de las ultimas transadcciones
   obtenerTxAfiliado(
     function(response) {
@@ -35,10 +34,10 @@ function iniciar() {
         }
       }
   );
-
   document.getElementById('salirPuntos').addEventListener('click', cerrarSesion, false);
   document.getElementById('exit-offcanvas').addEventListener('click', cerrarSesion, false);
 }//end function iniciar
+
 
 
 /**
