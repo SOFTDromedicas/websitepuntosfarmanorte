@@ -1,10 +1,10 @@
-/* .row{
+ .row{
 	border: 1px solid #E2EA03;
 }
 
 .columns{
 	border: 1px solid #FA0000;
-} */
+} 
 
 
 a:hover, a:active{
@@ -1632,6 +1632,11 @@ button#actperfil-button{
 
 .item-activo:hover i{
 	color: #fff;
+}
+
+
+.p-separador{
+	min-height: 5.3rem!important;
 }
 
 
