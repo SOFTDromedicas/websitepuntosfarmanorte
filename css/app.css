@@ -1653,6 +1653,42 @@ button#actperfil-button{
 	font-family: 'Open Sans', sans-serif;
 }
 
+label.middle{
+	font-size: 1rem;
+}
+
+
+.boton-prod{
+	
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 0 1rem 0;
+		font-family: inherit;
+		padding: 0.85em 1em;
+		-webkit-appearance: none;
+		border: 1px solid transparent;
+		border-radius: 0;
+		-webkit-transition: background-color 0.25s ease-out, color 0.25s ease-out;
+		transition: background-color 0.25s ease-out, color 0.25s ease-out;
+		font-size: 0.9rem;
+		line-height: 1;
+		text-align: center;
+		cursor: pointer;
+		background-color: #1779ba;
+		color: #fefefe;	
+}
+
+input:read-only {
+	background: #ffffff;
+	border: 1px solid #BFBFBF;
+}
+
+.button-group.secondary .button.redes-pro{
+	background-color: #767676;
+	color: #fefefe;
+	border-radius: none;
+
+}
 
 /* .column:last-child:not(:first-child), .columns:last-child:not(:first-child) {
 	float: right!important; 
@@ -2277,7 +2313,7 @@ button#actperfil-button{
 
 	#terminos {
 		background: #0D2580;
-		/* background: #eb390d; */
+		/* background: #eib390d; */
 	}
 
 }
