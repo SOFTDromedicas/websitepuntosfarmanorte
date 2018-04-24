@@ -3,7 +3,7 @@ $(document).foundation()
 
 var urlServicio = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/puntos/datosafiliado/";
 var urlTxs      = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/puntos/ultimastxs/";
-var urlTxs      = "http://localhost:8080/puntosfarmanorte/webservice/puntos/ultimastxs/";
+// var urlTxs      = "http://localhost:8080/puntosfarmanorte/webservice/puntos/ultimastxs/";
 var infoAfiliado;
 var infoTxs;
 

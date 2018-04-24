@@ -262,7 +262,11 @@ function stateChange() {
         window.location.href = "http://192.168.0.20:8080/dropos/puntosfarmanorte.php?opcion=actualizarglobalespuntos&so=WINDOWS";
       }
       if( so === 'LINUX' ){
-        window.location.href = "http://192.168.0.20:8082/dropos/puntosfarmanorte.php?opcion=actualizarglobalespuntos&so=LINUX";
+        if(sucursal == 36 ){
+          window.location.href = "http://192.168.2.20:8084/dropos/puntosfarmanorte.php?opcion=actualizarglobalespuntos&so=LINUX";
+        }else{
+          window.location.href = "http://192.168.0.20:8082/dropos/puntosfarmanorte.php?opcion=actualizarglobalespuntos&so=LINUX";
+        }
       }
 
     }else{
