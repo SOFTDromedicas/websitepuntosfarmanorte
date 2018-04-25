@@ -143,7 +143,6 @@ function obtenerDatosProducto() {
 
 function obtenerProductoServicio(callback) {
     var urlEnd = urlServicioDetalle + getParameterURLByName('id');
-    console.log('id: '  +  getParameterURLByName('id'));
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
     xobj.open('GET', urlEnd, true); // Replace 'my_data' with the path to your file
@@ -172,8 +171,9 @@ function crearProductoCatalogoDetalle(pdto){
     
     //efectivo-pro
     $('#efectivo-pro').text(number_format(pdto.efectivo,0));
+    
     //img-pro
-
+    $('#img-pro').attr("src", urlImgDetalle + getParameterURLByName('id'));
 } 
 
 
