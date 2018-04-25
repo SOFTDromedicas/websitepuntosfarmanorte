@@ -4,9 +4,11 @@ $(document).foundation()
 window.addEventListener("load", init, false);
 
 var urlServicioCatalogo = "http://localhost/dropos/wsjson/catalogopuntos/?opc=catalogo";
+var urlServicioDetalle = "http://localhost/dropos/wsjson/catalogopuntos/?id=";
 var urlImgCatalogo = "http://localhost/dropos/imagenes.php?opcion=getimgcatalogo&productoid=";
 var urlImgDetalle = "http://localhost/dropos/imagenes.php?opcion=getimgdetalle&productoid=";
 var catalogoProductos;
+var detalleProducto;
 
 
 function init() {
@@ -50,13 +52,10 @@ function obtenerCatalogoServicio(callback) {
 }
 
 function cargarDatosCatalogo() {
-
     //elemento del DOM que alberga el catalogo de prodcutos
     var contenedorCatalogo = document.querySelector('#contenedor-catalogo');
 
-    var lengthC = Math.ceil(catalogoProductos.length / 4);
-    console.log('Total fila: ' + lengthC);
-
+    var lengthC = Math.ceil(catalogoProductos.length / 4);    
     //conjunto de contenedore o div con clase row
     var multiArray = [];
     for (var i = 0; i < lengthC; i++) {
@@ -87,7 +86,6 @@ function cargarDatosCatalogo() {
    }
 
 }
-
 
 
 function crearProductoCatalogo( item ){
@@ -127,17 +125,53 @@ function crearProductoCatalogo( item ){
 }
 
 
-function obtenerDatosProducto(){
+function obtenerDatosProducto() {
+    obtenerProductoServicio(function (response) {
+        //Parse JSON string into object
+        var dataTemp = JSON.parse(response);
+        //obtiene los valores del producto desde el JSON
+        detalleProducto = dataTemp.data;
+        console.log(detalleProducto);
+        if (dataTemp.code == 200) {
+            //inserta los valores del producto en la pagina detalle
+            crearProductoCatalogoDetalle(detalleProducto[0]);
+        } else {
+            //aca manejo el error si no hay funciona el servicio
+        }
+    });
+}
 
+function obtenerProductoServicio(callback) {
+    var urlEnd = urlServicioDetalle + getParameterURLByName('id');
+    console.log('id: '  +  getParameterURLByName('id'));
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', urlEnd, true); // Replace 'my_data' with the path to your file
+    xobj.onreadystatechange = function () {
+        if (xobj.readyState == 4 && xobj.status == "200") {
+            callback(xobj.responseText);
+        }
+    };
+    xobj.send(null);
 }
 
 
-function crearProductoCatalogoDetalle( item ){
-    //nombre-pro
+//Coloca los valores recibidos del servicio para el detalle de los productos
+function crearProductoCatalogoDetalle(pdto){
+    //inserta los valores para el nombre del producto
+    $('#nombre-pro').text(onwName(pdto.nomproducto));
+    
     //descripcion-pro
+    $('#descripcion-pro').text(onwName(pdto.detalleprod));
+    
     //cantidad-pro
+    $('#cantidad-pro').val(pdto.exis);
+
     //puntos-pro
+    $('#puntos-pro').text(number_format(pdto.puntos,0));
+    
     //efectivo-pro
+    $('#efectivo-pro').text(number_format(pdto.efectivo,0));
     //img-pro
 
 } 
@@ -161,8 +195,40 @@ function onwName(str)
 }
 
 
-var currentElement = null;
+function getParameterURLByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 
+/**
+ * Da formato de miles al parametro amount
+ * @param {int} amount 
+ * @param {int} decimals 
+ */
+function number_format(amount, decimals) {
+
+    amount += ''; // por si pasan un numero en vez de un string
+    amount = parseFloat(amount.replace(/[^0-9\.]/g, '')); // elimino cualquier cosa que no sea numero o punto
+    decimals = decimals || 0; // por si la variable no fue fue pasada
+    // si no es un numero o es igual a cero retorno el mismo cero
+    if (isNaN(amount) || amount === 0) 
+        return parseFloat(0).toFixed(decimals);
+    // si es mayor o menor que cero retorno el valor formateado como numero
+    amount = '' + amount.toFixed(decimals);
+    var amount_parts = amount.split(','),
+        regexp = /(\d+)(\d{3})/;
+    while (regexp.test(amount_parts[0]))
+        amount_parts[0] = amount_parts[0].replace(regexp, '$1' + '.' + '$2');
+    return amount_parts.join('.');
+}
+
+
+var currentElement = null;
 //activa menu
 $('.menu li a').click(function () {
     $('li').removeClass("activa");
@@ -216,3 +282,5 @@ function testCatalogo() {
     }
     console.log(multiArray);
 }
+
+
