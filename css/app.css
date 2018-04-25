@@ -1601,6 +1601,7 @@ button#actperfil-button{
 
 .tituloProducto{
 	font-family: 'Open Sans', sans-serif;
+	min-height: 3.5rem!important;
 }
 
 .point{
