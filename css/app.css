@@ -1584,10 +1584,16 @@ button#actperfil-button{
 
 /** Pagina Catalogo Puntos **/
 
+
 #titulo-catalogo{
 	margin-top: 2.5rem;
 	font-family: 'Open Sans', sans-serif;
 }
+
+#contenedor-catalogo{
+	margin-bottom: 3rem;
+}
+
 
 .row-productos{
 	font-family: 'Open Sans', sans-serif;
