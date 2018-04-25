@@ -112,7 +112,7 @@ function crearProductoCatalogo( item ){
     //crea el boton de detalle 
     var botonD = document.createElement("a");
     botonD.setAttribute("class", "button expanded");
-    botonD.setAttribute("href", "/puntosfarmanorteweb/seccion/detalleproducto.html?id=" + item.idproducto );
+    botonD.setAttribute("href", "/seccion/detalleproducto.html?id=" + item.idproducto );
     botonD.innerHTML = "Ver m&aacute;s";
 
     //se hace la composicion de los elementos del DOM para el elemento 
