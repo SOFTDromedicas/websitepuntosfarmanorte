@@ -10,36 +10,16 @@ var catalogoProductos;
 
 
 function init() {
-    //llamada al End-Point de Dropos que expone el catalogo de puntos.
-    obtenerDatosCatalogo();
-    testCatalogo();
-
+    //segun la ubicacion
+    //llamada al End-Point de Dropos que expone el catalogo de puntos segun la ubicacion    
+    if (location.pathname.substring(1) === "seccion/catalogopuntos.html") {
+        obtenerDatosCatalogo();
+    }
+    if (location.pathname.substring(1) === "seccion/detalleproducto.html") {
+        obtenerDatosProducto();
+    }
 }
 
-//prototipo para generar la grilla DOM  del catalogO
-function testCatalogo() {
-    var catalogo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
-    var lengthC = Math.ceil(catalogo.length / 4);
-
-    console.log(lengthC);
-    var multiArray = [];
-    for (var i = 0; i < lengthC; i++) {
-        var x = [];
-        multiArray.push(x);
-    }
-    var flag = 0;
-    for (var i = 0; i <= catalogo.length + 1; i++) {
-        if (flag < multiArray.length) {
-            if (catalogo[i] != null) {
-                multiArray[flag].push(catalogo[i]);
-            }
-            if (multiArray[flag].length == 4) {
-                flag++;
-            }
-        }
-    }
-    console.log(multiArray);
-}
 
 function obtenerDatosCatalogo() {
     obtenerCatalogoServicio(function (response) {
@@ -47,6 +27,7 @@ function obtenerDatosCatalogo() {
         var dataTemp = JSON.parse(response);
         //inicia el los objetos del catalogo
         catalogoProductos = dataTemp.data;
+        console.log('Total Productos Catalogo: ' + catalogoProductos.length );
         if (dataTemp.code == 200) {
             //llena el DOM con el catalogo
             cargarDatosCatalogo();
@@ -74,8 +55,7 @@ function cargarDatosCatalogo() {
     var contenedorCatalogo = document.querySelector('#contenedor-catalogo');
 
     var lengthC = Math.ceil(catalogoProductos.length / 4);
-
-    console.log(lengthC);
+    console.log('Total fila: ' + lengthC);
 
     //conjunto de contenedore o div con clase row
     var multiArray = [];
@@ -130,12 +110,11 @@ function crearProductoCatalogo( item ){
     var infoParrafo = document.createElement("p");
     infoParrafo.setAttribute("class", "descripcion-prod");
     infoParrafo.innerHTML  = '<i class="fa fa-circle point" aria-hidden="true"></i> '+ item.puntos + ' + $' + item.puntos + 'c/u';
-    console.log(infoParrafo);
-
+   
     //crea el boton de detalle 
     var botonD = document.createElement("a");
     botonD.setAttribute("class", "button expanded");
-    botonD.setAttribute("href", "producto-page.html?id=" + item.idproducto );
+    botonD.setAttribute("href", "/puntosfarmanorteweb/seccion/detalleproducto.html?id=" + item.idproducto );
     botonD.innerHTML = "Ver m&aacute;s";
 
     //se hace la composicion de los elementos del DOM para el elemento 
@@ -148,8 +127,20 @@ function crearProductoCatalogo( item ){
 }
 
 
+function obtenerDatosProducto(){
+
+}
 
 
+function crearProductoCatalogoDetalle( item ){
+    //nombre-pro
+    //descripcion-pro
+    //cantidad-pro
+    //puntos-pro
+    //efectivo-pro
+    //img-pro
+
+} 
 
 
 //Funciones de utilidad y formato///
@@ -200,3 +191,28 @@ $('.vertical .menu li a').click(function () {
     $(this).addClass("activa");
 });
 
+
+//prototipo para generar la grilla DOM  del catalogO
+function testCatalogo() {
+    var catalogo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+    var lengthC = Math.ceil(catalogo.length / 4);
+
+    console.log(lengthC);
+    var multiArray = [];
+    for (var i = 0; i < lengthC; i++) {
+        var x = [];
+        multiArray.push(x);
+    }
+    var flag = 0;
+    for (var i = 0; i <= catalogo.length + 1; i++) {
+        if (flag < multiArray.length) {
+            if (catalogo[i] != null) {
+                multiArray[flag].push(catalogo[i]);
+            }
+            if (multiArray[flag].length == 4) {
+                flag++;
+            }
+        }
+    }
+    console.log(multiArray);
+}
