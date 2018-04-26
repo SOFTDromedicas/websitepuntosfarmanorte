@@ -1,7 +1,7 @@
 //@utor-> @lfernandortiz | @SOFTDromedicas
 $(document).foundation()
 //registro de manejo de eventos para la carga de la pagina
-window.addEventListener("load", init, false);
+window.addEventListener("DOMContentLoaded", init, false);
 
 var urlServicioCatalogo = "http://192.168.14.241/dropos/wsjson/catalogopuntos/?opc=catalogo";
 var urlServicioDetalle = "http://192.168.14.241/dropos/wsjson/catalogopuntos/?id=";
@@ -13,11 +13,12 @@ var detalleProducto;
 
 function init() {
     //segun la ubicacion
-    //llamada al End-Point de Dropos que expone el catalogo de puntos segun la ubicacion    
-    if (location.pathname.substring(1) === "seccion/catalogopuntos.html") {
+    //llamada al End-Point de Dropos que expone el catalogo de puntos segun la ubicacion   
+    console.log(location.pathname.substring(1));
+    if (location.pathname.substring(1) == "seccion/catalogopuntos.html") {
         obtenerDatosCatalogo();
     }
-    if (location.pathname.substring(1) === "seccion/detalleproducto.html") {
+    if (location.pathname.substring(1) == "seccion/detalleproducto.html") {
         obtenerDatosProducto();
     }
 }
@@ -44,6 +45,7 @@ function obtenerCatalogoServicio(callback) {
     xobj.overrideMimeType("application/json");
     xobj.open('GET', urlServicioCatalogo, true); // Replace 'my_data' with the path to your file
     xobj.onreadystatechange = function () {
+        console.log("state: " + xobj.readyState);
         if (xobj.readyState == 4 && xobj.status == "200") {
             callback(xobj.responseText);
         }
