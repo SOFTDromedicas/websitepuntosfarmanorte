@@ -225,9 +225,6 @@ function stateChangeRec(xhr) {
 }
 
 
-
-
-
 //iniciar session del perfil de puntos farmanorte
 function iniciarSesion(){
   //lamada al servicio de puntos farmanorte para la autenticacion

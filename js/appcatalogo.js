@@ -21,6 +21,10 @@ function init() {
     if (location.pathname.substring(1) == "seccion/detalleproducto.html") {
         obtenerDatosProducto();
     }
+
+    //Eventos para cuadro de Login
+    rememberMe();
+    registerEventLogin(); 
 }
 
 
@@ -45,7 +49,6 @@ function obtenerCatalogoServicio(callback) {
     xobj.overrideMimeType("application/json");
     xobj.open('GET', urlServicioCatalogo, true); // Replace 'my_data' with the path to your file
     xobj.onreadystatechange = function () {
-        console.log("state: " + xobj.readyState);
         if (xobj.readyState == 4 && xobj.status == "200") {
             callback(xobj.responseText);
         }
@@ -183,6 +186,327 @@ function crearProductoCatalogoDetalle(pdto){
     //oculta el spinner load
    $('#spinner-container').fadeOut();
 } 
+
+
+
+//** Funciones Cuadro Login **//
+//Registro de eventos para los controles del cuadro de login
+function registerEventLogin() {
+    var login = document.getElementById('loginperfil');
+    login.addEventListener('click', showLogin, false);
+    
+    var login = document.getElementById('login-offcanvas');
+    login.addEventListener('click', showLogin, false);
+
+    var loginout = document.getElementById('login-container-main');
+    loginout.addEventListener('click', exitLogin, false);
+
+    var iconocerrar = document.getElementById('iconocerrar');
+    iconocerrar.addEventListener('click', exitLogin, false);
+
+    var olividoDedeLogin = document.getElementById('olvidocontrasenia');
+    olividoDedeLogin.addEventListener('click', irARecuperarClave, false);
+
+    //Eventos para cuadro de dialogo Reestablecer contrasenia       
+    var recuperarContainer = document.getElementById('olvido-container-main');
+    recuperarContainer.addEventListener('click', exitLoginOlvido, false);
+
+    var iconocerrarRegistrar = document.getElementById('iconocerrarlogin-olvido');
+    iconocerrarRegistrar.addEventListener('click', exitLoginOlvido, false);
+
+    var volverS = document.getElementById('volver-sesion');
+    volverS.addEventListener('click', volverSesion, false);
+
+    var recuperarClaveBtn = document.getElementById('recuperarClave');
+    recuperarClaveBtn.addEventListener('click', enviarCorreoRecuperaClave, false);
+
+    //inicio de sesion 
+    document.getElementById('iniciar-sesion').addEventListener('click', 
+    iniciarSesion, false);
+
+    //registro de evento techa de escape para el formulario de login
+    document.addEventListener('keyup', exitLogin, false);
+}
+
+
+//si en previo login se marco rememberme se cargan los 
+//datos en el formulario de login
+function rememberMe() {
+    if (localStorage.chkbx && localStorage.chkbx != '') {
+        $('#recordarme').attr('checked', 'checked');
+        $('#documentologin').val(localStorage.usrname);
+        $('#password').val(localStorage.pass);
+    } else {
+        $('#recordarme').removeAttr('checked');
+        $('#documentologin').val('');
+        $('#password').val('');
+    }
+}
+
+//iniciar session del perfil de puntos farmanorte
+function iniciarSesion(){
+    //lamada al servicio de puntos farmanorte para la autenticacion
+    removeWrongLoging();
+    getToken();
+  
+}
+
+//Obtien el JWT para el login 
+function getToken(){  
+    var xhr = new XMLHttpRequest();
+    var userElement = document.getElementById('documentologin'); 
+    var passwordElement = document.getElementById('password');  
+    var tokenElement = document.getElementById('token');
+    var user = userElement.value;  
+    var password = passwordElement.value;
+    servicioLogin = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/apiwebafiliado/login";
+    servicioLogin += "?user=" + user + "&password=" + password;
+  
+    console.log("URL: " + servicioLogin);
+    
+    try{
+      //callback
+      xhr.addEventListener("readystatechange", function(){
+        //muestra el loader de linea mientras procesa la solicitud
+        if(this.readyState >= 1 && this.readyState <= 3 ){
+          document.getElementById("loadinglogin").classList.add("loaderlogin");
+        } 
+  
+        //al recibir la respuesta del servicio oculta el loader y procesa la respuesta
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("loadinglogin").classList.remove("loaderlogin");
+  
+          //obtiene el JWT del cabecero  de la respuesta
+          var token = this.getResponseHeader('AUTHORIZATION');
+          
+          //si hay token se registra
+          if (token) {
+            // Almacena el token en localStorage
+            localStorage.setItem('token', token);
+            //si el checkbox de recordar usuario esta marcado 
+            //los valores son guardados en el localstorage (no por cookies)
+            if ($('#recordarme').is(':checked')) {
+                // guarda usuario y contrasenia
+                localStorage.usrname = $('#documentologin').val();
+                localStorage.pass = $('#password').val();
+                localStorage.chkbx = $('#recordarme').val();
+            } else {
+                localStorage.usrname = '';
+                localStorage.pass = '';
+                localStorage.chkbx = '';
+            }
+  
+            //se redirecciona a la pagina de perfil
+            window.location.href = "/seccion/perfilafiliado.html";
+  
+            //se limpia los campos del formulario
+            $('#documentologin').val('');
+            $('#password').val('');
+  
+          } else {
+            //si hay error en el login se obtiene el mensaje para 
+            //desplegarce en el callout
+            var resp = JSON.parse(this.responseText);
+            var mes = resp.message;
+            //muestra los mensajes de error
+            $('#documentologin').addClass('is-invalid-input');
+            $('#documentologin').parent().addClass('is-invalid-label');
+            $('#password').addClass('is-invalid-input');
+            $('#password').parent().addClass('is-invalid-label');
+            $('#calloutLoginAlert').css("display", "block");
+          } //end else token 
+        }//end validacion estado de la peticion 
+       }, false);
+      xhr.open( "POST", servicioLogin, true );
+      xhr.setRequestHeader("Accept",
+            "application/json; charset=utf-8" );
+      xhr.send();     
+  
+    }catch(ex){
+     console.log(ex)    
+    }
+  }
+  
+  
+  //deshabilita el scroll cuando se muestra el login
+  function disableScroll() {
+    if (window.addEventListener) 
+        window.addEventListener('DOMMouseScroll', preventDefault, false);
+    window.onwheel = preventDefault; 
+    window.onmousewheel = document.onmousewheel = preventDefault; 
+    window.ontouchmove  = preventDefault; // mobile
+    document.onkeydown  = preventDefaultForScrollKeys;
+  }
+  
+  function enableScroll() {
+      if (window.removeEventListener)
+          window.removeEventListener('DOMMouseScroll', preventDefault, false);
+      window.onmousewheel = document.onmousewheel = null; 
+      window.onwheel = null; 
+      window.ontouchmove = null;  
+      document.onkeydown = null;  
+  }
+  // end funciones para el bloqueo del scroll
+  
+  //muestra el cuadro de login
+  function showLogin(event){
+  
+      rememberMe(); 
+      var bodylogin = document.getElementById('blurme-container');
+      bodylogin.classList.remove('ocultarLogin');
+      bodylogin.classList.add('blur-me2');
+      document.getElementById('login-container-main').style.display = 'block';
+      disableScroll();
+  }
+  
+  //cierra el cuadro de login
+  function exitLogin(event){   
+    
+    if( event.target.getAttribute('id') == 'password' && event.keyCode == 13){
+       iniciarSesion();
+    }
+  
+    if( event.target.getAttribute('id') == 'innerContainer' ||
+        event.target.getAttribute('id') == 'paddingcontainer' ||
+        event.target.getAttribute('id') == 'row-login' ||
+        event.target.getAttribute('id') == 'row-iconocerrar' ||
+        event.target.getAttribute('id') == 'iconocerrar' ||
+        event.target.getAttribute('id') == 'olvidocontrasenia' ||
+        event.key == 'Escape'){
+      //cancelo el burbujeo de eventos
+      event.cancelBubble = true;   
+      document.getElementById('blurme-container').classList.remove('blur-me2');    
+      document.getElementById('blurme-container').classList.add('ocultarLogin');    
+      document.getElementById('login-container-main').style.display='none';  
+      document.getElementById('documentologin').value="";
+      document.getElementById('password').value="";
+      document.getElementById('recordarme').checked = false;
+      document.getElementById('loadinglogin').classList.remove('loaderlogin');    
+      
+      
+      //si hay mensajes de error los elimina 
+      removeWrongLoging();
+      enableScroll();
+      exitLoginOlvido(event);    
+    } 
+  }
+  
+  function removeWrongLoging(){
+      $('#documentologin').removeClass('is-invalid-input');
+      $('#documentologin').parent().removeClass('is-invalid-label');
+      $('#password').removeClass('is-invalid-input');
+      $('#password').parent().removeClass('is-invalid-label');
+      $('#calloutLoginAlert').css("display", "none");
+  }
+  
+  //ir a cuadro recuperacion de clave
+  function irARecuperarClave(event){
+    exitLogin(event); 
+    document.getElementById('blurme-container').classList.remove('ocultarLogin');    
+    showRestablecerContrasena();
+  }
+  
+  //muestra el cuadro de reestablecer clave
+  function showRestablecerContrasena() {
+      document.getElementById('olvido-container-main').style.display = 'block';
+      disableScroll();
+      var content_main = document.getElementById('blurme-container');
+      content_main.classList.add('blur-me2');    
+  }
+  
+  //cierra el cuadro de reestablecer clave
+  function exitLoginOlvido(event){      
+    if( event.target.getAttribute('id') == 'innerContainer-olvido' ||
+        event.target.getAttribute('id') == 'paddingcontainer-olvido' ||
+        event.target.getAttribute('id') == 'row-olvido' ||
+        event.target.getAttribute('id') == 'row-iconocerrar-olvido' ||
+        event.target.getAttribute('id') == 'iconocerrarlogin-olvido' ||
+        event.target.getAttribute('id') == 'volver-sesion' ||
+        event.key == 'Escape'){
+      //cancelo el burbujeo de eventos
+      event.cancelBubble = true;
+      document.getElementById('blurme-container').classList.remove('blur-me2');
+      document.getElementById('blurme-container').classList.add('ocultarLogin');    
+      document.getElementById('olvido-container-main').style.display='none';   
+      document.getElementById('emialRecuperar').value='';       
+      $('#calloutRecupera').css("display", "none");
+  
+      enableScroll();
+    } 
+  }
+  
+  //usada solamente por el evento de recuperacion de clave
+  function exitOlvido(){
+    event.cancelBubble = true;
+      document.getElementById('blurme-container').classList.remove('blur-me2');
+      document.getElementById('blurme-container').classList.add('ocultarLogin');    
+      document.getElementById('olvido-container-main').style.display='none';   
+      document.getElementById('emialRecuperar').value='';       
+      $('#calloutRecupera').css("display", "none");
+      document.getElementById("loadclave").classList.remove("loaderlogin");
+  
+      enableScroll();
+  }
+  
+  //ir a login afiliado
+  function volverSesion(event){
+    exitLoginOlvido(event);
+    showLogin(event);
+  }
+
+
+  //Procesa la solicitud de recuparacion de clave 
+function enviarCorreoRecuperaClave() {
+  
+    var servicioRecuperaClave = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/recuperaclave";
+    var email = $('#emialRecuperar').val(); //email afiliado
+    var xhr = new XMLHttpRequest();
+
+    if (email != ''&& validateEmail(email)) {
+        try {
+            servicioRecuperaClave += "/" + email;
+            
+            //callback
+            xhr.addEventListener("readystatechange", function(){stateChangeRec(xhr)}, false);
+            xhr.open("GET", servicioRecuperaClave, true);
+            xhr.setRequestHeader("Accept",
+                "application/json; charset=utf-8");
+            xhr.send();
+        } catch (ex) {
+            document.getElementById("loadclave").classList.remove("loaderlogin");
+            console.log(ex)
+        }
+
+    } else { //el email dado no es valido (Evaluado por Regex)
+      document.getElementById("loadclave").classList.remove("loaderlogin");
+       $('#calloutRecupera').css("display", "block");
+       $('#inforecupera').text("Cuenta de email no valida");
+    }
+}
+
+function stateChangeRec(xhr) {
+  
+    if (xhr.readyState >= 1 && xhr.readyState <= 3) {
+        $('#calloutRecupera').css("display", "none");
+        document.getElementById("loadclave").classList.add("loaderlogin");
+    }
+    //al recibir la respuesta del servicio oculta el loader y procesa la respuesta
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        var res =  JSON.parse(xhr.responseText);
+        
+        if(res.code == 200){
+          document.getElementById("loadclave").classList.remove("loaderlogin");
+          window.scrollTo(0, 0);
+          exitOlvido();
+          $('#calloutrecuparacionclave').css("display", "block");
+
+        }else{
+          document.getElementById("loadclave").classList.remove("loaderlogin");
+          $('#calloutRecupera').css("display", "block");
+          $('#inforecupera').text(res.message);        
+        }
+    } /*end if 200*/
+}
 
 
 //Funciones de utilidad y formato///
