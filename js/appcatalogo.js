@@ -3,10 +3,10 @@ $(document).foundation()
 //registro de manejo de eventos para la carga de la pagina
 window.addEventListener("load", init, false);
 
-var urlServicioCatalogo = "http://localhost/dropos/wsjson/catalogopuntos/?opc=catalogo";
-var urlServicioDetalle = "http://localhost/dropos/wsjson/catalogopuntos/?id=";
-var urlImgCatalogo = "http://localhost/dropos/imagenes.php?opcion=getimgcatalogo&productoid=";
-var urlImgDetalle = "http://localhost/dropos/imagenes.php?opcion=getimgdetalle&productoid=";
+var urlServicioCatalogo = "http://192.168.14.241/dropos/wsjson/catalogopuntos/?opc=catalogo";
+var urlServicioDetalle = "http://192.168.14.241/dropos/wsjson/catalogopuntos/?id=";
+var urlImgCatalogo = "http://192.168.14.241/dropos/imagenes.php?opcion=getimgcatalogo&productoid=";
+var urlImgDetalle = "http://192.168.14.241/dropos/imagenes.php?opcion=getimgdetalle&productoid=";
 var catalogoProductos;
 var detalleProducto;
 
@@ -177,6 +177,9 @@ function crearProductoCatalogoDetalle(pdto){
     
     //img-pro
     $('#img-pro').attr("src", urlImgDetalle + getParameterURLByName('id'));
+
+    //oculta el spinner load
+   $('#spinner-container').fadeOut();
 } 
 
 
