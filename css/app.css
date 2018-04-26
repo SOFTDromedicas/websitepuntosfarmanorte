@@ -664,6 +664,13 @@ label.checkbox-label input[type=checkbox]{
   color: #c60f13!important; }
 
 
+.footer{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 /*Pagina Terminos y condiciones*/
 
 #condiciones{
@@ -2126,7 +2133,7 @@ input:read-only {
 	}	
 
 	#logotipo{
-		margin: .2rem 0 0 1.6rem;
+		margin: .2rem 0 0 .6rem;
 		width: 220px;		
 	}
 
@@ -2135,14 +2142,14 @@ input:read-only {
 	}
 
 	#menuppal ul li a{
-		padding: 10px 5px;
+		padding: 10px 2px;
 	}
 
 	.solapa{
 		background-image: url('../images/solapados.svg');
-		width: 80px;
+		width: 77px;
 		background-repeat: no-repeat;
-		font-size: .90rem;
+		font-size: .7rem;
 		text-align: center;
 	}
 
@@ -2372,8 +2379,22 @@ input:read-only {
 		z-index: 2;
 	}
 
+	#logotipo {
+		margin: .2rem 0 0 1.6rem;
+		width: 220px;
+	}
+	
+
 	#perfilmenu{
 		display: none;
+	}
+
+	.solapa {
+		background-image: url(../images/solapados.svg);
+		width: 80px;
+		background-repeat: no-repeat;
+		font-size: .90rem;
+		text-align: center;
 	}
 
 }
@@ -2386,6 +2407,8 @@ input:read-only {
 		bottom: 0!important;	
 		display: block!important;
 		width: 100%!important;
+
+		
 	} */
 
 	#terminos {
@@ -2400,9 +2423,9 @@ input:read-only {
 /* Large only */
 @media screen and (min-width: 64em) and (max-width: 74.9375em) {
 	
-	#logotipo{
-		margin: .2rem 0 0 3.5rem;
-		width: 250px;		
+	#logotipo {
+		margin: .2rem 0 0 1.6rem;
+		width: 220px;
 	}
 	
 	#quesonpuntos{		
