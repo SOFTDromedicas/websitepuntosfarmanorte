@@ -85,6 +85,9 @@ function cargarDatosCatalogo() {
         contenedorCatalogo.appendChild(multiArray[index]);
    }
 
+   //oculta el spinner load
+   $('#spinner-container').fadeOut();
+
 }
 
 
