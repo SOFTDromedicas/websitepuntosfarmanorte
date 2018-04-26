@@ -251,6 +251,22 @@ function iniciarSesion(){
   
 }
 
+
+//funciones para el bloqueo del scroll cuando se ejecuta el login
+function preventDefault(e) { 
+    e = e || window.event;
+    if (e.preventDefault)
+        e.preventDefault();
+    e.returnValue = false;  
+  }
+  
+  function preventDefaultForScrollKeys(e) {
+      if (keys[e.keyCode]) {
+          preventDefault(e);
+          return false;
+      }
+  }
+
 //Obtien el JWT para el login 
 function getToken(){  
     var xhr = new XMLHttpRequest();
