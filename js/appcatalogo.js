@@ -114,8 +114,12 @@ function crearProductoCatalogo( item ){
    
     //crea el parrafo 
     var infoParrafo = document.createElement("p");
-    infoParrafo.setAttribute("class", "descripcion-prod");
-    infoParrafo.innerHTML  = '<i class="fa fa-circle point" aria-hidden="true"></i> '+ item.puntos + ' + $' + item.puntos + 'c/u';
+    infoParrafo.setAttribute("class", "descripcion-prod");   
+    if( item.efectivo == '0'){
+        infoParrafo.innerHTML  = '<i class="fa fa-circle point" aria-hidden="true"></i> '+ item.puntos + ' c/u';
+    }else{
+        infoParrafo.innerHTML  = '<i class="fa fa-circle point" aria-hidden="true"></i> '+ item.puntos + ' + $' + item.efectivo + ' c/u';
+    }
    
     //crea el boton de detalle 
     var botonD = document.createElement("a");
@@ -149,6 +153,7 @@ function obtenerDatosProducto() {
     });
 }
 
+
 function obtenerProductoServicio(callback) {
     var urlEnd = urlServicioDetalle + getParameterURLByName('id');
     var xobj = new XMLHttpRequest();
@@ -173,12 +178,19 @@ function crearProductoCatalogoDetalle(pdto){
     
     //cantidad-pro
     $('#cantidad-pro').val(pdto.exis);
+    
+    if( pdto.efectivo == '0'){
+        var innerDetalle ='<i class="fa fa-circle" aria-hidden="true"></i> <span id="puntos-pro"></span> <span class="p-puntos">Puntos </span> ' ;
 
+    }else{
+        var innerDetalle ='<i class="fa fa-circle" aria-hidden="true"></i> <span id="puntos-pro"></span> <span class="p-puntos">Puntos </span> ' +
+        '<i class="fa fa-plus mas" aria-hidden="true"></i> <span id="efectivo-pro"></span>';       
+    }
+    
+    $('.de-pts').html(innerDetalle)
+    
     //puntos-pro
     $('#puntos-pro').text(number_format(pdto.puntos,0));
-    
-    //efectivo-pro
-    $('#efectivo-pro').text(number_format(pdto.efectivo,0));
     
     //img-pro
     $('#img-pro').attr("src", urlImgDetalle + getParameterURLByName('id'));
