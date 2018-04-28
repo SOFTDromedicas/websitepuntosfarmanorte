@@ -181,14 +181,15 @@ function crearProductoCatalogoDetalle(pdto){
     
     if( pdto.efectivo == '0'){
         var innerDetalle ='<i class="fa fa-circle" aria-hidden="true"></i> <span id="puntos-pro"></span> <span class="p-puntos">Puntos </span> ' ;
-
+        $('.de-pts').html(innerDetalle)
     }else{
         var innerDetalle ='<i class="fa fa-circle" aria-hidden="true"></i> <span id="puntos-pro"></span> <span class="p-puntos">Puntos </span> ' +
-        '<i class="fa fa-plus mas" aria-hidden="true"></i> <span id="efectivo-pro"></span>';       
+        '<i class="fa fa-plus mas" aria-hidden="true"></i> $<span id="efectivo-pro"></span>';       
+        $('.de-pts').html(innerDetalle)
+        //efectivo-pro
+        $('#efectivo-pro').text(number_format(pdto.efectivo,0));
     }
-    
-    $('.de-pts').html(innerDetalle)
-    
+
     //puntos-pro
     $('#puntos-pro').text(number_format(pdto.puntos,0));
     
