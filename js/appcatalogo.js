@@ -57,10 +57,12 @@ function obtenerCatalogoServicio(callback) {
 }
 
 function cargarDatosCatalogo() {
-    //elemento del DOM que alberga el catalogo de prodcutos
+    //elemento del DOM que actua como contenedor del catalogo de prodcutos
     var contenedorCatalogo = document.querySelector('#contenedor-catalogo');
 
+    //grid de 4 columnas
     var lengthC = Math.ceil(catalogoProductos.length / 4);    
+
     //conjunto de contenedore o div con clase row
     var multiArray = [];
     for (var i = 0; i < lengthC; i++) {
@@ -74,7 +76,7 @@ function cargarDatosCatalogo() {
     for (var i = 0; i <= catalogoProductos.length + 1; i++) {
         if (flag < multiArray.length) {
             if (catalogoProductos[i] != null) {
-                //crea el elemento del DOM del producto
+                //crea el elemento del DOM del producto enviando como paramatro un elemento del JSON
                 var prod = crearProductoCatalogo(catalogoProductos[i]);
                 //lo añade al div row
                 multiArray[flag].appendChild(prod);
@@ -90,10 +92,11 @@ function cargarDatosCatalogo() {
         contenedorCatalogo.appendChild(multiArray[index]);
    }
 
-   //oculta el spinner load
+   //creado el catalogo oculta el spinner load
    $('#spinner-container').fadeOut();
 
 }
+
 
 
 function crearProductoCatalogo( item ){
@@ -135,6 +138,7 @@ function crearProductoCatalogo( item ){
 
     return columnItem;
 }
+
 
 
 function obtenerDatosProducto() {
@@ -256,6 +260,7 @@ function rememberMe() {
     }
 }
 
+
 //iniciar session del perfil de puntos farmanorte
 function iniciarSesion(){
     //lamada al servicio de puntos farmanorte para la autenticacion
@@ -273,12 +278,14 @@ function preventDefault(e) {
     e.returnValue = false;  
   }
   
+
   function preventDefaultForScrollKeys(e) {
       if (keys[e.keyCode]) {
           preventDefault(e);
           return false;
       }
-  }
+}
+  
 
 //Obtien el JWT para el login 
 function getToken(){  
@@ -354,7 +361,7 @@ function getToken(){
     }catch(ex){
      console.log(ex)    
     }
-  }
+}
   
   
   //deshabilita el scroll cuando se muestra el login
@@ -555,7 +562,11 @@ function onwName(str)
   return newarray1.join(' ');
 }
 
-
+/**
+ * Retorna el valor de un parametro en la URL
+ * @param {*} name 
+ * @param {*} url 
+ */
 function getParameterURLByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
@@ -565,6 +576,7 @@ function getParameterURLByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+
 
 /**
  * Da formato de miles al parametro amount
@@ -588,7 +600,7 @@ function number_format(amount, decimals) {
     return amount_parts.join('.');
 }
 
-
+//Js pra el menu 
 var currentElement = null;
 //activa menu
 $('.menu li a').click(function () {
@@ -619,7 +631,7 @@ $('.vertical .menu li a').click(function () {
 });
 
 
-//prototipo para generar la grilla DOM  del catalogO
+//prototipo para generar la grilla DOM  del catalogO B-) 
 function testCatalogo() {
     var catalogo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
     var lengthC = Math.ceil(catalogo.length / 4);
