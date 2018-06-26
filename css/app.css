@@ -394,7 +394,9 @@ legend{
 	font-weight: normal!important;
 }
 
-#patologia-div [type='checkbox'], [type='radio']{
+#patologia-div [type='checkbox'], 
+#patologia-div-d [type='checkbox'], 
+[type='radio']{
 	zoom: 1.3;	
 	font-family: 'Open Sans', sans-serif;
 	
@@ -427,6 +429,7 @@ legend{
 #estudios label,
 #nucleo-familia label,
 #hijos-cont label,
+#patologia-div-d label,
 #patologia-div label
 {
 	color: #212121!important;
@@ -437,12 +440,19 @@ legend{
 #ocupacion [type='radio'],
 #estudios [type='radio'],
 #hijos-cont [type='checkbox'],
-#patologia-div [type='checkbox']{
+#patologia-div-d [type='checkbox'],
+#patologia-div [type='checkbox']
+{
 	zoom:1.5;
 	margin: 0;
 	padding:0;
 	vertical-align:middle; 
 }
+
+#patologia-div-d .columns{
+	padding-left: 3.5rem;
+}
+
 
 #estudios, 
 #nucleo-familia,
@@ -1119,6 +1129,7 @@ label.checkbox-label input[type=checkbox]{
 	width: 7rem;
 }
 
+
 #menuppal ul li.mnperfilo a {
 	margin: 0 auto!important;
 	text-align: center!important;
@@ -1220,6 +1231,11 @@ label.checkbox-label input[type=checkbox]{
 
 }
 
+
+#patologia{
+	/* padding-left: 1rem; */
+}
+
 .tituloestcuenta{
 	text-align: center;
 	margin:0 auto;
@@ -1297,6 +1313,14 @@ label.checkbox-label input[type=checkbox]{
 #txrecord{
 
 }
+
+.hijos-datos{
+
+	padding-left: 2.8rem;
+	margin-bottom: 3rem;
+}
+
+
 table#txrecord{
   border-collapse: collapse;
 }
@@ -1404,6 +1428,17 @@ table#txrecord td.puntosTx{
   padding: 0.1rem 0.1rem 0.1rem 0.4rem!important;    
  }
 
+.p-obligatorio{
+	font-family: 'Barlow Condensed', sans-serif;
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.obligatorio{
+	color: rgb(247, 26, 26);
+	font-size: .85rem;
+}
+
 #misdatos-contentform [type='text']:focus, 
 #misdatos-contentform [type='password']:focus, 
 #misdatos-contentform [type='date']:focus, 
@@ -1442,6 +1477,11 @@ button#actperfil-button{
 	border-radius: 8px;
 	font-family: 'Barlow Condensed', sans-serif;
 	font-size: 1.3rem;
+}
+
+p.patol{
+	font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem;
 }
 
 /**mis puntos**/
@@ -1587,6 +1627,12 @@ button#actperfil-button{
 	font-family: 'Open Sans', sans-serif;
 	font-size: .95rem;
 	margin-bottom: 2rem;  
+}
+
+
+#form-content.form-data{
+	margin-top: 3.5rem;
+	background: #EFF3F8;
 }
 
 #mensaje-eva{
@@ -1790,6 +1836,8 @@ input:read-only {
 .detalle-pts{
 	margin-bottom: 1rem;
 }
+
+
 
 
 
