@@ -12,12 +12,14 @@ var detalleProducto;
 
 
 function init() {
+    
     //segun la ubicacion
     //llamada al End-Point de Dropos que expone el catalogo de puntos segun la ubicacion   
     console.log(location.pathname.substring(1));
     if (location.pathname.substring(1) == "seccion/catalogopuntos.html") {
         obtenerDatosCatalogo();
     }
+    
     if (location.pathname.substring(1) == "seccion/detalleproducto.html") {
         obtenerDatosProducto();
     }

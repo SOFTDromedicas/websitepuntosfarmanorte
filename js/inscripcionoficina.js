@@ -16,7 +16,7 @@ var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
 var suc;
 
-var version =  "Version 1.7";
+var version =  "Version 1.8";
 
 
 function iniciar() {
@@ -406,7 +406,7 @@ function validarFormulario(){
     document.getElementById("celular").closest("label").setAttribute("class","is-invalid-label");
   });
 
-  if(celular == "" ){
+  if( celular.length < 10  ){
     valido = false;
     document.getElementById("celular").setAttribute("class","is-invalid-input");
     document.getElementById("celular").closest("label").setAttribute("class","is-invalid-label");
@@ -425,14 +425,14 @@ function validarFormulario(){
   }
   //validacion de email
   document.getElementById("checkboxterminos").addEventListener("invalid.zf.abide",function(ev,el) {
-      valido = false;
-    document.getElementById("checkboxterminos").closest("label").setAttribute("class","is-invalid-label");
-  });
-
-  if( document.getElementById("checkboxterminos").checked == false){
     valido = false;
-    document.getElementById("checkboxterminos").closest("label").setAttribute("class","is-invalid-label");
-  }
+  document.getElementById("checkboxterminos").closest("label").setAttribute("class","is-invalid-label");
+});
+
+if( document.getElementById("checkboxterminos").checked == false){
+  valido = false;
+  document.getElementById("checkboxterminos").closest("label").setAttribute("class","is-invalid-label");
+}
 
   //validacion de codigo vendedor
   document.getElementById("codvende").addEventListener("invalid.zf.abide",function(ev,el) {
@@ -497,7 +497,7 @@ function establecerValores() {
 //metodo predicado para la validacion de correo
 function validateEmail(email){        
   if( email == "" ){// permite que el campo sea vacio 
-    return true;
+    return false;
   }else{
    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
    return emailPattern.test(email);  

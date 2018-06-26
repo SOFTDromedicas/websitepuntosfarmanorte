@@ -91,6 +91,7 @@ a:hover, a:active{
 
 #menuppal ul li a:active{	
   /*outline: none;*/
+  
 }
 
 .activa {
@@ -302,6 +303,11 @@ a:hover, a:active{
 
 #terminoslogo{
 	width: 2rem;
+}
+
+a.anclah4{
+	text-decoration: none;
+	color:	#0a0a0a;
 }
 
 #terminos{
