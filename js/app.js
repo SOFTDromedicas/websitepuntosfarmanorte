@@ -64,17 +64,17 @@ function iniciar() {
     if ( location.pathname.substring(1) == "index.html" ){
     // if (location.pathname.substring(1) == "xxxx.html"){
         //Eventos formulario login
-        var mostrarClave = document.getElementById("p-mostrarclave");
-        mostrarClave.addEventListener('click', function() {
-            var password = document.getElementById('password');
-            if (password.getAttribute('type') === 'password') {
-                password.setAttribute('type', 'text');
-                mostrarClave.innerHTML = "Ocultar Contrase&ntilde;a"
-            } else {
-                password.setAttribute('type', 'password');
-                mostrarClave.innerHTML = "Mostrar Contrase&ntilde;a"
-            }
-        }, false);        
+        // var mostrarClave = document.getElementById("p-mostrarclave");
+        // mostrarClave.addEventListener('click', function() {
+        //     var password = document.getElementById('password');
+        //     if (password.getAttribute('type') === 'password') {
+        //         password.setAttribute('type', 'text');
+        //         mostrarClave.innerHTML = "Ocultar Contrase&ntilde;a"
+        //     } else {
+        //         password.setAttribute('type', 'password');
+        //         mostrarClave.innerHTML = "Mostrar Contrase&ntilde;a"
+        //     }
+        // }, false);        
     }
 
     //si estoy en index valida que no se cargue a partir de la redireccion del formulario 2
@@ -242,6 +242,7 @@ function getToken(){
   var user = userElement.value;  
   var password = passwordElement.value;
   servicioLogin = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/apiwebafiliado/login";
+  servicioLogin = "http://localhost:8080/puntosfarmanorte/webservice/apiwebafiliado/login";
   servicioLogin += "?user=" + user + "&password=" + password;
 
   console.log("URL: " + servicioLogin);
@@ -279,7 +280,7 @@ function getToken(){
           }
 
           //se redirecciona a la pagina de perfil
-          window.location.href = "/seccion/perfilafiliado.html";
+          window.location.href = "/seccion/misdatos.html";
 
           //se limpia los campos del formulario
           $('#documentologin').val('');
@@ -341,10 +342,14 @@ function showLogin(event){
     disableScroll();
 }
 
+var x= 0;
 //cierra el cuadro de login
 function exitLogin(event){   
+
+    x++;
+    console.log("----"+ x +"------------"  + event.target.getAttribute('id') + "------ " + event.keyCode);
   
-  if( event.target.getAttribute('id') == 'password' && event.keyCode == 13){
+  if( event.target.getAttribute('id') == 'documentologin' && event.keyCode == 13){
      iniciarSesion();
   }
 

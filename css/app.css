@@ -2498,3 +2498,8 @@ input:read-only {
 .degradeTransparente{
 	    background: linear-gradient(to right,#fff 0,rgba(255,255,255,.85) 70%,rgba(255,255,255,.01) 100%);
 }
+
+
+/* #login-container-main{
+	border: 2px solid tomato;
+} */
