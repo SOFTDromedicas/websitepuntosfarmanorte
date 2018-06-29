@@ -145,6 +145,15 @@ function actualizarDatosAfiliado(){
              "&fechanacimiento=" + fechanacimiento  + "&telefonofijo=" + telefonofijo  + 
              "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email + "&barrio=" + barrio  +
              "&token=" + localStorage.getItem('token');
+
+        //obtengo valores de patologias afiliado
+        var pato = document.getElementsByName("pat[]");
+        for (var i = 0; i < pato.length; i++) {
+            if (pato[i].checked) {
+                urlWs += ("&p" + [i+1] + "=" + pato[i].value);      
+                console.log( urlWs)          ;
+            }
+        }
        // console.log("URL Servicio: " + urlWs);  
 
         try {

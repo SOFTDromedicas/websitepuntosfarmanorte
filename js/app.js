@@ -1,5 +1,5 @@
-//@utor-> @lfernandortiz  😒| @SOFTDromedicas
-console.log ("@utor-> @lfernandortiz  😒| @SOFTDromedicas");
+//@utor-> @lfernandortiz | @SOFTDromedicas
+console.log ("@utor-> @lfernandortiz  | @SOFTDromedicas");
 
 $(document).foundation()
 //Procesamiento del formulario de inscripcion basico
@@ -15,87 +15,29 @@ var asyncRequest;
 //teclas eventos para scroll
 var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
-
+//manejador de eventos para el evento load de window
 function iniciar() {
 
+    /**Registro de eventos y procesos al cargar la pagina inicial**/
+
+    //Revisa si es un redireccionamiento del afiliado al validar el correo
     validarCorreoAfiliado();
 
-    //Registro de eventos y componente para la interfaz de afiliacion
+    //Registro de eventos para el formulario unico de registro
     if (location.pathname.substring(1) === "seccion/inscripcion.html") {
-        btnGuardar = document.getElementById('guardar-button');
-        btnGuardar.addEventListener('click', registrar, false);
-        //verifica el dispositivo para el componente date
-        // if (mobilecheck() && mobileAndTabletcheck()) {
-        //     document.getElementById('fechanacimiento').setAttribute('type', 'date');
-        // } else {
-        //     $('#fechanacimiento').fdatepicker({
-        //         closeButton: true,
-        //         language: 'es',
-        //         yearRange: "-100:+0",
-        //         constrainInput: true,
-        //         format: 'dd/mm/yyyy',
-        //     });
-        //     $('#fechanacimiento').fdatepicker().on('changeDate', function(ev) {
-        //         if (ev.date.valueOf()) {
-        //             var newDate = new Date(ev.date)
-        //             newDate.setDate(newDate.getDate() + 1);
-        //             fechanacimiento = formatDateAnioMesDia(newDate);
-        //         }
-        //     });
-        // }
-
-        //prepara combo de ciudades
-        establecerCiudades();
-        //eventos para el formulario de login
-        var street1 = document.getElementById('street1');
-        street1.addEventListener('change', concatenardireccion, false);
-        
-        var street1valor = document.getElementById('street1-valor');
-        street1valor.addEventListener('keyup', concatenardireccion, false);
-        
-        var street1 = document.getElementById('street2');
-        street1.addEventListener('change', concatenardireccion, false);
-
-        var street1valor = document.getElementById('street2-valor');
-        street1valor.addEventListener('keyup', concatenardireccion, false);        
-
-        document.getElementById('cancelar-button').addEventListener('click',
-          limpiarFormulario, false);
+        eventRegistroAfiliado();        
     }
-  
 
-    console.log( location.pathname.substring(1)  );
-
+    //Registro de eventos para el formulario de login
     if ( location.pathname.substring(1) != "seccion/inscripcion.html" ){
-    // if (location.pathname.substring(1) == "xxxx.html"){
-        //Eventos formulario login
-        // var mostrarClave = document.getElementById("p-mostrarclave");
-        // mostrarClave.addEventListener('click', function() {
-        //     var password = document.getElementById('password');
-        //     if (password.getAttribute('type') === 'password') {
-        //         password.setAttribute('type', 'text');
-        //         mostrarClave.innerHTML = "Ocultar Contrase&ntilde;a"
-        //     } else {
-        //         password.setAttribute('type', 'password');
-        //         mostrarClave.innerHTML = "Mostrar Contrase&ntilde;a"
-        //     }
-        // }, false);  
-        
-        //Eventos para cuadro de Login
         rememberMe();
         registerEventLogin(); 
     }
 
-    //si estoy en index valida que no se cargue a partir de la redireccion del formulario 2
-    if(getParameterURLByName('confirmado') == "true"){
-        document.getElementById("calloutafiliacion").style.display = 'block';      
-    }    
-
+    //Confirmacion cambio clave -> en deshuso desde 29/06/2018
     if(getParameterURLByName('cambioclave') == "true"){
         document.getElementById("calloutrecuperaok").style.display = 'block';      
     }
-
-     
 
     //estos eventos permiten cerrar el menu off-canvas cuando se invoca el login
     $('.off-canvas h5').on('click', function() {
@@ -105,7 +47,13 @@ function iniciar() {
       $('.off-canvas').foundation('close');
     });
 
+    //CSS Establece el alto del contenedor spinner del form de inscripcion
+    var height = $("#inscripcion-content").height();
+    $("#cont-spinner").css("height", height);
+
+
 }//end function iniciar
+
 
 function validarCorreoAfiliado(){
     //validacion de correo electronico del cliente
@@ -126,7 +74,6 @@ function validarCorreoAfiliado(){
                 if(res.status == "OK"){
                     document.getElementById("calloutafiliacion").style.display = 'block';      
                 }
-    
             })
             .fail(function(xhr, status, error) {
                 console.log(error);
@@ -135,36 +82,65 @@ function validarCorreoAfiliado(){
 }
 
 
+function eventRegistroAfiliado() {
+    btnGuardar = document.getElementById('guardar-button');
+    btnGuardar.addEventListener('click', registrar, false);
+
+    //prepara combo de ciudades
+    establecerCiudades();
+    //eventos para el formulario de login
+    var street1 = document.getElementById('street1');
+    street1.addEventListener('change', concatenardireccion, false);
+
+    var street1valor = document.getElementById('street1-valor');
+    street1valor.addEventListener('keyup', concatenardireccion, false);
+
+    var street1 = document.getElementById('street2');
+    street1.addEventListener('change', concatenardireccion, false);
+
+    var street1valor = document.getElementById('street2-valor');
+    street1valor.addEventListener('keyup', concatenardireccion, false);
+
+    document.getElementById('cancelar-button').addEventListener('click',
+        limpiarFormulario, false);
+
+}
+
+
 //** Funciones Cuadro Login **//
 //Registro de eventos para los controles del cuadro de login
 function registerEventLogin() {
-    var login = document.getElementById('loginperfil');
-    login.addEventListener('click', showLogin, false);
-    
-    var login = document.getElementById('login-offcanvas');
-    login.addEventListener('click', showLogin, false);
 
-    var loginout = document.getElementById('login-container-main');
-    loginout.addEventListener('click', exitLogin, false);
+    //Esto es para evitar errores de JavaScript por renderisacion del DOM en otras vistas
+    if ( location.pathname.substring(1) != "seccion/actualizardatos.html" ){
+        var login = document.getElementById('loginperfil');
+        login.addEventListener('click', showLogin, false);        
+        
+        var login = document.getElementById('login-offcanvas');
+        login.addEventListener('click', showLogin, false);
+        
+        var loginout = document.getElementById('login-container-main');
+        loginout.addEventListener('click', exitLogin, false);
+        
+        var iconocerrarRegistrar = document.getElementById('iconocerrarlogin-olvido');
+        iconocerrarRegistrar.addEventListener('click', exitLoginOlvido, false);
 
+        //Eventos para cuadro de dialogo Reestablecer contrasenia       
+        var recuperarContainer = document.getElementById('olvido-container-main');
+        recuperarContainer.addEventListener('click', exitLoginOlvido, false);
+
+        var volverS = document.getElementById('volver-sesion');
+        volverS.addEventListener('click', volverSesion, false);
+
+        var recuperarClaveBtn = document.getElementById('recuperarClave');
+        recuperarClaveBtn.addEventListener('click', enviarCorreoRecuperaClave, false);
+    }
+   
     var iconocerrar = document.getElementById('iconocerrar');
     iconocerrar.addEventListener('click', exitLogin, false);
 
     var olividoDedeLogin = document.getElementById('olvidocontrasenia');
     olividoDedeLogin.addEventListener('click', irARecuperarClave, false);
-
-    //Eventos para cuadro de dialogo Reestablecer contrasenia       
-    var recuperarContainer = document.getElementById('olvido-container-main');
-    recuperarContainer.addEventListener('click', exitLoginOlvido, false);
-
-    var iconocerrarRegistrar = document.getElementById('iconocerrarlogin-olvido');
-    iconocerrarRegistrar.addEventListener('click', exitLoginOlvido, false);
-
-    var volverS = document.getElementById('volver-sesion');
-    volverS.addEventListener('click', volverSesion, false);
-
-    var recuperarClaveBtn = document.getElementById('recuperarClave');
-    recuperarClaveBtn.addEventListener('click', enviarCorreoRecuperaClave, false);
 
     //inicio de sesion 
     document.getElementById('iniciar-sesion').addEventListener('click', 

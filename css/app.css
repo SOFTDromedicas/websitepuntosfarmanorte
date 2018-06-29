@@ -741,17 +741,31 @@ label.checkbox-label input[type=checkbox]{
 /****Spinner****/
 
 #spinner{
+	/*border:1px solid red;*/
+}
+
+#cont-spinner{
+	clear: both;
 	z-index: 4;
 	position: absolute;
-	background: rgba(63, 107, 163, 0.75);
-	/*background: linear-gradient(to bottom, rgba(0, 136, 205, 0.75), rgba(39, 75, 141, 0.75));*/
-	background: rgba(255, 255, 255, 0.3);	
-	/*border:1px solid red;*/
 	width: 100%;
-	height: 60%;
-	padding-top: 6rem;
-	border-radius: 5px;
+	
+	border-radius: 5px;	
+	background: rgba(255, 255, 255, 0.3);
+
+	display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
+
 }
+
+
+
 #spinner2{
 	z-index: 10;
 	position: absolute;
@@ -760,7 +774,7 @@ label.checkbox-label input[type=checkbox]{
 	background: rgba(255, 255, 255, 0.2);	
 	/*border:1px solid red;*/
 	width: 100%;
-  height: 240%;
+    height: 240%;
 	padding-top: 100rem;
 	border-radius: 5px;
 
@@ -850,6 +864,15 @@ label.checkbox-label input[type=checkbox]{
 
 #login-section{	
 	padding: 5rem 0 8rem 0;
+	background-image: url('../images/fondologin.jpg');
+	min-height: 10rem;	
+	width: 100%;
+	background-size: cover;  
+	background-position: center;
+}
+
+.paddingcontainerx{
+	padding: 2rem 0 8rem 0;
 }
 
 #calloutLoginAlert{
