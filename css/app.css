@@ -636,6 +636,7 @@ input::-webkit-inner-spin-button {
 	text-align: center;
 }
 
+
 #revision-title{
 	color: #4A7F26;
 	font-family: 'Open Sans', sans-serif;
@@ -670,6 +671,15 @@ label.checkbox-label input[type=checkbox]{
     position: relative;
     vertical-align: middle;
     bottom: 1px;
+}
+
+.patologias-insc{
+	margin-bottom: 1.5rem;
+}
+
+.importante{
+	color: rgb(253, 117, 117);
+	font-weight: bold;
 }
 
 .buttonsrow{

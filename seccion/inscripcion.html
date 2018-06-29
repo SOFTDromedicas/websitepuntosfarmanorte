@@ -126,7 +126,7 @@
             </button>
           </div>
           <div data-abide-error class="warning  callout columns small-12" style="display: none;" id="calloutFormWarning" data-closable>
-            <h5>Ups! Hay problemas en nuestro sistema.</h5>
+            <h5>Ups! Hay un problema.</h5>
             <p id="mensaje"></p>
             <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
             <span aria-hidden="true">&times;</span>
@@ -174,7 +174,8 @@
           </div>
           <div class="small-12 medium-3 columns">
             <label>Fecha Nacimiento
-              <input type="text" name="fechanacimiento" id="fechanacimiento" data-date-format="mm/dd/yy">
+              <!-- <input type="text" name="fechanacimiento" id="fechanacimiento" data-date-format="mm/dd/yy"> -->
+              <input type="date" name="fechanacimiento" id="fechanacimiento">
             </label>
           </div>
         </div>
@@ -281,17 +282,85 @@
             </label>
           </div>
         </div>
+        
+        <div class="row patologias-insc">
+            <div class="small-12 columns" id="patologias-content">
+                <p class="info">Deseo recibir informaci&oacute;n de ofertas sobre productos relacionados con las siguientes patolog&iacute;as y/o categor&iacute;as:</p>
+                <div class="row patologias" id="patologia-div">
+                    <div class="small-12 medium-6 columns">
+                        <label><input value="1" name="pat[]" type="checkbox"> Alzh&eacute;imer</label><br/>
+                        <label><input value="2" name="pat[]" type="checkbox"> Anemia</label><br/>
+                        <label><input value="3" name="pat[]" type="checkbox"> Artritis</label><br/>
+                        <label><input value="4" name="pat[]" type="checkbox"> Asma</label><br/>
+                        <label><input value="5" name="pat[]" type="checkbox"> C&aacute;ncer</label><br/>
+                        <label><input value="6" name="pat[]" type="checkbox"> Cardiovasculares</label><br/>
+                        <label><input value="7" name="pat[]" type="checkbox"> Colesterol</label><br/>
+                        <label><input value="8" name="pat[]" type="checkbox"> Cuidado de Bebe</label><br/>
+                        <label><input value="9" name="pat[]" type="checkbox"> Cuidado de la Piel</label><br/>
+                        <label><input value="10" name="pat[]" type="checkbox"> Cuidado de Ni&ntilde;os</label><br/>
+                        <label><input value="11" name="pat[]" type="checkbox"> Depresi&oacute;n</label><br/>
+                        <label><input value="12" name="pat[]" type="checkbox"> Diabetes</label><br/>
+                        <label><input value="13" name="pat[]" type="checkbox"> Epilepsia</label><br/>
+                     </div>
+                     <div class="small-12 medium-6 columns">
+                        <label><input value="14" name="pat[]" type="checkbox"> Gestaci&oacute;n y Maternidad</label><br/>
+                        <label><input value="15" name="pat[]" type="checkbox"> Gripe</label><br/>
+                        <label><input value="16" name="pat[]" type="checkbox"> Hipertensión</label><br/>
+                        <label><input value="17" name="pat[]" type="checkbox"> Hipertiroidismo</label><br/>
+                        <label><input value="18" name="pat[]" type="checkbox"> Incontinencia</label><br/>
+                        <label><input value="19" name="pat[]" type="checkbox"> Menopausia</label><br/>
+                        <label><input value="20" name="pat[]" type="checkbox"> Migra&ntilde;a</label><br/>
+                        <label><input value="21" name="pat[]" type="checkbox"> Obesidad</label><br/>
+                        <label><input value="22" name="pat[]" type="checkbox"> Osteoporosis</label><br/>
+                        <label><input value="23" name="pat[]" type="checkbox"> Parkinson</label><br/>
+                        <label><input value="24" name="pat[]" type="checkbox"> Resfriado</label><br/>
+                        <label><input value="25" name="pat[]" type="checkbox"> &Uacute;lcera</label><br/>
+                     </div>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 medium-5 columns">
+                <label>Si tienes un c&oacute;digo promocional ingresalo
+                  <input type="text" name="codigoprom" required="true" id="codigoprom" placeholder="C&oacute;digo Promocional">
+                </label>
+            </div>
+          </div>
+          <div class="row">
+              <div class="small-12 columns">
+                <p><span class="importante">¡Importante! </span>Si no valida su correo electr&oacute;nico no podr&aacute; redimir sus puntos.</p>
+              </div>
+          </div>
+        <hr/>
         <div class="row">
           <div class="small-12 columns align-middle">
             <label for="checkboxterminos" class="checkbox-label labelterminos"><input id="checkboxterminos" name="terminos" required type="checkbox" > <span id="leyendaterminos">Acepto los T&eacute;rminos y Condiciones</span></label>            
           </div>
         </div>
+        <div id="callout-content" class="row">
+          <div data-abide-error class="alert callout columns small-12" style="display: none;" id="calloutFormAlert2" data-closable>
+            <h5>Diligencie todos los campos del formulario.</h5>
+            <p>Ingrese los datos consistentes en los campos indicados.</p>
+            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div data-abide-error class="warning  callout columns small-12" style="display: none;" id="calloutFormWarning2" data-closable>
+            <h5>Ups! Hay un problema.</h5>
+            <p id="mensaje2"></p>
+            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div><!-- end callout-content -->
         <div class="row buttonsrow">
           <div class="small-12 columns ">          
             <button type="button" id="guardar-button" class="button float-right">Registrarse</button>
             <button type="reset" id="cancelar-button" class="alert button float-right">Cancelar</button>
           </div>            
         </div>
+
+
         </div> <!-- end blur content -->
         
       </form>      

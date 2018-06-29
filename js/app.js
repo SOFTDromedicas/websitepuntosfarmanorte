@@ -1,9 +1,11 @@
-//@utor-> @lfernandortiz | @SOFTDromedicas
+//@utor-> @lfernandortiz  😒| @SOFTDromedicas
+console.log ("@utor-> @lfernandortiz  😒| @SOFTDromedicas");
+
 $(document).foundation()
 //Procesamiento del formulario de inscripcion basico
 //Campos del formulario
 var ciudad, documento, nombres, apellidos, tipodocumento, sexo, direccion,
-            barrio, fechanacimiento, telefonofijo, celular, email, terminos;
+            barrio, fechanacimiento, telefonofijo, celular, email, terminos, codigoprom;
 var btnGuardar;
 var ciudadesService = "http://dromedicas.sytes.net:9999/dropos/wsjson/ciudades/";
 
@@ -16,33 +18,34 @@ var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
 function iniciar() {
 
+    validarCorreoAfiliado();
+
     //Registro de eventos y componente para la interfaz de afiliacion
     if (location.pathname.substring(1) === "seccion/inscripcion.html") {
         btnGuardar = document.getElementById('guardar-button');
         btnGuardar.addEventListener('click', registrar, false);
         //verifica el dispositivo para el componente date
-        if (mobilecheck() && mobileAndTabletcheck()) {
-            document.getElementById('fechanacimiento').setAttribute('type', 'date');
-        } else {
-            $('#fechanacimiento').fdatepicker({
-                closeButton: true,
-                language: 'es',
-                yearRange: "-100:+0",
-                constrainInput: true,
-                format: 'dd/mm/yyyy',
-            });
-            $('#fechanacimiento').fdatepicker().on('changeDate', function(ev) {
-                if (ev.date.valueOf()) {
-                    var newDate = new Date(ev.date)
-                    newDate.setDate(newDate.getDate() + 1);
-                    fechanacimiento = formatDateAnioMesDia(newDate);
-                }
-            });
-        }
+        // if (mobilecheck() && mobileAndTabletcheck()) {
+        //     document.getElementById('fechanacimiento').setAttribute('type', 'date');
+        // } else {
+        //     $('#fechanacimiento').fdatepicker({
+        //         closeButton: true,
+        //         language: 'es',
+        //         yearRange: "-100:+0",
+        //         constrainInput: true,
+        //         format: 'dd/mm/yyyy',
+        //     });
+        //     $('#fechanacimiento').fdatepicker().on('changeDate', function(ev) {
+        //         if (ev.date.valueOf()) {
+        //             var newDate = new Date(ev.date)
+        //             newDate.setDate(newDate.getDate() + 1);
+        //             fechanacimiento = formatDateAnioMesDia(newDate);
+        //         }
+        //     });
+        // }
 
         //prepara combo de ciudades
         establecerCiudades();
-
         //eventos para el formulario de login
         var street1 = document.getElementById('street1');
         street1.addEventListener('change', concatenardireccion, false);
@@ -61,7 +64,9 @@ function iniciar() {
     }
   
 
-    if ( location.pathname.substring(1) == "index.html" ){
+    console.log( location.pathname.substring(1)  );
+
+    if ( location.pathname.substring(1) != "seccion/inscripcion.html" ){
     // if (location.pathname.substring(1) == "xxxx.html"){
         //Eventos formulario login
         // var mostrarClave = document.getElementById("p-mostrarclave");
@@ -74,7 +79,11 @@ function iniciar() {
         //         password.setAttribute('type', 'password');
         //         mostrarClave.innerHTML = "Mostrar Contrase&ntilde;a"
         //     }
-        // }, false);        
+        // }, false);  
+        
+        //Eventos para cuadro de Login
+        rememberMe();
+        registerEventLogin(); 
     }
 
     //si estoy en index valida que no se cargue a partir de la redireccion del formulario 2
@@ -86,9 +95,7 @@ function iniciar() {
         document.getElementById("calloutrecuperaok").style.display = 'block';      
     }
 
-    //Eventos para cuadro de Login
-    rememberMe();
-    registerEventLogin();  
+     
 
     //estos eventos permiten cerrar el menu off-canvas cuando se invoca el login
     $('.off-canvas h5').on('click', function() {
@@ -99,6 +106,33 @@ function iniciar() {
     });
 
 }//end function iniciar
+
+function validarCorreoAfiliado(){
+    //validacion de correo electronico del cliente
+    // documentoAfiliado = getParameterURLByName('documento'); 
+    documentoAfiliado = getParameterURLByName('id'); 
+
+    console.log("ID AFILIADO:  " + documentoAfiliado );
+    var updateURL = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/validacorreo?id=";   
+    var updateURL = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/validacorreo?id=";   
+    updateURL += documentoAfiliado;
+    // updateURL += "88239811";
+    
+    if(documentoAfiliado){
+        $.ajax({
+                url: updateURL,
+            })
+            .done(function(res) {                 
+                if(res.status == "OK"){
+                    document.getElementById("calloutafiliacion").style.display = 'block';      
+                }
+    
+            })
+            .fail(function(xhr, status, error) {
+                console.log(error);
+        });
+    }
+}
 
 
 //** Funciones Cuadro Login **//
@@ -342,12 +376,9 @@ function showLogin(event){
     disableScroll();
 }
 
-var x= 0;
 //cierra el cuadro de login
 function exitLogin(event){   
-
-    x++;
-    console.log("----"+ x +"------------"  + event.target.getAttribute('id') + "------ " + event.keyCode);
+    
   
   if( event.target.getAttribute('id') == 'documentologin' && event.keyCode == 13){
      iniciarSesion();
@@ -510,13 +541,23 @@ function registrar() {
     establecerValores();
 
     urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?";
+    urlWs = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/crearafiliadonuevo?";
 
-    if(validarFormulario()){
+    if(validarFormulario()){   
       urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +
              "&tipodocumento=" + tipodocumento  + "&sexo=" + sexo  + "&direccion=" + direccion  + 
              "&fechanacimiento=" + fechanacimiento  + "&telefonofijo=" + telefonofijo  + 
              "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email + "&barrio=" + barrio +
-             "&usuario=" + "PAGINAWEB";
+             "&usuario=" + "PAGINAWEB" + "&codigoprom=" + codigoprom ;
+
+        //obtengo valores de patologias afiliado
+        var pato = document.getElementsByName("pat[]");
+        for (var i = 0; i < pato.length; i++) {
+            if (pato[i].checked) {
+                urlWs += ("&p" + [i+1] + "=" + pato[i].value);      
+                console.log( urlWs)          ;
+            }
+        }
 
       console.log( "URL Servicio: " + urlWs);
 
@@ -528,8 +569,8 @@ function registrar() {
       } catch (excepcion) {}
     }else{
         document.getElementById("calloutFormAlert").style.display = 'block';
-    }
-       
+        document.getElementById("calloutFormAlert2").style.display = 'block';
+    }       
 }
 
 
@@ -539,7 +580,9 @@ function stateChange() {
     document.getElementById("spinner").style.display = 'block';
     document.getElementById("blur").classList.add("blur-me");
     document.getElementById("calloutFormAlert").style.display = 'none';
+    document.getElementById("calloutFormAlert2").style.display = 'none';
     document.getElementById("calloutFormWarning").style.display = 'none';
+    document.getElementById("calloutFormWarning2").style.display = 'none';
   }
 
   // console.log( asyncRequest.readyState + " - " + asyncRequest.status);
@@ -567,13 +610,18 @@ function stateChange() {
       if(response.status == 'Bad Request' ){
         document.getElementById("spinner").style.display = 'none';
         document.getElementById("mensaje").innerHTML ="";
+        document.getElementById("mensaje2").innerHTML ="";
         document.getElementById("mensaje").appendChild(document.createTextNode(response.message));
+        document.getElementById("mensaje2").appendChild(document.createTextNode(response.message));
         document.getElementById("calloutFormWarning").style.display = 'block';
+        document.getElementById("calloutFormWarning2").style.display = 'block';
         document.getElementById("blur").classList.remove("blur-me");  
       }else{
         document.getElementById("spinner").style.display = 'none';
         document.getElementById("mensaje").innerHTML ="";
+        document.getElementById("mensaje2").innerHTML ="";
         document.getElementById("mensaje").appendChild(document.createTextNode(response.message));
+        document.getElementById("mensaje2").appendChild(document.createTextNode(response.message));
         document.getElementById("calloutFormWarning").style.display = 'block';
         document.getElementById("blur").classList.remove("blur-me");        
       }
@@ -599,7 +647,11 @@ function reestrablecerFormulario(){
   document.getElementById("celular").value =""; 
   document.getElementById("ciudad").value =""; 
   document.getElementById("email").value =""; 
-  document.getElementById("checkboxterminos").checked = false; 
+  document.getElementById("codigoprom").value =""; 
+  //document.getElementById("checkboxterminos").checked = false; 
+
+  $('input:checkbox').removeAttr('checked');
+  
 }
 
 function validarFormulario(){
@@ -693,7 +745,7 @@ function validarFormulario(){
     document.getElementById("email").closest("label").setAttribute("class","is-invalid-label");
   });
 
-  if( !validateEmail(email)){
+  if( !validateEmail(email) ){
     valido = false;
     document.getElementById("email").setAttribute("class","is-invalid-input");
     document.getElementById("email").closest("label").setAttribute("class","is-invalid-label");
@@ -719,7 +771,8 @@ function establecerValores() {
       fechanacimiento = document.getElementById('fechanacimiento').value;
     }
     
-
+    fechanacimiento = document.getElementById('fechanacimiento').value;
+    
     documento = document.getElementById("documento").value.trim();
     var nombresTemp = document.getElementById("nombres").value.toUpperCase().trim();
     nombres = nombresTemp.replace('Ñ', 'N');
@@ -735,8 +788,6 @@ function establecerValores() {
     direcciontemp = direcciontemp.replace('Ñ', 'N');
     direccion = removeDiacritics(direcciontemp);
 
-
-   
     var barriotemp = document.getElementById("barrio").value.toUpperCase().trim();
     barriotemp = barriotemp.replace('#', '%23');
     barriotemp = barriotemp.replace('Ñ', 'N');
@@ -746,19 +797,19 @@ function establecerValores() {
     celular = document.getElementById("celular").value.trim();
     ciudad = document.getElementById("ciudad").value.toUpperCase().trim();
     email = document.getElementById("email").value.trim();
-    terminos = document.getElementById("checkboxterminos").value;    
-
+    terminos = document.getElementById("checkboxterminos").value;
     
-
-   console.log( "fechanacimiento: " + fechanacimiento); 
-   // throw new Error("Something went badly wrong!");    
+    codigoprom = document.getElementById("codigoprom").value.trim()
+    
+    console.log( "fechanacimiento: " + fechanacimiento); 
+    // throw new Error("Something went badly wrong!");    
 }
 
 
 //metodo predicado para la validacion de correo
 function validateEmail(email){        
-  if( email == "" ){// permite que el campo sea vacio 
-    return true;
+  if( email == "" ){  // permite que el campo sea vacio 
+    return false;
   }else{
    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
    return emailPattern.test(email);  
