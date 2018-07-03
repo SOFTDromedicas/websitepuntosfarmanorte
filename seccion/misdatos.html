@@ -139,13 +139,13 @@
           <div class="row" id="container-misdatos">
             <div class="columns small-12" id="column-misdatos">
               <form action="form-content-misdatos" data-abide novalidate>
-              <div data-abide-error class="warning  callout columns small-12" style="display: none;" id="calloutFormWarning" data-closable>
-                <h6>Ups! Hay problemas en nuestro sistema.</h6>
-                <p id="mensajeerror"></p>
-                <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-                <span aria-hidden="true">&times;</span>
-                </button>
-               </div>
+                <div data-abide-error class="warning  callout columns small-12" style="display: none;" id="calloutFormWarning" data-closable>
+                  <h6>Ups! Hay problemas en nuestro sistema.</h6>
+                  <p id="mensajeerror"></p>
+                  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
                <div class="row">
                   <div class="columns small-12"><p class="p-obligatorio"><span class="obligatorio">*</span> Son campos obligatorios</p></div>
                </div>
@@ -202,7 +202,7 @@
                      </div>
                      <div class="content-input">
                         <label for="fechanacimiento">Fecha Nacimiento <span class="obligatorio">*</span></label>
-                        <input type="text" name="fechanacimiento" placeholder="yyyy-mm-dd" id="fechanacimiento" data-date-format="mm/dd/yy">
+                        <input type="date" name="fechanacimiento" placeholder="yyyy-mm-dd" id="fechanacimiento" data-date-format="mm/dd/yyyy">
                      </div>
                      <div class="content-input">
                         <label for="barrio">Barrio <span class="obligatorio">*</span></label>
@@ -260,6 +260,14 @@
                      </div>
                   </div>
                </div>
+
+               <div data-abide-error class="warning  callout columns small-12" style="display: none;" id="calloutFormWarning2" data-closable>
+                  <h6>Ups! Hay problemas en nuestro sistema.</h6>
+                  <p id="mensajeerror2"></p>
+                  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
 
               <div class="row columns small-12 align-center">
                 <button type="button" id="actperfil-button" class="button float-center">Actualizar</button>

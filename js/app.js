@@ -553,7 +553,7 @@ function registrar() {
 function stateChange() {
   if(asyncRequest.readyState == 1 || asyncRequest.readyState == 2 ||
       asyncRequest.readyState == 3 ){
-    document.getElementById("spinner").style.display = 'block';
+    document.getElementById("spin-view").style.display = 'block';
     document.getElementById("blur").classList.add("blur-me");
     document.getElementById("calloutFormAlert").style.display = 'none';
     document.getElementById("calloutFormAlert2").style.display = 'none';
@@ -572,7 +572,7 @@ function stateChange() {
     // console.log("Respuesta: " + asyncRequest.responseText);
     
     if(response.status === "OK"){  
-      document.getElementById("spinner").style.display = 'none';
+      document.getElementById("spin-view").style.display = 'none';
       document.getElementById("calloutFormWarning").style.display = 'none';
       document.getElementById("blur").classList.remove("blur-me");
       // reestablece el formulario    
@@ -584,7 +584,7 @@ function stateChange() {
     }else{
       console.log()
       if(response.status == 'Bad Request' ){
-        document.getElementById("spinner").style.display = 'none';
+        document.getElementById("spin-view").style.display = 'none';
         document.getElementById("mensaje").innerHTML ="";
         document.getElementById("mensaje2").innerHTML ="";
         document.getElementById("mensaje").appendChild(document.createTextNode(response.message));
@@ -593,7 +593,7 @@ function stateChange() {
         document.getElementById("calloutFormWarning2").style.display = 'block';
         document.getElementById("blur").classList.remove("blur-me");  
       }else{
-        document.getElementById("spinner").style.display = 'none';
+        document.getElementById("spin-view").style.display = 'none';
         document.getElementById("mensaje").innerHTML ="";
         document.getElementById("mensaje2").innerHTML ="";
         document.getElementById("mensaje").appendChild(document.createTextNode(response.message));

@@ -100,9 +100,11 @@ function actualizarAfiliado(){
       }
     });
   }else{
+    console.log("else-----")
     actualizarDatosAfiliado();
   }
 }
+
 
 
 function actualizarFoto(callback) {
@@ -137,7 +139,8 @@ function actualizarFoto(callback) {
 function actualizarDatosAfiliado(){
   $("#calloutFormWarning").css("display","none");
   establecerValores();
-  var urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/updateprofilepartner?";
+  //var urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/updateprofilepartner?";
+  var urlWs = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/updateprofilepartner?";
   if (validarFormulario()) {
         //Campos del formulario hasta datos basico -nivel de estudios
         urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +
@@ -155,11 +158,10 @@ function actualizarDatosAfiliado(){
             }
         }
        // console.log("URL Servicio: " + urlWs);  
-
         try {
             asyncRequestProcess = new XMLHttpRequest();
             asyncRequestProcess.addEventListener("readystatechange", stateChange, false);
-            asyncRequestProcess.open("POST", urlWs, true);
+            asyncRequestProcess.open("GET", urlWs, true);
             asyncRequestProcess.send(null);
         } catch (excepcion) {}
     } else {
@@ -172,6 +174,10 @@ function stateChange() {
       asyncRequestProcess.readyState == 3 ){
     //activa el loadin efecto
     $('#loadinglogin').addClass("loaderlogin");
+
+    
+    $("#calloutFormWarning").css("display","none");
+    $("#calloutFormWarning2").css("display","none");
   }
   
   if (asyncRequestProcess.readyState == 4 && asyncRequestProcess.status == 200) {  
@@ -186,7 +192,9 @@ function stateChange() {
     }else{
       console.log(response.status);
       $('#mensajeerror').append().text(response.message);
+      $('#mensajeerror2').append().text(response.message);
       $("#calloutFormWarning").css("display","block");
+      $("#calloutFormWarning2").css("display","block");
      
       // document.getElementById("mensajeerror").appendChild(document.createTextNode(response.message));
       // document.getElementById("calloutFormWarning").style.display = 'block';
