@@ -59,11 +59,21 @@ function validarCorreoAfiliado(){
     //validacion de correo electronico del cliente
     // documentoAfiliado = getParameterURLByName('documento'); 
     documentoAfiliado = getParameterURLByName('id'); 
+    actualizacion = getParameterURLByName('param'); 
 
-    console.log("ID AFILIADO:  " + documentoAfiliado );
-    var updateURL = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/validacorreo?id=";   
-    var updateURL = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/validacorreo?id=";   
-    updateURL += documentoAfiliado;
+    if(actualizacion){
+        console.log("Actualizando correo ");
+        var updateURL = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/validacorreo?id=";   
+        var updateURL = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/validacorreoactualizar?id=";   
+        updateURL += documentoAfiliado;    
+    }else{
+        console.log("Validando correo ");
+        var updateURL = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/validacorreo?id=";   
+        var updateURL = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/validacorreo?id=";   
+        updateURL += documentoAfiliado;    
+    }
+
+
     // updateURL += "88239811";
     
     if(documentoAfiliado){
@@ -72,7 +82,12 @@ function validarCorreoAfiliado(){
             })
             .done(function(res) {                 
                 if(res.status == "OK"){
-                    document.getElementById("calloutafiliacion").style.display = 'block';      
+                    console.log("-------- " + actualizacion );
+                    if(actualizacion){
+                        document.getElementById("calloutactualizacion").style.display = 'block';      
+                    }else{
+                        document.getElementById("calloutafiliacion").style.display = 'block';      
+                    }
                 }
             })
             .fail(function(xhr, status, error) {
