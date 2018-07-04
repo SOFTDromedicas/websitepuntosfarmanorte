@@ -1,3 +1,6 @@
+//@utor-> @lfernandortiz | @SOFTDromedicas
+console.log ("@utor-> @lfernandortiz  | @SOFTDromedicas");
+
 $(document).foundation()
 
 var urlServicio = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/puntos/datosafiliado/";
@@ -34,6 +37,8 @@ function obtenerDatosAfiliado(){
 
 function obtenerInfoAfiliado(callback) {
     var xobj = new XMLHttpRequest();
+    urlServicio = "http://localhost:8080/puntosfarmanorte/webservice/puntos/datosafiliado/";
+
     urlEndPoint = urlServicio + localStorage.getItem('token');
     xobj.overrideMimeType("application/json");
     xobj.open('GET', urlEndPoint, true); // Replace 'my_data' with the path to your file
@@ -49,6 +54,8 @@ function cargarDatosAfiliado(){
   var afiliado = infoAfiliado.afiliado;
   var balance = infoAfiliado.balance;
   var foto =  infoAfiliado.urlFotoAfiliado;
+  var ptlgia = infoAfiliado.contenedor;
+
   $('#etiquetaafiliado').text(onwName(afiliado.nombres + " " + afiliado.apellidos));
   $('#etiquetaafiliadooff').text(onwName(afiliado.nombres + " " + afiliado.apellidos));
 
@@ -79,6 +86,12 @@ function cargarDatosAfiliado(){
     $('#imgperfilmain').attr("src",foto + '?' + new Date().getTime());
     $('#fotoPerfilMenu').attr("src",foto + '?' + new Date().getTime());
     $('#fotoperfilmenuOff').attr("src",foto + '?' + new Date().getTime());
+  }
+
+  //establece las patologias 
+
+  for(var i= 0; i < ptlgia.length ; i++){
+    $("input[type=checkbox][value="+ptlgia[i]+"]").prop("checked",true);
   }
   
 }
@@ -165,7 +178,8 @@ function actualizarDatosAfiliado(){
             asyncRequestProcess.send(null);
         } catch (excepcion) {}
     } else {
-        //mostrar error
+        $("#calloutFormAlert").css("display","block");
+        $("#calloutFormAlert2").css("display","block");
     }
 }
 
@@ -174,10 +188,10 @@ function stateChange() {
       asyncRequestProcess.readyState == 3 ){
     //activa el loadin efecto
     $('#loadinglogin').addClass("loaderlogin");
-
-    
     $("#calloutFormWarning").css("display","none");
     $("#calloutFormWarning2").css("display","none");
+    $("#calloutFormAlert").css("display","none");
+    $("#calloutFormAlert2").css("display","none");
   }
   
   if (asyncRequestProcess.readyState == 4 && asyncRequestProcess.status == 200) {  
@@ -186,6 +200,8 @@ function stateChange() {
     //parse a json la respuesta de la peticion
     var response = JSON.parse(asyncRequestProcess.responseText);
     if(response.status === "OK"){  
+      $("#calloutForm").css("display","block");
+      $("#calloutForm2").css("display","block");
       console.log(response.status);
       infoAfiliado = response;
       cargarDatosAfiliado();
@@ -312,7 +328,7 @@ function establecerValores() {
 
 function validateEmail(email){        
   if( email == "" ){// permite que el campo sea vacio 
-    return true;
+    return false;
   }else{
    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
    return emailPattern.test(email);  

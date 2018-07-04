@@ -122,8 +122,7 @@
                 </div>  
                 <div id="exit" class="exit">
                   <i class="fa fa-sign-out" id="salirPuntos" aria-hidden="true" title="Salir de Puntos Farmanorte"></i>
-                </div>   
-                         
+                </div>                            
               </div> <!-- end row-content for nav -->
             </div> <!-- end columna menu -->
           </div> <!-- end row contenedor  -->
@@ -142,6 +141,21 @@
                 <div data-abide-error class="warning  callout columns small-12" style="display: none;" id="calloutFormWarning" data-closable>
                   <h6>Ups! Hay problemas en nuestro sistema.</h6>
                   <p id="mensajeerror"></p>
+                  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div data-abide-error class="alert callout columns small-12" style="display: none;" id="calloutFormAlert" data-closable>
+                  <h5>Diligencie todos los campos del formulario.</h5>
+                  <p>Ingrese los datos consistentes en los campos obligatorios
+                    <span class="obligatorio">*</span>.</p>
+                  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="success callout columns small-12" style="display: none" id="calloutForm" data-closable>
+                  <h5>Actualizaci&oacute;n de datos Exitoso.</h5>
+                  <p>Sus datos fueron actualizadon correctamente.</p>
                   <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -261,14 +275,28 @@
                   </div>
                </div>
 
-               <div data-abide-error class="warning  callout columns small-12" style="display: none;" id="calloutFormWarning2" data-closable>
-                  <h6>Ups! Hay problemas en nuestro sistema.</h6>
-                  <p id="mensajeerror2"></p>
-                  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-
+              <div data-abide-error class="warning  callout columns small-12" style="display: none;" id="calloutFormWarning2" data-closable>
+                <h6>Ups! Hay problemas en nuestro sistema.</h6>
+                <p id="mensajeerror2"></p>
+                <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div data-abide-error class="alert callout columns small-12" style="display: none;" id="calloutFormAlert2" data-closable>
+                <h5>Diligencie todos los campos del formulario.</h5>
+                <p>Ingrese los datos consistentes en los campos obligatorios
+                  <span class="obligatorio">*</span>.</p>
+                <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="success callout columns small-12" style="display: none" id="calloutForm2" data-closable>
+                <h5>Actualizaci&oacute;n de datos Exitoso.</h5>
+                <p>Sus datos fueron actualizadon correctamente.</p>
+                <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
               <div class="row columns small-12 align-center">
                 <button type="button" id="actperfil-button" class="button float-center">Actualizar</button>
               </div>              

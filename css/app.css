@@ -738,6 +738,10 @@ label.checkbox-label input[type=checkbox]{
     color: #0a0a0a;
 }
 
+#backmain .callout{
+	margin-top: 0.5rem;
+}
+
 /****Spinner****/
 
 #spinner{
