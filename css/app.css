@@ -54,8 +54,17 @@ a:hover, a:active{
 #logotipo{
 	margin: .2rem 0 0 8rem;
 	width: 290px;
+	height: 120%!important;
 	position: absolute;
 	z-index: 2;
+	/* border:1px solid tomato; */
+}
+
+#logotipo img{
+	/* max-width: none; */
+	position: relative;
+	display: inline;
+	/* border:1px solid rgb(34, 245, 7); */
 }
 
 #burger-menu i{
