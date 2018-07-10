@@ -46,10 +46,16 @@ function obtenerDatosCatalogo() {
     });
 }
 
+
+/**
+ * Realiza la peticion al servicio que entrega el contenido del 
+ * catalogo.
+ * @param {callback} callback 
+ */
 function obtenerCatalogoServicio(callback) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
-    xobj.open('GET', urlServicioCatalogo, true); // Replace 'my_data' with the path to your file
+    xobj.open('GET', urlServicioCatalogo, true); 
     xobj.onreadystatechange = function () {
         if (xobj.readyState == 4 && xobj.status == "200") {
             callback(xobj.responseText);
@@ -58,6 +64,9 @@ function obtenerCatalogoServicio(callback) {
     xobj.send(null);
 }
 
+/**
+ * Genera el contenido dinamico del DOM
+ */
 function cargarDatosCatalogo() {
     //elemento del DOM que actua como contenedor del catalogo de prodcutos
     var contenedorCatalogo = document.querySelector('#contenedor-catalogo');
@@ -100,7 +109,11 @@ function cargarDatosCatalogo() {
 }
 
 
-
+/**
+ * Metodo auxiliar que crea el producto del catalogo. 
+ * Recibe como parametro un JSON del producto
+ * @param {producto} item 
+ */
 function crearProductoCatalogo( item ){
     //crea el div column
     var columnItem = document.createElement("div");
@@ -142,7 +155,10 @@ function crearProductoCatalogo( item ){
 }
 
 
-
+/**
+ * Realiza la peticion al end-point que proporciona
+ * el detalle del producto
+ */
 function obtenerDatosProducto() {
     obtenerProductoServicio(function (response) {
         //Parse JSON string into object
@@ -159,7 +175,10 @@ function obtenerDatosProducto() {
     });
 }
 
-
+/**
+ *
+ * @param {callback} callback 
+ */
 function obtenerProductoServicio(callback) {
     var urlEnd = urlServicioDetalle + getParameterURLByName('id');
     var xobj = new XMLHttpRequest();
@@ -633,7 +652,13 @@ $('.vertical .menu li a').click(function () {
 });
 
 
-//prototipo para generar la grilla DOM  del catalogO B-) 
+
+/**
+ * @deprecated Since version 1.0. 
+ * prototipo para generar la grilla DOM  del catalogO B-)
+ * Este metodo solo se uso para la simulacion
+ * del llenado del catalog @lfernandortiz.
+ */
 function testCatalogo() {
     var catalogo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
     var lengthC = Math.ceil(catalogo.length / 4);

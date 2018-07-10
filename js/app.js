@@ -82,7 +82,6 @@ function validarCorreoAfiliado(){
             })
             .done(function(res) {                 
                 if(res.status == "OK"){
-                    console.log("-------- " + actualizacion );
                     if(actualizacion){
                         document.getElementById("calloutactualizacion").style.display = 'block';      
                     }else{
