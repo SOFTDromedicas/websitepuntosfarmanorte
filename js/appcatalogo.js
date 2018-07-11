@@ -1,4 +1,5 @@
 //@utor-> @lfernandortiz | @SOFTDromedicas
+
 $(document).foundation()
 //registro de manejo de eventos para la carga de la pagina
 window.addEventListener("DOMContentLoaded", init, false);
