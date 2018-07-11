@@ -97,7 +97,7 @@
     </section> <!-- end Head Section -->
 
     <!-- spinner -->
-    <div id="spin-view" style="display: none;">
+    <div id="spin-view" style="display: none ;">
       <div id="cont-spinner">
         <div id="">
           <div class="small-12  columns" id="spinner" >
@@ -138,7 +138,7 @@
             </button>
           </div>
         </div>
-        <div id="blur" >
+        <div id="blur">
           
         <div class="row ">
           <div class="small-12 medium-6 columns">
@@ -286,6 +286,24 @@
               <input type="email" pattern="email" name="email" id="email" placeholder="Ingrese su correo electr&oacute;nico">
             </label>
           </div>
+        </div>
+        <div class="row">
+          <div class="small-12 medium-6 columns">
+            <label>Contrase&ntilde;a
+              <input type="password" id="contrasenia" placeholder="Ingrese su contrase&ntilde;a" aria-describedby="exampleHelpText" required >
+              <span class="form-error">
+                Es requerido!
+              </span>
+            </label>            
+          </div>
+          <div class="small-12 medium-6 columns">
+            <label>Confirme Contrase&ntilde;a
+              <input type="password" placeholder="Confirme su contrase&ntilde;a" aria-describedby="exampleHelpText2" required pattern="alpha_numeric" data-equalto="contrasenia">
+              <span class="form-error">
+                La confirmacion de la contrase&ntilde;a no coincide!
+              </span>
+            </label>            
+          </div>          
         </div>
         
         <div class="row patologias-insc">

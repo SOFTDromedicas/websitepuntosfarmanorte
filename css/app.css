@@ -197,6 +197,11 @@ a:hover, a:active{
 	margin:0!important;
 }
 
+#calloutRecupera{
+	padding: 0.8rem!important;
+	
+}
+
 #calloutrecuperaok{
 	margin:0!important;
 	padding-top: 2.5rem;
@@ -1094,6 +1099,7 @@ label.checkbox-label input[type=checkbox]{
 	color: #FF3573;	
 	padding-top: 0.4em;
 	cursor: pointer;
+	
 }
 
 
@@ -2380,6 +2386,11 @@ input:read-only {
 		padding: 3.5rem 0;
 	}
 
+
+	#volver-sesion{		
+		text-align: center;
+		line-height: .9rem;
+	}
 
 	#fieldsetperfil{
 		border: 2px solid #fff!important;

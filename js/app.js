@@ -5,7 +5,7 @@ $(document).foundation()
 //Procesamiento del formulario de inscripcion basico
 //Campos del formulario
 var ciudad, documento, nombres, apellidos, tipodocumento, sexo, direccion,
-            barrio, fechanacimiento, telefonofijo, celular, email, terminos, codigoprom;
+            barrio, fechanacimiento, telefonofijo, celular, email, terminos, codigoprom, claveweb;
 var btnGuardar;
 var ciudadesService = "http://dromedicas.sytes.net:9999/dropos/wsjson/ciudades/";
 
@@ -198,7 +198,8 @@ function preventDefaultForScrollKeys(e) {
 //Procesa la solicitud de recuparacion de clave 
 function enviarCorreoRecuperaClave() {
   
-    var servicioRecuperaClave = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/recuperaclave";
+    //var servicioRecuperaClave = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/recuperaclave";
+    var servicioRecuperaClave = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/recuperaclave";
     var email = $('#emialRecuperar').val(); //email afiliado
     var xhr = new XMLHttpRequest();
 
@@ -233,7 +234,7 @@ function stateChangeRec(xhr) {
     //al recibir la respuesta del servicio oculta el loader y procesa la respuesta
     if (xhr.readyState == 4 && xhr.status == 200) {
         var res =  JSON.parse(xhr.responseText);
-        
+        console.log(res.message);
         if(res.code == 200){
           document.getElementById("loadclave").classList.remove("loaderlogin");
           window.scrollTo(0, 0);
@@ -370,7 +371,7 @@ function showLogin(event){
 function exitLogin(event){   
     
   
-  if( event.target.getAttribute('id') == 'documentologin' && event.keyCode == 13){
+  if( event.target.getAttribute('id') == 'password' && event.keyCode == 13){
      iniciarSesion();
   }
 
@@ -538,7 +539,7 @@ function registrar() {
              "&tipodocumento=" + tipodocumento  + "&sexo=" + sexo  + "&direccion=" + direccion  + 
              "&fechanacimiento=" + fechanacimiento  + "&telefonofijo=" + telefonofijo  + 
              "&celular=" + celular  + "&ciudad=" + ciudad  + "&email=" + email + "&barrio=" + barrio +
-             "&usuario=" + "PAGINAWEB" + "&codigoprom=" + codigoprom ;
+             "&usuario=" + "PAGINAWEB" + "&codigoprom=" + codigoprom + "&claveweb=" + claveweb;
 
         //obtengo valores de patologias afiliado
         var pato = document.getElementsByName("pat[]");
@@ -638,7 +639,7 @@ function reestrablecerFormulario(){
   document.getElementById("ciudad").value =""; 
   document.getElementById("email").value =""; 
   document.getElementById("codigoprom").value =""; 
-  //document.getElementById("checkboxterminos").checked = false; 
+  document.getElementById("contrasenia").value=""
 
   $('input:checkbox').removeAttr('checked');
   
@@ -751,6 +752,13 @@ function validarFormulario(){
     document.getElementById("checkboxterminos").closest("label").setAttribute("class","is-invalid-label");
   }
 
+  if(document.getElementById("contrasenia").value == "" ){
+    valido = false;
+    document.getElementById("contrasenia").setAttribute("class","is-invalid-input");
+   document.getElementById("contrasenia").closest("label").setAttribute("class","is-invalid-label");
+  }
+
+
   return valido
 }
 
@@ -790,6 +798,7 @@ function establecerValores() {
     terminos = document.getElementById("checkboxterminos").value;
     
     codigoprom = document.getElementById("codigoprom").value.trim()
+    claveweb =  document.getElementById("contrasenia").value;
     
     console.log( "fechanacimiento: " + fechanacimiento); 
     // throw new Error("Something went badly wrong!");    
