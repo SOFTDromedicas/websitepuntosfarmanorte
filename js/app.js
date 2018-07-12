@@ -148,8 +148,18 @@ function registerEventLogin() {
 
         var recuperarClaveBtn = document.getElementById('recuperarClave');
         recuperarClaveBtn.addEventListener('click', enviarCorreoRecuperaClave, false);
+    
+        var mostrarClave = document.getElementById("p-mostrarclave");
+        mostrarClave.addEventListener('click', mostrarClaveLogin, false);    
     }
-   
+
+    if(location.pathname.substring(1) == "seccion/actualizardatos.html"){
+        
+        var mostrarClaveAct = document.getElementById("p-mostrarclave-act");
+        mostrarClaveAct.addEventListener('click', mostrarClaveLogin, false);
+    }
+    
+    
     //inicio de sesion 
     document.getElementById('iniciar-sesion').addEventListener('click', 
     iniciarSesion, false);
@@ -173,6 +183,16 @@ function rememberMe() {
     }
 }
 
+function mostrarClaveLogin() {
+    var password = document.getElementById('password');
+    if (password.getAttribute('type') === 'password') {
+        password.setAttribute('type', 'text');
+        mostrarClave.innerHTML = "Ocultar Contrase&ntilde;a"
+    } else {
+        password.setAttribute('type', 'password');
+        mostrarClave.innerHTML = "Mostrar Contrase&ntilde;a"
+    }
+}
 
 //funciones para el bloqueo del scroll cuando se ejecuta el login
 function preventDefault(e) { 

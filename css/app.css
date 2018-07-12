@@ -977,6 +977,12 @@ label.checkbox-label input[type=checkbox]{
   background: #eff3f8;
   height: 4px;
 }
+
+.basic-act{
+	height: 4px;
+}
+  
+
 .basicdatos{
   height: 4px;
 }
@@ -1952,7 +1958,6 @@ input:read-only {
 .detalle-pts{
 	margin-bottom: 1rem;
 }
-
 
 
 
