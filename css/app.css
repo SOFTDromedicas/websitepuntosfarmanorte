@@ -615,6 +615,11 @@ input::-webkit-inner-spin-button {
 	background: #EFF3F8;
 }
 
+
+#body-actualizacion{
+	
+}
+
 #street1, #street1-valor,
 #street2, #street2-valor,
 #barrio, #ciudad{
@@ -880,14 +885,40 @@ label.checkbox-label input[type=checkbox]{
 	padding: 8rem 0;
 }
 
-#login-section{	
-	padding: 5rem 0 8rem 0;
-	background-image: url('../images/fondologin.jpg');
-	min-height: 10rem;	
-	width: 100%;
-	background-size: cover;  
-	background-position: center;
+#row-content-actualizacion{	
+	height: 100vh;
 }
+
+.flex-align-center{
+	display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+	align-items: center;
+}
+
+#logo-info{
+	margin-bottom: 3rem;
+	text-align: center;
+	
+}
+
+#login-section h3{
+	font-family: 'Open Sans', sans-serif;
+	color:#0087ca;
+	font-weight: bold;
+}
+
+.copy{
+	color: #a3a3a3;
+	margin-top: 5px;
+	font-size: 0.7rem;
+	font-family: 'Roboto', sans-serif;
+}
+
 
 .paddingcontainerx{
 	padding: 2rem 0 8rem 0;
@@ -912,7 +943,11 @@ label.checkbox-label input[type=checkbox]{
 	/*min-height: 10rem;
 	min-width:  35rem;
 	*/	
- background: #eff3f8;
+ 	background: #eff3f8;
+}
+
+#login-main-act{
+	
 }
 
 .closeicon{
