@@ -617,6 +617,9 @@ input::-webkit-inner-spin-button {
 
 
 #body-actualizacion{
+
+	background: linear-gradient(to bottom,#fff 0,
+	rgba(255,255,255,.85) 85%, #4f96dd88 100%);
 	
 }
 
@@ -889,6 +892,8 @@ label.checkbox-label input[type=checkbox]{
 	height: 100vh;
 }
 
+
+
 .flex-align-center{
 	display: -ms-flexbox;
     display: -webkit-flex;
@@ -935,19 +940,18 @@ label.checkbox-label input[type=checkbox]{
 	font-size: 1.65rem!important;
 }
 
+.paddin-right-login{
+	padding-right: 4rem;	
+}
 
 .login-main{
-	/*border: 1px solid #808080;*/
 	border-radius: 7px;
 	box-shadow: 0px 1px 15px #2E2E2E;
-	/*min-height: 10rem;
-	min-width:  35rem;
-	*/	
  	background: #eff3f8;
 }
 
-#login-main-act{
-	
+#login-main-act{	
+	width: 23rem;
 }
 
 .closeicon{
@@ -1029,7 +1033,8 @@ label.checkbox-label input[type=checkbox]{
 	margin:0 0 0 1rem;
 }
 
-#mostrar-clave label{
+#mostrar-clave label,
+#mostrar-clave-act label{
 	display: inline-block!important;
 }
 
@@ -1042,6 +1047,19 @@ label.checkbox-label input[type=checkbox]{
 	padding-top: 4px;
 	cursor: pointer;
 }
+
+
+#mostrar-clave-act p{
+	font-family: 'Open Sans', sans-serif;
+	margin: 0;
+	color: #0087ca;
+	font-size: 0.9rem;
+	font-weight: bold;	
+	padding-top: 4px;
+	cursor: pointer;
+}
+
+
 
 
 #iniciar-sesion{
@@ -1064,6 +1082,8 @@ label.checkbox-label input[type=checkbox]{
 	padding: 0.2rem!important;	
 }
 
+
+
 .olvido-cont{
 	display: flex;
 }
@@ -1071,6 +1091,15 @@ label.checkbox-label input[type=checkbox]{
 #olvidocontrasenia{
 	font-family: 'Open Sans', sans-serif;
 	color: #FF3573;
+	text-align: center;
+	cursor: pointer;
+	display: inline-block;	
+}
+
+
+#olvidocontrasenia-act{
+	font-family: 'Open Sans', sans-serif;
+	color: #0087ca;
 	text-align: center;
 	cursor: pointer;
 	display: inline-block;	
@@ -1944,6 +1973,13 @@ input:read-only {
 		width: 180px;			
 	}
 
+	.paddin-right-login{
+		padding: 0!important;
+	}
+
+	#login-main-act{	
+		width: auto;
+	}
 
 	#menu-container{	
 		background-position: left;
@@ -2100,6 +2136,11 @@ input:read-only {
 
 	.sticky-container{
 		max-height: 9rem!important;	
+	}
+
+
+	.paddin-right-login{
+		padding: 0!important;
 	}
 
 	#menu-container{	
@@ -2280,6 +2321,10 @@ input:read-only {
 
 	#contenedor-menu .align-center{
 		justify-content: flex-start;
+	}
+
+	.paddin-right-login{
+		padding: 0!important;
 	}
 
 	#menuppal ul li a{
@@ -2528,6 +2573,10 @@ input:read-only {
 	#logotipo {
 		margin: .2rem 0 0 1.6rem;
 		width: 220px;
+	}
+
+	.paddin-right-login{
+		padding: 0!important;
 	}
 	
 

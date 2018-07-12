@@ -150,12 +150,6 @@ function registerEventLogin() {
         recuperarClaveBtn.addEventListener('click', enviarCorreoRecuperaClave, false);
     }
    
-    var iconocerrar = document.getElementById('iconocerrar');
-    iconocerrar.addEventListener('click', exitLogin, false);
-
-    var olividoDedeLogin = document.getElementById('olvidocontrasenia');
-    olividoDedeLogin.addEventListener('click', irARecuperarClave, false);
-
     //inicio de sesion 
     document.getElementById('iniciar-sesion').addEventListener('click', 
     iniciarSesion, false);
@@ -273,66 +267,86 @@ function getToken(){
   console.log("URL: " + servicioLogin);
   
   try{
-    //callback
-    xhr.addEventListener("readystatechange", function(){
-      //muestra el loader de linea mientras procesa la solicitud
-      if(this.readyState >= 1 && this.readyState <= 3 ){
-        document.getElementById("loadinglogin").classList.add("loaderlogin");
-      } 
 
-      //al recibir la respuesta del servicio oculta el loader y procesa la respuesta
-      if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("loadinglogin").classList.remove("loaderlogin");
-
-        //obtiene el JWT del cabecero  de la respuesta
-        var token = this.getResponseHeader('AUTHORIZATION');
-        
-        //si hay token se registra
-        if (token) {
-          // Almacena el token en localStorage
-          localStorage.setItem('token', token);
-          //si el checkbox de recordar usuario esta marcado 
-          //los valores son guardados en el localstorage (no por cookies)
-          if ($('#recordarme').is(':checked')) {
-              // guarda usuario y contrasenia
-              localStorage.usrname = $('#documentologin').val();
-              localStorage.pass = $('#password').val();
-              localStorage.chkbx = $('#recordarme').val();
-          } else {
-              localStorage.usrname = '';
-              localStorage.pass = '';
-              localStorage.chkbx = '';
-          }
-
-          //se redirecciona a la pagina de perfil
-          window.location.href = "/seccion/misdatos.html";
-
-          //se limpia los campos del formulario
-          $('#documentologin').val('');
-          $('#password').val('');
-
-        } else {
-          //si hay error en el login se obtiene el mensaje para 
-          //desplegarce en el callout
-          var resp = JSON.parse(this.responseText);
-          var mes = resp.message;
-          //muestra los mensajes de error
-          $('#documentologin').addClass('is-invalid-input');
-          $('#documentologin').parent().addClass('is-invalid-label');
-          $('#password').addClass('is-invalid-input');
-          $('#password').parent().addClass('is-invalid-label');
-          $('#calloutLoginAlert').css("display", "block");
-        } //end else token 
-      }//end validacion estado de la peticion 
-     }, false);
-    xhr.open( "POST", servicioLogin, true );
-    xhr.setRequestHeader("Accept",
-          "application/json; charset=utf-8" );
-    xhr.send();     
-
+    if(validaLoginInpunt()){
+        //callback
+        xhr.addEventListener("readystatechange", function(){
+          //muestra el loader de linea mientras procesa la solicitud
+          if(this.readyState >= 1 && this.readyState <= 3 ){
+            document.getElementById("loadinglogin").classList.add("loaderlogin");
+          } 
+    
+          //al recibir la respuesta del servicio oculta el loader y procesa la respuesta
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("loadinglogin").classList.remove("loaderlogin");
+    
+            //obtiene el JWT del cabecero  de la respuesta
+            var token = this.getResponseHeader('AUTHORIZATION');
+            
+            //si hay token se registra
+            if (token) {
+              // Almacena el token en localStorage
+              localStorage.setItem('token', token);
+              //si el checkbox de recordar usuario esta marcado 
+              //los valores son guardados en el localstorage (no por cookies)
+              if ($('#recordarme').is(':checked')) {
+                  // guarda usuario y contrasenia
+                  localStorage.usrname = $('#documentologin').val();
+                  localStorage.pass = $('#password').val();
+                  localStorage.chkbx = $('#recordarme').val();
+              } else {
+                  localStorage.usrname = '';
+                  localStorage.pass = '';
+                  localStorage.chkbx = '';
+              }
+    
+              //se redirecciona a la pagina de perfil
+              window.location.href = "/seccion/misdatos.html";
+    
+              //se limpia los campos del formulario
+              $('#documentologin').val('');
+              $('#password').val('');
+    
+            } else {
+              //si hay error en el login se obtiene el mensaje para 
+              //desplegarce en el callout
+              var resp = JSON.parse(this.responseText);
+              var mes = resp.message;
+              //muestra los mensajes de error
+              $('#documentologin').addClass('is-invalid-input');
+              $('#documentologin').parent().addClass('is-invalid-label');
+              $('#password').addClass('is-invalid-input');
+              $('#password').parent().addClass('is-invalid-label');
+              $('#calloutLoginAlert').css("display", "block");
+            } //end else token 
+          }//end validacion estado de la peticion 
+         }, false);
+        xhr.open( "POST", servicioLogin, true );
+        xhr.setRequestHeader("Accept",
+              "application/json; charset=utf-8" );
+        xhr.send();
+    }
   }catch(ex){
    console.log(ex)    
   }
+}
+
+function validaLoginInpunt(){
+    var valido = true ;
+    if( $("#password").val() == "" ||  $("#password").val() == " " ){
+        valido = false;
+        $('#password').addClass('is-invalid-input');
+        $('#password').parent().addClass('is-invalid-label');
+        $('#calloutLoginAlert').css("display", "block");
+    }
+    if($("#documentologin").val() == "" ||  $("#documentologin").val() == " "){
+        valido = false;
+        $('#documentologin').addClass('is-invalid-input');
+        $('#documentologin').parent().addClass('is-invalid-label');
+        $('#calloutLoginAlert').css("display", "block");        
+    }
+
+   return valido;
 }
 
 
