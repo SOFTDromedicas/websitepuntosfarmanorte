@@ -151,19 +151,25 @@ function registerEventLogin() {
     
         var mostrarClave = document.getElementById("p-mostrarclave");
         mostrarClave.addEventListener('click', mostrarClaveLogin, false);    
+
+        var olividoDedeLogin = document.getElementById('olvidocontrasenia');
+        olividoDedeLogin.addEventListener('click', irARecuperarClave, false);
+    
     }
 
     if(location.pathname.substring(1) == "seccion/actualizardatos.html"){
         
         var mostrarClaveAct = document.getElementById("p-mostrarclave-act");
         mostrarClaveAct.addEventListener('click', mostrarClaveLogin, false);
+
+        var olividoDedeLoginAct = document.getElementById('olvidocontrasenia-act');
+        olividoDedeLoginAct.addEventListener('click', irARecuperarClaveAct, false);   
     }
-    
     
     //inicio de sesion 
     document.getElementById('iniciar-sesion').addEventListener('click', 
     iniciarSesion, false);
-
+    
     //registro de evento techa de escape para el formulario de login
     document.addEventListener('keyup', exitLogin, false);
 }
@@ -447,6 +453,11 @@ function irARecuperarClave(event){
   exitLogin(event); 
   document.getElementById('blurme-container').classList.remove('ocultarLogin');    
   showRestablecerContrasena();
+}
+
+function irARecuperarClaveAct(){
+    console.log("----------");
+    window.location.href = "/seccion/recuperacontrasenia.html";
 }
 
 //muestra el cuadro de reestablecer clave

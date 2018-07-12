@@ -1145,6 +1145,12 @@ label.checkbox-label input[type=checkbox]{
 	font-size: 1.1rem;
 }
 
+#recuperarClave-act{
+	background: #274B8D;
+	font-size: .9;
+}
+
+
 .banda-recuperar{
 	padding-bottom: 1rem;
 	background: #1c3672;
@@ -1163,14 +1169,26 @@ label.checkbox-label input[type=checkbox]{
 	font-family: 'Open Sans', sans-serif;
 }
 
+.volver-sesion-act{
+	margin-top: 0.9rem;
+	font-size: auto;
+	line-height: 1.6rem;
+	font-family: 'Open Sans', sans-serif;
+}
+
 #volver-sesion{
 	font-size: 1.2rem;
 	font-family: 'Open Sans', sans-serif;
 	color: #FF3573;	
 	padding-top: 0.4em;
 	cursor: pointer;
-	
 }
+
+#volver-sesion.volver-act{
+	font-size: 1rem;
+	color: #284b8c;		
+}
+
 
 
 #rowlogin{
