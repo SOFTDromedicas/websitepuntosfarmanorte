@@ -99,8 +99,7 @@ a:hover, a:active{
 }
 
 #menuppal ul li a:active{	
-  /*outline: none;*/
-  
+
 }
 
 .activa {
@@ -186,6 +185,27 @@ a:hover, a:active{
 .orbit{
 	box-shadow: 0 11px 25px rgba(3, 3, 3, 0.65);
 }
+
+
+.login-especial{
+	background: #0087ca;
+	color: #ffffff;
+	text-align: center;
+	display: none;
+}
+.login-especial a{
+	padding: 1rem;
+	padding-top: 2rem;
+	display: block;
+	font-size: 1.1rem;
+}
+
+.login-especial a:visited{
+	color: #ffffff;
+	text-decoration: none;
+}
+
+
 
 #calloutafiliacion, #calloutactualizacion{
 	margin:0!important;
@@ -482,6 +502,11 @@ legend{
 #form-content p{
 	margin-bottom: 0.9rem;
 }
+
+p.nota-importante {
+	font-size: 1.2rem;
+}
+
 #agregar-miembro,
 #agregar-referido{
 	color:#ffffff;
@@ -617,9 +642,11 @@ input::-webkit-inner-spin-button {
 
 
 #body-actualizacion{
-
 	background: linear-gradient(to bottom,#fff 0,
 	rgba(255,255,255,.85) 85%, #4f96dd88 100%);
+
+	background: linear-gradient(to bottom,#fff 0,
+	rgba(255,255,255,.85) 87%, #068dd198 100%);
 	
 }
 
@@ -893,7 +920,6 @@ label.checkbox-label input[type=checkbox]{
 }
 
 
-
 .flex-align-center{
 	display: -ms-flexbox;
     display: -webkit-flex;
@@ -908,7 +934,10 @@ label.checkbox-label input[type=checkbox]{
 #logo-info{
 	margin-bottom: 3rem;
 	text-align: center;
-	
+}
+
+#logo-actualizacion{
+	width: 90%;
 }
 
 #login-section h3{
@@ -1184,9 +1213,12 @@ label.checkbox-label input[type=checkbox]{
 	cursor: pointer;
 }
 
-#volver-sesion.volver-act{
-	font-size: 1rem;
-	color: #284b8c;		
+#volver-sesion-act{
+	font-family: 'Open Sans', sans-serif;
+    color: #0087ca;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
 }
 
 
@@ -1990,10 +2022,30 @@ input:read-only {
 		height: 560%;
 		padding-top: 230rem;
 	}
+
+	.login-especial{
+		display: block;
+	}
 	
 	#logotipo{
 		margin: .2rem 0 0 1.6rem;
 		width: 180px;			
+	}
+
+	#login-section.login-section{
+		padding: 0;
+	}
+
+	.copy{
+		margin-bottom: 0;
+	}
+
+	#logo-info{
+		margin-bottom: 0rem;
+	}
+
+	#logo-actualizacion{
+		width: 75%;
 	}
 
 	.paddin-right-login{
@@ -2032,7 +2084,11 @@ input:read-only {
 	}
 
 	.left-column-queson{
-			padding-top: 1.5rem!important;							
+			padding-top: 3rem!important;							
+	}
+
+	p.nota-importante {
+		font-size: 5rem;
 	}
 
 	#queson{
@@ -2601,7 +2657,7 @@ input:read-only {
 	.paddin-right-login{
 		padding: 0!important;
 	}
-	
+
 
 	#perfilmenu{
 		display: none;
@@ -2658,12 +2714,9 @@ input:read-only {
 }
 
 
-
+/***/
 .degradeTransparente{
 	    background: linear-gradient(to right,#fff 0,rgba(255,255,255,.85) 70%,rgba(255,255,255,.01) 100%);
 }
 
 
-/* #login-container-main{
-	border: 2px solid tomato;
-} */

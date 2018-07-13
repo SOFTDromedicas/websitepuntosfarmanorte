@@ -37,7 +37,7 @@ function obtenerDatosAfiliado(){
 
 function obtenerInfoAfiliado(callback) {
     var xobj = new XMLHttpRequest();
-    urlServicio = "http://localhost:8080/puntosfarmanorte/webservice/puntos/datosafiliado/";
+    urlServicio = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/puntos/datosafiliado/";
 
     urlEndPoint = urlServicio + localStorage.getItem('token');
     xobj.overrideMimeType("application/json");
@@ -153,7 +153,7 @@ function actualizarDatosAfiliado(){
   $("#calloutFormWarning").css("display","none");
   establecerValores();
   //var urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/updateprofilepartner?";
-  var urlWs = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/updateprofilepartner?";
+  var urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/updateprofilepartner?";
   if (validarFormulario()) {
         //Campos del formulario hasta datos basico -nivel de estudios
         urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +

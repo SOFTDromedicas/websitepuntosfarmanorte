@@ -62,14 +62,10 @@ function validarCorreoAfiliado(){
     actualizacion = getParameterURLByName('param'); 
 
     if(actualizacion){
-        console.log("Actualizando correo ");
-        var updateURL = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/validacorreo?id=";   
-        var updateURL = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/validacorreoactualizar?id=";   
+        var updateURL = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/validacorreoactualizar?id=";   
         updateURL += documentoAfiliado;    
     }else{
-        console.log("Validando correo ");
         var updateURL = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/validacorreo?id=";   
-        var updateURL = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/validacorreo?id=";   
         updateURL += documentoAfiliado;    
     }
 
@@ -126,7 +122,8 @@ function eventRegistroAfiliado() {
 function registerEventLogin() {
 
     //Esto es para evitar errores de JavaScript por renderisacion del DOM en otras vistas
-    if ( location.pathname.substring(1) != "seccion/actualizardatos.html" ){
+    if ( location.pathname.substring(1) != "seccion/actualizardatos.html" &&
+         location.pathname.substring(1) != "seccion/recuperacontrasenia.html" ){
         var login = document.getElementById('loginperfil');
         login.addEventListener('click', showLogin, false);        
         
@@ -157,19 +154,32 @@ function registerEventLogin() {
     
     }
 
-    if(location.pathname.substring(1) == "seccion/actualizardatos.html"){
+    if(location.pathname.substring(1) == "seccion/actualizardatos.html" ){
         
         var mostrarClaveAct = document.getElementById("p-mostrarclave-act");
         mostrarClaveAct.addEventListener('click', mostrarClaveLogin, false);
 
         var olividoDedeLoginAct = document.getElementById('olvidocontrasenia-act');
-        olividoDedeLoginAct.addEventListener('click', irARecuperarClaveAct, false);   
+        olividoDedeLoginAct.addEventListener('click', irARecuperarClaveAct, false);          
+        
     }
-    
-    //inicio de sesion 
-    document.getElementById('iniciar-sesion').addEventListener('click', 
-    iniciarSesion, false);
-    
+
+    if(location.pathname.substring(1) != "seccion/recuperacontrasenia.html"){
+        //inicio de sesion 
+        document.getElementById('iniciar-sesion').addEventListener('click', 
+        iniciarSesion, false);
+    }
+
+    if(location.pathname.substring(1) == "seccion/recuperacontrasenia.html"){
+        var recuperarClaveBtn2 = document.getElementById('recuperarClave-act');
+        recuperarClaveBtn2.addEventListener('click', enviarCorreoRecuperaClave, false);
+
+        var volverAct = document.getElementById('volver-sesion-act');
+        volverAct.addEventListener('click', volverSesionAct, false);
+        
+    }
+
+
     //registro de evento techa de escape para el formulario de login
     document.addEventListener('keyup', exitLogin, false);
 }
@@ -211,7 +221,7 @@ function preventDefault(e) {
 function preventDefaultForScrollKeys(e) {
     if (keys[e.keyCode]) {
         preventDefault(e);
-        return false;
+        return false; 
     }
 }
 
@@ -219,7 +229,8 @@ function preventDefaultForScrollKeys(e) {
 function enviarCorreoRecuperaClave() {
   
     //var servicioRecuperaClave = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/recuperaclave";
-    var servicioRecuperaClave = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/recuperaclave";
+    // var servicioRecuperaClave = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/recuperaclave";
+    var servicioRecuperaClave = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/recuperaclave";
     var email = $('#emialRecuperar').val(); //email afiliado
     var xhr = new XMLHttpRequest();
 
@@ -257,9 +268,14 @@ function stateChangeRec(xhr) {
         console.log(res.message);
         if(res.code == 200){
           document.getElementById("loadclave").classList.remove("loaderlogin");
-          window.scrollTo(0, 0);
-          exitOlvido();
-          $('#calloutrecuparacionclave').css("display", "block");
+          if(location.pathname.substring(1) != "seccion/recuperacontrasenia.html"){
+              window.scrollTo(0, 0);
+              exitOlvido();
+              $('#calloutrecuparacionclave').css("display", "block");
+            }else{
+                $('#calloutSucess').css("display", "block");    
+                $('#emialRecuperar').val("");
+          }
 
         }else{
           document.getElementById("loadclave").classList.remove("loaderlogin");
@@ -287,7 +303,6 @@ function getToken(){
   var user = userElement.value;  
   var password = passwordElement.value;
   servicioLogin = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/apiwebafiliado/login";
-  servicioLogin = "http://localhost:8080/puntosfarmanorte/webservice/apiwebafiliado/login";
   servicioLogin += "?user=" + user + "&password=" + password;
 
   console.log("URL: " + servicioLogin);
@@ -456,7 +471,6 @@ function irARecuperarClave(event){
 }
 
 function irARecuperarClaveAct(){
-    console.log("----------");
     window.location.href = "/seccion/recuperacontrasenia.html";
 }
 
@@ -506,6 +520,11 @@ function exitOlvido(){
 function volverSesion(event){
   exitLoginOlvido(event);
   showLogin(event);
+}
+
+
+function volverSesionAct(){
+    window.location.href = "/seccion/actualizardatos.html";
 }
 //***End Funciones de Login ****//
 
@@ -576,8 +595,8 @@ function registrar() {
     
     establecerValores();
 
-    urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?";
-    urlWs = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/crearafiliadonuevo?";
+    // urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/crearafiliado?";
+    urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/crearafiliadonuevo?";
 
     if(validarFormulario()){   
       urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +

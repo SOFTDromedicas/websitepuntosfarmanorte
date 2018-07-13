@@ -57,7 +57,7 @@
       <div class="row expanded" id="row-content-actualizacion">
         <div class="small-12 medium-6 columns flex-align-center ">
             <a href="../index.html" id="logo-info">
-              <figure id="logoactualizadatos"><img src="../images/logoPuntosFarmanorte.svg" alt="Logo Puntos Farmanorte" ></figure>  
+              <figure id="logoactualizadatos"><img src="../images/logoPuntosFarmanorte.svg" alt="Logo Puntos Farmanorte" id="logo-actualizacion"></figure>  
               <p class="copy">Programa de fidelizaci&oacute;n de clientes de la cadena Droguer&iacute;a Farmanorte.</p>             
             </a>
         </div>
@@ -80,6 +80,13 @@
                           <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
+                        <div class="success callout columns small-12" style="display: none" id="calloutSucess" data-closable>
+                            <h6><i class="fa fa-check" aria-hidden="true"></i> Se ha enviado un email con las indicaciones para recuperar su contrase&ntilde;a</h6>
+                            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+
                           <form action="" id="form-login-olvido" data-abide novalidate>
                             <div class="row">
                               <div class="columns small-12">
@@ -93,7 +100,7 @@
                             </div>
                             <div class="row">
                               <div class="columns small-6 medium-7" id="recordarme-content">
-                                <p class="float-left volver-act" id="volver-sesion">Volver al inicio de sesi&oacute;n</p>
+                                <p class="float-left volver-act" id="volver-sesion-act">Volver al inicio de sesi&oacute;n</p>
                               </div>
                               <div class="columns small-6 medium-5" id="mostrar-clave">      
                                 <button type="button" id="recuperarClave-act" class="button float-right">Enviar Enlace</button>
