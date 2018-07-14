@@ -154,6 +154,7 @@ function actualizarDatosAfiliado(){
   establecerValores();
   //var urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/updateprofilepartner?";
   var urlWs = "http://dromedicas.sytes.net:8080/puntosfarmanorte/webservice/afiliado/updateprofilepartner?";
+  // var urlWs = "http://localhost:8080/puntosfarmanorte/webservice/afiliado/updateprofilepartner?";
   if (validarFormulario()) {
         //Campos del formulario hasta datos basico -nivel de estudios
         urlWs += "documento=" + documento + "&nombres=" + nombres  + "&apellidos=" + apellidos  +

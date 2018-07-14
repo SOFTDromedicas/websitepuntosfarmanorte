@@ -125,10 +125,10 @@ function registerEventLogin() {
     if ( location.pathname.substring(1) != "seccion/actualizardatos.html" &&
          location.pathname.substring(1) != "seccion/recuperacontrasenia.html" ){
         var login = document.getElementById('loginperfil');
-        login.addEventListener('click', showLogin, false);        
+        login.addEventListener('click', nuevoLogin, false);        
         
         var login = document.getElementById('login-offcanvas');
-        login.addEventListener('click', showLogin, false);
+        login.addEventListener('click', nuevoLogin, false);
         
         var loginout = document.getElementById('login-container-main');
         loginout.addEventListener('click', exitLogin, false);
@@ -374,19 +374,20 @@ function getToken(){
 
 function validaLoginInpunt(){
     var valido = true ;
-    if( $("#password").val() == "" ||  $("#password").val() == " " ){
-        valido = false;
-        $('#password').addClass('is-invalid-input');
-        $('#password').parent().addClass('is-invalid-label');
-        $('#calloutLoginAlert').css("display", "block");
-    }
-    if($("#documentologin").val() == "" ||  $("#documentologin").val() == " "){
-        valido = false;
-        $('#documentologin').addClass('is-invalid-input');
-        $('#documentologin').parent().addClass('is-invalid-label');
-        $('#calloutLoginAlert').css("display", "block");        
-    }
+    // if( $("#password").val() == "" ||  $("#password").val() == " " ){
+    //     valido = false;
+    //     $('#password').addClass('is-invalid-input');
+    //     $('#password').parent().addClass('is-invalid-label');
+    //     $('#calloutLoginAlert').css("display", "block");
+    // }
+    // if($("#documentologin").val() == "" ||  $("#documentologin").val() == " "){
+    //     valido = false;
+    //     $('#documentologin').addClass('is-invalid-input');
+    //     $('#documentologin').parent().addClass('is-invalid-label');
+    //     $('#calloutLoginAlert').css("display", "block");        
+    // }
 
+   valido = true;
    return valido;
 }
 
@@ -412,6 +413,10 @@ function enableScroll() {
 // end funciones para el bloqueo del scroll
 
 //muestra el cuadro de login
+function nuevoLogin(){
+    window.location.href = "/seccion/actualizardatos.html";
+}
+
 function showLogin(event){
 
     rememberMe(); 

@@ -2036,6 +2036,10 @@ input:read-only {
 		padding: 0;
 	}
 
+	#form-content p.nota-importante{
+		font-size: 1.3rem;
+	}
+
 	.copy{
 		margin-bottom: 0;
 	}
@@ -2047,13 +2051,14 @@ input:read-only {
 	#logo-actualizacion{
 		width: 75%;
 	}
-
+	
 	.paddin-right-login{
 		padding: 0!important;
 	}
 
 	#login-main-act{	
 		width: auto;
+		margin-bottom: 7rem;
 	}
 
 	#menu-container{	
