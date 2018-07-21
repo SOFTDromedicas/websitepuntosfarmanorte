@@ -193,11 +193,16 @@ function stateChange() {
     $("#calloutFormWarning2").css("display","none");
     $("#calloutFormAlert").css("display","none");
     $("#calloutFormAlert2").css("display","none");
+    $("#aguarde-id").css("display","block");
+    $("#loading-c").css("display","block");
+
   }
   
   if (asyncRequestProcess.readyState == 4 && asyncRequestProcess.status == 200) {  
     //desactiva la linea de loading
-    $('#loadinglogin').removeClass("loaderlogin");    
+    $('#loadinglogin').removeClass("loaderlogin");   
+    $("#aguarde-id").css("display","none"); 
+    $("#loading-c").css("display","none"); 
     //parse a json la respuesta de la peticion
     var response = JSON.parse(asyncRequestProcess.responseText);
     if(response.status === "OK"){  

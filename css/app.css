@@ -1020,6 +1020,9 @@ label.checkbox-label input[type=checkbox]{
 	height: 4px;
 }
 
+#loading-c{
+	display: none;
+}
 
 .loaderlogin {
   height: 4px;
@@ -1520,6 +1523,11 @@ table#txrecord td.puntosTx{
 	margin-bottom: 3rem; 
 }
 
+.aguarde{
+	margin-top: 1rem;
+	display: none;
+}
+
 
 .content-input{
 	margin-bottom: 1rem;
@@ -2012,6 +2020,7 @@ input:read-only {
 
 
 
+
 /*************MEDIA QUERIES****************
 
 /*Default Media Queries Foundation*/
@@ -2070,6 +2079,10 @@ input:read-only {
 		height: 8rem!important;
 	}
 	
+	#loading-c{
+		margin-top: 39px;
+	}
+
 	#ancla_quesonpuntos,
 	#ancla_registro-section,
 	#ancla_beneficion-section{
@@ -2220,6 +2233,10 @@ input:read-only {
 
 	.sticky-container{
 		max-height: 9rem!important;	
+	}
+
+	#loading-c{
+		margin-top: 75px;
 	}
 
 

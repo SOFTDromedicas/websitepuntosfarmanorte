@@ -85,7 +85,7 @@
         <!-- barra azul -->
         <div class="row columns small-12 spaceblue">        
         </div>
-        <!-- Menu Normal-->      
+        <!-- Menu Normal-->  
         <div id="menu-container" data-sticky-container data-sticky data-options="marginTop:0;" data-sticky-on="small" >
           <div class="row expanded menuc-row" > 
             <!-- columna logo -->
@@ -125,15 +125,16 @@
                 </div>                            
               </div> <!-- end row-content for nav -->
             </div> <!-- end columna menu -->
-          </div> <!-- end row contenedor  -->
+          </div> <!-- end row contenedor  --> 
+          <div class="row expanded"  id="loading-c">
+            <div id="loadinglogin" class="columns small-12 basicdatos"></div>
+          </div> <!-- end loader div -->        
         </div> <!-- end menu-container -->
       </section> <!-- end Head Section -->
 
       <!-- seccion main -->
       <section id="perfil-seccion-container">
-        <div class="row expanded" >
-          <div id="loadinglogin" class="columns small-12 basicdatos"></div>
-        </div> <!-- end loader div -->
+        
         <div id="backmain">
           <div class="row" id="container-misdatos">
             <div class="columns small-12" id="column-misdatos">
@@ -297,6 +298,10 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
+              <div class="row columns small-12 align-left">
+                <p class="aguarde" id="aguarde-id">Aguarde un momento...</p>
+              </div>    
+
               <div class="row columns small-12 align-center">
                 <button type="button" id="actperfil-button" class="button float-center">Actualizar</button>
               </div>              

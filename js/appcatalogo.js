@@ -4,12 +4,14 @@ $(document).foundation()
 //registro de manejo de eventos para la carga de la pagina
 window.addEventListener("DOMContentLoaded", init, false);
 
-var urlServicioCatalogo = "http://192.168.14.241/dropos/wsjson/catalogopuntos/?opc=catalogo";
+var urlServicioCatalogo = "http://localhost/dropos/wsjson/catalogopuntos/?opc=catalogo";
 var urlServicioDetalle = "http://192.168.14.241/dropos/wsjson/catalogopuntos/?id=";
+var urlServicioRedencion = "http://localhost/dropos/wsjson/catalogopuntosnuevo/?id=";
 var urlImgCatalogo = "http://192.168.14.241/dropos/imagenes.php?opcion=getimgcatalogo&productoid=";
 var urlImgDetalle = "http://192.168.14.241/dropos/imagenes.php?opcion=getimgdetalle&productoid=";
 var catalogoProductos;
 var detalleProducto;
+var detalleRedencion;
 
 
 function init() {
@@ -135,9 +137,9 @@ function crearProductoCatalogo( item ){
     var infoParrafo = document.createElement("p");
     infoParrafo.setAttribute("class", "descripcion-prod");   
     if( item.efectivo == '0'){
-        infoParrafo.innerHTML  = '<i class="fa fa-circle point" aria-hidden="true"></i> '+ item.puntos + ' c/u';
+        infoParrafo.innerHTML  = '<i class="fa fa-circle point" aria-hidden="true"></i> '+ number_format( item.puntos ) + ' c/u';
     }else{
-        infoParrafo.innerHTML  = '<i class="fa fa-circle point" aria-hidden="true"></i> '+ item.puntos + ' + $' + item.efectivo + ' c/u';
+        infoParrafo.innerHTML  = '<i class="fa fa-circle point" aria-hidden="true"></i> '+ number_format( item.puntos ) + ' + $' + number_format( item.efectivo ) + ' c/u';
     }
    
     //crea el boton de detalle 
@@ -174,6 +176,20 @@ function obtenerDatosProducto() {
             //aca manejo el error si no hay funciona el servicio
         }
     });
+
+    obtenerRedencionData(function (response) {
+        //Parse JSON string into object
+        var dataTemp = JSON.parse(response);
+        //obtiene los valores del producto desde el JSON
+        detalleRedencion = dataTemp.data;
+        console.log(detalleRedencion);
+        if (dataTemp.code == 200) {
+            //inserta los valores del producto en la pagina detalle
+             crearDetalleRedencion(detalleRedencion);
+        } else {
+            //aca manejo el error si no hay funciona el servicio
+        }
+    });
 }
 
 /**
@@ -194,30 +210,31 @@ function obtenerProductoServicio(callback) {
 }
 
 
+function obtenerRedencionData(callback){
+    var urlEnd = urlServicioRedencion + getParameterURLByName('id');
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', urlEnd, true); // Replace 'my_data' with the path to your file
+    xobj.onreadystatechange = function () {
+        if (xobj.readyState == 4 && xobj.status == "200") {
+            callback(xobj.responseText);
+        }
+    };
+    xobj.send(null);
+}
+
+
 //Coloca los valores recibidos del servicio para el detalle de los productos
 function crearProductoCatalogoDetalle(pdto){
     //inserta los valores para el nombre del producto
     $('#nombre-pro').text(onwName(pdto.nomproducto));
+    var titulo = document.createElement
     
     //descripcion-pro
     $('#descripcion-pro').text(onwName(pdto.detalleprod));
     
     //cantidad-pro
     $('#cantidad-pro').val(pdto.exis);
-    
-    if( pdto.efectivo == '0'){
-        var innerDetalle ='<i class="fa fa-circle" aria-hidden="true"></i> <span id="puntos-pro"></span> <span class="p-puntos">Puntos </span> ' ;
-        $('.de-pts').html(innerDetalle)
-    }else{
-        var innerDetalle ='<i class="fa fa-circle" aria-hidden="true"></i> <span id="puntos-pro"></span> <span class="p-puntos">Puntos </span> ' +
-        '<i class="fa fa-plus mas" aria-hidden="true"></i> $<span id="efectivo-pro"></span>';       
-        $('.de-pts').html(innerDetalle)
-        //efectivo-pro
-        $('#efectivo-pro').text(number_format(pdto.efectivo,0));
-    }
-
-    //puntos-pro
-    $('#puntos-pro').text(number_format(pdto.puntos,0));
     
     //img-pro
     $('#img-pro').attr("src", urlImgDetalle + getParameterURLByName('id'));
@@ -227,15 +244,33 @@ function crearProductoCatalogoDetalle(pdto){
 } 
 
 
+function crearDetalleRedencion(detalleRe){
+    
+    var htmlTemp = "";
+
+    for(var i = 0 ; i < detalleRe.length ; i++){
+        htmlTemp += 
+            '<h3 class="de-pts"><i class="fa fa-circle" aria-hidden="true"></i> <span id="puntos-pro">'+ number_format(detalleRe[i].puntos) +
+            '</span> <span class="p-puntos">Puntos </span> <i class="fa fa-plus mas" aria-hidden="true"></i> $<span id="efectivo-pro">'+ number_format(detalleRe[i].dinero)+
+            '</span></h3>';
+        if(detalleRe.length > 1 && i < detalleRe.length-1 ){
+            htmlTemp += "<h4>O tambi&eacute;n</h4>";
+        }
+        $('#detalle-reden').html(htmlTemp);
+
+    }
+}
+
+
 
 //** Funciones Cuadro Login **//
 //Registro de eventos para los controles del cuadro de login
 function registerEventLogin() {
     var login = document.getElementById('loginperfil');
-    login.addEventListener('click', showLogin, false);
+    login.addEventListener('click', nuevoLogin, false);
     
     var login = document.getElementById('login-offcanvas');
-    login.addEventListener('click', showLogin, false);
+    login.addEventListener('click', nuevoLogin, false);
 
     var loginout = document.getElementById('login-container-main');
     loginout.addEventListener('click', exitLogin, false);
@@ -416,6 +451,11 @@ function getToken(){
       document.getElementById('login-container-main').style.display = 'block';
       disableScroll();
   }
+
+
+  function nuevoLogin(){
+    window.location.href = "/seccion/actualizardatos.html";
+}
   
   //cierra el cuadro de login
   function exitLogin(event){   

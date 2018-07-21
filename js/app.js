@@ -2,6 +2,17 @@
 console.log ("@utor-> @lfernandortiz  | @SOFTDromedicas");
 
 $(document).foundation()
+
+window.addEventListener("load", iniciar, false);
+console.log("%cMade for %cDromedicas del Oriente  %c(specially this project)",       
+        "background-color: #FFFFFF; color: #00612E",
+        "background-color: #FFFFFF; color: #000a7b",
+        "background-color: #FFFFFF; color: #AE000C");
+
+    console.log("%cVisit us! %chttp:www.dromedicas.com.co",
+        "background-color: #FFFFFF; color: #000",
+        "background-color: #FFFFFF; color: #008ce2");
+
 //Procesamiento del formulario de inscripcion basico
 //Campos del formulario
 var ciudad, documento, nombres, apellidos, tipodocumento, sexo, direccion,
@@ -709,6 +720,7 @@ function reestrablecerFormulario(){
   document.getElementById("email").value =""; 
   document.getElementById("codigoprom").value =""; 
   document.getElementById("contrasenia").value=""
+  document.getElementById("res").value=""
 
   $('input:checkbox').removeAttr('checked');
   
